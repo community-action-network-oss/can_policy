@@ -890,6 +890,46 @@
       "bytes": 46028
     },
     {
+      "path": "content-schemas/review_recommendation/examples/invalid-accepted-without-resolution-reason.json",
+      "sha256": "3bcd800c461caf697608e8dbd252b2978b69c23f523cf4d4fe3efcaa044295c3",
+      "bytes": 310
+    },
+    {
+      "path": "content-schemas/review_recommendation/examples/invalid-names-a-person.json",
+      "sha256": "851ff4c92518e83a97553bc49a169ebf952b61adf067915f1a5d4b993ba06ba3",
+      "bytes": 268
+    },
+    {
+      "path": "content-schemas/review_recommendation/examples/invalid-path-not-in-problem.json",
+      "sha256": "50356235a4d3745ca6ad81f96336a2ff4eadaf2eaa3ec35c7b792ed4582ed882",
+      "bytes": 288
+    },
+    {
+      "path": "content-schemas/review_recommendation/examples/invalid-reason-too-short.json",
+      "sha256": "951a59bcfd1cadc71ade4da1e62d548f4beec42fbfa1783bbf2e53f3285ed0c7",
+      "bytes": 236
+    },
+    {
+      "path": "content-schemas/review_recommendation/examples/valid-affected-area-accepted.json",
+      "sha256": "db3234724234653bc20cc8bc530d8af0c25e0a1167df83b6c9a83beef42b9b6d",
+      "bytes": 322
+    },
+    {
+      "path": "content-schemas/review_recommendation/examples/valid-stage-criteria.json",
+      "sha256": "3d4771baeeb8c60b553e61d21fee6e73f82bc8b4a8d928a19040be04c3104927",
+      "bytes": 306
+    },
+    {
+      "path": "content-schemas/review_recommendation/messages.en.json",
+      "sha256": "c8f432b343255fe5d2fec34abb8402d0cb439a8fa2651c39cd75f9d44d46c636",
+      "bytes": 1329
+    },
+    {
+      "path": "content-schemas/review_recommendation/schema.json",
+      "sha256": "6a96cf9bd54e043bddede2786346125913bc5850fea3b39c2ef3d8f0943b87af",
+      "bytes": 5590
+    },
+    {
       "path": "content-schemas/stage_choice/examples/invalid-decider-is-named-person.json",
       "sha256": "cf7ef9b43f5b139106930a82d88bfcef50b9985f20bda2fdd547a098bc1a124d",
       "bytes": 929
@@ -1026,8 +1066,8 @@
     },
     {
       "path": "limits.yaml",
-      "sha256": "dba6b9bb0779e9a0fabe739851d63e209eb7a618688ace500806bc1a0bc5ec39",
-      "bytes": 7029
+      "sha256": "9b0691842423b332befef6d03d43455b46a29d36d1780c180a56ccf59ba79789",
+      "bytes": 7404
     },
     {
       "path": "packs/base/pack.yaml",
@@ -1040,5 +1080,5 @@
       "bytes": 17486
     }
   ],
-  "pack_hash": "254a57067a51ab6474fd38c85a551f4cf830e86904916f77b2fe3de908c57d2d"
+  "pack_hash": "74ca46fcf1f2ec90d687c274c590ae1582ffb5c7292f3bb6a4a82e1ce35bd356"
 }

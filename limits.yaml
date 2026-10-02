@@ -230,6 +230,19 @@ fields:
       min: 1
       max: 6
       note: Evidence refs per item, 1 to 6.
+  review_recommendation:
+    recommendation:
+      min_chars: 20
+      max_chars: 600
+      note: Length of the change a volunteer asks for.
+    reason:
+      min_chars: 20
+      max_chars: 600
+      note: Length of the reason for the change.
+    resolution_reason:
+      min_chars: 10
+      max_chars: 600
+      note: Length of the poster reason for accepting or declining.
 cooldowns:
   between_contributions_same_problem:
     seconds: 120
