@@ -1325,6 +1325,166 @@
       "bytes": 9118
     },
     {
+      "path": "decision-points/DP-CONTRIB-RELEVANCE/eval/README.md",
+      "sha256": "8b95a035276f215fad95e15a6a0b88b934e887376a12dd265b140e18c5450fa5",
+      "bytes": 618
+    },
+    {
+      "path": "decision-points/DP-CONTRIB-RELEVANCE/eval/adversarial.jsonl",
+      "sha256": "1990748ab49f2538526dda5da10683083d8f172426a162fd65cab9290c801c68",
+      "bytes": 1376
+    },
+    {
+      "path": "decision-points/DP-CONTRIB-RELEVANCE/eval/core.jsonl",
+      "sha256": "505e7abdce53172e907e17fdd0d586c132ffa0fe7b7f1913d24300dcbc3fb535",
+      "bytes": 4723
+    },
+    {
+      "path": "decision-points/DP-CONTRIB-RELEVANCE/eval/thresholds.yaml",
+      "sha256": "10b31dcbaf914f42ae149c18bee3fb2af417e23b22742e6c33195eed6d34094f",
+      "bytes": 364
+    },
+    {
+      "path": "decision-points/DP-CONTRIB-RELEVANCE/examples/cases.json",
+      "sha256": "0ecb1e7ecd692ba1a4a96b397004468806c74ceac496b7d736f73c50f2783d34",
+      "bytes": 4815
+    },
+    {
+      "path": "decision-points/DP-CONTRIB-RELEVANCE/pack-section.yaml",
+      "sha256": "301a38e7e39e28e892d5a28a676e80e7d99a553bd34f71858b669bc94a101491",
+      "bytes": 297
+    },
+    {
+      "path": "decision-points/DP-CONTRIB-RELEVANCE/prompt.md",
+      "sha256": "595cd11fe450de93737ee676fab1702491a178b1ddb9089c4a3412646f62bebf",
+      "bytes": 1335
+    },
+    {
+      "path": "decision-points/DP-CONTRIB-RELEVANCE/schema.json",
+      "sha256": "f4a3faf556702b0af2b714aaa724bc42680a7db38821520f4d887d3f3eaf0a08",
+      "bytes": 1639
+    },
+    {
+      "path": "decision-points/DP-DUPLICATE/eval/README.md",
+      "sha256": "848524679950f6d0da74049e222ea90c8147ff381089a1b69ed7cb47c20e6269",
+      "bytes": 677
+    },
+    {
+      "path": "decision-points/DP-DUPLICATE/eval/adversarial.jsonl",
+      "sha256": "a5ac955f97a9bd14898cf2fd65f833f5542ae8f68d8b75d7dadbd1cd9910707b",
+      "bytes": 1358
+    },
+    {
+      "path": "decision-points/DP-DUPLICATE/eval/core.jsonl",
+      "sha256": "93c07cc03eae0b9dcb073bab73b01f89a4bbef6f7cc58b9dfff394497dd326ce",
+      "bytes": 4463
+    },
+    {
+      "path": "decision-points/DP-DUPLICATE/eval/thresholds.yaml",
+      "sha256": "7f10fc922f500a5717ecc7c7856110dce3871405090deef54eec8bda824f5ac2",
+      "bytes": 341
+    },
+    {
+      "path": "decision-points/DP-DUPLICATE/examples/cases.json",
+      "sha256": "788abc82661166d143a26627bd60ae488384af0da49995547e302e2d5be2b3ef",
+      "bytes": 4138
+    },
+    {
+      "path": "decision-points/DP-DUPLICATE/pack-section.yaml",
+      "sha256": "713e978ed77b0d2139eecb2f4ecabd32cd74fec4dadfa01c335b0b5334fbf004",
+      "bytes": 262
+    },
+    {
+      "path": "decision-points/DP-DUPLICATE/prompt.md",
+      "sha256": "360c213c0371c787843ea75137980000906fc7b2dba76d37b2fbd804e846079b",
+      "bytes": 1279
+    },
+    {
+      "path": "decision-points/DP-DUPLICATE/schema.json",
+      "sha256": "73693e31bad7d8a31d1dfea47a9788f8ca20d36ff20362763e4c5de81d398555",
+      "bytes": 1601
+    },
+    {
+      "path": "decision-points/DP-ELIGIBILITY/eval/README.md",
+      "sha256": "f2759116998fe892c62efb020de5ca3c36bd52d966a4b8e89a5e4be5d14f3e7d",
+      "bytes": 695
+    },
+    {
+      "path": "decision-points/DP-ELIGIBILITY/eval/adversarial.jsonl",
+      "sha256": "ac5c4c7093e4b0abf462cd5f1d24251a978802db1884557c5fbcc6873480a8b6",
+      "bytes": 2228
+    },
+    {
+      "path": "decision-points/DP-ELIGIBILITY/eval/core.jsonl",
+      "sha256": "00cb6b1d5da93a74da6f512372ec4df23616d66dce1580a7aa46db793901337a",
+      "bytes": 4858
+    },
+    {
+      "path": "decision-points/DP-ELIGIBILITY/eval/thresholds.yaml",
+      "sha256": "80ec32f959026216d0760ac20627b6d371c608960c5177a826e9826b20e73b1c",
+      "bytes": 381
+    },
+    {
+      "path": "decision-points/DP-ELIGIBILITY/examples/cases.json",
+      "sha256": "ff18ecda80488fc20216c84de08a70b1c413a89063ad33f4c065ef74694b89e7",
+      "bytes": 4873
+    },
+    {
+      "path": "decision-points/DP-ELIGIBILITY/pack-section.yaml",
+      "sha256": "275a740e47f641ce2e9caf0dc3c00fdcbbf83ec575e478140f2f2c4fd9f1474f",
+      "bytes": 334
+    },
+    {
+      "path": "decision-points/DP-ELIGIBILITY/prompt.md",
+      "sha256": "1ab5606db8aed4773ea6d36ea6003d7916ee87a9a278765dfab17af65dd4f5b0",
+      "bytes": 1460
+    },
+    {
+      "path": "decision-points/DP-ELIGIBILITY/schema.json",
+      "sha256": "ad7cc9593113a7e516e6a60734d7a7eb53744bcd09e275d7563edc54822eb461",
+      "bytes": 1686
+    },
+    {
+      "path": "decision-points/DP-FRAMING/eval/README.md",
+      "sha256": "84ce60944c94c20142315a862a3796914e057beb57d7e0d236d5f86985e71f0e",
+      "bytes": 640
+    },
+    {
+      "path": "decision-points/DP-FRAMING/eval/adversarial.jsonl",
+      "sha256": "a5caf663938abd6fbfb99dbb0074ea034a56d3034096ac72b37e1d8d354ec106",
+      "bytes": 1678
+    },
+    {
+      "path": "decision-points/DP-FRAMING/eval/core.jsonl",
+      "sha256": "714e8d2e88dd50fad8d596c4941480824536c61e24a387a41495271a21acd1a2",
+      "bytes": 4344
+    },
+    {
+      "path": "decision-points/DP-FRAMING/eval/thresholds.yaml",
+      "sha256": "04e778027833cfa71ccfa25c7176219d8cd030537ff5376adaf1862610c52ad8",
+      "bytes": 339
+    },
+    {
+      "path": "decision-points/DP-FRAMING/examples/cases.json",
+      "sha256": "c3409b08728fa468dea097fa7fdfa6f04e5f6290854c141dbfa7a9b00d61d002",
+      "bytes": 3876
+    },
+    {
+      "path": "decision-points/DP-FRAMING/pack-section.yaml",
+      "sha256": "55804dabd3364c6895e50aec58cf8e028ed39065b88fb9ac46936c8134fd1abc",
+      "bytes": 243
+    },
+    {
+      "path": "decision-points/DP-FRAMING/prompt.md",
+      "sha256": "1ccb1fa59057e3f73bfd8a72ec9ba0f6f1987ff1f1c5017bcc34de6392b9a8c2",
+      "bytes": 1270
+    },
+    {
+      "path": "decision-points/DP-FRAMING/schema.json",
+      "sha256": "2a2a58b8783c90ffdbf1febbb7cb12c9d0e90984e7cc2dd165b4cecf18f094cf",
+      "bytes": 1430
+    },
+    {
       "path": "decision-points/_template/eval/README.md",
       "sha256": "99556faefb729e0a8c785df5d1c1478055114a21b1ab1c3c1dfc0707e05d7c69",
       "bytes": 366
@@ -1375,5 +1535,5 @@
       "bytes": 17486
     }
   ],
-  "pack_hash": "cc46601676ba3cd818462d109bc91e45d1a8cae7f075a7bb464e746fdecece28"
+  "pack_hash": "e7160b072b503a53bcd27e094f651fcf4f61485f19a017c1c9fa35b251809f80"
 }
