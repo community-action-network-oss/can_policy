@@ -3,6 +3,8 @@ on:
   pull_request:
   push:
     branches: [main]
+permissions:
+  contents: read
 jobs:
   verify:
     runs-on: ubuntu-latest
@@ -13,9 +15,77 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
-      - name: Verify (lint and tests)
-        run: npm run verify
-      - name: Eval (stub until 10-u23)
-        run: npm run eval
-      - name: Replay diff (stub until 10-u24)
-        run: npm run replay
+      - run: npm run verify
+
+  eval:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: mkdir -p .tmp
+      - name: Eval (strict, diff against main)
+        run: node tools/eval.mjs --strict --diff-against origin/main --json .tmp/eval.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: eval-report
+          path: .tmp/eval.json
+
+  replay:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.sha || github.event.before }}
+          path: .tmp/base
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Replay diff against base
+        run: node tools/replay.mjs --base .tmp/base --head . --json .tmp/replay.json --md .tmp/replay.md
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: replay-report
+          path: |
+            .tmp/replay.json
+            .tmp/replay.md
+      - name: Post replay summary
+        # Forks get a read-only token, so only same-repo PRs comment.
+        if: always() && github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('node:fs');
+            if (!fs.existsSync('.tmp/replay.md')) return;
+            await github.rest.issues.createComment({
+              ...context.repo,
+              issue_number: context.issue.number,
+              body: fs.readFileSync('.tmp/replay.md', 'utf8'),
+            });
+    permissions:
+      contents: read
+      pull-requests: write
+
+  protected-core:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: node tools/protected-core-check.mjs --base origin/${{ github.base_ref }}

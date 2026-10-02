@@ -40,6 +40,10 @@ npm run build:pack # writes manifest.json per pack and release.json
 
 Dependencies are exactly `ajv` and `yaml`, pinned. `lint` checks pack.yaml files, decision point folders, content schemas, file size (256 KB), banned dashes, and that generated manifests match the sources (`build:pack --check`). Pack YAML stays in a simple subset (block maps and lists, inline lists, scalars, comments; no anchors, multiline scalars or flow maps) because the server parses it with a small reader.
 
+## CI
+
+`.github/workflows/ci.yml` runs four jobs on each PR: `verify`, `eval` (strict, `--diff-against origin/main`), `replay` (against the base commit, comments `replay.md` on same-repo PRs) and `protected-core` (`node tools/protected-core-check.mjs --base <ref>`, refuses any change to a protected rule). Eval and replay reports are uploaded as artifacts. The PR template carries the ratification checklist.
+
 ## Pack format
 
 - One repo wide semver per git tag `vX.Y.Z`. Every pack in a tag carries that version.
