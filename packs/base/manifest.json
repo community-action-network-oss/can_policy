@@ -5,9 +5,64 @@
   "parent": null,
   "files": [
     {
+      "path": "content-schemas/problem/examples/guidance-index.json",
+      "sha256": "0baa0a8a498c75f2a11ba2f038307bbaa1cd9139a2b54963155ba57f665debd9",
+      "bytes": 838
+    },
+    {
+      "path": "content-schemas/problem/examples/invalid-address-in-place.json",
+      "sha256": "3fd711cc26c83b3723f52a9ea1879778209fbed3cdaed9d1d0ec41cb0c67283b",
+      "bytes": 1932
+    },
+    {
+      "path": "content-schemas/problem/examples/invalid-filler-everywhere.json",
+      "sha256": "e864b7a4e353054e7ae5521ee82111a930d51698a8fadecea96df23e0dbb2898",
+      "bytes": 1612
+    },
+    {
+      "path": "content-schemas/problem/examples/invalid-missing-causal-status.json",
+      "sha256": "59961f898032f3148ff3882e26ff800487032d3c4b0244bda11263e136d62f20",
+      "bytes": 1899
+    },
+    {
+      "path": "content-schemas/problem/examples/invalid-named-person-in-roles.json",
+      "sha256": "15f8c4442ae73d1c416d885d3a8f918c13013b3b9ae048262f0bb2403cd0c406",
+      "bytes": 1940
+    },
+    {
+      "path": "content-schemas/problem/examples/invalid-no-final-criteria.json",
+      "sha256": "9a86e0ef1bb40ec16aacd40574926e3566244090b9636bd4149154d685b155c8",
+      "bytes": 1769
+    },
+    {
+      "path": "content-schemas/problem/examples/invalid-source-bad-category.json",
+      "sha256": "55d974f0b5be3357218460504eecaff76a4b6c333a08f90e5392816d6bcd0631",
+      "bytes": 1916
+    },
+    {
+      "path": "content-schemas/problem/examples/valid-minimal.json",
+      "sha256": "3d4b3d457338305d85cdaa11ae6e7aadd2b5a0d509ec72b6911db6cec79daf3d",
+      "bytes": 1925
+    },
+    {
+      "path": "content-schemas/problem/examples/valid-with-assumptions.json",
+      "sha256": "6d336abd4d22a539348ab5001c42e193bf636748ad75ce5bf26c84d5597c04d1",
+      "bytes": 2511
+    },
+    {
+      "path": "content-schemas/problem/messages.en.json",
+      "sha256": "e6fc0e3f7316957ca84baaf4807ee371926d98ffdf1439da8e9966b42787bd78",
+      "bytes": 8410
+    },
+    {
+      "path": "content-schemas/problem/schema.json",
+      "sha256": "8de0982cf4258c8330cce99ad57b6fa95dfe20379c2cef266c4aa867c71e4213",
+      "bytes": 27596
+    },
+    {
       "path": "limits.yaml",
-      "sha256": "a423e31ac6b47e580217e33284f06489c53a5e3c2198dbd5b8961e66098d7059",
-      "bytes": 1715
+      "sha256": "6f03c046b7c900384cf4a8132ce7c935ab86bb9fded494e0d876c05f7071a8c7",
+      "bytes": 2071
     },
     {
       "path": "packs/base/pack.yaml",
@@ -20,5 +75,5 @@
       "bytes": 17486
     }
   ],
-  "pack_hash": "8f83abe33565e9520625c1a034fb257a9fd77e86fd6bf3736d9dcf5c6bb1d524"
+  "pack_hash": "8d462b96e519796c00f3bf3a774b26b4544ded794749e27af85dd5234618e58c"
 }

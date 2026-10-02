@@ -21,10 +21,19 @@ caps:
     count: 3
     days: 7
     note: Appeals per period.
-# Entries are added by the content schema units, for example:
-#   fields: problem: condition: min_chars, max_chars, note
-#   fields: problem: list: min, max, note
-fields: {}
+# Entries are added by the content schema units. Char bounds equal the schema x-guidance.
+# List sizes (sources 1 to 10, facts 1 to 10, criteria 1 to 6, assumptions 1 to 8) live in
+# content-schemas/problem/schema.json as minItems and maxItems: this file allows one list key per type.
+fields:
+  problem:
+    condition:
+      min_chars: 40
+      max_chars: 400
+      note: Length of the shared public condition.
+    causal_hypothesis:
+      min_chars: 40
+      max_chars: 600
+      note: Length of the causal hypothesis statement.
 cooldowns:
   between_contributions_same_problem:
     seconds: 120
