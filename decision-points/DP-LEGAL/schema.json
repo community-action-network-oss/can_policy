@@ -167,6 +167,32 @@
                 "article_id": true
               }
             }
+          },
+          {
+            "if": {
+              "type": "object",
+              "required": [
+                "topic_ban_ref"
+              ],
+              "properties": {
+                "topic_ban_ref": {
+                  "type": "string"
+                }
+              }
+            },
+            "then": {
+              "type": "object",
+              "required": [
+                "finding",
+                "article_id"
+              ],
+              "properties": {
+                "finding": {
+                  "const": "constrains"
+                },
+                "article_id": true
+              }
+            }
           }
         ]
       },
@@ -212,51 +238,14 @@
         "type": "object",
         "required": [
           "outcome",
-          "rule_ids"
-        ],
-        "properties": {
-          "outcome": {
-            "const": "reject"
-          },
-          "rule_ids": {
-            "type": "array",
-            "contains": {
-              "const": "TOPIC-FORBIDDEN-1"
-            }
-          }
-        }
-      },
-      "then": {
-        "type": "object",
-        "required": [
-          "legal_findings"
-        ],
-        "properties": {
-          "legal_findings": {
-            "type": "array",
-            "contains": {
-              "type": "object",
-              "required": [
-                "topic_ban_ref"
-              ],
-              "properties": {
-                "topic_ban_ref": true
-              }
-            }
-          }
-        }
-      }
-    },
-    {
-      "if": {
-        "type": "object",
-        "required": [
-          "outcome",
           "legal_findings"
         ],
         "properties": {
           "outcome": {
-            "const": "hold"
+            "enum": [
+              "hold",
+              "escalate_human"
+            ]
           },
           "legal_findings": {
             "type": "array",
@@ -281,6 +270,40 @@
         ],
         "properties": {
           "conflict_note": {}
+        }
+      }
+    },
+    {
+      "if": {
+        "type": "object",
+        "required": [
+          "outcome"
+        ],
+        "properties": {
+          "outcome": {
+            "const": "publish"
+          }
+        }
+      },
+      "then": {
+        "type": "object",
+        "properties": {
+          "legal_findings": {
+            "not": {
+              "type": "array",
+              "contains": {
+                "type": "object",
+                "required": [
+                  "finding"
+                ],
+                "properties": {
+                  "finding": {
+                    "const": "conflict"
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }

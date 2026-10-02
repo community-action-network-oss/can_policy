@@ -15,7 +15,11 @@ const cases = [
   ["stack rule without legal_findings", { outcome: "publish", rule_ids: ["LEGAL-STACK-1"] }, false],
   ["cite rule with findings", { outcome: "publish", rule_ids: ["LEGAL-CITE-1"], legal_findings: [f()] }, true],
   ["topic-forbidden reject without topic_ban_ref", { outcome: "reject", rule_ids: ["TOPIC-FORBIDDEN-1"], legal_findings: [f()] }, false],
-  ["topic-forbidden reject with topic_ban_ref", { outcome: "reject", rule_ids: ["TOPIC-FORBIDDEN-1"], legal_findings: [f({ topic_ban_ref: "a1" })] }, true],
+  ["topic-forbidden reject with topic_ban_ref", { outcome: "reject", rule_ids: ["TOPIC-FORBIDDEN-1"], legal_findings: [f({ finding: "constrains", topic_ban_ref: "a1" })] }, true],
+  ["topic-forbidden reject whose ban finding only permits", { outcome: "reject", rule_ids: ["TOPIC-FORBIDDEN-1"], legal_findings: [f({ topic_ban_ref: "a1" })] }, false],
+  ["topic-forbidden reject whose ban finding has no article_id", { outcome: "reject", rule_ids: ["TOPIC-FORBIDDEN-1"], legal_findings: [{ layer: "L0", finding: "constrains", topic_ban_ref: "a1" }] }, false],
+  ["topic_ban_ref on a permits finding", { outcome: "hold", legal_findings: [f({ topic_ban_ref: "a1" })] }, false],
+  ["publish with a conflict finding", { outcome: "publish", conflict_note: "n", legal_findings: [f({ finding: "conflict" })] }, false],
   ["conflict hold without conflict_note", { outcome: "hold", legal_findings: [f({ finding: "conflict" })] }, false],
   ["conflict hold with conflict_note", { outcome: "hold", conflict_note: "n", legal_findings: [f({ finding: "conflict" })] }, true],
   ["L1 finding without corpus_version", { outcome: "publish", legal_findings: [{ layer: "L1", finding: "none_found" }] }, false],
@@ -23,12 +27,27 @@ const cases = [
   ["L0 finding needs no citation", { outcome: "publish", legal_findings: [{ layer: "L0", finding: "none_found" }] }, true],
 ];
 const legalityOnly = [
+  ["publish with a constrains finding", { outcome: "publish", legal_findings: [f({ finding: "constrains" })] }, false],
+  ["needs_revision with a conflict finding", { outcome: "needs_revision", conflict_note: "n", legal_findings: [f({ finding: "conflict" })] }, false],
+  ["reject without a cited rule", { outcome: "reject" }, false],
+  ["reject with a cited rule", { outcome: "reject", rule_ids: ["LEGAL-GATE-1"] }, true],
   ["constrains hold without stuck_payload", { outcome: "hold", legal_findings: [f({ finding: "constrains" })] }, false],
   ["constrains hold with stuck_payload", { outcome: "hold", legal_findings: [f({ finding: "constrains" })], stuck_payload: stuck }, true],
   ["cited stuck_payload without layer/article_id/corpus_version", { outcome: "hold", rule_ids: ["LEGAL-CITE-1"], legal_findings: [f()], stuck_payload: stuck }, false],
   ["cited stuck_payload complete", { outcome: "hold", rule_ids: ["LEGAL-CITE-1"], legal_findings: [f()], stuck_payload: { ...stuck, layer: "L1", article_id: "a1", corpus_version: "v1" } }, true],
 ];
-for (const [dp, outcomeOk, extra] of [["DP-LEGALITY", null, legalityOnly], ["DP-ELIGIBILITY", null, []], ["DP-LEGAL", null, []]]) {
+const eligOnly = [
+  ["reject without a cited rule", { outcome: "reject" }, false],
+  ["reject with a cited rule", { outcome: "reject", rule_ids: ["ELIG-PUBLIC-1"] }, true],
+  ["route_external without route_key", { outcome: "route_external" }, false],
+  ["route_external with a non-slug route_key", { outcome: "route_external", route_key: "Bad Key" }, false],
+  ["route_external with a slug route_key", { outcome: "route_external", route_key: "fiktiva-ombudsman" }, true],
+];
+const legalOnly = [
+  ["escalate_human with conflict but no conflict_note", { outcome: "escalate_human", legal_findings: [f({ finding: "conflict" })] }, false],
+  ["escalate_human with conflict and conflict_note", { outcome: "escalate_human", conflict_note: "n", legal_findings: [f({ finding: "conflict" })] }, true],
+];
+for (const [dp, outcomeOk, extra] of [["DP-LEGALITY", null, legalityOnly], ["DP-ELIGIBILITY", null, eligOnly], ["DP-LEGAL", null, legalOnly]]) {
   const validate = new Ajv2020({ allErrors: true }).compile(JSON.parse(readFileSync(join(ROOT, "decision-points", dp, "schema.json"), "utf8")));
   for (const [name, o, ok] of [...cases, ...extra]) {
     const out = { ...base, ...o };
@@ -37,3 +56,7 @@ for (const [dp, outcomeOk, extra] of [["DP-LEGALITY", null, legalityOnly], ["DP-
     test(`${dp}: ${name} -> ${ok ? "valid" : "rejected"}`, () => assert.equal(validate(out), ok, JSON.stringify(validate.errors)));
   }
 }
+
+test("DP-LEGAL schema carries no dead TOPIC-FORBIDDEN-1 clause (it never rejects)", () => {
+  assert.ok(!readFileSync(join(ROOT, "decision-points", "DP-LEGAL", "schema.json"), "utf8").includes("TOPIC-FORBIDDEN-1"));
+});

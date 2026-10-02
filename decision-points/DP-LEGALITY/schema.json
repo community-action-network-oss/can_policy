@@ -214,6 +214,32 @@
                 "article_id": true
               }
             }
+          },
+          {
+            "if": {
+              "type": "object",
+              "required": [
+                "topic_ban_ref"
+              ],
+              "properties": {
+                "topic_ban_ref": {
+                  "type": "string"
+                }
+              }
+            },
+            "then": {
+              "type": "object",
+              "required": [
+                "finding",
+                "article_id"
+              ],
+              "properties": {
+                "finding": {
+                  "const": "constrains"
+                },
+                "article_id": true
+              }
+            }
           }
         ]
       },
@@ -284,10 +310,20 @@
             "contains": {
               "type": "object",
               "required": [
-                "topic_ban_ref"
+                "topic_ban_ref",
+                "article_id",
+                "finding"
               ],
               "properties": {
-                "topic_ban_ref": true
+                "topic_ban_ref": {
+                  "type": "string"
+                },
+                "article_id": {
+                  "type": "string"
+                },
+                "finding": {
+                  "const": "constrains"
+                }
               }
             }
           }
@@ -402,6 +438,100 @@
               "layer": true,
               "article_id": true,
               "corpus_version": true
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "type": "object",
+        "required": [
+          "outcome"
+        ],
+        "properties": {
+          "outcome": {
+            "const": "reject"
+          }
+        }
+      },
+      "then": {
+        "type": "object",
+        "properties": {
+          "rule_ids": {
+            "type": "array",
+            "minItems": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "type": "object",
+        "required": [
+          "outcome"
+        ],
+        "properties": {
+          "outcome": {
+            "enum": [
+              "publish",
+              "needs_revision",
+              "reject"
+            ]
+          }
+        }
+      },
+      "then": {
+        "type": "object",
+        "properties": {
+          "legal_findings": {
+            "not": {
+              "type": "array",
+              "contains": {
+                "type": "object",
+                "required": [
+                  "finding"
+                ],
+                "properties": {
+                  "finding": {
+                    "const": "conflict"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "type": "object",
+        "required": [
+          "outcome"
+        ],
+        "properties": {
+          "outcome": {
+            "const": "publish"
+          }
+        }
+      },
+      "then": {
+        "type": "object",
+        "properties": {
+          "legal_findings": {
+            "not": {
+              "type": "array",
+              "contains": {
+                "type": "object",
+                "required": [
+                  "finding"
+                ],
+                "properties": {
+                  "finding": {
+                    "const": "constrains"
+                  }
+                }
+              }
             }
           }
         }

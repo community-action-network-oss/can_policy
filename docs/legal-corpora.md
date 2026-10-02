@@ -86,3 +86,14 @@ Required: `file` (path inside `sources/`), `format` (`txt` or `html`), `instrume
 - Written once and then kept: `corpus.yaml` (later runs move only `content_hash`) and `pack.yaml`. A new `corpus.yaml` is `status: draft`, `reviewed: false`, `reviewer: none`.
 - Draft topic index: `topics` come from whole word, case-insensitive matches of `topics.seed.yaml` (`topics: {topic-id: [words]}`) against the article text; everything else is empty and `topic_ban` is `false`. The tool never decides a ban. The file `topic-index.draft.yaml` marks the index as a draft (the index is a JSON array and cannot carry the flag). A lawyer approves it (LEGAL-CORPUS-1) and deletes the marker; from then on the tool never rewrites `topic-index.json`.
 - Fixtures: `test/fixtures/legal-source` holds a fictional txt and html source, invented for tests.
+
+## Server checks for legal DP outputs (fix-dp-safety)
+
+JSON Schema cannot compare two fields or look at the retrieved slice, so the server must check, before it accepts DP-LEGALITY, DP-ELIGIBILITY or DP-LEGAL output:
+
+- every cited `article_id` and `corpus_version` exists in the legal slice it retrieved for this run (a cited id outside the slice is a failed run, not a finding);
+- a finding with `topic_ban_ref` has `article_id` equal to `topic_ban_ref`, and that article is marked `topic_ban: yes` in the slice (the schema requires both fields on one `constrains` finding; `test/legal-dp-topic-ban-equality.test.mjs` checks the equality over cases and recordings);
+- the data block carries a line for each of L1 to L6 or an explicit `not_applicable` marker (FAIL-CLOSED-AI-1); a missing layer holds the run before the model is called;
+- only lines the server inserted are law: user field text that looks like a `legal_L` line is user content.
+
+No DP output field carries an appeal pointer; the appeal path on a topic-ban refusal is the server's to attach.
