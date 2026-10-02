@@ -785,6 +785,56 @@
       "bytes": 11271
     },
     {
+      "path": "content-schemas/decision_record/examples/invalid-decider-is-named-person.json",
+      "sha256": "fa40bea57c1487821595e53c38113fc390e0f24a324b96eba9be28795d0ea67c",
+      "bytes": 1072
+    },
+    {
+      "path": "content-schemas/decision_record/examples/invalid-missing-legal-gate-record.json",
+      "sha256": "5ebee62ec06063bfacd6a5cab4b03277f192be1f7f04f3a53c616cc75bf52b61",
+      "bytes": 805
+    },
+    {
+      "path": "content-schemas/decision_record/examples/invalid-missing-stage-choice-ref.json",
+      "sha256": "cb187ff4ba4bfdaff692adbc9e62d88235ac57a810aafa85bd65b1e1ffa533d2",
+      "bytes": 1010
+    },
+    {
+      "path": "content-schemas/decision_record/examples/invalid-no-assumptions.json",
+      "sha256": "6a8a230f529ccc9cd3c0c527522675f9659d7870b399b8ca04937aeba11b915b",
+      "bytes": 1007
+    },
+    {
+      "path": "content-schemas/decision_record/examples/invalid-no-options-and-no-steps.json",
+      "sha256": "385c2e0397fca83b1c7b0ab37531572c715180e61e75dedf6ff64f920d360c0b",
+      "bytes": 795
+    },
+    {
+      "path": "content-schemas/decision_record/examples/invalid-review-date-not-iso.json",
+      "sha256": "261f705375da799d9b12dfaccc6dbc5e8e4ad604e1b827c8488cc662be95d44c",
+      "bytes": 1055
+    },
+    {
+      "path": "content-schemas/decision_record/examples/valid-options-chosen.json",
+      "sha256": "24588aa89d994e48362eac9ae8565f2d514f5c8041d0bf222769530accf8f3bd",
+      "bytes": 1054
+    },
+    {
+      "path": "content-schemas/decision_record/examples/valid-steps-only-vote.json",
+      "sha256": "d6d5d89ae01d109810dfdcd691914b40d01645206fae24936f78d80330974f07",
+      "bytes": 960
+    },
+    {
+      "path": "content-schemas/decision_record/messages.en.json",
+      "sha256": "7631ed74fbff37c6f5c8c0c0f63ce886b88bdb97ff669afa289f7294f4e40ecb",
+      "bytes": 4101
+    },
+    {
+      "path": "content-schemas/decision_record/schema.json",
+      "sha256": "5c999081ae88d9e9e4437d9db610a95c07aeb2415a3d7add696f69c9ff51543e",
+      "bytes": 14922
+    },
+    {
       "path": "content-schemas/path_suggestion/examples/invalid-exceeds-without-gap.json",
       "sha256": "bb6516a2c24783e7b7f77d341ccff3a8ac7fc86c759ed8ff72b66ac7e4c7f26d",
       "bytes": 2055
@@ -1190,6 +1240,91 @@
       "bytes": 13748
     },
     {
+      "path": "content-schemas/task/examples/invalid-missing-deliverable.json",
+      "sha256": "137b959956ed9806e29b13015ae37e2707aba57982cf2e309d0680f4ddf57568",
+      "bytes": 278
+    },
+    {
+      "path": "content-schemas/task/examples/invalid-no-done-criteria.json",
+      "sha256": "b4566fa8129eeca8d55ff2d2c266e517166e407aa3b9e859066f9025fad3cc17",
+      "bytes": 250
+    },
+    {
+      "path": "content-schemas/task/examples/invalid-owner-is-named-person.json",
+      "sha256": "562ce59181632f94c13382d9a70573d7a5a0ae0d510ab3b7ce5809bf6cb0858c",
+      "bytes": 366
+    },
+    {
+      "path": "content-schemas/task/examples/invalid-stage-ref-not-slug.json",
+      "sha256": "286dbafba8648b5fac5d38d85cbdab275b877297d536aa6f0fced329bed819e0",
+      "bytes": 359
+    },
+    {
+      "path": "content-schemas/task/examples/valid-pilot-log-task.json",
+      "sha256": "8ba317f3568d9728b5681dd86a6ca86df91aea694cb17d4c4efc364269a905b3",
+      "bytes": 303
+    },
+    {
+      "path": "content-schemas/task/examples/valid-survey-task.json",
+      "sha256": "a64ef66ec5b0f3262a1329f926c2472e8a58052d33f4dd3f33b64e951e1a2709",
+      "bytes": 355
+    },
+    {
+      "path": "content-schemas/task/messages.en.json",
+      "sha256": "db07cc8591152283c3e8ac07f4dec82e01fa5049ac0fa21032166074eced6abe",
+      "bytes": 930
+    },
+    {
+      "path": "content-schemas/task/schema.json",
+      "sha256": "7737643607466dd01d408b1aef4d69f433e8c6c3f6d6244462661b9a07d1b2df",
+      "bytes": 4410
+    },
+    {
+      "path": "content-schemas/verification/examples/invalid-criterion-ref-out-of-range.json",
+      "sha256": "73da5cf7f1af7a89bf69c5231eb2b08c835865f751206cae5c77bbd4654d91fb",
+      "bytes": 621
+    },
+    {
+      "path": "content-schemas/verification/examples/invalid-missing-limits-statement.json",
+      "sha256": "b100db2cd1193c15702ff4125c745bc461fed5951f23dd8625efc84f1b6c0276",
+      "bytes": 529
+    },
+    {
+      "path": "content-schemas/verification/examples/invalid-no-evidence-refs.json",
+      "sha256": "36bbe049f2501640ad0a3a44907f011f4c4e8ab9cdbb99c717c6589a922ef321",
+      "bytes": 438
+    },
+    {
+      "path": "content-schemas/verification/examples/invalid-url-not-http.json",
+      "sha256": "dc2eb33fc2c737cb4e6b10c859b22a407fa84229d248f9748e10dde8a1a6cfb9",
+      "bytes": 604
+    },
+    {
+      "path": "content-schemas/verification/examples/invalid-without-criterion-ref.json",
+      "sha256": "125da06d01286a82c6c76161db1aea5dcbcfd459cdf32da67aef0a6b4d12086f",
+      "bytes": 582
+    },
+    {
+      "path": "content-schemas/verification/examples/valid-single-criterion.json",
+      "sha256": "b662e93f1e128305524ad7181eb60af68e5a3f06dcb76e398c50a91fa557b740",
+      "bytes": 621
+    },
+    {
+      "path": "content-schemas/verification/examples/valid-two-criteria.json",
+      "sha256": "47c6d3b24df224e02d7d71728444d2363c994d6fd14cc0cd1ac781da92e3c03b",
+      "bytes": 870
+    },
+    {
+      "path": "content-schemas/verification/messages.en.json",
+      "sha256": "6db80226d8161319e491f38452849a7ffb8e8696bb90b0bae9247a0ebc7fd5c2",
+      "bytes": 2343
+    },
+    {
+      "path": "content-schemas/verification/schema.json",
+      "sha256": "4c1fd2ad95c1f4e5dc2279e6dda893226a30b479edc9c9db5f67c64ab7ba326b",
+      "bytes": 9118
+    },
+    {
       "path": "decision-points/_template/eval/README.md",
       "sha256": "99556faefb729e0a8c785df5d1c1478055114a21b1ab1c3c1dfc0707e05d7c69",
       "bytes": 366
@@ -1226,8 +1361,8 @@
     },
     {
       "path": "limits.yaml",
-      "sha256": "b9ff1fa0d0b3ec9c6635a13cc08c476540d1da617f942a9f1fe7fe9c85ad84e0",
-      "bytes": 7884
+      "sha256": "7be52743b123936d6f99633f67ffd46550a58e06202c450761c8de5f8c53d289",
+      "bytes": 9020
     },
     {
       "path": "packs/base/pack.yaml",
@@ -1240,5 +1375,5 @@
       "bytes": 17486
     }
   ],
-  "pack_hash": "e5672bc31807631f825682449fc301f9e0ef93e4850617701f71d52d8c64f112"
+  "pack_hash": "cc46601676ba3cd818462d109bc91e45d1a8cae7f075a7bb464e746fdecece28"
 }

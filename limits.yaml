@@ -259,6 +259,53 @@ fields:
       min: 1
       max: 12
       note: Stages in the draft plan, equal to the problem stage plan cap.
+  decision_record:
+    decider_role:
+      min_chars: 5
+      max_chars: 150
+      note: Length of the decider role.
+    authority:
+      min_chars: 10
+      max_chars: 300
+      note: Length of the authority statement.
+    rationale:
+      min_chars: 20
+      max_chars: 600
+      note: Length of the rationale.
+    list:
+      min: 1
+      max: 12
+      note: Steps in one record, 1 to 12.
+  task:
+    question_answered:
+      min_chars: 10
+      max_chars: 300
+      note: Length of the question the task answers.
+    deliverable:
+      min_chars: 10
+      max_chars: 300
+      note: Length of the deliverable.
+    owner_role:
+      min_chars: 5
+      max_chars: 150
+      note: Length of the owner role.
+    list:
+      min: 1
+      max: 6
+      note: Done criteria per task, 1 to 6.
+  verification:
+    success_metric_restated:
+      min_chars: 10
+      max_chars: 300
+      note: Length of the restated success measure.
+    what_the_evidence_does_not_show:
+      min_chars: 10
+      max_chars: 300
+      note: Length of the limits statement.
+    list:
+      min: 1
+      max: 6
+      note: Evidence refs per verification, 1 to 6.
 cooldowns:
   between_contributions_same_problem:
     seconds: 120
