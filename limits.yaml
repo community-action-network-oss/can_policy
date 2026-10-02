@@ -170,6 +170,66 @@ fields:
       min: 0
       max: 6
       note: Evidence refs per contribution, 0 to 6.
+  # Stage content types. One list key per type; the other list sizes are minItems and maxItems in the schemas.
+  stage_option:
+    option_statement:
+      min_chars: 20
+      max_chars: 500
+      note: Length of the option statement.
+    mechanism:
+      min_chars: 20
+      max_chars: 500
+      note: Length of the mechanism.
+    responsible_role:
+      min_chars: 5
+      max_chars: 150
+      note: Length of the responsible role.
+    authority_and_legal_basis:
+      min_chars: 20
+      max_chars: 500
+      note: Length of the authority and legal basis.
+    funding:
+      min_chars: 10
+      max_chars: 300
+      note: Length of the funding note.
+    risks_and_rights_impact:
+      min_chars: 20
+      max_chars: 500
+      note: Length of the risks and rights impact.
+    list:
+      min: 1
+      max: 6
+      note: Criteria an option maps to, 1 to 6.
+  stage_choice:
+    decider_role:
+      min_chars: 5
+      max_chars: 150
+      note: Length of the decider role.
+    authority:
+      min_chars: 10
+      max_chars: 300
+      note: Length of the authority statement.
+    rationale:
+      min_chars: 20
+      max_chars: 600
+      note: Length of the rationale.
+    list:
+      min: 1
+      max: 12
+      note: Steps in one choice, 1 to 12.
+  stage_evidence:
+    outcome_statement:
+      min_chars: 20
+      max_chars: 500
+      note: Length of the outcome statement.
+    what_the_evidence_does_not_show:
+      min_chars: 10
+      max_chars: 300
+      note: Length of the limits statement.
+    list:
+      min: 1
+      max: 6
+      note: Evidence refs per item, 1 to 6.
 cooldowns:
   between_contributions_same_problem:
     seconds: 120
