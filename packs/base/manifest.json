@@ -2045,6 +2045,46 @@
       "bytes": 1448
     },
     {
+      "path": "decision-points/DP-PUBLISH/eval/README.md",
+      "sha256": "94b8ee559ba2192c49a4099cc2b70d69acb9d0749041a8e4e6e658ca90dfccfe",
+      "bytes": 4460
+    },
+    {
+      "path": "decision-points/DP-PUBLISH/eval/adversarial.jsonl",
+      "sha256": "5d8efffdba326406634013481e28e0a0b4a170bd439b24d895e5510348877286",
+      "bytes": 23414
+    },
+    {
+      "path": "decision-points/DP-PUBLISH/eval/core.jsonl",
+      "sha256": "dc2e78ea86bdd28b6c368a5b4e9a86b723ca09b885fa03692ec6eac045e7e7cd",
+      "bytes": 51633
+    },
+    {
+      "path": "decision-points/DP-PUBLISH/eval/thresholds.yaml",
+      "sha256": "ad178f6ffb6ed75a96e735fd5be89124ff415c2ffa6631ae1d3c1c0dc1cd7505",
+      "bytes": 399
+    },
+    {
+      "path": "decision-points/DP-PUBLISH/examples/cases.json",
+      "sha256": "96ae03c00bcc03f6951e5599499069d76f56c710db5313527f526ae01093d8fd",
+      "bytes": 24146
+    },
+    {
+      "path": "decision-points/DP-PUBLISH/pack-section.yaml",
+      "sha256": "2d87d5a740e03f2a7348d939b7738971b96ca326d24afbc05bdf7f522528fc2e",
+      "bytes": 743
+    },
+    {
+      "path": "decision-points/DP-PUBLISH/prompt.md",
+      "sha256": "e8e2d60ca4473ed8553e4f7374782e93923c87b8bee5a01620d73913c5666cb1",
+      "bytes": 5788
+    },
+    {
+      "path": "decision-points/DP-PUBLISH/schema.json",
+      "sha256": "735be8de62611122657e4f91cd7ce8520484f56291878ed17e342429664a5170",
+      "bytes": 23780
+    },
+    {
       "path": "decision-points/DP-RERESOLUTION/eval/README.md",
       "sha256": "ff07ba683953c017182efb924084e0018a51ae5ceb220319826e972fb565cfa5",
       "bytes": 2789
@@ -2295,5 +2335,5 @@
       "bytes": 17486
     }
   ],
-  "pack_hash": "572909c1ff24a64f4263d0e77a66e0464465bb4338de4340bc7757d0ea40ff43"
+  "pack_hash": "1e173cbc9393cf1d44f04096992f44e7b2059c91c9ee8d893ae3aba6318be2ef"
 }

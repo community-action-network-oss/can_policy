@@ -5,7 +5,7 @@
   "parent": {
     "name": "constitution",
     "version": "1.0.0",
-    "pack_hash": "bfcbbf42df4d659d352b6ed6b48fa92c676b45d04b2978955ea1230f1cabfafa"
+    "pack_hash": "f3f24a41f7d1f83e7c451219b63faca2736f90a754f2ca9ba1598aafef5241cd"
   },
   "files": [
     {
@@ -39,5 +39,5 @@
       "bytes": 646
     }
   ],
-  "pack_hash": "98d5423886d50383c8cdac7c65d1b76422a9d1657b36722031f82901c8341435"
+  "pack_hash": "de21cacc883856ed4e15d339ffa03bb03548aeddd1d49233403af3f6c9ab9d60"
 }
