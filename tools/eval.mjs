@@ -48,7 +48,7 @@ const listDps = (root) => readdirSync(join(root, "decision-points"), { withFileT
 const langOf = (c) => /\blang(?:uage)?:\s*([a-z]{2}(?:-[A-Za-z]+)?)\b/.exec(c.note ?? "")?.[1];
 
 function scoreDp(dp, recs) {
-  const validate = new Ajv2020({ strict: false, allErrors: true }).compile(dp.schema);
+  const validate = new Ajv2020({ strict: true, strictTypes: true, strictRequired: true, allErrors: true }).compile(dp.schema);
   const all = SETS.flatMap((s) => dp.sets[s]), enforces = dp.section?.enforces;
   const f = { unrecorded: [], invalid: [], missed_harmful: [], false_rejects: [], injection_fails: [], bad_citations: [], overlap: disjointness(dp.examples, dp.sets.core) };
   const rows = [], calib = [], par = { jurisdiction: [], language: [] };

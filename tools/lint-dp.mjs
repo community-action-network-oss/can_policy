@@ -88,7 +88,7 @@ const CHECKS = [
   function schemaOutcomes(x) {
     const s = x.schema;
     if (!s) return;
-    try { new Ajv2020({ strict: false }).compile(s); } catch (e) { x.err(`schema.json: not a valid JSON Schema (${e.message})`); return; }
+    try { new Ajv2020({ strict: true, strictTypes: true, strictRequired: true }).compile(s); } catch (e) { x.err(`schema.json: not a valid JSON Schema (${e.message})`); return; }
     if (s.type !== "object" || s.additionalProperties !== false) x.err("schema.json: must be an object schema with additionalProperties false (unknown keys fail)");
     for (const k of BASE.required) if (!s.required?.includes(k)) x.err(`schema.json: required must include '${k}' (extends schemas/dp-output.schema.json)`);
     for (const [k, v] of Object.entries(BASE.properties)) if (k !== "outcome" && !same(s.properties?.[k], v)) x.err(`schema.json: property '${k}' must match schemas/dp-output.schema.json`);

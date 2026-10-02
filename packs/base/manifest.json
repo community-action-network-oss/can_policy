@@ -1761,8 +1761,8 @@
     },
     {
       "path": "decision-points/DP-ELIGIBILITY/schema.json",
-      "sha256": "1375d87a157468bcf46d6b8824787821eec0bc6220436b78a1210a935f0c2a38",
-      "bytes": 6612
+      "sha256": "68fae863741904471282ebd418a996a08cf59e47fc464b36b0d7fe7a1437d9d5",
+      "bytes": 6865
     },
     {
       "path": "decision-points/DP-EVIDENCE-TIER/eval/README.md",
@@ -1881,8 +1881,8 @@
     },
     {
       "path": "decision-points/DP-LEGAL/schema.json",
-      "sha256": "06f07abda399cf56637859bd1c6ecbb4ea21d1a978763b6d4997be3598f25021",
-      "bytes": 6352
+      "sha256": "9498bd7d045a52630a4cbfbd4515736578080eb668e72305fa93719dd4b3f0f9",
+      "bytes": 6605
     },
     {
       "path": "decision-points/DP-LEGALITY/eval/README.md",
@@ -1921,8 +1921,8 @@
     },
     {
       "path": "decision-points/DP-LEGALITY/schema.json",
-      "sha256": "0e2fc7ebbe9fb9fc908d4a8411fe91fe4d5dbc787e2fb933cf5f08162edeee90",
-      "bytes": 9002
+      "sha256": "5d0a7dba95fdc739c2486c634ec59406a1778f24361f91b22d57b20fce1746cf",
+      "bytes": 9431
     },
     {
       "path": "decision-points/DP-NAMING/eval/README.md",
@@ -2135,5 +2135,5 @@
       "bytes": 17486
     }
   ],
-  "pack_hash": "dc86e4ede11c808e9e53a893a4e923bdaf3725becad184aa2898cddfaa6e5dcf"
+  "pack_hash": "6f4414015a77fd18e34289d7fd91cff5514332a7ee75de2f1661fcb6b2f87f52"
 }
