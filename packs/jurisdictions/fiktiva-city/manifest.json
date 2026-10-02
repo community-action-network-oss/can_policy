@@ -1,11 +1,11 @@
 {
   "pack": "fiktiva-city",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "layer": "jurisdiction",
   "parent": {
     "name": "constitution",
-    "version": "0.1.0",
-    "pack_hash": "45455c466ab34df91f64d07eb05672d6a0b65c90a2b389cb3650b5d1d602448d"
+    "version": "1.0.0",
+    "pack_hash": "c4e2be49c242eb5f07cd9a3ab09a54e54a8c01824310b71d153c8c9566e5ccbb"
   },
   "files": [
     {
@@ -15,7 +15,7 @@
     },
     {
       "path": "packs/jurisdictions/fiktiva-city/pack.yaml",
-      "sha256": "8b035828dc520aac981e41afd56ca3a79b4fa1ce11384970f21501bd457ecdb0",
+      "sha256": "e71fc2e1963d6f680c66091bc16d5292350ab3c930f069215da1b6475e2ac082",
       "bytes": 149
     },
     {
@@ -39,5 +39,5 @@
       "bytes": 284
     }
   ],
-  "pack_hash": "7b85075a67388fa05bbd841ecb33ecd39ee8597e116cb4b551f7a284a54fceee"
+  "pack_hash": "86f47101c56d2c6506e8efc6598b1a833c17a7d9c12150fda284a041fddecc9f"
 }

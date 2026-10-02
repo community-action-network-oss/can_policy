@@ -1,5 +1,5 @@
 name: base
-version: 0.1.0
+version: 1.0.0
 layer: base
 parent: null
 effective_from: 2026-10-01

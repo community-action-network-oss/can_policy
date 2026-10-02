@@ -1,22 +1,22 @@
 {
-  "version": "0.1.0",
+  "version": "1.0.0",
   "packs": [
     {
       "name": "base",
-      "pack_hash": "d399f8449e35094c24065538063e010aa9184d67bc5d0ffdbf12215ce242ce7f"
+      "pack_hash": "37e8654edf4a9febf8a6d6f53f1e330400df74ed71d3b1da9c368bd4fb3aca33"
     },
     {
       "name": "constitution",
-      "pack_hash": "45455c466ab34df91f64d07eb05672d6a0b65c90a2b389cb3650b5d1d602448d"
+      "pack_hash": "c4e2be49c242eb5f07cd9a3ab09a54e54a8c01824310b71d153c8c9566e5ccbb"
     },
     {
       "name": "fiktiva-city",
-      "pack_hash": "7b85075a67388fa05bbd841ecb33ecd39ee8597e116cb4b551f7a284a54fceee"
+      "pack_hash": "86f47101c56d2c6506e8efc6598b1a833c17a7d9c12150fda284a041fddecc9f"
     },
     {
       "name": "nl-amsterdam",
-      "pack_hash": "ca84926daf730873ef21e79e0e9a2f47045965d008ac15304a907c21d3d0effc"
+      "pack_hash": "dfbbd3756aa1ed2aba1c5fa166ca530d1d8f278899f41ab9c7cd99998ceeb8ed"
     }
   ],
-  "released_at": "2026-10-02T22:11:22.545Z"
+  "released_at": "2026-10-02T22:12:28.044Z"
 }

@@ -1,6 +1,6 @@
 {
   "pack": "base",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "layer": "base",
   "parent": null,
   "files": [
@@ -2126,7 +2126,7 @@
     },
     {
       "path": "packs/base/pack.yaml",
-      "sha256": "ea253b702ee65c304494af930ce316cd14822f1ca3cadb8e8f5c5c30576f98c1",
+      "sha256": "1c6ed5a43733eb0d222480696265455bc19b29460a4e59aad3b327c3473b777d",
       "bytes": 92
     },
     {
@@ -2135,5 +2135,5 @@
       "bytes": 17486
     }
   ],
-  "pack_hash": "d399f8449e35094c24065538063e010aa9184d67bc5d0ffdbf12215ce242ce7f"
+  "pack_hash": "37e8654edf4a9febf8a6d6f53f1e330400df74ed71d3b1da9c368bd4fb3aca33"
 }
