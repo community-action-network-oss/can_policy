@@ -272,6 +272,8 @@
           "rule_diff",
           "legal_layer",
           "stage_evidence",
+          "stage_choice",
+          "legal_gate_record",
           "feasibility",
           "policy_versions"
         ]
@@ -665,6 +667,40 @@
         "type": "object",
         "properties": {
           "infeasible_reason": false
+        }
+      }
+    },
+    {
+      "if": {
+        "type": "object",
+        "required": [
+          "annotate_reason"
+        ],
+        "properties": {
+          "annotate_reason": {
+            "const": "informational"
+          }
+        }
+      },
+      "then": {
+        "type": "object",
+        "properties": {
+          "changed_findings": {
+            "not": {
+              "type": "array",
+              "contains": {
+                "type": "object",
+                "required": [
+                  "effect"
+                ],
+                "properties": {
+                  "effect": {
+                    "const": "changes_conclusion"
+                  }
+                }
+              }
+            }
+          }
         }
       }
     },

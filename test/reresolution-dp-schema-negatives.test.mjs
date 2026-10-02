@@ -112,3 +112,13 @@ test("DP-RERESOLUTION: no reject and no escalation in the outcome enum", () => {
   assert.deepEqual(schema.properties.outcome.enum, ["publish", "needs_revision", "route_external", "hold"]);
   assert.deepEqual(schema.properties.resolution.enum, ["keep", "annotate", "reopen", "hold"]);
 });
+
+test("DP-RERESOLUTION: informational annotate cannot carry a changes_conclusion finding", () => {
+  const o = { ...pol, trigger: "legal_corpus_change", rule_ids: LEG, resolution: "annotate", outcome: "needs_revision", annotate_reason: "informational", changed_findings: [f()] };
+  assert.equal(validate(o), false);
+  assert.equal(validate({ ...o, annotate_reason: "not_feasible", infeasible_reason: "lawful_completed_implementation" }), true);
+});
+
+test("DP-RERESOLUTION: missing_inputs accepts legal_gate_record and stage inputs", () => {
+  for (const m of ["legal_gate_record", "stage_choice", "stage_evidence"]) assert.equal(validate({ ...hold, hold_reason: "missing_input", missing_inputs: [m] }), true);
+});
