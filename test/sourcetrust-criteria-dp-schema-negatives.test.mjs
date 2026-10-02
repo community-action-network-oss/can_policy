@@ -56,6 +56,10 @@ run("DP-SOURCE-TRUST schema negatives", load("DP-SOURCE-TRUST"), [
   ["reasons item over 600 characters", { ...spub, reasons: ["x".repeat(601)] }, false],
   ["a URL as a ref", { ...spub, per_source: [s("https://x.example.org", "establishes")] }, false],
   ["unknown key", { ...spub, fetched: true }, false],
+  ["needs_revision with an unchecked source", { ...snr, per_source: [s("src-1", "unchecked")] }, false],
+  ["needs_revision with a mix incl. unchecked", { ...snr, per_source: [s("src-1", "not_trusted"), s("src-2", "unchecked")] }, false],
+  ["hold missing_input jurisdiction", { ...shold, hold_reason: "missing_input", missing_inputs: ["jurisdiction", "scope"] }, true],
+  ["exact duplicate per_source item", { ...spub, per_source: [s("src-1", "establishes"), s("src-1", "establishes")] }, false],
 ]);
 
 // ---- DP-CRITERIA
@@ -64,12 +68,13 @@ const none = (l) => ({ layer: l, corpus_version: "fiktiva-x@0.1.0", finding: "no
 const con = { layer: "L4", article_id: "L4/fiktiva/statutes/art-6", corpus_version: "fiktiva-statutes@0.1.0", finding: "constrains" };
 const cpub = { outcome: "publish", rule_ids: ["CRITERIA-1"], confidence: 0.95, reasons: ["r"], per_criterion: [pc("c-1")] };
 const cnr = { outcome: "needs_revision", rule_ids: ["CRITERIA-1"], confidence: 0.8, reasons: ["r"], revision_hint: "Rewrite c-1.", per_criterion: [pc("c-1", { measurable: false })] };
+const L6 = ["L1", "L2", "L3", "L4", "L5", "L6"];
 const LG = ["CRITERIA-1", "LEGAL-STACK-1", "LEGAL-CITE-1"];
 const crej = { outcome: "reject", rule_ids: LG, confidence: 0.95, reasons: ["r"], per_criterion: [pc("c-1", { lawful: "no" })], legal_findings: [con] };
 const chold = { outcome: "hold", rule_ids: [], confidence: 0.4, reasons: ["r"], hold_reason: "cannot_decide" };
 run("DP-CRITERIA schema negatives", load("DP-CRITERIA"), [
   ["valid publish", cpub, true],
-  ["valid publish with law lines", { ...cpub, rule_ids: LG, legal_findings: ["L1", "L2"].map(none) }, true],
+  ["valid publish with law lines", { ...cpub, rule_ids: LG, legal_findings: L6.map(none) }, true],
   ["valid needs_revision", cnr, true],
   ["valid needs_revision with no criteria", { ...cnr, per_criterion: undefined }, true],
   ["valid reject", crej, true],
@@ -124,4 +129,8 @@ run("DP-CRITERIA schema negatives", load("DP-CRITERIA"), [
   ["reason over 300 chars in a hint", { ...cpub, per_criterion: [pc("c-1", { hint: "x".repeat(301) })] }, false],
   ["lawful true (not an enum value)", { ...cpub, per_criterion: [pc("c-1", { lawful: true })] }, false],
   ["unknown key", { ...cpub, met: true }, false],
+  ["publish with a partial legal_findings (L1 only)", { ...cpub, rule_ids: LG, legal_findings: [none("L1")] }, false],
+  ["publish with five of six layers", { ...cpub, rule_ids: LG, legal_findings: L6.slice(0, 5).map(none) }, false],
+  ["publish with all six layers permits/none_found", { ...cpub, rule_ids: LG, legal_findings: [...L6.slice(0, 5).map(none), { layer: "L6", article_id: "L6/fiktiva/bylaws/art-1", corpus_version: "v", finding: "permits" }] }, true],
+  ["exact duplicate per_criterion item", { ...cpub, per_criterion: [pc("c-1"), pc("c-1")] }, false],
 ]);

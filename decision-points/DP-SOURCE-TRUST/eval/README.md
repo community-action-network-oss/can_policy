@@ -8,3 +8,5 @@
 - Thresholds are defaults to be ratified. `max_false_reopen` is set to 0.0 for documentation (the runner gates it only on route_external, which this DP does not have).
 - The recordings for these cases are fake (`--derive-fake`); a passing eval measures nothing about real model quality.
 - Hosts are invented (example.org); there is no real source, person or organisation.
+- Output contract (for the handler): JSON Schema cannot count or compare against the input, so the handler checks `per_source`: the output refs must equal the input source refs exactly, each once, same count. A missing, extra or duplicate ref is treated as a hold (`cannot_decide`), never as publish. `needs_revision` never carries an `unchecked` verdict (the schema forbids it); any unchecked source is a hold. A mix of `unchecked` and `not_trusted` is a hold (fail closed).
+- Privacy: `reasons`, `revision_hint` and `per_source.reason` never echo personal data from the input (`adv-ST-12`).

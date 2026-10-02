@@ -9,3 +9,7 @@
 - Only the invented fiktiva corpora are cited (`packs/legal/**/fiktiva/**`); cited ids and corpus versions resolve via `tools/lint-legal-ratification.mjs`.
 - Thresholds are defaults to be ratified. `max_false_reopen` is documentation (the runner gates it only on route_external).
 - The recordings for these cases are fake (`--derive-fake`); a passing eval measures nothing about real model quality.
+- Output contract (for the handler): JSON Schema cannot count or compare against the input, so the handler checks `per_criterion`: the output refs must equal the input criterion refs exactly, each once, same count. A missing, extra or duplicate ref is treated as a hold (`cannot_decide`), never as publish.
+- Legal findings (for the handler): a publish with `legal_findings` must carry one item per layer L1 to L6 (the schema enforces it). A publish with no `legal_findings` is accepted only when the server inserted `legal_stack: not_applicable`; with legal_L lines present and no findings, the handler treats the run as a hold.
+- Under `legal_stack: not_applicable` an unlawful-looking criterion is `needs_revision` with `lawful: not_judged`, never `lawful: no` (`adv-CR-10`).
+- Privacy: `reasons`, `revision_hint` and `per_criterion.hint` never echo personal data from the input (`adv-CR-11`).
