@@ -1190,6 +1190,41 @@
       "bytes": 13748
     },
     {
+      "path": "decision-points/_template/eval/README.md",
+      "sha256": "99556faefb729e0a8c785df5d1c1478055114a21b1ab1c3c1dfc0707e05d7c69",
+      "bytes": 366
+    },
+    {
+      "path": "decision-points/_template/eval/adversarial.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "decision-points/_template/eval/core.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "decision-points/_template/eval/thresholds.yaml",
+      "sha256": "f0081ca33c2222cf10cd7264e7739a84d122bb02ed298682f7caa856b5effe31",
+      "bytes": 315
+    },
+    {
+      "path": "decision-points/_template/pack-section.yaml",
+      "sha256": "46651dc77bbc884519930aa6a28277db0cc206c831e12bee51c14be70eac96ce",
+      "bytes": 181
+    },
+    {
+      "path": "decision-points/_template/prompt.md",
+      "sha256": "68638e5c3bf230f701dfef120ac5b4a14f138e841a9e6bf6c47914abf4904dfb",
+      "bytes": 675
+    },
+    {
+      "path": "decision-points/_template/schema.json",
+      "sha256": "6950c3d964474f3323ab41c513f9c5092feb33ac67a535fb3e21c13691506a19",
+      "bytes": 1131
+    },
+    {
       "path": "limits.yaml",
       "sha256": "b9ff1fa0d0b3ec9c6635a13cc08c476540d1da617f942a9f1fe7fe9c85ad84e0",
       "bytes": 7884
@@ -1205,5 +1240,5 @@
       "bytes": 17486
     }
   ],
-  "pack_hash": "d71437791a0ed54eb77513caa732a38fda3cec9ae5df53748d6d0b05ccd36d03"
+  "pack_hash": "e5672bc31807631f825682449fc301f9e0ef93e4850617701f71d52d8c64f112"
 }

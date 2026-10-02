@@ -6,6 +6,7 @@ import { join, resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { discoverPacks, walk } from "./pack-hash.mjs";
 import { checkAll } from "./build-pack.mjs";
+import { lintDp } from "./lint-dp.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const SCHEMAS = join(HERE, "..", "schemas");
@@ -28,7 +29,7 @@ const cmpSemver = (a, b) => { const [x, y] = [semverOf(a), semverOf(b)]; return 
 const fmt = (errs) => errs.map((e) => `${e.instancePath || "/"} ${e.message}`).join("; ");
 const dirs = (root, rel) => (existsSync(join(root, rel)) ? readdirSync(join(root, rel), { withFileTypes: true }).filter((d) => d.isDirectory() && !d.name.startsWith(".")) : []);
 
-export function lint(root) {
+export function lint(root, notes = []) {
   const errors = [];
   const err = (m) => errors.push(m);
   const readJson = (rel) => { try { return JSON.parse(readFileSync(join(root, rel), "utf8")); } catch (e) { err(`${rel}: not valid JSON (${e.message})`); return null; } };
@@ -63,6 +64,9 @@ export function lint(root) {
     for (const f of ["examples", "eval"]) if (!existsSync(join(root, b, f)) || !statSync(join(root, b, f)).isDirectory()) err(`${b}: missing ${f}/ directory`);
     if (existsSync(join(root, b, "schema.json"))) readJson(`${b}/schema.json`);
   }
+
+  // 2a. DP scaffold rules (tools/lint-dp.mjs). Runs where the scaffold exists, so older fixtures without _template are untouched.
+  if (existsSync(join(root, "decision-points", "_template"))) errors.push(...lintDp(root, notes));
 
   // 3. content schemas
   for (const d of dirs(root, "content-schemas")) {
@@ -140,7 +144,9 @@ export function lint(root) {
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const root = resolve(process.argv[2] ?? join(HERE, ".."));
-  const errs = lint(root);
+  const notes = [];
+  const errs = lint(root, notes);
+  notes.forEach((n) => console.log(n));
   errs.forEach((e) => console.error("lint: " + e));
   console.log(errs.length ? `lint: ${errs.length} error(s)` : "lint: ok");
   process.exit(errs.length ? 1 : 0);

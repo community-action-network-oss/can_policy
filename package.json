@@ -12,7 +12,8 @@
     "eval": "node tools/eval.mjs",
     "replay": "node tools/replay.mjs",
     "build:pack": "node tools/build-pack.mjs",
-    "parity": "node tools/rules-parity.mjs"
+    "parity": "node tools/rules-parity.mjs",
+    "new-dp": "node tools/new-dp.mjs"
   },
   "dependencies": {
     "ajv": "8.20.0",
