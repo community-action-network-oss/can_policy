@@ -1,0 +1,7 @@
+{
+  "name": "can_policy",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=24" },
+  "scripts": { "verify": "echo \"no checks yet\"" }
+}
