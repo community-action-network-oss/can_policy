@@ -5,7 +5,7 @@
   "parent": {
     "name": "constitution",
     "version": "1.0.0",
-    "pack_hash": "bc5371db3af32e1705caa64c80cbe3cd5423ce8256ab838ab34532df0629f5c3"
+    "pack_hash": "4951c11efd3724df8b75ae18b6494fe5b8b6281bd6f36f6d684dea46e83690a1"
   },
   "files": [
     {
@@ -15,8 +15,8 @@
     },
     {
       "path": "pack.yaml",
-      "sha256": "e71fc2e1963d6f680c66091bc16d5292350ab3c930f069215da1b6475e2ac082",
-      "bytes": 149
+      "sha256": "98c278c7aba6b2b6fbca572731086f5d7099521b608959fc773ab7cf3cafa5bc",
+      "bytes": 1289
     },
     {
       "path": "reviewer.yaml",
@@ -39,5 +39,5 @@
       "bytes": 284
     }
   ],
-  "pack_hash": "c0e3d3cd2eabdf904f2daf3c080ee678d70b78eec7f4f53a6887c077f852c0da"
+  "pack_hash": "f52762fa7a0394fafd8acb1ec50107db705a77c63a2f512c48e014f6577feb9f"
 }

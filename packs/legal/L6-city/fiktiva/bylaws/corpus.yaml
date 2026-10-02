@@ -1,0 +1,18 @@
+id: fiktiva-bylaws
+layer: L6
+jurisdiction: fiktiva
+instrument: fiktiva-bylaws-index
+official_publisher: "Invented publisher of the synthetic Fiktiva test world"
+source_url: https://example.org/fiktiva/bylaws
+retrieval_date: 2026-10-03
+version: 0.1.0
+effective_from: 2026-10-03
+effective_to: null
+language: en
+license: "n/a: synthetic index only, no legal text exists"
+content_hash: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+mode: binding
+status: index_only
+reviewed: false
+reviewer: none
+fictional: true

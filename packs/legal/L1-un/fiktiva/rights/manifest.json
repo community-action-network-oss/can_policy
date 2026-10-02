@@ -1,0 +1,34 @@
+{
+  "pack": "fiktiva-rights",
+  "version": "0.1.0",
+  "layer": "legal",
+  "parent": null,
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "1e0b0db0ab948c3f90a6ebdb8790e3d07b504b60acaefc4bbf93f92a286be703",
+      "bytes": 155
+    },
+    {
+      "path": "corpus.yaml",
+      "sha256": "cb8e2c3ba3c04d280ab9a442e7a7828e4fb419048401f15b91b167e4d69a8f9d",
+      "bytes": 529
+    },
+    {
+      "path": "index.yaml",
+      "sha256": "a3e26078437f2b4c82b182ac6c3d6102d8c57a920192caad2590a35cb08420df",
+      "bytes": 93
+    },
+    {
+      "path": "pack.yaml",
+      "sha256": "a1240492e8776bdf935872b49aaf62dac794a34c39ca5acb42ad2441baf9ccf2",
+      "bytes": 125
+    },
+    {
+      "path": "review/PENDING.md",
+      "sha256": "e2fcc1a91d4feb05fab26d28d545a6a75aa5c86e131612093b79a3b55e4dd7a6",
+      "bytes": 152
+    }
+  ],
+  "pack_hash": "30aaf5ff9e50ec1c54cfa13aa53336f0f5380bfc127caed7c8e7c9a336210503"
+}

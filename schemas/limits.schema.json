@@ -4,7 +4,7 @@
   "title": "limits.yaml: caps, field bounds and cooldowns as pack values",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version", "caps", "fields", "cooldowns", "grace", "risk_period"],
+  "required": ["schema_version", "caps", "fields", "cooldowns", "grace", "risk_period", "legal"],
   "properties": {
     "schema_version": { "const": 1 },
     "caps": {
@@ -57,6 +57,30 @@
       "required": ["schema_major_draft_days"],
       "properties": { "schema_major_draft_days": { "$ref": "#/$defs/intLeaf" } }
     },
+    "legal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["retrieval"],
+      "properties": {
+        "retrieval": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["max_articles_per_layer", "token_budget_per_run", "low_confidence_floor", "risky_topics"],
+          "properties": {
+            "max_articles_per_layer": { "$ref": "#/$defs/posInt" },
+            "token_budget_per_run": { "$ref": "#/$defs/posInt" },
+            "low_confidence_floor": {
+              "type": "object", "additionalProperties": false, "required": ["value", "note"],
+              "properties": { "value": { "type": "number", "minimum": 0, "maximum": 1 }, "provisional": { "type": "boolean" }, "note": { "type": "string", "minLength": 1 } }
+            },
+            "risky_topics": {
+              "type": "object", "additionalProperties": false, "required": ["value", "note"],
+              "properties": { "value": { "type": "array", "items": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" }, "uniqueItems": true }, "provisional": { "type": "boolean" }, "note": { "type": "string", "minLength": 1 } }
+            }
+          }
+        }
+      }
+    },
     "risk_period": {
       "type": "object",
       "additionalProperties": false,
@@ -75,6 +99,10 @@
     }
   },
   "$defs": {
+    "posInt": {
+      "type": "object", "additionalProperties": false, "required": ["value", "note"],
+      "properties": { "value": { "type": "integer", "minimum": 1 }, "unit": { "type": "string" }, "provisional": { "type": "boolean" }, "note": { "type": "string", "minLength": 1 } }
+    },
     "count": { "type": "integer", "minimum": 0 },
     "window": {
       "type": "object", "additionalProperties": false, "required": ["count", "days", "note"],

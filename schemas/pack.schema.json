@@ -23,13 +23,37 @@
     },
     "effective_from": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
     "jurisdiction": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
-    "status": { "enum": ["draft", "ratified"] }
+    "status": { "enum": ["draft", "ratified"] },
+    "legal_stack": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": { "$ref": "#/$defs/stackLayer" }
+    }
   },
   "allOf": [
     { "if": { "properties": { "layer": { "enum": ["base", "legal"] } } }, "then": { "properties": { "parent": { "type": "null" } } }, "else": { "properties": { "parent": { "not": { "type": "null" } } } } },
     { "if": { "properties": { "layer": { "enum": ["jurisdiction", "local", "legal"] } } }, "then": { "required": ["jurisdiction"] } }
   ],
   "$defs": {
+    "stackLayer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["layer", "corpus", "mode"],
+      "properties": {
+        "layer": { "enum": ["L1", "L2", "L3", "L4", "L5", "L6"] },
+        "corpus": { "anyOf": [{ "type": "null" }, { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" }] },
+        "version": { "$ref": "#/$defs/semver" },
+        "pack_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "mode": { "enum": ["binding", "reference", "not_applicable"] },
+        "acknowledged_index_only": { "type": "boolean" },
+        "reason": { "type": "string", "minLength": 1 }
+      },
+      "allOf": [
+        { "if": { "properties": { "corpus": { "type": "string" } }, "required": ["corpus"] }, "then": { "type": "object", "required": ["version", "pack_hash"] }, "else": { "type": "object", "required": ["reason"], "not": { "anyOf": [{ "required": ["version"] }, { "required": ["pack_hash"] }] } } },
+        { "if": { "properties": { "mode": { "const": "not_applicable" } }, "required": ["mode"] }, "then": { "type": "object", "properties": { "corpus": { "type": "null" } } } }
+      ]
+    },
     "semver": { "type": "string", "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(-[0-9A-Za-z.-]+)?$" }
   }
 }

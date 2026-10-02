@@ -5,3 +5,36 @@ parent: constitution@1.0.0
 effective_from: 2026-10-02
 jurisdiction: nl-amsterdam
 status: draft
+legal_stack:
+  - layer: L1
+    corpus: null
+    mode: reference
+    reason: "UN human rights corpus not vendored yet; TODO for a vendor unit"
+  - layer: L2
+    corpus: nl-eu-law-index
+    version: 0.1.0
+    pack_hash: d9bdf4d078ea95d2dc0cb3db17d9af9ffbe295253c7127be9d6e3dbbcb0f210f
+    mode: binding
+    acknowledged_index_only: true
+  - layer: L3
+    corpus: null
+    mode: binding
+    reason: "national constitution corpus not vendored yet; TODO for a vendor unit"
+  - layer: L4
+    corpus: nl-statutes
+    version: 0.1.0
+    pack_hash: a81a14382ce9dd48c3a99d7f420a0182f98016dfef099af4b19f49cdd94a8edf
+    mode: binding
+    acknowledged_index_only: true
+  - layer: L5
+    corpus: nl-noord-holland
+    version: 0.1.0
+    pack_hash: e299b986587e901e9be1eaab7e8a598d0e8e14e1ea930bfd42af52596a3370e0
+    mode: binding
+    acknowledged_index_only: true
+  - layer: L6
+    corpus: nl-amsterdam-bylaws
+    version: 0.1.0
+    pack_hash: 9a2ae679b76b6f7e8c104b135d90574bb4bcf1653772f7b2e1a5ba02a9b62f9f
+    mode: binding
+    acknowledged_index_only: true

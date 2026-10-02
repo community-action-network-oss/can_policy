@@ -1,0 +1,34 @@
+{
+  "pack": "fiktiva-region",
+  "version": "0.1.0",
+  "layer": "legal",
+  "parent": null,
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "1e0b0db0ab948c3f90a6ebdb8790e3d07b504b60acaefc4bbf93f92a286be703",
+      "bytes": 155
+    },
+    {
+      "path": "corpus.yaml",
+      "sha256": "db303500f6b2437a110c456fd88b5632b96197270dc92a2c9d09c5925221b978",
+      "bytes": 529
+    },
+    {
+      "path": "index.yaml",
+      "sha256": "a3e26078437f2b4c82b182ac6c3d6102d8c57a920192caad2590a35cb08420df",
+      "bytes": 93
+    },
+    {
+      "path": "pack.yaml",
+      "sha256": "eb7809dd940cbf6fa280f4fb8a4678773bf40d893a821b5e1be3543271110644",
+      "bytes": 125
+    },
+    {
+      "path": "review/PENDING.md",
+      "sha256": "e2fcc1a91d4feb05fab26d28d545a6a75aa5c86e131612093b79a3b55e4dd7a6",
+      "bytes": 152
+    }
+  ],
+  "pack_hash": "3f00ca588d945eee9c9486d6099ba7abf5b51893e35d4d297872cc875e8327f0"
+}

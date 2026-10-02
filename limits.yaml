@@ -331,3 +331,23 @@ risk_period:
       events: 37
       window_seconds: 90
     note: Burst that tightens caps. Never shown in any explanation.
+# Legal retrieval budgets (docs/design/ai/legal-stack.md section 3). Code holds no number.
+legal:
+  retrieval:
+    max_articles_per_layer:
+      value: 3
+      provisional: true
+      note: Top articles taken from one layer's topic index per run.
+    token_budget_per_run:
+      value: 2500
+      unit: tokens
+      provisional: true
+      note: Total tokens of legal articles in one run's rules slice.
+    low_confidence_floor:
+      value: 0.6
+      provisional: true
+      note: Retrieval confidence below this on a risky topic escalates to a stronger model, then hold.
+    risky_topics:
+      value: [public-order, criminal-procedure, explosives-and-weapons, data-protection-implementation]
+      provisional: true
+      note: Topic slugs that escalate on low retrieval confidence. Slugs match the topic areas in the legal index stubs.

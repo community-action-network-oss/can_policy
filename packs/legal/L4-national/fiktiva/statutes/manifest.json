@@ -1,0 +1,34 @@
+{
+  "pack": "fiktiva-statutes",
+  "version": "0.1.0",
+  "layer": "legal",
+  "parent": null,
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "1e0b0db0ab948c3f90a6ebdb8790e3d07b504b60acaefc4bbf93f92a286be703",
+      "bytes": 155
+    },
+    {
+      "path": "corpus.yaml",
+      "sha256": "ab8e42ee035d09dfbec2a7990a2973ce2811f7eaa2ba8091fdf75f4d74136856",
+      "bytes": 535
+    },
+    {
+      "path": "index.yaml",
+      "sha256": "a3e26078437f2b4c82b182ac6c3d6102d8c57a920192caad2590a35cb08420df",
+      "bytes": 93
+    },
+    {
+      "path": "pack.yaml",
+      "sha256": "238d0a80c395ee0aedda694c8de38765086f4a8474a3ed29b61f4d6845db110d",
+      "bytes": 127
+    },
+    {
+      "path": "review/PENDING.md",
+      "sha256": "e2fcc1a91d4feb05fab26d28d545a6a75aa5c86e131612093b79a3b55e4dd7a6",
+      "bytes": 152
+    }
+  ],
+  "pack_hash": "f45fed24ee803c81c210fe01c38cc3f861f1cf9f9e4a608101b0e15a9defe73e"
+}

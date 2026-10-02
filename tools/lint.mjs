@@ -4,7 +4,7 @@ import { parse } from "yaml";
 import { readFileSync, existsSync, statSync, readdirSync } from "node:fs";
 import { join, resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { discoverPacks, walk } from "./pack-hash.mjs";
+import { discoverPacks, walk, legalDirs } from "./pack-hash.mjs";
 import { checkAll } from "./build-pack.mjs";
 import { lintDp } from "./lint-dp.mjs";
 import { lintSchemas } from "./lint-schemas.mjs";
@@ -99,6 +99,31 @@ export function lint(root, notes = []) {
       // a fictional overlay must say so in sources.md
       const rv = join(root, p.dir, "reviewer.yaml");
       if (existsSync(rv) && parse(readFileSync(rv, "utf8"))?.fictional === true && !/invented/i.test(existsSync(join(root, p.dir, "sources.md")) ? readFileSync(join(root, p.dir, "sources.md"), "utf8") : "")) err(`${p.dir}/sources.md: a fictional overlay must state that it is invented`);
+    }
+  }
+
+  // 1b. legal_stack (10-u53): six layers in order, pins match the built corpus packs, binding never silently index_only
+  if (packsOk) {
+    const corpora = new Map(legalDirs(root).map((d) => {
+      const c = parse(readFileSync(join(root, d, "corpus.yaml"), "utf8"));
+      let hash = null; try { hash = JSON.parse(readFileSync(join(root, d, "manifest.json"), "utf8")).pack_hash; } catch { /* checkAll reports a missing manifest */ }
+      return [c.id, { ...c, hash }];
+    }));
+    for (const p of packs.filter((q) => q.layer === "jurisdiction")) {
+      const f = `${p.dir}/pack.yaml`, st = names.get(p.id)?.legal_stack;
+      if (!st) continue; // optional: older and fixture trees carry none
+      st.forEach((l, i) => {
+        const at = `${f}: legal_stack ${l.layer}`;
+        if (l.layer !== `L${i + 1}`) err(`${f}: legal_stack position ${i + 1} must be L${i + 1} (each of L1 to L6 once, in order), found ${l.layer}`);
+        if (l.mode === "not_applicable" && !["L2", "L5"].includes(l.layer)) err(`${at}: only L2 and L5 may be not_applicable`);
+        if (l.corpus === null) { if (l.mode !== "not_applicable") notes.push(`note: ${at} has no corpus yet (${l.reason})`); return; }
+        const c = corpora.get(l.corpus);
+        if (!c) return err(`${at}: corpus '${l.corpus}' not found under packs/legal`);
+        if (c.layer !== l.layer) err(`${at}: corpus ${l.corpus} is layer ${c.layer}`);
+        if (c.version !== l.version) err(`${at}: pinned version ${l.version} does not match ${l.corpus}@${c.version}`);
+        if (c.hash !== l.pack_hash) err(`${at}: pinned pack_hash does not match the built ${l.corpus} pack`);
+        if (l.mode === "binding" && c.status === "index_only" && l.acknowledged_index_only !== true) err(`${at}: binding layer points at index_only corpus ${l.corpus} without acknowledged_index_only: true`);
+      });
     }
   }
 
