@@ -1405,6 +1405,46 @@
       "bytes": 1454
     },
     {
+      "path": "decision-points/DP-DECISION-RECORD/eval/README.md",
+      "sha256": "975626585d7425fce181e7c363dfe685967f2635ad6c7a61221d3959ac80571f",
+      "bytes": 1026
+    },
+    {
+      "path": "decision-points/DP-DECISION-RECORD/eval/adversarial.jsonl",
+      "sha256": "6f3bac4b5c93f4159270974481c8220316eb4a78d5b42804397d47b4d3514d9c",
+      "bytes": 3629
+    },
+    {
+      "path": "decision-points/DP-DECISION-RECORD/eval/core.jsonl",
+      "sha256": "72a97de1cce3fe3ae5bd21bddabea1c309f6773f16e865d04a11d1990890c3ca",
+      "bytes": 9758
+    },
+    {
+      "path": "decision-points/DP-DECISION-RECORD/eval/thresholds.yaml",
+      "sha256": "a1d9a3a9e4d4b52bcf612e251880cc174e3213463576b829b850315d5c53334d",
+      "bytes": 346
+    },
+    {
+      "path": "decision-points/DP-DECISION-RECORD/examples/cases.json",
+      "sha256": "ff351400a3309a389beec6a196ce73d7eaaf37f9cdec5b81016f5b911ead2ecc",
+      "bytes": 10239
+    },
+    {
+      "path": "decision-points/DP-DECISION-RECORD/pack-section.yaml",
+      "sha256": "03d3913e09e839f44ccabba69b538b1387c45c6a54ee4883928d31469bc24e5f",
+      "bytes": 420
+    },
+    {
+      "path": "decision-points/DP-DECISION-RECORD/prompt.md",
+      "sha256": "6297ce4b65253ba3ae842bc91ce78bc839230d203873372d083311aeac17ed3f",
+      "bytes": 1721
+    },
+    {
+      "path": "decision-points/DP-DECISION-RECORD/schema.json",
+      "sha256": "621d0b7d1ab7f9f6387b7d8fc094449204043f1edc5b6690dcda6a9f89f66d7f",
+      "bytes": 1446
+    },
+    {
       "path": "decision-points/DP-DUPLICATE/eval/README.md",
       "sha256": "848524679950f6d0da74049e222ea90c8147ff381089a1b69ed7cb47c20e6269",
       "bytes": 677
@@ -1523,6 +1563,86 @@
       "path": "decision-points/DP-FRAMING/schema.json",
       "sha256": "2a2a58b8783c90ffdbf1febbb7cb12c9d0e90984e7cc2dd165b4cecf18f094cf",
       "bytes": 1430
+    },
+    {
+      "path": "decision-points/DP-LEGAL/eval/README.md",
+      "sha256": "aa88f9462c1981d78a6db6c27bcadb67dd6edb9499bbe2348d9bf76610ffba19",
+      "bytes": 1146
+    },
+    {
+      "path": "decision-points/DP-LEGAL/eval/adversarial.jsonl",
+      "sha256": "50401cff040396d9a16942a785d4d1df4376719de29929db79cc602b35aea198",
+      "bytes": 2372
+    },
+    {
+      "path": "decision-points/DP-LEGAL/eval/core.jsonl",
+      "sha256": "f628479a2297c42335780a8a0518ba6f1c7c054ebe297adbcfd3798ea43a6667",
+      "bytes": 3071
+    },
+    {
+      "path": "decision-points/DP-LEGAL/eval/thresholds.yaml",
+      "sha256": "9b5baa5558e48f27a8a8643a9c1c4fd1f39a7abd5ae30693b2d959fa239f3803",
+      "bytes": 359
+    },
+    {
+      "path": "decision-points/DP-LEGAL/examples/cases.json",
+      "sha256": "adb59aa2e4d89a34b771d94ecd653b2cbbc7e2b8bf7e03855b5a91803ebe44e0",
+      "bytes": 3524
+    },
+    {
+      "path": "decision-points/DP-LEGAL/pack-section.yaml",
+      "sha256": "99eece2d1f9e80b1764d83d54e3154d4cf47d85a19482ef05f20f984aefac8cf",
+      "bytes": 208
+    },
+    {
+      "path": "decision-points/DP-LEGAL/prompt.md",
+      "sha256": "531d8533fc6070da6e202fff2f8bf42dca63c9c5f50b69eb3c8e3d7977dbaddc",
+      "bytes": 1722
+    },
+    {
+      "path": "decision-points/DP-LEGAL/schema.json",
+      "sha256": "d046dda331ea3c547681392247b063b6570ff6b4187086e3c543c37f6f204188",
+      "bytes": 1426
+    },
+    {
+      "path": "decision-points/DP-LEGALITY/eval/README.md",
+      "sha256": "bf543decf03212c90ef59b12aca4fa7644341885fb280914300211e947b6beba",
+      "bytes": 1256
+    },
+    {
+      "path": "decision-points/DP-LEGALITY/eval/adversarial.jsonl",
+      "sha256": "ce374cb457d3c82570898694094b5d0e81e8e0469dfd46d0dd8193071e07376d",
+      "bytes": 3122
+    },
+    {
+      "path": "decision-points/DP-LEGALITY/eval/core.jsonl",
+      "sha256": "c615b38a84116e41776bc6f1f375fba9c659b36b68c7bbe6f029c477c9291266",
+      "bytes": 4674
+    },
+    {
+      "path": "decision-points/DP-LEGALITY/eval/thresholds.yaml",
+      "sha256": "ee54dc22f67e4759e8a41d1150683e4e8a778e8f951a7339271cadd52da0e5c2",
+      "bytes": 377
+    },
+    {
+      "path": "decision-points/DP-LEGALITY/examples/cases.json",
+      "sha256": "4f808ecc6aaa980e18ef508df60583bc62f6b169e38091251ccf741d40ae3f58",
+      "bytes": 4957
+    },
+    {
+      "path": "decision-points/DP-LEGALITY/pack-section.yaml",
+      "sha256": "947b2cea4864160aadb4fb26120a568df7a093c7639c8fda72c71ec6a5d84a02",
+      "bytes": 326
+    },
+    {
+      "path": "decision-points/DP-LEGALITY/prompt.md",
+      "sha256": "a2c2d07ef6f06c9e4c950e7226c02b87c7e62f18b6462cf7d8734388614b94a2",
+      "bytes": 2049
+    },
+    {
+      "path": "decision-points/DP-LEGALITY/schema.json",
+      "sha256": "01472f07976e5bfe84fa8727319e40f1bb42a2b34d094639038cd875f2b6c507",
+      "bytes": 2328
     },
     {
       "path": "decision-points/DP-NAMING/eval/README.md",
@@ -1645,6 +1765,46 @@
       "bytes": 1442
     },
     {
+      "path": "decision-points/DP-VERIFICATION/eval/README.md",
+      "sha256": "5bcd5f3a768da7586f391cab7a2cd1117e5e2fbddc362613336b5adde38d2a50",
+      "bytes": 1297
+    },
+    {
+      "path": "decision-points/DP-VERIFICATION/eval/adversarial.jsonl",
+      "sha256": "a50b93cd8dd8facd00b4a962344f809257d24635a20ad9f15d59e80afa3d510b",
+      "bytes": 2797
+    },
+    {
+      "path": "decision-points/DP-VERIFICATION/eval/core.jsonl",
+      "sha256": "248107ed8a954691ea3114448857ef59c89b54dd1e6a77d4b3edeff9a35977f3",
+      "bytes": 7829
+    },
+    {
+      "path": "decision-points/DP-VERIFICATION/eval/thresholds.yaml",
+      "sha256": "7249ac1c07d5bbbbf75ebe86dc897163bbf5995bb568ac743dc33ddb456dada4",
+      "bytes": 559
+    },
+    {
+      "path": "decision-points/DP-VERIFICATION/examples/cases.json",
+      "sha256": "fbfcbd96bbaffc2dd2d62ecc46980c19da1df6144a18d831ca3b8db16803b309",
+      "bytes": 7307
+    },
+    {
+      "path": "decision-points/DP-VERIFICATION/pack-section.yaml",
+      "sha256": "7dae53e1383dbc81bbbdfb96c53cc231115e4f49b19f1699023cba31b2e6a96a",
+      "bytes": 367
+    },
+    {
+      "path": "decision-points/DP-VERIFICATION/prompt.md",
+      "sha256": "477e2dae08908fabb0135920ff8df993f0c301b7c46bc8dddffe841fb8f236f8",
+      "bytes": 1691
+    },
+    {
+      "path": "decision-points/DP-VERIFICATION/schema.json",
+      "sha256": "db11fbd150c4049eb1ad9f741792a4da009cd0289871a728e204d086a8eb4f08",
+      "bytes": 1458
+    },
+    {
       "path": "decision-points/_template/eval/README.md",
       "sha256": "99556faefb729e0a8c785df5d1c1478055114a21b1ab1c3c1dfc0707e05d7c69",
       "bytes": 366
@@ -1695,5 +1855,5 @@
       "bytes": 17486
     }
   ],
-  "pack_hash": "99e3fa86eb96b94d073bdd1727a3d2e7f671e0554b184abc86a069b505c60846"
+  "pack_hash": "8398c5dc099ae582a3c2f490064257c801cd7c9fb083a59f682d09a308f8ece0"
 }
