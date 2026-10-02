@@ -37,6 +37,25 @@ The body is the public log entry in plain words: who approved, why, and that fou
 - Pack is not fictional and not draft.
 - `node tools/lint-ratifications.mjs --against origin/main` fails when an existing record was edited, renamed or deleted. Run it in CI with the base ref.
 
+## Legal corpora (LEGAL-CORPUS-1)
+
+A record whose `pack` is a legal corpus id, or a corpus with `status: ratified`, is checked by `node tools/lint-legal-ratification.mjs [--against <ref>]` (also run by `npm run lint`, and in CI by the protected-core job). A corpus with no record and no review is reported as "unreviewed" and never fails; no review record is ever invented.
+
+Review record, `packs/legal/<corpus>/review/*.md`, front matter:
+
+| Field | Meaning |
+|---|---|
+| `reviewer`, `qualification`, `scope`, `date` | Required. The reviewer must be a named human (names such as claude, gpt, llm, bot, ai are refused) |
+| `expires` | Required, must be in the future |
+| `content_hash` | Must equal `content_hash` in `corpus.yaml`; a changed corpus needs a new review record |
+| `authored_by: ai` | Allowed only with a named human reviewer |
+
+Further checks: `topic-index.json` exists and `corpus.yaml` has `reviewed: true`. With `--against`, a changed `content_hash` with no added `review/` file fails, and commits with an `AI-Authored: true` trailer need a complete review record.
+
+Citations: every object with `article_id` in `decision-points/**/examples`, `decision-points/**/eval` (json, jsonl, yaml) must be `{layer, article_id, corpus_version}` and resolve to an article in the corpus, with `corpus_version` equal to `<id>@<version>[+<hash12>]`. Ids of the form `L4/nl/statutes/art-1` in `prompt.md` must resolve too. `npm run eval` fails on an unresolved citation. Today every corpus is an `index_only` stub with no articles, so any citation fails.
+
+`node tools/replay.mjs --legal` reads `legal_cites` (same shape) on base decisions and head recordings, and reports flips by layer and article plus an estimate of past resolutions that cite a changed article (for DP-RERESOLUTION). Without `--base`, every cited article counts as changed.
+
 ## Example (fictional pack, for reference only, not a real record)
 
 ```yaml

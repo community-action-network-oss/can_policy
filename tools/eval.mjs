@@ -9,6 +9,7 @@ import { join, dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
 import { wilson, ece, parityGap, disjointness, loosened, round } from "./lib/metrics.mjs";
+import { lintCitations } from "./lint-legal-ratification.mjs";
 import { loadRecordings, deriveFake, toJsonl } from "./lib/recordings.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -142,8 +143,9 @@ function main() {
   }
   const dps = names.map((n) => scoreDp(loadDp(root, n), loadRecordings(join(recDir, `${n}.jsonl`))));
   const loose = o.diffAgainst ? diffAgainst(root, o.diffAgainst, names) : [];
+  const badLegal = lintCitations(root); // legal eval cases (10-u58) use the same thresholds once they exist
   const unrec = dps.reduce((s, d) => s + d.cases.unrecorded, 0);
-  const pass = dps.every((d) => d.pass) && !loose.length && !(o.strict && unrec);
+  const pass = dps.every((d) => d.pass) && !loose.length && !badLegal.length && !(o.strict && unrec);
   for (const d of dps) {
     console.log(`\n${d.dp}  (${d.cases.recorded}/${d.cases.total} recorded, models: ${d.models.join(", ") || "none"})`);
     for (const c of d.checks) console.log(`  ${c.pass ? "pass          " : "did not pass  "} ${c.metric} ${c.value ?? "n/a"} ${c.op} ${c.threshold}${c.note ? ` (${c.note})` : ""}`);
@@ -158,6 +160,7 @@ function main() {
     if (d.ignored_extras.length) console.log(`  ignored threshold keys: ${d.ignored_extras.join(", ")}`);
     for (const w of d.warnings) console.log(`  warning: ${w}`);
   }
+  for (const b of badLegal) console.log(`\ndid not pass  ${b}`);
   for (const l of loose) console.log(`\ndid not pass  ${l.dp}: threshold loosened vs ${o.diffAgainst}: ${l.change}`);
   console.log(`\neval: ${pass ? "pass" : "did not pass"} (${dps.length} decision points, ${unrec} unrecorded cases${o.strict ? ", strict" : ""})`);
   if (o.json) {

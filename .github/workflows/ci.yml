@@ -51,7 +51,7 @@ jobs:
           cache: npm
       - run: npm ci
       - name: Replay diff against base
-        run: node tools/replay.mjs --base .tmp/base --head . --json .tmp/replay.json --md .tmp/replay.md
+        run: node tools/replay.mjs --base .tmp/base --head . --legal --json .tmp/replay.json --md .tmp/replay.md
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -89,3 +89,4 @@ jobs:
           cache: npm
       - run: npm ci
       - run: node tools/protected-core-check.mjs --base origin/${{ github.base_ref }}
+      - run: node tools/lint-legal-ratification.mjs --against origin/${{ github.base_ref }}

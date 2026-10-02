@@ -1,12 +1,13 @@
 // Replay diff. Compares recorded decisions (base) with head recordings, offline. Report: docs/replay.md.
 // Usage: node tools/replay.mjs [--decisions f.jsonl] [--head-recordings f.jsonl] [--motivating ids.txt]
-//        [--base <root>] [--head <root>] [--bump minor|patch|major] [--json out.json] [--md out.md]
+//        [--legal] [--base <root>] [--head <root>] [--bump minor|patch|major] [--json out.json] [--md out.md]
 // Exit: 0 ok, needs_review or no_data; 1 blocked; 2 bad input.
 import { parse } from "yaml";
 import { readFileSync, existsSync, readdirSync, writeFileSync } from "node:fs";
 import { join, dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { loadRecordings } from "./lib/recordings.mjs";
+import { legalFlips } from "./lint-legal-ratification.mjs";
 import { buildReport, renderMd, DEFAULT_LIMITS } from "./lib/replay-report.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
@@ -25,9 +26,16 @@ function loadRules(root, into, core) {
   }
 }
 
+function renderLegal(l) {
+  if (!l) return "";
+  const row = (m) => Object.entries(m).map(([k, v]) => `| ${k} | ${v.flips} |`);
+  return ["", "### Legal flips", "", `Past resolutions touched (estimate, ${l.changed_article_basis}): ${l.resolutions_touched}.`, "", "| Layer | Flips |", "|---|---|", ...row(l.by_layer), "", "| Article | Flips |", "|---|---|", ...row(l.by_article), ""].join("\n");
+}
+
 function main(argv) {
   const o = { decisions: join(FX, "decisions.jsonl"), "head-recordings": join(FX, "head.jsonl"), head: ROOT, bump: "minor" };
   for (let i = 0; i < argv.length; i++) {
+    if (argv[i] === "--legal") { o.legal = true; continue; }
     if (!FLAGS.includes(argv[i]) || i + 1 >= argv.length) throw new Error(`bad argument ${argv[i]}`);
     o[argv[i].slice(2)] = argv[++i];
   }
@@ -44,9 +52,13 @@ function main(argv) {
   const lf = join(o.head, "limits.yaml");
   if (existsSync(lf)) limits = { ...limits, ...(parse(readFileSync(lf, "utf8")).replay_limits ?? {}) };
   const rep = buildReport({ decisions, heads, rules, protectedCore: core, motivating, limits, bump: o.bump });
+  if (o.legal) {
+    rep.legal = legalFlips(rep.flips, new Map(decisions.map((d) => [d.decision_id, d])), heads, o.base && resolve(o.base), resolve(o.head));
+    if (!Object.keys(rep.legal.by_article).length && !rep.legal.resolutions_touched) rep.warnings.push("legal: no decision cites a legal article, so no legal flips could be measured");
+  }
   if (o.json) writeFileSync(o.json, JSON.stringify(rep, null, 2) + "\n");
-  if (o.md) writeFileSync(o.md, renderMd(rep));
-  if (!o.json && !o.md) console.log(renderMd(rep));
+  if (o.md) writeFileSync(o.md, renderMd(rep) + renderLegal(rep.legal));
+  if (!o.json && !o.md) console.log(renderMd(rep) + renderLegal(rep.legal));
   else console.log(`replay: ${rep.verdict} (${rep.totals.flips} flips in ${rep.totals.decisions} decisions)`);
   for (const w of rep.warnings) console.warn(`replay warning: ${w}`);
   return rep.verdict === "blocked" ? 1 : 0;

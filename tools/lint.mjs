@@ -10,6 +10,7 @@ import { lintDp } from "./lint-dp.mjs";
 import { lintSchemas } from "./lint-schemas.mjs";
 import { lintRatifications } from "./lint-ratifications.mjs";
 import { lintLegal } from "./lint-legal.mjs";
+import { lintLegalRatification } from "./lint-legal-ratification.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const SCHEMAS = join(HERE, "..", "schemas");
@@ -219,6 +220,7 @@ export function lint(root, notes = []) {
   // 6. ratification records (tools/lint-ratifications.mjs); append-only needs a base ref, run via --against
   if (packsOk) errors.push(...lintRatifications(root, notes));
   errors.push(...lintLegal(root));
+  errors.push(...lintLegalRatification(root, notes));
   return errors;
 }
 
