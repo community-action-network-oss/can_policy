@@ -243,6 +243,22 @@ fields:
       min_chars: 10
       max_chars: 600
       note: Length of the poster reason for accepting or declining.
+  # Archive types are system-built: no free-text field has a char bound here, only list sizes.
+  archive_record:
+    list:
+      min: 1
+      max: 12
+      note: Stages in executed_path, equal to the problem stage plan cap.
+  path_suggestion:
+    list:
+      min: 1
+      max: 12
+      note: Stages in draft_stages, equal to the problem stage plan cap.
+  stage_draft:
+    list:
+      min: 1
+      max: 12
+      note: Stages in the draft plan, equal to the problem stage plan cap.
 cooldowns:
   between_contributions_same_problem:
     seconds: 120

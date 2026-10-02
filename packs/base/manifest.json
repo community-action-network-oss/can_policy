@@ -65,6 +65,51 @@
       "bytes": 5002
     },
     {
+      "path": "content-schemas/archive_record/bands.json",
+      "sha256": "f78d4bf28687ce71a6316281d0eb95aea6ff8ab1578e8812176d8063c21c8764",
+      "bytes": 1096
+    },
+    {
+      "path": "content-schemas/archive_record/examples/invalid-blocked-stage-no-challenge.json",
+      "sha256": "f619d84524fdef4fc597767631ad40c52311eac4d2c9d72a46f52ce1af580785",
+      "bytes": 4310
+    },
+    {
+      "path": "content-schemas/archive_record/examples/invalid-email-in-option.json",
+      "sha256": "74d96db2e84350cbea5d8d364cccf112dc4e2cac61fa4092576089b3f10f5e20",
+      "bytes": 4290
+    },
+    {
+      "path": "content-schemas/archive_record/examples/invalid-missing-license.json",
+      "sha256": "ba5321d08bec75ae2aebdad20a3174351b6a5c127db657417d936cde52e91747",
+      "bytes": 4246
+    },
+    {
+      "path": "content-schemas/archive_record/examples/invalid-stuck-not-unresolved.json",
+      "sha256": "2d941b9d0b1324e38103926644d0c3b40a8794f5af668a8690448d4759303385",
+      "bytes": 4524
+    },
+    {
+      "path": "content-schemas/archive_record/examples/valid-solved-simulation.json",
+      "sha256": "78f36174927c97f4256cad7df55eb4536a247b67ac03c11694055fccf2bc69a5",
+      "bytes": 4274
+    },
+    {
+      "path": "content-schemas/archive_record/examples/valid-stuck-with-challenges.json",
+      "sha256": "e932aacd69997be3ff50b36225546e56fd27531f9b4e3ae167fbc30b58c95478",
+      "bytes": 4548
+    },
+    {
+      "path": "content-schemas/archive_record/messages.en.json",
+      "sha256": "87c8611a6fe7b1a5191e71b42932ca663f2b726a83c45fe33b3087d8088a50d7",
+      "bytes": 15081
+    },
+    {
+      "path": "content-schemas/archive_record/schema.json",
+      "sha256": "e4b5c920b709655cc03c9f949424ca6c574608657815fea958fb0ac5d93fbe2a",
+      "bytes": 50078
+    },
+    {
       "path": "content-schemas/contribution.clarifying_question/examples/invalid-basis-not-allowed.json",
       "sha256": "9def028e07c2f548327e4c69fa2b55c69a459de4a9bbf271cb15cc246cdc72ca",
       "bytes": 642
@@ -740,6 +785,46 @@
       "bytes": 11271
     },
     {
+      "path": "content-schemas/path_suggestion/examples/invalid-exceeds-without-gap.json",
+      "sha256": "bb6516a2c24783e7b7f77d341ccff3a8ac7fc86c759ed8ff72b66ac7e4c7f26d",
+      "bytes": 2055
+    },
+    {
+      "path": "content-schemas/path_suggestion/examples/invalid-no-attribution.json",
+      "sha256": "973ed999f066b064548ea08f72af168f460a4150d349b1a179cfc990592a1aaa",
+      "bytes": 1334
+    },
+    {
+      "path": "content-schemas/path_suggestion/examples/invalid-state-not-allowed.json",
+      "sha256": "43eeb2506756a181a16125a9af8e0833e9022e1dfe5a1f9db444010f1f8da777",
+      "bytes": 1585
+    },
+    {
+      "path": "content-schemas/path_suggestion/examples/invalid-unlawful-without-citation.json",
+      "sha256": "5dd5a5db80a856db65a0b37eb97228f9020b92368ba51dc7c204dc56a55d5920",
+      "bytes": 2055
+    },
+    {
+      "path": "content-schemas/path_suggestion/examples/valid-ready.json",
+      "sha256": "aca1042b4d951b752c2f2f01ee3f91423da7b94c4262a74ce5493775103b7611",
+      "bytes": 1581
+    },
+    {
+      "path": "content-schemas/path_suggestion/examples/valid-unlawful-exceeds.json",
+      "sha256": "383ae5d054497f972f62981d6c6a4cf712d98422ef85d0f5704f6b05d96ba53a",
+      "bytes": 2135
+    },
+    {
+      "path": "content-schemas/path_suggestion/messages.en.json",
+      "sha256": "c4bdb116f957b8e56c4865bb582276d47d8478e332da1e4bcf6275e02e007179",
+      "bytes": 6858
+    },
+    {
+      "path": "content-schemas/path_suggestion/schema.json",
+      "sha256": "6ad21c7a0c49b7a281946e6bdc04ecac6ccfb119134a30e3b6c74d8902117e2c",
+      "bytes": 23630
+    },
+    {
       "path": "content-schemas/policy_proposal/examples/invalid-example-is-raw-text.json",
       "sha256": "a81c61632cc56448900da29ada66b855a41cb77b5f351e3e4e6cd7fb26efb706",
       "bytes": 728
@@ -975,6 +1060,46 @@
       "bytes": 12550
     },
     {
+      "path": "content-schemas/stage_draft/examples/invalid-expires-not-utc.json",
+      "sha256": "f9b081a70f36b715a1009f59e1108f8f79c40dc2d5eed9b02765d9e1a9485bb8",
+      "bytes": 1145
+    },
+    {
+      "path": "content-schemas/stage_draft/examples/invalid-stage-name-not-slug.json",
+      "sha256": "3aa2c0304c22d7a35cf7a41f4a94934263f4ad26c68b8676f337bf39d72430a7",
+      "bytes": 1160
+    },
+    {
+      "path": "content-schemas/stage_draft/examples/invalid-stage-without-derived-from.json",
+      "sha256": "f4b271f298208c79e71bc4ae9da5b21c4dc429c41a5bdf1907614f16d47815a7",
+      "bytes": 1478
+    },
+    {
+      "path": "content-schemas/stage_draft/examples/invalid-status-not-allowed.json",
+      "sha256": "7046ff42e7a6813721275e02c5d3af086666ac6d3105ddf9bdf71250c6a7da8a",
+      "bytes": 1159
+    },
+    {
+      "path": "content-schemas/stage_draft/examples/valid-edited-three-stages.json",
+      "sha256": "5b4fafe81d5194b5cb873cf896537251319f4fedcb9f7247ec9b70f19802d0b2",
+      "bytes": 1685
+    },
+    {
+      "path": "content-schemas/stage_draft/examples/valid-offered.json",
+      "sha256": "953b83f00e864347caee6830e835bfcce0ee95ce5097991a5b81aac9b72731c3",
+      "bytes": 1157
+    },
+    {
+      "path": "content-schemas/stage_draft/messages.en.json",
+      "sha256": "a3eccd980526211f626c50368c9397b1c96e1361fd94bba6dad5f29e972fa6db",
+      "bytes": 3829
+    },
+    {
+      "path": "content-schemas/stage_draft/schema.json",
+      "sha256": "5328d6b73e4e9871f8ba7a670e07be81a835fe94a94bb9389d6de634e5fbd0ec",
+      "bytes": 10350
+    },
+    {
       "path": "content-schemas/stage_evidence/examples/invalid-criterion-ref-missing.json",
       "sha256": "d0e582223022e92b5d11d59562f380a4e08fac28c1cbbc103776536a49ef79aa",
       "bytes": 475
@@ -1066,8 +1191,8 @@
     },
     {
       "path": "limits.yaml",
-      "sha256": "9b0691842423b332befef6d03d43455b46a29d36d1780c180a56ccf59ba79789",
-      "bytes": 7404
+      "sha256": "b9ff1fa0d0b3ec9c6635a13cc08c476540d1da617f942a9f1fe7fe9c85ad84e0",
+      "bytes": 7884
     },
     {
       "path": "packs/base/pack.yaml",
@@ -1080,5 +1205,5 @@
       "bytes": 17486
     }
   ],
-  "pack_hash": "74ca46fcf1f2ec90d687c274c590ae1582ffb5c7292f3bb6a4a82e1ce35bd356"
+  "pack_hash": "d71437791a0ed54eb77513caa732a38fda3cec9ae5df53748d6d0b05ccd36d03"
 }
