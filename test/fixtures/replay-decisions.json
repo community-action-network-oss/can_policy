@@ -1,0 +1,5 @@
+[
+  {"decision_id":"fx-001","dp":"DP-NAMING","jurisdiction":"fiktiva-city","field_ref":{"field":"structural_statement"},"original_outcome":"publish","original_rule_ids":[],"original_confidence":0.95,"proposed_outcome":"needs_revision","proposed_rule_ids":["NAME-1"],"proposed_confidence":0.93,"flip":true,"direction":"stricter","label":"expected","protected_tier":false},
+  {"decision_id":"fx-002","dp":"DP-NAMING","jurisdiction":"fiktiva-city","field_ref":{"field":"condition"},"original_outcome":"reject","original_rule_ids":["NAME-1"],"original_confidence":0.92,"proposed_outcome":"reject","proposed_rule_ids":["NAME-1"],"proposed_confidence":0.94,"flip":false,"direction":"none","label":null,"protected_tier":false},
+  {"decision_id":"fx-003","dp":"DP-NAMING","jurisdiction":"fiktiva-city","field_ref":{"field":"condition"},"original_outcome":"needs_revision","original_rule_ids":["NAME-1"],"original_confidence":0.8,"proposed_outcome":"publish","proposed_rule_ids":[],"proposed_confidence":0.91,"flip":true,"direction":"more_permissive","label":"unintended","protected_tier":false}
+]

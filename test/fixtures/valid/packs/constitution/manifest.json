@@ -1,0 +1,18 @@
+{
+  "pack": "constitution",
+  "version": "0.1.0",
+  "layer": "constitution",
+  "parent": {
+    "name": "base",
+    "version": "0.1.0",
+    "pack_hash": "6ec08bec3ae78c73b751b99d649e91f7ed5d073da3f5e37d812d6c9b58f6552f"
+  },
+  "files": [
+    {
+      "path": "packs/constitution/pack.yaml",
+      "sha256": "7d8c6cc7701a885108c7c8f0941c29fc0c047d376bdfb6ac56fc8b05bc301354",
+      "bytes": 133
+    }
+  ],
+  "pack_hash": "41c883ae664780a12390ebfedbff647f93813d84d6052619dc174b27ea05ca93"
+}

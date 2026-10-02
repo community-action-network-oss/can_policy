@@ -1,0 +1,54 @@
+{
+  "pack": "base",
+  "version": "0.1.0",
+  "layer": "base",
+  "parent": null,
+  "files": [
+    {
+      "path": "content-schemas/problem/schema.json",
+      "sha256": "cab7730f7f5e152a4344860a6129ea65107ee1f26a24f2f27a898470f7706be7",
+      "bytes": 476
+    },
+    {
+      "path": "decision-points/DP-NAMING/eval/thresholds.yaml",
+      "sha256": "9809d4c8533f2895b9648daba9f976b9a95f2b30fb69fcf59cc4e05c5215b471",
+      "bytes": 16
+    },
+    {
+      "path": "decision-points/DP-NAMING/examples/cases.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "bytes": 3
+    },
+    {
+      "path": "decision-points/DP-NAMING/prompt.md",
+      "sha256": "ad9562a19d0130101ecb814ef0c554fa70df7c248ce7982003719e79e0633fca",
+      "bytes": 50
+    },
+    {
+      "path": "decision-points/DP-NAMING/schema.json",
+      "sha256": "9091a8164f97eaca182b3d06d0e5a59e923c880ebc0148056c453c651f5b46cb",
+      "bytes": 18
+    },
+    {
+      "path": "limits.yaml",
+      "sha256": "55d0461ecd557467e35fe89f3330a84d69973331c818523fb5e044ca3567cf57",
+      "bytes": 11
+    },
+    {
+      "path": "packs/base/pack.yaml",
+      "sha256": "ea253b702ee65c304494af930ce316cd14822f1ca3cadb8e8f5c5c30576f98c1",
+      "bytes": 92
+    },
+    {
+      "path": "packs/base/rules.yaml",
+      "sha256": "ea12fbb9e197a66d6b37879a2055a7f81838d721a4c2ad509c3f6aa203fdea3d",
+      "bytes": 28
+    },
+    {
+      "path": "simulation/thresholds.yaml",
+      "sha256": "00ce51c795be74d129999ff1fd5f6e7b07afed6c44aa57540327995f066dd685",
+      "bytes": 15
+    }
+  ],
+  "pack_hash": "6ec08bec3ae78c73b751b99d649e91f7ed5d073da3f5e37d812d6c9b58f6552f"
+}

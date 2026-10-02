@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "can_policy/content-schema.meta.json",
+  "title": "Content schema: JSON Schema 2020-12 plus x-ui, x-guidance, x-checks",
+  "$ref": "#/$defs/node",
+  "$defs": {
+    "node": {
+      "type": "object",
+      "propertyNames": { "not": { "pattern": "^x-(?!(ui|guidance|checks|version)$)" } },
+      "properties": {
+        "id": { "type": "string" },
+        "version": { "$ref": "#/$defs/semver" },
+        "x-version": { "$ref": "#/$defs/semver" },
+        "pack": { "type": "string" },
+        "x-ui": {
+          "type": "object",
+          "required": ["widget", "label_msg"],
+          "additionalProperties": false,
+          "properties": {
+            "widget": { "type": "string" },
+            "label_msg": { "type": "string" },
+            "help_msg": { "type": "string" },
+            "order": { "type": "integer" },
+            "group": { "type": "string" },
+            "visible_if": { "type": "object" }
+          }
+        },
+        "x-guidance": {
+          "type": "object",
+          "required": ["why"],
+          "additionalProperties": false,
+          "properties": {
+            "why": { "type": "string" },
+            "good": { "type": "string" },
+            "bad": { "type": "string" },
+            "min_chars": { "type": "integer", "minimum": 0 },
+            "max_chars": { "type": "integer", "minimum": 1 }
+          }
+        },
+        "x-checks": {
+          "type": "object",
+          "properties": { "dps": { "type": "array", "items": { "type": "string", "pattern": "^DP-[A-Z0-9-]+$" } } }
+        },
+        "properties": { "type": "object", "additionalProperties": { "$ref": "#/$defs/node" } },
+        "$defs": { "type": "object", "additionalProperties": { "$ref": "#/$defs/node" } },
+        "items": { "$ref": "#/$defs/node" }
+      }
+    },
+    "semver": { "type": "string", "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)$" }
+  }
+}

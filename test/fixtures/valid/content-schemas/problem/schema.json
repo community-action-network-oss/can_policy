@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "id": "problem",
+  "version": "1.0.0",
+  "pack": "base@0.1.0",
+  "type": "object",
+  "properties": {
+    "condition": {
+      "type": "string",
+      "x-ui": { "widget": "textarea", "label_msg": "schema.problem.condition.label", "order": 1 },
+      "x-guidance": { "why": "Shifts a complaint into a shared condition.", "min_chars": 20, "max_chars": 400 },
+      "x-checks": { "dps": ["DP-NAMING"] }
+    }
+  }
+}

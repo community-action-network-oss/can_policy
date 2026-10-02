@@ -1,0 +1,18 @@
+{
+  "version": "0.1.0",
+  "packs": [
+    {
+      "name": "base",
+      "pack_hash": "6ec08bec3ae78c73b751b99d649e91f7ed5d073da3f5e37d812d6c9b58f6552f"
+    },
+    {
+      "name": "constitution",
+      "pack_hash": "41c883ae664780a12390ebfedbff647f93813d84d6052619dc174b27ea05ca93"
+    },
+    {
+      "name": "fiktiva-city",
+      "pack_hash": "033e9c89dadff50d0a9c4a6b148b5a0e3ebdff2187b576026bea4d41ad387473"
+    }
+  ],
+  "released_at": "2026-10-02T10:55:04.763Z"
+}

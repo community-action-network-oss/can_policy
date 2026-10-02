@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "can_policy/manifest.schema.json",
+  "title": "manifest.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["pack", "version", "layer", "parent", "files", "pack_hash"],
+  "properties": {
+    "pack": { "type": "string" },
+    "version": { "type": "string" },
+    "layer": { "enum": ["base", "constitution", "jurisdiction", "local"] },
+    "parent": {
+      "anyOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["name", "version", "pack_hash"],
+          "properties": { "name": { "type": "string" }, "version": { "type": "string" }, "pack_hash": { "$ref": "#/$defs/hex" } }
+        }
+      ]
+    },
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "sha256", "bytes"],
+        "properties": { "path": { "type": "string" }, "sha256": { "$ref": "#/$defs/hex" }, "bytes": { "type": "integer", "minimum": 0 } }
+      }
+    },
+    "pack_hash": { "$ref": "#/$defs/hex" }
+  },
+  "$defs": { "hex": { "type": "string", "pattern": "^[0-9a-f]{64}$" } }
+}
