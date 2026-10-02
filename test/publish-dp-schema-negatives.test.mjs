@@ -17,13 +17,13 @@ const run = (name, validate, cases) => test(name, () => {
 });
 
 // ---- DP-PUBLISH
-const DPS = ["ELIGIBILITY", "COMPLETENESS", "ASSUMPTIONS", "PRIVACY", "FRAMING", "DUPLICATE", "NAMING", "TONE", "EVIDENCE-TIER", "SOURCE-TRUST", "CRITERIA", "STAGE-PLAN", "LEGALITY", "CRISIS"].map((d) => `DP-${d}`);
+const DPS = ["COMPLETENESS", "ASSUMPTIONS", "PRIVACY", "FRAMING", "DUPLICATE", "NAMING", "TONE", "SOURCE-TRUST", "CRITERIA", "STAGE-PLAN", "LEGAL", "CRISIS"].map((d) => `DP-${d}`);
 const po = (over = {}) => DPS.map((dp) => ({ dp, outcome: over[dp] ?? "publish" }));
 const checks = { review_complete: true, final_criteria_present: true, archive_used_as_review: false, protected_core_clear: true };
-const cite = { ref: "o-1", path: "stage_plan.s-2", weight_reason: "Weighed; shown as a hint." };
+const cite = { ref: "o-1", path: "stage_plan.s_2", weight_reason: "Weighed; shown as a hint." };
 const ppub = { outcome: "publish", rule_ids: ["REVIEW-1", "RECO-1"], confidence: 0.95, reasons: ["r"], prior_outcomes: po(), checks, reviews_completed: 3, open_count: 1, open_recommendations_cited: [cite] };
 const pnr = { ...ppub, outcome: "needs_revision", revision_hint: "Fix the criteria.", prior_outcomes: po({ "DP-CRITERIA": "needs_revision" }) };
-const prej = { outcome: "reject", rule_ids: ["REVIEW-1"], confidence: 0.95, reasons: ["r"], checks, prior_outcomes: po({ "DP-LEGALITY": "reject" }) };
+const prej = { outcome: "reject", rule_ids: ["REVIEW-1"], confidence: 0.95, reasons: ["r"], checks, prior_outcomes: po({ "DP-PRIVACY": "reject" }) };
 const pext = { ...prej, outcome: "route_external", confidence: 0.92, prior_outcomes: po({ "DP-CRISIS": "route_external" }) };
 const phold = { outcome: "hold", rule_ids: [], confidence: 0.4, reasons: ["r"], hold_reason: "cannot_decide" };
 run("DP-PUBLISH schema negatives", load("DP-PUBLISH"), [
@@ -31,7 +31,7 @@ run("DP-PUBLISH schema negatives", load("DP-PUBLISH"), [
   ["valid publish with nothing open", { ...ppub, open_count: 0, open_recommendations_cited: [] }, true],
   ["valid needs_revision", pnr, true],
   ["valid reject", prej, true],
-  ["valid reject beside needs_revision", { ...prej, prior_outcomes: po({ "DP-LEGALITY": "reject", "DP-TONE": "needs_revision" }) }, true],
+  ["valid reject beside needs_revision", { ...prej, prior_outcomes: po({ "DP-PRIVACY": "reject", "DP-TONE": "needs_revision" }) }, true],
   ["valid route_external", pext, true],
   ["valid hold", phold, true],
   ["valid hold prior_held", { ...phold, hold_reason: "prior_held", prior_outcomes: po({ "DP-PRIVACY": "hold" }) }, true],
@@ -51,10 +51,10 @@ run("DP-PUBLISH schema negatives", load("DP-PUBLISH"), [
   ["escalate_human outcome", { ...phold, outcome: "escalate_human" }, false],
   ["publish with one prior needs_revision", { ...ppub, prior_outcomes: po({ "DP-TONE": "needs_revision" }) }, false],
   ["publish with one prior hold", { ...ppub, prior_outcomes: po({ "DP-PRIVACY": "hold" }) }, false],
-  ["publish with one prior reject", { ...ppub, prior_outcomes: po({ "DP-LEGALITY": "reject" }) }, false],
-  ["publish over a protected-core refusal", { ...ppub, prior_outcomes: po({ "DP-ELIGIBILITY": "reject" }) }, false],
+  ["publish with one prior reject", { ...ppub, prior_outcomes: po({ "DP-PRIVACY": "reject" }) }, false],
+  ["publish over a protected-core refusal", { ...ppub, prior_outcomes: po({ "DP-COMPLETENESS": "reject" }) }, false],
   ["publish with a prior route_external", { ...ppub, prior_outcomes: po({ "DP-CRISIS": "route_external" }) }, false],
-  ["publish with 13 prior outcomes", { ...ppub, prior_outcomes: po().slice(1) }, false],
+  ["publish with 11 prior outcomes", { ...ppub, prior_outcomes: po().slice(1) }, false],
   ["publish without prior_outcomes", { ...ppub, prior_outcomes: undefined }, false],
   ["publish with a repeated dp hiding a missing one", { ...ppub, prior_outcomes: [...po().slice(1), { dp: "DP-TONE", outcome: "publish" }] }, false],
   ["publish with zero completed reviews", { ...ppub, reviews_completed: 0 }, false],
@@ -78,24 +78,25 @@ run("DP-PUBLISH schema negatives", load("DP-PUBLISH"), [
   ["a cited ref that is a name", { ...ppub, open_recommendations_cited: [{ ...cite, ref: "Alice" }] }, false],
   ["weight_reason over 300 characters", { ...ppub, open_recommendations_cited: [{ ...cite, weight_reason: "x".repeat(301) }] }, false],
   ["duplicate cited item", { ...ppub, open_count: 2, open_recommendations_cited: [cite, cite] }, false],
-  ["speedup_cited true is only a flag", { ...ppub, speedup_cited: true }, true],
+  ["speedup_cited on publish has no meaning", { ...ppub, speedup_cited: true }, false],
+  ["field_ref on publish is the shared echo key and stays allowed", { ...ppub, field_ref: { field: "publication" } }, true],
   ["needs_revision without a hint", { ...pnr, revision_hint: undefined }, false],
   ["needs_revision without rule ids", { ...pnr, rule_ids: [] }, false],
   ["needs_revision at confidence 0.74", { ...pnr, confidence: 0.74 }, false],
   ["needs_revision with a prior hold", { ...pnr, prior_outcomes: po({ "DP-PRIVACY": "hold" }) }, false],
-  ["needs_revision with a prior reject", { ...pnr, prior_outcomes: po({ "DP-LEGALITY": "reject" }) }, false],
+  ["needs_revision with a prior reject", { ...pnr, prior_outcomes: po({ "DP-PRIVACY": "reject" }) }, false],
   ["needs_revision with a prior route_external", { ...pnr, prior_outcomes: po({ "DP-CRISIS": "route_external" }) }, false],
   ["needs_revision with zero reviews", { ...pnr, reviews_completed: 0 }, false],
   ["needs_revision with an incomplete review", { ...pnr, checks: { ...checks, review_complete: false } }, false],
   ["needs_revision with an open recommendation not cited", { ...pnr, open_recommendations_cited: [] }, false],
   ["reject without a prior reject", { ...prej, prior_outcomes: po() }, false],
-  ["reject with a prior hold", { ...prej, prior_outcomes: po({ "DP-LEGALITY": "reject", "DP-PRIVACY": "hold" }) }, false],
+  ["reject with a prior hold", { ...prej, prior_outcomes: po({ "DP-PRIVACY": "reject", "DP-NAMING": "hold" }) }, false],
   ["reject without prior_outcomes", { ...prej, prior_outcomes: undefined }, false],
   ["reject without rule ids", { ...prej, rule_ids: [] }, false],
   ["reject at confidence 0.91", { ...prej, confidence: 0.91 }, false],
   ["reject with a hold_reason", { ...prej, hold_reason: "cannot_decide" }, false],
   ["route_external without a prior route_external", { ...pext, prior_outcomes: po() }, false],
-  ["route_external beside a prior reject", { ...pext, prior_outcomes: po({ "DP-CRISIS": "route_external", "DP-LEGALITY": "reject" }) }, false],
+  ["route_external beside a prior reject", { ...pext, prior_outcomes: po({ "DP-CRISIS": "route_external", "DP-PRIVACY": "reject" }) }, false],
   ["route_external with a prior hold", { ...pext, prior_outcomes: po({ "DP-CRISIS": "route_external", "DP-PRIVACY": "hold" }) }, false],
   ["route_external at confidence 0.89", { ...pext, confidence: 0.89 }, false],
   ["a prior hold with outcome reject", { ...prej, prior_outcomes: po({ "DP-PRIVACY": "hold" }) }, false],
@@ -111,6 +112,32 @@ run("DP-PUBLISH schema negatives", load("DP-PUBLISH"), [
   ["hold_reason on a non-hold outcome", { ...pnr, hold_reason: "cannot_decide" }, false],
   ["a prior hold with a non-hold outcome", { ...pnr, prior_outcomes: po({ "DP-TONE": "hold" }) }, false],
   ["unknown dp in prior_outcomes", { ...ppub, prior_outcomes: [...po().slice(1), { dp: "DP-MADE-UP", outcome: "publish" }] }, false],
+  // fix-publish: the 12-set, escalate_human, needs_revision/reject shape, review_incomplete, path
+  ["DP-LEGALITY is not in the set", { ...ppub, prior_outcomes: [...po().slice(1), { dp: "DP-LEGALITY", outcome: "publish" }] }, false],
+  ["publish without DP-LEGAL", { ...ppub, prior_outcomes: po().filter((p) => p.dp !== "DP-LEGAL") }, false],
+  ["publish with 13 prior outcomes", { ...ppub, prior_outcomes: [...po(), { dp: "DP-TONE", outcome: "publish" }] }, false],
+  ["publish with a prior escalate_human", { ...ppub, prior_outcomes: po({ "DP-LEGAL": "escalate_human" }) }, false],
+  ["publish with DP-CRISIS escalate_human", { ...ppub, prior_outcomes: po({ "DP-CRISIS": "escalate_human" }) }, false],
+  ["needs_revision with a prior escalate_human", { ...pnr, prior_outcomes: po({ "DP-CRITERIA": "needs_revision", "DP-LEGAL": "escalate_human" }) }, false],
+  ["reject beside a prior escalate_human", { ...prej, prior_outcomes: po({ "DP-PRIVACY": "reject", "DP-CRISIS": "escalate_human" }) }, false],
+  ["route_external beside a prior escalate_human", { ...pext, prior_outcomes: po({ "DP-DUPLICATE": "route_external", "DP-CRISIS": "escalate_human" }) }, false],
+  ["valid hold prior_held on escalate_human", { ...phold, hold_reason: "prior_held", prior_outcomes: po({ "DP-LEGAL": "escalate_human" }) }, true],
+  ["valid hold prior_held on escalate_human beside a reject", { ...phold, hold_reason: "prior_held", prior_outcomes: po({ "DP-LEGAL": "escalate_human", "DP-PRIVACY": "reject" }) }, true],
+  ["hold prior_held with only publish and needs_revision priors", { ...phold, hold_reason: "prior_held", prior_outcomes: po({ "DP-TONE": "needs_revision" }) }, false],
+  ["a prior escalate_human with a non-hold outcome", { ...pnr, prior_outcomes: po({ "DP-LEGAL": "escalate_human" }) }, false],
+  ["a prior escalate_human with a rejection", { ...prej, prior_outcomes: po({ "DP-PRIVACY": "reject", "DP-LEGAL": "escalate_human" }) }, false],
+  ["needs_revision without any prior needs_revision", { ...pnr, prior_outcomes: po() }, false],
+  ["needs_revision with no final criteria and all priors publish", { ...pnr, prior_outcomes: po(), checks: { ...checks, final_criteria_present: false } }, true],
+  ["needs_revision with final criteria present and all priors publish", { ...pnr, prior_outcomes: po(), checks }, false],
+  ["reject with only needs_revision priors", { ...prej, prior_outcomes: po({ "DP-TONE": "needs_revision" }) }, false],
+  ["hold review_incomplete with checks false and no review", { ...phold, hold_reason: "review_incomplete", checks: { ...checks, review_complete: false }, reviews_completed: 0 }, true],
+  ["a cited path that is a person's name", { ...ppub, open_recommendations_cited: [{ ...cite, path: "alice_smith" }] }, false],
+  ["a cited path with a dotted name", { ...ppub, open_recommendations_cited: [{ ...cite, path: "scope.alice" }] }, false],
+  ["a cited path that is a known field", { ...ppub, open_recommendations_cited: [{ ...cite, path: "final_acceptance_criteria" }] }, true],
+  ["a cited path that is a stage criteria path", { ...ppub, open_recommendations_cited: [{ ...cite, path: "stage_plan.map_faults.criteria" }] }, true],
+  ["a cited path that is an unknown top-level field", { ...ppub, open_recommendations_cited: [{ ...cite, path: "title" }] }, false],
+  ["a cited path with a person's name in a stage slot", { ...ppub, open_recommendations_cited: [{ ...cite, path: "stage_plan.Alice" }] }, false],
+  ["prior_outcomes with an unknown outcome", { ...ppub, prior_outcomes: po({ "DP-TONE": "maybe" }) }, false],
   ["unknown key", { ...ppub, volunteer: "someone" }, false],
   ["reasons item over 600 characters", { ...ppub, reasons: ["x".repeat(601)] }, false],
 ]);

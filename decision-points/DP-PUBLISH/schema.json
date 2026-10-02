@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "can_policy/decision-points/DP-PUBLISH/schema.json",
-  "$comment": "Extends schemas/dp-output.schema.json: the shared keys are unchanged except outcome, which is narrowed. The publication decision can never override another decision point: publish needs prior_outcomes with all 14 blocking decision points publish; reject needs one prior reject and no hold; route_external needs one prior route_external, no reject and no hold; any prior hold forces hold. Publish also needs a completed volunteer review (reviews_completed 1 or more, checks.review_complete true), final criteria present, and every open recommendation weighed and cited. A recommendation still open is never counted as accepted, and archive evidence is never a review (archive_used_as_review is const false). Zero or incomplete review is a hold. No auto-pass: publish at 0.92 or more. JSON Schema cannot compare the echoes to the input: the handler checks them (see eval/README.md).",
+  "$comment": "Extends schemas/dp-output.schema.json: the shared keys are unchanged except outcome, which is narrowed. The 12 aggregated decision points are the blocking DPs that run on a problem at the review to publish run (docs/design/ai/decision-points.md catalog and content-type matrix; can_server selector table): COMPLETENESS, ASSUMPTIONS, PRIVACY, FRAMING, DUPLICATE, NAMING, TONE, SOURCE-TRUST, CRITERIA, STAGE-PLAN, LEGAL, CRISIS. Publish needs all 12 at publish; needs_revision needs a prior needs_revision or no final criteria; reject needs one prior reject and no hold or escalate_human; route_external needs one prior route_external, no reject, no hold, no escalate_human; any prior hold or escalate_human forces hold (DP-CRISIS and DP-LEGAL emit escalate_human; this DP never does). Publish also needs a completed volunteer review (reviews_completed 1 or more, checks.review_complete true), final criteria present, and every open recommendation weighed and cited. A recommendation still open is never counted as accepted, and archive evidence is never a review (archive_used_as_review is const false). Zero or incomplete review is a hold. No auto-pass: publish at 0.92 or more. JSON Schema cannot compare the echoes to the input or enforce uniqueness by key (each dp once in prior_outcomes, each ref once in open_recommendations_cited): the handler checks them (see eval/README.md).",
   "title": "DP-PUBLISH output",
   "type": "object",
   "additionalProperties": false,
@@ -64,7 +64,7 @@
     },
     "prior_outcomes": {
       "type": "array",
-      "maxItems": 14,
+      "maxItems": 12,
       "uniqueItems": true,
       "items": {
         "type": "object",
@@ -76,7 +76,6 @@
         "properties": {
           "dp": {
             "enum": [
-              "DP-ELIGIBILITY",
               "DP-COMPLETENESS",
               "DP-ASSUMPTIONS",
               "DP-PRIVACY",
@@ -84,11 +83,10 @@
               "DP-DUPLICATE",
               "DP-NAMING",
               "DP-TONE",
-              "DP-EVIDENCE-TIER",
               "DP-SOURCE-TRUST",
               "DP-CRITERIA",
               "DP-STAGE-PLAN",
-              "DP-LEGALITY",
+              "DP-LEGAL",
               "DP-CRISIS"
             ]
           },
@@ -98,7 +96,8 @@
               "needs_revision",
               "reject",
               "route_external",
-              "hold"
+              "hold",
+              "escalate_human"
             ]
           }
         }
@@ -157,7 +156,8 @@
           },
           "path": {
             "type": "string",
-            "pattern": "^[a-z_]{1,40}(\\.[a-z0-9_-]{1,40}){0,3}$"
+            "pattern": "^(condition|affected|place|since|observed_facts|uncertain_claims|sources|evidence_refs|causal_hypothesis|scope|responsible_roles|desired_outcome|final_acceptance_criteria|assumptions|out_of_scope|lawful_options|existing_efforts|stage_plan|context_profile|affected_area|stage_plan\\.[a-z][a-z0-9_]{1,39}(\\.criteria)?)$",
+            "maxLength": 80
           },
           "weight_reason": {
             "type": "string",
@@ -285,26 +285,8 @@
           },
           "prior_outcomes": {
             "type": "array",
-            "minItems": 14,
+            "minItems": 12,
             "allOf": [
-              {
-                "type": "array",
-                "contains": {
-                  "type": "object",
-                  "required": [
-                    "dp",
-                    "outcome"
-                  ],
-                  "properties": {
-                    "dp": {
-                      "const": "DP-ELIGIBILITY"
-                    },
-                    "outcome": {
-                      "const": "publish"
-                    }
-                  }
-                }
-              },
               {
                 "type": "array",
                 "contains": {
@@ -441,24 +423,6 @@
                   ],
                   "properties": {
                     "dp": {
-                      "const": "DP-EVIDENCE-TIER"
-                    },
-                    "outcome": {
-                      "const": "publish"
-                    }
-                  }
-                }
-              },
-              {
-                "type": "array",
-                "contains": {
-                  "type": "object",
-                  "required": [
-                    "dp",
-                    "outcome"
-                  ],
-                  "properties": {
-                    "dp": {
                       "const": "DP-SOURCE-TRUST"
                     },
                     "outcome": {
@@ -513,7 +477,7 @@
                   ],
                   "properties": {
                     "dp": {
-                      "const": "DP-LEGALITY"
+                      "const": "DP-LEGAL"
                     },
                     "outcome": {
                       "const": "publish"
@@ -568,7 +532,8 @@
           "open_recommendations_cited": true,
           "revision_hint": false,
           "hold_reason": false,
-          "missing_inputs": false
+          "missing_inputs": false,
+          "speedup_cited": false
         }
       }
     },
@@ -611,8 +576,8 @@
           },
           "prior_outcomes": {
             "type": "array",
-            "minItems": 14,
-            "maxItems": 14,
+            "minItems": 12,
+            "maxItems": 12,
             "items": {
               "type": "object",
               "required": [
@@ -640,6 +605,9 @@
               },
               "protected_core_clear": {
                 "const": true
+              },
+              "final_criteria_present": {
+                "type": "boolean"
               }
             }
           },
@@ -651,7 +619,48 @@
           "open_recommendations_cited": true,
           "hold_reason": false,
           "missing_inputs": false
-        }
+        },
+        "anyOf": [
+          {
+            "properties": {
+              "prior_outcomes": {
+                "type": "array",
+                "contains": {
+                  "type": "object",
+                  "required": [
+                    "outcome"
+                  ],
+                  "properties": {
+                    "outcome": {
+                      "const": "needs_revision"
+                    }
+                  }
+                }
+              }
+            },
+            "required": [
+              "prior_outcomes"
+            ]
+          },
+          {
+            "properties": {
+              "checks": {
+                "type": "object",
+                "required": [
+                  "final_criteria_present"
+                ],
+                "properties": {
+                  "final_criteria_present": {
+                    "const": false
+                  }
+                }
+              }
+            },
+            "required": [
+              "checks"
+            ]
+          }
+        ]
       }
     },
     {
@@ -696,8 +705,8 @@
           },
           "prior_outcomes": {
             "type": "array",
-            "minItems": 14,
-            "maxItems": 14,
+            "minItems": 12,
+            "maxItems": 12,
             "items": {
               "type": "object",
               "required": [
@@ -773,8 +782,8 @@
           },
           "prior_outcomes": {
             "type": "array",
-            "minItems": 14,
-            "maxItems": 14,
+            "minItems": 12,
+            "maxItems": 12,
             "items": {
               "type": "object",
               "required": [
@@ -1008,7 +1017,10 @@
               ],
               "properties": {
                 "outcome": {
-                  "const": "hold"
+                  "enum": [
+                    "hold",
+                    "escalate_human"
+                  ]
                 }
               }
             }
@@ -1032,7 +1044,10 @@
               ],
               "properties": {
                 "outcome": {
-                  "const": "hold"
+                  "enum": [
+                    "hold",
+                    "escalate_human"
+                  ]
                 }
               }
             }

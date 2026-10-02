@@ -2046,18 +2046,18 @@
     },
     {
       "path": "decision-points/DP-PUBLISH/eval/README.md",
-      "sha256": "5ba584ad41a1ec1a385a2317eb99599326445a9a250e12ea25ec91f1504cf74a",
-      "bytes": 5143
+      "sha256": "05a3bce3ada6e33902b0162232dc66e060f57c0374ca463d5a30648b6bd14cd7",
+      "bytes": 7456
     },
     {
       "path": "decision-points/DP-PUBLISH/eval/adversarial.jsonl",
-      "sha256": "bd13c06b9e2a55810e455fc0fd9562e35edf504e8f8f72528aac9e34dbf3e7ce",
-      "bytes": 26779
+      "sha256": "121f96a5e68470c74e3c28febc396f9a7e372a56ba9a6cb50b1152ff1f9e3eda",
+      "bytes": 28349
     },
     {
       "path": "decision-points/DP-PUBLISH/eval/core.jsonl",
-      "sha256": "dbbaf6f15144093aabecf6ff7b178d1c5b9d60d33b0c450a310f2c706c4e29cb",
-      "bytes": 56877
+      "sha256": "d16908f22eedffd23ca9f631812231bdec363adafdfb44dbe5912b8ed5b752e8",
+      "bytes": 61949
     },
     {
       "path": "decision-points/DP-PUBLISH/eval/thresholds.yaml",
@@ -2066,8 +2066,8 @@
     },
     {
       "path": "decision-points/DP-PUBLISH/examples/cases.json",
-      "sha256": "ecbd45d5ac14fa0154735009c4985f53ca535b1dcdc41e2865de424c62ec9c6d",
-      "bytes": 24966
+      "sha256": "62cad4e3f3ce6e8a062a3e69e5f96e088bf21bacc7a354518dae69cb45be8c20",
+      "bytes": 22728
     },
     {
       "path": "decision-points/DP-PUBLISH/pack-section.yaml",
@@ -2076,13 +2076,13 @@
     },
     {
       "path": "decision-points/DP-PUBLISH/prompt.md",
-      "sha256": "ec936b43ff7558e759a3603ae21c02efc4eb861650bf5ebcd03b425ed51c0572",
-      "bytes": 6733
+      "sha256": "1461b6cdead11f364ecd013b70a68b7bb772d54a160fda86bf385b3fe770046a",
+      "bytes": 7387
     },
     {
       "path": "decision-points/DP-PUBLISH/schema.json",
-      "sha256": "1c17a9b4149e4e92e1efa6df137e76428b1c36175753d4f44dccfbaa4a716cb3",
-      "bytes": 26083
+      "sha256": "ea06520b67b55d355e7027751709ddd07f6cc53083ee10babc8597f9b7e884ba",
+      "bytes": 27145
     },
     {
       "path": "decision-points/DP-RERESOLUTION/eval/README.md",
@@ -2375,5 +2375,5 @@
       "bytes": 17486
     }
   ],
-  "pack_hash": "76bd6870eed1fc23554bc3a3a92b526abab187576cd2fcf4506b5f89b9f524d6"
+  "pack_hash": "578836837d72639fe3a061b7ef6a804abf69f9549e7490042021302e1ee183fc"
 }
