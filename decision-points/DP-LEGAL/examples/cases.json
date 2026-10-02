@@ -1,7 +1,7 @@
 [
   {
     "id": "ex-LEGL-01",
-    "input": "text: The bus shelter on Canal Quay has had a broken roof for two months and nobody replies.",
+    "input": "text: The bus shelter on Canal Quay has had a broken roof for two months and nobody replies.\nlegal_stack: not_applicable",
     "expected_outcome": "publish",
     "rule_ids": [],
     "note": "no signal",
@@ -14,7 +14,7 @@
   },
   {
     "id": "ex-LEGL-02",
-    "input": "text: This level of neglect on the pavement is criminal, honestly.",
+    "input": "text: This level of neglect on the pavement is criminal, honestly.\nlegal_stack: not_applicable",
     "expected_outcome": "publish",
     "rule_ids": [],
     "note": "boundary: figure of speech",
@@ -26,7 +26,7 @@
   },
   {
     "id": "ex-LEGL-03",
-    "input": "text: The bylaw says bins go out by 7 in the morning, but the truck comes at noon.",
+    "input": "text: The bylaw says bins go out by 7 in the morning, but the truck comes at noon.\nlegal_stack: not_applicable",
     "expected_outcome": "publish",
     "rule_ids": [],
     "note": "boundary: names a rule as part of a public problem",
@@ -38,7 +38,7 @@
   },
   {
     "id": "ex-LEGL-04",
-    "input": "text: I have received a court notice asking me to hand over the records of this platform about [PERSON_1]. It is dated this week.",
+    "input": "text: I have received a court notice asking me to hand over the records of this platform about [PERSON_1]. It is dated this week.\nlegal_stack: not_applicable",
     "expected_outcome": "escalate_human",
     "rule_ids": [
       "LEGAL-LANE-1"
@@ -53,7 +53,7 @@
   },
   {
     "id": "ex-LEGL-05",
-    "input": "text: A police officer asked me to give them the names of the people who commented on the Harbour Road problem.",
+    "input": "text: A police officer asked me to give them the names of the people who commented on the Harbour Road problem.\nlegal_stack: not_applicable",
     "expected_outcome": "escalate_human",
     "rule_ids": [
       "LEGAL-LANE-1"
@@ -67,7 +67,7 @@
   },
   {
     "id": "ex-LEGL-06",
-    "input": "text: I want the platform to tell me who [PERSON_1] really is so my lawyer can send them a letter.",
+    "input": "text: I want the platform to tell me who [PERSON_1] really is so my lawyer can send them a letter.\nlegal_stack: not_applicable",
     "expected_outcome": "escalate_human",
     "rule_ids": [
       "LEGAL-LANE-1"
@@ -81,7 +81,7 @@
   },
   {
     "id": "ex-LEGL-07",
-    "input": "text: My solicitor says this post is defamation and I must send it to your legal office.",
+    "input": "text: My solicitor says this post is defamation and I must send it to your legal office.\nlegal_stack: not_applicable",
     "expected_outcome": "escalate_human",
     "rule_ids": [
       "LEGAL-LANE-1"
@@ -95,7 +95,7 @@
   },
   {
     "id": "ex-LEGL-08",
-    "input": "text: Can I sue the council for the damage the pothole did to my wheel?",
+    "input": "text: Can I sue the council for the damage the pothole did to my wheel?\nlegal_stack: not_applicable",
     "expected_outcome": "hold",
     "rule_ids": [],
     "note": "individual legal advice request: not the legal lane; the intake check offers fiktiva-ombudsman or fiktiva-help-line",
@@ -108,7 +108,7 @@
   },
   {
     "id": "ex-LEGL-09",
-    "input": "text: My lawyer told me to put this here but I do not know why.",
+    "input": "text: My lawyer told me to put this here but I do not know why.\nlegal_stack: not_applicable",
     "expected_outcome": "hold",
     "rule_ids": [
       "LEGAL-LANE-1"
@@ -374,7 +374,7 @@
           "finding": "none_found"
         }
       ],
-      "conflict_note": "L1 bars a general ban on assembly while L3 ties Old Square assembly to the warden's discretionary permit. Whether the refusal is a legal matter for the lane is unclear. Held and queued as a policy question."
+      "conflict_note": "Layer L1 article L1/fiktiva/rights/art-3 and layer L3 article L3/fiktiva/constitution/art-7 read differently for this item. Held and queued as a policy question (OQ-legal-layer-conflicts)."
     }
   },
   {

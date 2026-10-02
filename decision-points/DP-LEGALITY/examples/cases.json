@@ -1,7 +1,7 @@
 [
   {
     "id": "ex-LGTY-01",
-    "input": "stage_option: Replace the failed lamp drivers on the Birch Quarter ring road with a standard LED set.\ntopic: street-lighting\nstated_office: Head of Road Works\ncheck_date: 2026-09-20",
+    "input": "stage_option: Replace the failed lamp drivers on the Birch Quarter ring road with a standard LED set.\ntopic: street-lighting\nstated_office: Head of Road Works\ncheck_date: 2026-09-20\nlegal_stack: not_applicable",
     "expected_outcome": "publish",
     "rule_ids": [
       "LEGAL-GATE-1",
@@ -17,7 +17,7 @@
   },
   {
     "id": "ex-LGTY-02",
-    "input": "stage_option: Ask the Head of Parks to add two benches near the east gate of Quarry Park.\ntopic: public-parks\nstated_office: Head of Parks\ncheck_date: 2026-09-15",
+    "input": "stage_option: Ask the Head of Parks to add two benches near the east gate of Quarry Park.\ntopic: public-parks\nstated_office: Head of Parks\ncheck_date: 2026-09-15\nlegal_stack: not_applicable",
     "expected_outcome": "publish",
     "rule_ids": [
       "LEGAL-GATE-1"
@@ -31,7 +31,7 @@
   },
   {
     "id": "ex-LGTY-03",
-    "input": "stage_option: Ask the council to review the opening hours set by the bin collection bylaw.\ntopic: waste-collection\nstated_office: Head of Waste Services\ncheck_date: 2026-09-28",
+    "input": "stage_option: Ask the council to review the opening hours set by the bin collection bylaw.\ntopic: waste-collection\nstated_office: Head of Waste Services\ncheck_date: 2026-09-28\nlegal_stack: not_applicable",
     "expected_outcome": "publish",
     "rule_ids": [
       "LEGAL-GATE-1",
@@ -46,7 +46,7 @@
   },
   {
     "id": "ex-LGTY-04",
-    "input": "stage_option: Move the Line 12 night service stop to the Mill Street corner.\ntopic: bus-timetables\nstated_office: Head of Parks\ncheck_date: 2026-09-22",
+    "input": "stage_option: Move the Line 12 night service stop to the Mill Street corner.\ntopic: bus-timetables\nstated_office: Head of Parks\ncheck_date: 2026-09-22\nlegal_stack: not_applicable",
     "expected_outcome": "needs_revision",
     "rule_ids": [
       "LEGAL-GATE-1",
@@ -62,7 +62,7 @@
   },
   {
     "id": "ex-LGTY-05",
-    "input": "stage_option: Fit a new crossing signal at the school gate.\ntopic: road-repair\nstated_office: none stated\ncheck_date: 2026-09-25",
+    "input": "stage_option: Fit a new crossing signal at the school gate.\ntopic: road-repair\nstated_office: none stated\ncheck_date: 2026-09-25\nlegal_stack: not_applicable",
     "expected_outcome": "needs_revision",
     "rule_ids": [
       "LEGAL-GATE-1",
@@ -78,7 +78,7 @@
   },
   {
     "id": "ex-LGTY-06",
-    "input": "stage_option: Publish the home addresses of residents who filed complaints so neighbours can contact them.\ntopic: public-parks\nstated_office: Head of Parks\ncheck_date: 2026-09-21",
+    "input": "stage_option: Publish the home addresses of residents who filed complaints so neighbours can contact them.\ntopic: public-parks\nstated_office: Head of Parks\ncheck_date: 2026-09-21\nlegal_stack: not_applicable",
     "expected_outcome": "reject",
     "rule_ids": [
       "LEGAL-GATE-1"
@@ -93,7 +93,7 @@
   },
   {
     "id": "ex-LGTY-07",
-    "input": "stage_option: Serve the school meal programme only to children of one named faith.\ntopic: school-meals\nstated_office: Head of Education Services\ncheck_date: 2026-09-23",
+    "input": "stage_option: Serve the school meal programme only to children of one named faith.\ntopic: school-meals\nstated_office: Head of Education Services\ncheck_date: 2026-09-23\nlegal_stack: not_applicable",
     "expected_outcome": "reject",
     "rule_ids": [
       "LEGAL-GATE-1"
@@ -107,7 +107,7 @@
   },
   {
     "id": "ex-LGTY-08",
-    "input": "stage_option: Close the inner lane of Harbour Road for a bike lane starting next week.\ntopic: road-repair\nstated_office: Head of Road Works\ncheck_date: 2026-09-24\nlegal_note: the council order for lane closures has not been issued yet",
+    "input": "stage_option: Close the inner lane of Harbour Road for a bike lane starting next week.\ntopic: road-repair\nstated_office: Head of Road Works\ncheck_date: 2026-09-24\nlegal_note: the council order for lane closures has not been issued yet\nlegal_stack: not_applicable",
     "expected_outcome": "hold",
     "rule_ids": [
       "LEGAL-GATE-1"
@@ -125,7 +125,7 @@
   },
   {
     "id": "ex-LGTY-09",
-    "input": "stage_option: Do the thing as discussed last time.\ntopic: unknown\nstated_office: unknown\ncheck_date: 2026-09-26",
+    "input": "stage_option: Do the thing as discussed last time.\ntopic: unknown\nstated_office: unknown\ncheck_date: 2026-09-26\nlegal_stack: not_applicable",
     "expected_outcome": "hold",
     "rule_ids": [
       "LEGAL-GATE-1"
@@ -188,12 +188,12 @@
         }
       ],
       "stuck_payload": {
-        "blocking_constraint": "Lantern drones may not fly over an open market at the union layer.",
+        "blocking_constraint": "Use restriction at L2 (article L2/fiktiva/union/art-4).",
         "source_ref": "LEGAL-STACK-1, fiktiva-union@0.1.0+254d205f7f55",
         "blocked_actions": [
           "fly lantern drones over the Canal Market"
         ],
-        "recheck_condition": "Recheck if the union rule on lantern drones changes.",
+        "recheck_condition": "Recheck when article L2/fiktiva/union/art-4 is amended, an exemption is issued, or the option changes.",
         "layer": "L2",
         "article_id": "L2/fiktiva/union/art-4",
         "corpus_version": "fiktiva-union@0.1.0+254d205f7f55"
@@ -252,12 +252,12 @@
         }
       ],
       "stuck_payload": {
-        "blocking_constraint": "A road closure over thirty days needs a ministerial road order.",
+        "blocking_constraint": "Use restriction at L4 (article L4/fiktiva/statutes/art-6).",
         "source_ref": "LEGAL-STACK-1, fiktiva-statutes@0.1.0+e858abcd9128",
         "blocked_actions": [
           "close the Dock Road lane for 60 days"
         ],
-        "recheck_condition": "Recheck when a ministerial road order is issued.",
+        "recheck_condition": "Recheck when article L4/fiktiva/statutes/art-6 is amended, an exemption is issued, or the option changes.",
         "layer": "L4",
         "article_id": "L4/fiktiva/statutes/art-6",
         "corpus_version": "fiktiva-statutes@0.1.0+e858abcd9128"
@@ -315,12 +315,12 @@
         }
       ],
       "stuck_payload": {
-        "blocking_constraint": "A street stall needs a stall permit from the Head of Markets.",
+        "blocking_constraint": "Use restriction at L6 (article L6/fiktiva/bylaws/art-3).",
         "source_ref": "LEGAL-STACK-1, fiktiva-bylaws@0.1.0+6803ee8410e7",
         "blocked_actions": [
           "run permit-free stalls in Quarry Park"
         ],
-        "recheck_condition": "Recheck if the stall permit rule changes or a permit is granted.",
+        "recheck_condition": "Recheck when article L6/fiktiva/bylaws/art-3 is amended, an exemption is issued, or the option changes.",
         "layer": "L6",
         "article_id": "L6/fiktiva/bylaws/art-3",
         "corpus_version": "fiktiva-bylaws@0.1.0+6803ee8410e7"
@@ -378,12 +378,12 @@
         }
       ],
       "stuck_payload": {
-        "blocking_constraint": "Road money may not be spent on waterways.",
+        "blocking_constraint": "Use restriction at L3 (article L3/fiktiva/constitution/art-12).",
         "source_ref": "LEGAL-STACK-1, fiktiva-constitution@0.1.0+aefd9bacd67b",
         "blocked_actions": [
           "fund the Reed Landing steps from the road budget"
         ],
-        "recheck_condition": "Recheck if another funding source is named or the rule changes.",
+        "recheck_condition": "Recheck when article L3/fiktiva/constitution/art-12 is amended, an exemption is issued, or the option changes.",
         "layer": "L3",
         "article_id": "L3/fiktiva/constitution/art-12",
         "corpus_version": "fiktiva-constitution@0.1.0+aefd9bacd67b"
@@ -442,12 +442,12 @@
         }
       ],
       "stuck_payload": {
-        "blocking_constraint": "The union layer bars lantern drones over an open market; the city layer cannot relax it.",
+        "blocking_constraint": "Use restriction at L2 (article L2/fiktiva/union/art-4).",
         "source_ref": "LEGAL-STACK-1, fiktiva-union@0.1.0+254d205f7f55",
         "blocked_actions": [
           "fly lantern drones over the Canal Market, even on a festival day"
         ],
-        "recheck_condition": "Recheck if the union rule on lantern drones changes.",
+        "recheck_condition": "Recheck when article L2/fiktiva/union/art-4 is amended, an exemption is issued, or the option changes.",
         "layer": "L2",
         "article_id": "L2/fiktiva/union/art-4",
         "corpus_version": "fiktiva-union@0.1.0+254d205f7f55"
@@ -612,7 +612,7 @@
           "finding": "none_found"
         }
       ],
-      "conflict_note": "L1 allows limits only as far as needed and bars a general ban; L3 makes every Old Square assembly depend on a permit at the warden's discretion. It is unclear which reading prevails for a standing vigil. Held and queued as a policy question."
+      "conflict_note": "Layer L1 article L1/fiktiva/rights/art-3 and layer L3 article L3/fiktiva/constitution/art-7 read differently for this item. Held and queued as a policy question (OQ-legal-layer-conflicts)."
     }
   },
   {
