@@ -46,6 +46,7 @@ const cases = [
   ["publish with a hold_reason", { ...pub, hold_reason: "cannot_decide" }, false],
   ["unmet item without a gap", { ...nr, per_criterion: [m("c-1"), { criterion_ref: "c-2", met: false, evidence_ids: [], hint: "h" }] }, false],
   ["unmet item without a hint", { ...nr, per_criterion: [m("c-1"), { criterion_ref: "c-2", met: false, evidence_ids: [], gap: "not_addressed" }] }, false],
+  ["unmet item may cite the evidence it judged (allowed by design, see schema \)", { ...nr, per_criterion: [m("c-1"), u("c-2", { evidence_ids: ["e-1"], gap: "off_topic" })] }, true],
   ["unknown gap", { ...nr, per_criterion: [u("c-1", { gap: "vibes" })] }, false],
   ["needs_revision all met and gate ok", { ...nr, per_criterion: [m("c-1"), m("c-2")] }, false],
   ["needs_revision without per_criterion and gate ok", { ...nr, per_criterion: undefined }, false],

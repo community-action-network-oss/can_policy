@@ -1,9 +1,9 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { cpSync, mkdtempSync, mkdirSync, writeFileSync, readFileSync, rmSync, existsSync } from "node:fs";
+import { readdirSync, cpSync, mkdtempSync, mkdirSync, writeFileSync, readFileSync, rmSync, existsSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { lintDp } from "../tools/lint-dp.mjs";
+import { lintDp, templateErrors } from "../tools/lint-dp.mjs";
 import { newDp } from "../tools/new-dp.mjs";
 import { promptHash } from "../tools/prompt-hash.mjs";
 
@@ -105,7 +105,7 @@ test("thresholds floor for a non-outcome", () => fails(edit("eval/thresholds.yam
 test("prompt hash ignores the data block and CRLF, and changes with the template", () => {
   const a = readFileSync(join(REPO, "decision-points/_template/prompt.md"), "utf8");
   assert.equal(promptHash(a), promptHash(a.replaceAll("\n", "\r\n")));
-  assert.equal(promptHash(a), promptHash(a.replace("(field text after redaction is inserted here by the server)", "any data")));
+  assert.equal(promptHash(a), promptHash(a.replace("(the labelled lines is inserted here by the server)", "any data")));
   assert.notEqual(promptHash(a), promptHash(a.replace("ROLE", "ROLE2")));
   assert.match(promptHash(a), /^[0-9a-f]{64}$/);
   assert.throws(() => promptHash("no block"), /no <<<DATA marker/);
@@ -114,4 +114,11 @@ test("prompt hash ignores the data block and CRLF, and changes with the template
 test("DP-STAGE is retired: no such directory and no STAGE-1 rule id remain", () => {
   assert.ok(!existsSync(join(REPO, "decision-points/DP-STAGE")), "decision-points/DP-STAGE must not exist (use DP-STAGE-RESOLUTION and DP-STAGE-PLAN)");
   for (const p of ["packs/base/rules.yaml", "packs/constitution/rules.yaml"]) assert.ok(!/^- id: STAGE-1\s*$/m.test(readFileSync(join(REPO, p), "utf8")), `${p} must not define STAGE-1`);
+});
+
+test("every DP prompt.md, ASSIST-FILL and _template satisfy the can_server prompt-builder template contract", () => {
+  for (const d of readdirSync(join(REPO, "decision-points"), { withFileTypes: true }).filter((d) => d.isDirectory())) {
+    assert.deepEqual(templateErrors(readFileSync(join(REPO, "decision-points", d.name, "prompt.md"), "utf8")), [], d.name);
+  }
+  assert.ok(templateErrors("<<<DATA field=x\n(field text after redaction is inserted here by the server)\nDATA>>>\n{{RULES}}").length);
 });

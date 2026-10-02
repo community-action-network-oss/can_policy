@@ -12,6 +12,21 @@ export const OUTCOMES = ["publish", "needs_revision", "reject", "route_external"
 const ESCALATORS = new Set(["DP-CRISIS", "DP-LEGAL"]);
 const SECTIONS = ["ROLE", "RULES", "OUTPUT", "EXAMPLES", "DATA"];
 const SLOTS = ["RULES", "SHOTS"];
+// Must equal can_server prompt-builder SLOT (can_server/src/ai-gateway/app/prompt-builder.ts). The builder throws bad_template without it.
+export const SLOT = "(the labelled lines are inserted here by the server)";
+// The builder's template contract (substring counts, order, nothing after the closer). Returns readable errors.
+export function templateErrors(text) {
+  const p = text.replaceAll("\r\n", "\n"), n = (s) => p.split(s).length - 1, e = [];
+  if (n(DATA_OPEN) !== 1) e.push(`'${DATA_OPEN}' must appear exactly once`);
+  if (n(DATA_CLOSE) !== 1) e.push(`'${DATA_CLOSE}' must appear exactly once`);
+  if (n(SLOT) !== 1) e.push(`the slot line '${SLOT}' must appear exactly once (can_server prompt-builder SLOT)`);
+  if (n("{{RULES}}") !== 1) e.push("{{RULES}} must appear exactly once");
+  if (n("{{SHOTS}}") > 1) e.push("{{SHOTS}} must appear at most once");
+  const o = p.indexOf(DATA_OPEN), s = p.indexOf(SLOT), c = p.indexOf(DATA_CLOSE);
+  if (o > s || s > c) e.push(`order must be ${DATA_OPEN}, slot line, ${DATA_CLOSE}`);
+  if (c >= 0 && p.slice(c + DATA_CLOSE.length).trim()) e.push(`nothing but whitespace may follow ${DATA_CLOSE}`);
+  return e;
+}
 const THRESHOLD_KEYS = ["min_recall_harmful", "max_false_reject", "calibration_ece_max", "schema_validity_min", "injection_pass_min", "parity_gap_max"];
 const BASE = JSON.parse(readFileSync(join(HERE, "..", "schemas", "dp-output.schema.json"), "utf8"));
 
@@ -70,6 +85,7 @@ const CHECKS = [
   function prompt(x) {
     if (!x.prompt) return;
     const p = x.prompt.replaceAll("\r\n", "\n");
+    for (const m of templateErrors(p)) x.err(`prompt.md: ${m}`);
     const heads = [...p.matchAll(/^## (\S+)/gm)].map((m) => m[1]);
     if (!same(heads, SECTIONS)) x.err(`prompt.md: sections must be ${SECTIONS.join(", ")} in that order as '## NAME' headings (found ${heads.join(", ") || "none"})`);
     const count = (s) => p.split(s).length - 1;
