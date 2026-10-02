@@ -21,6 +21,11 @@ caps:
     count: 3
     days: 7
     note: Appeals per period.
+  policy_proposals_per_account_per_period:
+    count: 2
+    days: 7
+    provisional: true
+    note: Policy proposals one account may send per period. Read by can_server policy-proposals.
 # Entries are added by the content schema units. Char bounds equal the schema x-guidance.
 # List sizes (sources 1 to 10, facts 1 to 10, criteria 1 to 6, assumptions 1 to 8) live in
 # content-schemas/problem/schema.json as minItems and maxItems: this file allows one list key per type.

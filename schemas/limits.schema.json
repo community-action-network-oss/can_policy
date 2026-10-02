@@ -19,7 +19,8 @@
         },
         "proposals_per_account_per_problem": { "$ref": "#/$defs/intLeaf" },
         "open_drafts_per_account": { "$ref": "#/$defs/intLeaf" },
-        "appeals_per_account_per_period": { "$ref": "#/$defs/window" }
+        "appeals_per_account_per_period": { "$ref": "#/$defs/window" },
+        "policy_proposals_per_account_per_period": { "$ref": "#/$defs/window" }
       }
     },
     "fields": {
