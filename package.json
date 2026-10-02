@@ -12,6 +12,7 @@
     "eval": "node tools/eval.mjs",
     "replay": "node tools/replay.mjs",
     "build:pack": "node tools/build-pack.mjs",
+    "legal:ingest": "node tools/legal-ingest.mjs",
     "parity": "node tools/rules-parity.mjs",
     "export:fixture": "node tools/export-fixture.mjs",
     "new-dp": "node tools/new-dp.mjs"

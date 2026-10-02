@@ -57,3 +57,32 @@ Open a PR that adds or edits the vendored source, the articles, the topic index 
 ## What a reviewer signs
 
 A review record is `review/<date>.md` with frontmatter `reviewer`, `qualification` (the reviewer's qualification for this jurisdiction), `scope` (articles or layers covered), `date`. It states that the articles match the official source at the stated version. Only then may `reviewed: true` and `status: ratified` be set.
+
+## Ingest tool (tools/legal-ingest.mjs, 10-u42)
+
+`node tools/legal-ingest.mjs <corpus-dir>` (or `npm run legal:ingest -- <corpus-dir>`) turns the vendored official file into `articles/*.md`, a `corpus.yaml` skeleton and a draft `topic-index.json`. It has no network code and no model, and it refuses any URL argument. `--check` writes nothing and fails when the tree differs from what the source produces (an edited source, an edited or stale article, a moved `content_hash`). Re-running on an unchanged tree changes no byte.
+
+The corpus dir must sit at `packs/legal/<L#-name>/<jurisdiction>/<corpus...>`; layer, jurisdiction, corpus id and article ids come from that path.
+
+### Vendoring procedure (a human, or an interactive session with network)
+
+1. Download the official file from the official publisher. Do not edit it, do not use a translation as the authority.
+2. Save it as `sources/<file>` in the corpus dir.
+3. Write `sources/source.yaml` and record the retrieval date and the file's `sha256` in it (`shasum -a 256 <file>`). Commit both before running the tool.
+4. Run the tool, review the output, add `topics.seed.yaml` if wanted, run `npm run build:pack` and `npm run verify`.
+
+### sources/source.yaml
+
+Required: `file` (path inside `sources/`), `format` (`txt` or `html`), `instrument`, `version`, `effective_from`, `official_publisher`, `source_url`, `retrieval_date`, `license`, and `split`. The tool refuses to run when publisher, URL, retrieval date or license is missing; these are copied, never invented. Optional: `sha256` (checked against the file), `effective_to`, `mode`, `translations`, `fictional`.
+
+`split` holds `heading` (regex tested on each line, article headings), `number_group` (capture group holding the article number, default 1), `chapter` (optional regex; a chapter line ends the previous article and is not copied into any article, its first group is recorded in `source_locator`), and `language`.
+
+### What the tool does and does not change
+
+- Text before the first heading and chapter lines belong to no article. Every article body is the source text from its heading line up to the next heading or chapter line, with CRLF read as LF and nothing else changed.
+- `html`: scripts, styles and comments are dropped, block tags become line breaks, other tags are removed, entities are decoded. HTML whitespace rules apply (runs of spaces collapse, blank lines vanish). Words are never touched.
+- `article_key` is `art-` plus the lowercased number. A duplicated key, or no heading match, stops the run.
+- `source_locator` is `sources/<file>[, chapter <c>], bytes <from>-<to>` of the LF text (for html, of the extracted text).
+- Written once and then kept: `corpus.yaml` (later runs move only `content_hash`) and `pack.yaml`. A new `corpus.yaml` is `status: draft`, `reviewed: false`, `reviewer: none`.
+- Draft topic index: `topics` come from whole word, case-insensitive matches of `topics.seed.yaml` (`topics: {topic-id: [words]}`) against the article text; everything else is empty and `topic_ban` is `false`. The tool never decides a ban. The file `topic-index.draft.yaml` marks the index as a draft (the index is a JSON array and cannot carry the flag). A lawyer approves it (LEGAL-CORPUS-1) and deletes the marker; from then on the tool never rewrites `topic-index.json`.
+- Fixtures: `test/fixtures/legal-source` holds a fictional txt and html source, invented for tests.

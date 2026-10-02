@@ -1,0 +1,15 @@
+# FICTIONAL test source: nothing here is real law.
+file: fiktiva-code.html
+format: html
+instrument: Fiktiva City code, html edition (invented for tests)
+official_publisher: City of Fiktiva (fictional)
+source_url: https://example.invalid/fiktiva/code.html
+retrieval_date: 2026-10-03
+license: CC0-1.0 (invented text)
+version: 0.1.0
+effective_from: 2026-01-01
+fictional: true
+split:
+  heading: '^Article (\d+)\b'
+  chapter: '^CHAPTER (\S+)'
+  language: en
