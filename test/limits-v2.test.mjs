@@ -26,7 +26,7 @@ test("new keys exist with the documented defaults", () => {
   assert.deepEqual([S.debounce_trailing_seconds.seconds, S.idle_typing_seconds.seconds, v(S.max_runs_per_hour_per_draft), v(S.stage_draft_expiry_days)], [5, 1.5, 6, 30]);
   assert.ok(v(S.run_budget_micro_usd) > 0);
   assert.deepEqual([v(L.review.quorum_completed_reviews), v(L.review.recommendation_open_max_days), v(L.review.publish_anyway_after_days)], [3, 7, 14]);
-  assert.equal(v(L.stage.auto_start_default), false);
+  assert.equal(v(L.stage.auto_start_default), true);
   const C = L.location;
   assert.deepEqual([v(C.k_min_cells), v(C.h3_resolution), C.challenge_ttl_seconds.seconds, v(C.history_ttl_hours)], [25, 8, 120, 24]);
 });

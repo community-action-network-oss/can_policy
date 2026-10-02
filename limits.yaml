@@ -457,7 +457,7 @@ review:
     note: Days after which the poster may publish without a quorum.
 stage:
   auto_start_default:
-    value: false
+    value: true
     provisional: true
     note: Whether a stage starts by itself when the previous one ends.
 # Location check (docs/design/location/attestation.md). Only the label and three coarse fields are stored,
