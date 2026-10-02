@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "can_policy/migration-map.schema.json",
+  "title": "Migration map: how a draft moves from one major schema version to the next",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["type", "from", "to", "fields", "new_required", "dropped"],
+  "properties": {
+    "type": { "type": "string", "pattern": "^[a-z][a-z0-9_.]*$" },
+    "from": { "$ref": "#/$defs/semver" },
+    "to": { "$ref": "#/$defs/semver" },
+    "fields": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["from_path", "to_path", "transform", "note"],
+        "properties": {
+          "from_path": { "$ref": "#/$defs/path" },
+          "to_path": { "type": "string", "maxLength": 200, "description": "empty when transform is drop" },
+          "transform": { "enum": ["copy", "split", "merge", "drop"] },
+          "note": { "type": "string", "maxLength": 300 }
+        }
+      }
+    },
+    "new_required": { "type": "array", "items": { "$ref": "#/$defs/path" } },
+    "dropped": { "type": "array", "items": { "$ref": "#/$defs/path" } }
+  },
+  "$defs": {
+    "semver": { "type": "string", "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)$" },
+    "path": { "type": "string", "minLength": 1, "maxLength": 200 }
+  }
+}

@@ -25,6 +25,46 @@
       "bytes": 5721
     },
     {
+      "path": "content-schemas/appeal/examples/invalid-evidence-url-not-http.json",
+      "sha256": "283d89b1c939ce7a3d8ce9b1e984884fc0e6e1725f5b02feea58da772914d262",
+      "bytes": 225
+    },
+    {
+      "path": "content-schemas/appeal/examples/invalid-extra-field.json",
+      "sha256": "ceb63eef13988292736dbb2a7fedc3a33cc5419757c81243d6c9ce0475badb28",
+      "bytes": 191
+    },
+    {
+      "path": "content-schemas/appeal/examples/invalid-missing-decision-ref.json",
+      "sha256": "f813d3fd2cd0e8b7865f27444d0083331af919050964bfc6ac3a8372cb131ad3",
+      "bytes": 127
+    },
+    {
+      "path": "content-schemas/appeal/examples/invalid-rule-id-not-an-id.json",
+      "sha256": "beaba5f4009892c23cb57719acd1d9a7e730b83735d441a72969e44bb4ea2299",
+      "bytes": 202
+    },
+    {
+      "path": "content-schemas/appeal/examples/valid-full.json",
+      "sha256": "9dcbb17d7a529edc9533f6b0642fe60d27e626139febf9bd62d00404ce275246",
+      "bytes": 482
+    },
+    {
+      "path": "content-schemas/appeal/examples/valid-minimal.json",
+      "sha256": "b6c73ee8c546973198e5a3011224e9fc4f29fad558d64c8264e00f81ea98cd77",
+      "bytes": 191
+    },
+    {
+      "path": "content-schemas/appeal/messages.en.json",
+      "sha256": "2aa9533ddd9e6c5108b1b0607687995aab26f67f5e0b1880df0cc1fe828ed740",
+      "bytes": 1568
+    },
+    {
+      "path": "content-schemas/appeal/schema.json",
+      "sha256": "808256000f90fc7f9438096739356282a4a676ce2dc4f3ff7c74cfc70a73174f",
+      "bytes": 5002
+    },
+    {
       "path": "content-schemas/contribution.clarifying_question/examples/invalid-basis-not-allowed.json",
       "sha256": "9def028e07c2f548327e4c69fa2b55c69a459de4a9bbf271cb15cc246cdc72ca",
       "bytes": 642
@@ -700,6 +740,51 @@
       "bytes": 11271
     },
     {
+      "path": "content-schemas/policy_proposal/examples/invalid-example-is-raw-text.json",
+      "sha256": "a81c61632cc56448900da29ada66b855a41cb77b5f351e3e4e6cd7fb26efb706",
+      "bytes": 728
+    },
+    {
+      "path": "content-schemas/policy_proposal/examples/invalid-missing-rollback-plan.json",
+      "sha256": "14157978e87c9d097e22ea133e2f8a8224f654dc1b1db89cdb69b9dec6546922",
+      "bytes": 669
+    },
+    {
+      "path": "content-schemas/policy_proposal/examples/invalid-no-motivating-examples.json",
+      "sha256": "24b0aef6f5be465b3b70b36cf5e93eea7354ea357d540cd7b1042e3ac229c611",
+      "bytes": 686
+    },
+    {
+      "path": "content-schemas/policy_proposal/examples/invalid-protected-core-not-acknowledged.json",
+      "sha256": "a9ba099d6e68ed975e0945804dc56d6d296bb09c3f89d7d66a990ddafe6deec1",
+      "bytes": 729
+    },
+    {
+      "path": "content-schemas/policy_proposal/examples/invalid-rule-id-not-an-id.json",
+      "sha256": "59964eb475f3fb4a7c0dfe1d577d1699f07731fad660d307d3e5e20b91e26272",
+      "bytes": 725
+    },
+    {
+      "path": "content-schemas/policy_proposal/examples/valid-full.json",
+      "sha256": "66c85a6882c98e78a2bae40bd553256ec0efa6ae47e0241aae98cc0a157e891d",
+      "bytes": 844
+    },
+    {
+      "path": "content-schemas/policy_proposal/examples/valid-minimal.json",
+      "sha256": "d98df179fb592a1a85f0b818fa017f261af861a5937901c388e7c3e5a7985bda",
+      "bytes": 698
+    },
+    {
+      "path": "content-schemas/policy_proposal/messages.en.json",
+      "sha256": "81f37a91eb133c6bd7a7797b14ee259c2e30dbf67c4dd7b9e8a0126b7673c025",
+      "bytes": 3023
+    },
+    {
+      "path": "content-schemas/policy_proposal/schema.json",
+      "sha256": "87823d163370f92f8d0ad858002ee2b863f998bdb2c2e982e39d558147cfcde2",
+      "bytes": 9771
+    },
+    {
       "path": "content-schemas/problem/examples/guidance-index.json",
       "sha256": "0baa0a8a498c75f2a11ba2f038307bbaa1cd9139a2b54963155ba57f665debd9",
       "bytes": 838
@@ -955,5 +1040,5 @@
       "bytes": 17486
     }
   ],
-  "pack_hash": "556b49f95e6589f6438c89e4ad6fc4e605c70f026a3c12a82d2137459a317139"
+  "pack_hash": "254a57067a51ab6474fd38c85a551f4cf830e86904916f77b2fe3de908c57d2d"
 }

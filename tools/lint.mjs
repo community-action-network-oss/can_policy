@@ -21,6 +21,9 @@ const contentAjv = new Ajv2020({ strict: true, strictTypes: false });
 ["version", "pack", "x-ui", "x-guidance", "x-checks", "x-version"].forEach((keyword) => contentAjv.addKeyword({ keyword }));
 
 const limitsV = ajv.compile(loadSchema("limits.schema.json"));
+const mapV = ajv.compile(loadSchema("migration-map.schema.json"));
+const semverOf = (v) => v.split(".").map(Number);
+const cmpSemver = (a, b) => { const [x, y] = [semverOf(a), semverOf(b)]; return x[0] - y[0] || x[1] - y[1] || x[2] - y[2]; };
 
 const fmt = (errs) => errs.map((e) => `${e.instancePath || "/"} ${e.message}`).join("; ");
 const dirs = (root, rel) => (existsSync(join(root, rel)) ? readdirSync(join(root, rel), { withFileTypes: true }).filter((d) => d.isDirectory() && !d.name.startsWith(".")) : []);
@@ -70,6 +73,32 @@ export function lint(root) {
     if (!metaV(s)) { err(`${rel}: fails content schema meta check: ${fmt(metaV.errors)}`); continue; }
     // "id" is the schema name here, not a legacy $id
     try { contentAjv.compile(Object.fromEntries(Object.entries(s).filter(([k]) => k !== "id"))); } catch (e) { err(`${rel}: not a valid JSON Schema 2020-12 (${e.message})`); }
+  }
+
+  // 3a. versioned schemas: versions/<semver>.schema.json holds retired ones, diff against the highest
+  for (const d of dirs(root, "content-schemas")) {
+    const base = `content-schemas/${d.name}`;
+    if (!existsSync(join(root, base, "versions")) || !existsSync(join(root, base, "schema.json"))) continue;
+    const cur = readJson(`${base}/schema.json`);
+    const olds = readdirSync(join(root, base, "versions")).map((f) => f.match(/^(\d+\.\d+\.\d+)\.schema\.json$/)?.[1]).filter(Boolean).sort(cmpSemver);
+    if (!cur || !olds.length) continue;
+    const prevV = olds[olds.length - 1], prev = readJson(`${base}/versions/${prevV}.schema.json`);
+    if (!prev) continue;
+    if (cmpSemver(cur.version, prevV) <= 0) { err(`${base}/schema.json: version ${cur.version} is not higher than retired ${prevV}`); continue; }
+    const [a, b] = [new Set(prev.required ?? []), new Set(cur.required ?? [])];
+    const added = [...b].filter((x) => !a.has(x)), removed = [...a].filter((x) => !b.has(x));
+    if (semverOf(cur.version)[0] === semverOf(prevV)[0]) {
+      if (added.length || removed.length) err(`${base}/schema.json: ${prevV} to ${cur.version} changes the required set (${[...added, ...removed].join(", ")}); that needs a major bump`);
+      continue;
+    }
+    const mrel = `${base}/migrations/${prevV}-to-${cur.version}.json`;
+    if (!existsSync(join(root, mrel))) { err(`${base}: major bump ${prevV} to ${cur.version} needs ${mrel}`); continue; }
+    const m = readJson(mrel);
+    if (!m) continue;
+    if (!mapV(m)) { err(`${mrel}: fails migration map schema: ${fmt(mapV.errors)}`); continue; }
+    if (m.type !== d.name || m.from !== prevV || m.to !== cur.version) err(`${mrel}: type, from and to must be ${d.name}, ${prevV}, ${cur.version}`);
+    for (const x of added) if (!m.new_required.includes(x)) err(`${mrel}: new required field '${x}' is missing from new_required`);
+    for (const x of removed) if (!m.dropped.includes(x)) err(`${mrel}: removed required field '${x}' is missing from dropped`);
   }
 
   // 3b. limits.yaml: schema, min <= max, and agreement with content schema x-guidance
