@@ -7,6 +7,7 @@ import { fileURLToPath } from "node:url";
 import { discoverPacks, walk } from "./pack-hash.mjs";
 import { checkAll } from "./build-pack.mjs";
 import { lintDp } from "./lint-dp.mjs";
+import { lintSchemas } from "./lint-schemas.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const SCHEMAS = join(HERE, "..", "schemas");
@@ -129,6 +130,10 @@ export function lint(root, notes = []) {
       }
     }
   }
+
+  // 3c. content schema completability (tools/lint-schemas.mjs)
+  // Same gate as 2a: fixtures without the _template scaffold are older minimal trees.
+  if (existsSync(join(root, "decision-points", "_template"))) errors.push(...lintSchemas(root, notes));
 
   // 4. size and banned characters (fixtures are inputs of the tests, not repo content)
   for (const f of walk(root)) {

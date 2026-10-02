@@ -1,0 +1,33 @@
+{
+  "_note": "Contract with the app renderer (can_app/src/forms/schema/model.ts KNOWN). renderer: the app renders these. pending: schemas use them but the app does not render them yet; the lint reports them as a note. Add a widget to the renderer list only after the app renders it. A widget in neither list fails lint unless the property is optional and marked x-ui.fallback \"text\".",
+  "renderer": {
+    "text": ["string"],
+    "textarea": ["string"],
+    "url": ["string"],
+    "date": ["string"],
+    "ref": ["string"],
+    "taxonomy_pick": ["string", "array"],
+    "select": ["string", "number", "boolean"],
+    "toggle": ["boolean"],
+    "checkbox": ["boolean"],
+    "list": ["array"],
+    "group": ["object"],
+    "readonly": ["string", "number", "boolean", "object", "array"],
+    "hidden": ["string", "number", "boolean", "object", "array"],
+    "stage_plan": ["array"],
+    "area_picker": ["object"]
+  },
+  "pending": {
+    "evidence_url": ["string"],
+    "number": ["number", "integer"],
+    "decision_ref": ["string"],
+    "rule_id_list": ["array"],
+    "stage_ref": ["string"],
+    "criterion_ref": ["string", "integer"],
+    "legal_gate": ["object"],
+    "acknowledgement": ["boolean", "object"],
+    "slug_list": ["array"],
+    "path_picker": ["string", "object"],
+    "cost_estimate": ["object"]
+  }
+}
