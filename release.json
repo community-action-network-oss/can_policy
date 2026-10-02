@@ -3,16 +3,16 @@
   "packs": [
     {
       "name": "base",
-      "pack_hash": "8398c5dc099ae582a3c2f490064257c801cd7c9fb083a59f682d09a308f8ece0"
+      "pack_hash": "0ca0218db34d79c58f7da25d60ea09f2c8e649a1c51ad4edc48b573a78ebe13c"
     },
     {
       "name": "constitution",
-      "pack_hash": "16e0ea72c1b7b32d0b08a44bff40732c87b9f9d4f76a88bf4ed4ab40f778b83b"
+      "pack_hash": "1928f4f8dd1ed9f1c5469ecde526f7e670b842637b0760a1a1faaf006a34ae1d"
     },
     {
       "name": "fiktiva-city",
-      "pack_hash": "718b40ebf08fd438b75794707cb9bab988ebe929f452a154ee20848976ea5adf"
+      "pack_hash": "fe992137a525d9991c4339322dd6c66c039809e5ff1a0df2ae472876d13320a2"
     }
   ],
-  "released_at": "2026-10-02T11:46:51.001Z"
+  "released_at": "2026-10-02T11:50:14.217Z"
 }

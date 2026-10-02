@@ -110,3 +110,8 @@ test("prompt hash ignores the data block and CRLF, and changes with the template
   assert.match(promptHash(a), /^[0-9a-f]{64}$/);
   assert.throws(() => promptHash("no block"), /no <<<DATA marker/);
 });
+
+test("DP-STAGE is retired: no such directory and no STAGE-1 rule id remain", () => {
+  assert.ok(!existsSync(join(REPO, "decision-points/DP-STAGE")), "decision-points/DP-STAGE must not exist (use DP-STAGE-RESOLUTION and DP-STAGE-PLAN)");
+  for (const p of ["packs/base/rules.yaml", "packs/constitution/rules.yaml"]) assert.ok(!/^- id: STAGE-1\s*$/m.test(readFileSync(join(REPO, p), "utf8")), `${p} must not define STAGE-1`);
+});
