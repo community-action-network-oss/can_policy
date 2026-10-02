@@ -1,0 +1,34 @@
+{
+  "pack": "nl-amsterdam-bylaws",
+  "version": "0.1.0",
+  "layer": "legal",
+  "parent": null,
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "a573220f3fe1f9623551a8d5b1977905acb59ac14ba881fd0a02750793dbf8b8",
+      "bytes": 232
+    },
+    {
+      "path": "corpus.yaml",
+      "sha256": "4435ceaa0ce8e36a358cde9243e7120b1594b2439296caa0a073e4c3d0e45942",
+      "bytes": 556
+    },
+    {
+      "path": "index.yaml",
+      "sha256": "857c61766f2fcbfa0222ea0b8321ab86ae527a49566d841914223a4409fbb5b4",
+      "bytes": 914
+    },
+    {
+      "path": "pack.yaml",
+      "sha256": "20a8d53d8d3cd09a923175c307521bc40ad61453315bc2e8cf4020cc0b4ee263",
+      "bytes": 135
+    },
+    {
+      "path": "review/PENDING.md",
+      "sha256": "725fe2a2e07a55966dceec464802ee570c0b804026d6fb4d7caee51719984c07",
+      "bytes": 346
+    }
+  ],
+  "pack_hash": "9a2ae679b76b6f7e8c104b135d90574bb4bcf1653772f7b2e1a5ba02a9b62f9f"
+}

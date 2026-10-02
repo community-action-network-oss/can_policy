@@ -1,0 +1,4 @@
+# Provincial rules for Noord-Holland: empty at start; filled only if a seed needs it.
+# Loader rule: an index_only corpus never produces an article citation. Retrieval reports
+# "no applicable article found in L5 (version)", which is a recorded fact, not a pass.
+entries: []

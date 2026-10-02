@@ -1,0 +1,23 @@
+# Index of Amsterdam municipal bylaws to be vendored. It lists topic areas only and states no legal rule.
+# Every identifier is TODO on purpose: the vendor unit or a reviewer fills them from the official publisher.
+# Loader rule: an index_only corpus never produces an article citation. Retrieval reports
+# "no applicable article found in L6 (version)", which is a recorded fact, not a pass.
+entries:
+  - topic_area: public-order
+    bylaw: TODO
+    official_url: TODO
+    why_relevant: Local public order rules relevant to seed 1.
+    seed: 1
+    vendor_status: pending
+  - topic_area: public-space
+    bylaw: TODO
+    official_url: TODO
+    why_relevant: Use of public space, relevant to both seeds.
+    seed: null
+    vendor_status: pending
+  - topic_area: waste
+    bylaw: TODO
+    official_url: TODO
+    why_relevant: Local waste and littering rules relevant to seed 2.
+    seed: 2
+    vendor_status: pending

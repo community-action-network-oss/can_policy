@@ -1,0 +1,34 @@
+{
+  "pack": "nl-noord-holland",
+  "version": "0.1.0",
+  "layer": "legal",
+  "parent": null,
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "d50884f518b8ed76f0960be3427490199d75e8afd2994aa8bc73e050963284e5",
+      "bytes": 236
+    },
+    {
+      "path": "corpus.yaml",
+      "sha256": "92b95d002c1ec8dacd70760e6abe848b74bf3bd5685a9922c752901b755a7116",
+      "bytes": 643
+    },
+    {
+      "path": "index.yaml",
+      "sha256": "99a75648a0587889b42935b4c9469930c86eabe2b4fbee8c7290c5a52e2255d6",
+      "bytes": 275
+    },
+    {
+      "path": "pack.yaml",
+      "sha256": "2080ef5e2d70f34ac7c42676e6ab2dac909966aa34373df84ef6a571a793dc91",
+      "bytes": 122
+    },
+    {
+      "path": "review/PENDING.md",
+      "sha256": "725fe2a2e07a55966dceec464802ee570c0b804026d6fb4d7caee51719984c07",
+      "bytes": 346
+    }
+  ],
+  "pack_hash": "e299b986587e901e9be1eaab7e8a598d0e8e14e1ea930bfd42af52596a3370e0"
+}

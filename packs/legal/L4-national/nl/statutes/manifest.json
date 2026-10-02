@@ -1,0 +1,34 @@
+{
+  "pack": "nl-statutes",
+  "version": "0.1.0",
+  "layer": "legal",
+  "parent": null,
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "002004696c7554477dd5b01e63aef9115858352ec75da15afc3e5ad6858777c7",
+      "bytes": 276
+    },
+    {
+      "path": "corpus.yaml",
+      "sha256": "ef3b928712ec3568c0399abf849d757f88d86b6d8d1d4d0f3ebd563cb1c12764",
+      "bytes": 540
+    },
+    {
+      "path": "index.yaml",
+      "sha256": "c7d51a04661ef4a523b428024026a021195ad2fea6ea6968eaa25cb6bda4d010",
+      "bytes": 1720
+    },
+    {
+      "path": "pack.yaml",
+      "sha256": "655050812a546d30313aa56422512c416d0080ce0bea2537e7413b1cabebc32b",
+      "bytes": 117
+    },
+    {
+      "path": "review/PENDING.md",
+      "sha256": "725fe2a2e07a55966dceec464802ee570c0b804026d6fb4d7caee51719984c07",
+      "bytes": 346
+    }
+  ],
+  "pack_hash": "a81a14382ce9dd48c3a99d7f420a0182f98016dfef099af4b19f49cdd94a8edf"
+}

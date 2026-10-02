@@ -1,0 +1,47 @@
+# Index of national statutes to be vendored for the seed topics. It lists topic areas only and states no legal rule.
+# Every identifier is TODO on purpose: the vendor unit or a reviewer fills them from the official publisher.
+# Loader rule: an index_only corpus never produces an article citation. Retrieval reports
+# "no applicable article found in L4 (version)", which is a recorded fact, not a pass.
+entries:
+  - topic_area: public-order
+    statute: TODO
+    official_url: TODO
+    why_relevant: Public order problems in seed 1.
+    seed: 1
+    vendor_status: pending
+  - topic_area: criminal-procedure
+    statute: TODO
+    official_url: TODO
+    why_relevant: Limits on what a platform may ask police or prosecutors to do, seed 1.
+    seed: 1
+    vendor_status: pending
+  - topic_area: explosives-and-weapons
+    statute: TODO
+    official_url: TODO
+    why_relevant: Fireworks, explosives and weapons problems in seed 1.
+    seed: 1
+    vendor_status: pending
+  - topic_area: waste
+    statute: TODO
+    official_url: TODO
+    why_relevant: Waste handling problems in seed 2.
+    seed: 2
+    vendor_status: pending
+  - topic_area: littering-enforcement
+    statute: TODO
+    official_url: TODO
+    why_relevant: Enforcement against littering in seed 2.
+    seed: 2
+    vendor_status: pending
+  - topic_area: environmental-management
+    statute: TODO
+    official_url: TODO
+    why_relevant: Environmental management problems in seed 2.
+    seed: 2
+    vendor_status: pending
+  - topic_area: data-protection-implementation
+    statute: TODO
+    official_url: TODO
+    why_relevant: National implementation of data protection for reports, evidence and moderation records.
+    seed: null
+    vendor_status: pending

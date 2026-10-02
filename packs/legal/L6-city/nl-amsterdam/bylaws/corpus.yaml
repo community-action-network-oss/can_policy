@@ -1,0 +1,17 @@
+id: nl-amsterdam-bylaws
+layer: L6
+jurisdiction: nl-amsterdam
+instrument: amsterdam-bylaws-index
+official_publisher: "TODO: municipal regulation publisher for Amsterdam, to be confirmed by the vendor unit"
+source_url: https://lokaleregelgeving.overheid.nl/
+retrieval_date: 2026-10-03
+version: 0.1.0
+effective_from: 2026-10-03
+effective_to: null
+language: nl
+license: "n/a: index only, no legal text is vendored"
+content_hash: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+mode: binding
+status: index_only
+reviewed: false
+reviewer: none
