@@ -1,0 +1,16 @@
+# FICTIONAL source: nothing here is real law.
+file: rights.txt
+format: txt
+instrument: Fiktiva rights charter (invented)
+official_publisher: "Invented publisher of the synthetic Fiktiva test world"
+source_url: https://example.org/fiktiva/rights
+retrieval_date: 2026-10-03
+license: "CC0-1.0 (invented text of a fictional world)"
+version: 0.1.0
+effective_from: 2026-10-03
+mode: reference
+fictional: true
+split:
+  heading: '^Article (\d+)\b'
+  number_group: 1
+  language: en

@@ -6,12 +6,27 @@
   "files": [
     {
       "path": "README.md",
-      "sha256": "1e0b0db0ab948c3f90a6ebdb8790e3d07b504b60acaefc4bbf93f92a286be703",
-      "bytes": 155
+      "sha256": "487509a779eaf814aff8a8c2419d6ef7decc719f9bbd2a481fcd4b2efd3d4e5a",
+      "bytes": 220
+    },
+    {
+      "path": "articles/art-10.md",
+      "sha256": "4846b8880a7ff1e04fb8e3fe11149b30ed625d77d1ede5d71eb0646a29825a91",
+      "bytes": 392
+    },
+    {
+      "path": "articles/art-14.md",
+      "sha256": "36372e4d1bdd1131d00845dac021431f5456bc22ee7c3a5d94a6aa6b152167f0",
+      "bytes": 407
+    },
+    {
+      "path": "articles/art-6.md",
+      "sha256": "a63d6680682bd834609d58e0f67ed4cc5adcd2b611a7000b6b7c5f4b27899b8d",
+      "bytes": 380
     },
     {
       "path": "corpus.yaml",
-      "sha256": "ab8e42ee035d09dfbec2a7990a2973ce2811f7eaa2ba8091fdf75f4d74136856",
+      "sha256": "9b5f1d6dcfd924aa472f2df2ad7206f52f3ab4ba506fb6fb4fd6a59558833aa7",
       "bytes": 535
     },
     {
@@ -28,7 +43,27 @@
       "path": "review/PENDING.md",
       "sha256": "e2fcc1a91d4feb05fab26d28d545a6a75aa5c86e131612093b79a3b55e4dd7a6",
       "bytes": 152
+    },
+    {
+      "path": "sources/source.yaml",
+      "sha256": "91116d10506e573c08d2662b8068cf1ba20b22c7cff6c45d115ea5a28bd445cb",
+      "bytes": 468
+    },
+    {
+      "path": "sources/statutes.txt",
+      "sha256": "17ae450f7c4b337ff8bed803cbbb53033b9a2e2b3e0262fb495c65e3e401038e",
+      "bytes": 494
+    },
+    {
+      "path": "topic-index.draft.yaml",
+      "sha256": "2798385d53c4fa6c0d008792fc65a1f84b786ff9c86a39c9031161741607bb19",
+      "bytes": 214
+    },
+    {
+      "path": "topic-index.json",
+      "sha256": "25ceb605b5a5397b57b002a7cc39b66f0db8c08fa172d7e05cb222536349fe64",
+      "bytes": 569
     }
   ],
-  "pack_hash": "f45fed24ee803c81c210fe01c38cc3f861f1cf9f9e4a608101b0e15a9defe73e"
+  "pack_hash": "e858abcd9128eddfeed3f295058300e9028ca47e389afd41a6d97bfca3078073"
 }

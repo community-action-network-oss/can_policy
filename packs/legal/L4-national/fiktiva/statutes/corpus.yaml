@@ -1,7 +1,7 @@
 id: fiktiva-statutes
 layer: L4
 jurisdiction: fiktiva
-instrument: fiktiva-statutes-index
+instrument: Fiktiva statutes (invented)
 official_publisher: "Invented publisher of the synthetic Fiktiva test world"
 source_url: https://example.org/fiktiva/statutes
 retrieval_date: 2026-10-03
@@ -9,8 +9,8 @@ version: 0.1.0
 effective_from: 2026-10-03
 effective_to: null
 language: en
-license: "n/a: synthetic index only, no legal text exists"
-content_hash: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+license: "CC0-1.0 (invented text of a fictional world)"
+content_hash: 645cfaadabb9f568f26d7d51e3326c1492ffe3c8133bc1e137bb5e944b63420a
 mode: binding
 status: index_only
 reviewed: false

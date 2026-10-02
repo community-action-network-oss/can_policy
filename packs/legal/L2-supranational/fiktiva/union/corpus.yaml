@@ -1,7 +1,7 @@
 id: fiktiva-union
 layer: L2
 jurisdiction: fiktiva
-instrument: fiktiva-union-index
+instrument: Fiktiva union (invented)
 official_publisher: "Invented publisher of the synthetic Fiktiva test world"
 source_url: https://example.org/fiktiva/union
 retrieval_date: 2026-10-03
@@ -9,8 +9,8 @@ version: 0.1.0
 effective_from: 2026-10-03
 effective_to: null
 language: en
-license: "n/a: synthetic index only, no legal text exists"
-content_hash: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+license: "CC0-1.0 (invented text of a fictional world)"
+content_hash: e5671d3b4b0d8769e9e20c73612f52973a7b2250a83db2456b74fd563f171033
 mode: binding
 status: index_only
 reviewed: false

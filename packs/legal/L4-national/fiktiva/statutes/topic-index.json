@@ -1,0 +1,29 @@
+[
+  {
+    "article_id": "L4/fiktiva/statutes/art-10",
+    "topics": [],
+    "actors": [],
+    "actions": [],
+    "constraint_kinds": [],
+    "always_for_dps": [],
+    "topic_ban": false
+  },
+  {
+    "article_id": "L4/fiktiva/statutes/art-14",
+    "topics": [],
+    "actors": [],
+    "actions": [],
+    "constraint_kinds": [],
+    "always_for_dps": [],
+    "topic_ban": false
+  },
+  {
+    "article_id": "L4/fiktiva/statutes/art-6",
+    "topics": [],
+    "actors": [],
+    "actions": [],
+    "constraint_kinds": [],
+    "always_for_dps": [],
+    "topic_ban": false
+  }
+]

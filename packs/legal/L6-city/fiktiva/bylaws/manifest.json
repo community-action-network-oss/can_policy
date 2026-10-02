@@ -6,12 +6,32 @@
   "files": [
     {
       "path": "README.md",
-      "sha256": "1e0b0db0ab948c3f90a6ebdb8790e3d07b504b60acaefc4bbf93f92a286be703",
-      "bytes": 155
+      "sha256": "487509a779eaf814aff8a8c2419d6ef7decc719f9bbd2a481fcd4b2efd3d4e5a",
+      "bytes": 220
+    },
+    {
+      "path": "articles/art-3.md",
+      "sha256": "08148f8ed623068832299eba836ad5ed82cf40d96de92b5fa0fcba213cc2fdf7",
+      "bytes": 349
+    },
+    {
+      "path": "articles/art-5.md",
+      "sha256": "5e6571a7108130a4fc7095747a9f11f171a9e31e430399911615d745eadbd850",
+      "bytes": 355
+    },
+    {
+      "path": "articles/art-8.md",
+      "sha256": "765e2c628a3e98f179ed729d6e7feee4020e44dd9dd9d7e6fb17223c380a7c13",
+      "bytes": 355
+    },
+    {
+      "path": "articles/art-9.md",
+      "sha256": "3aeb8808ff30fbffef6ab76f7cbc484c9d54579d47b64127b847e7c385623bf8",
+      "bytes": 330
     },
     {
       "path": "corpus.yaml",
-      "sha256": "24a20d5f5441a9aefbd44e9c4c6b07c9072a013c9de188425ca2276a2a9ef031",
+      "sha256": "2879b2ef57c795221174133f4daa0f1709936e7eb8ba654ce9089691bd745c93",
       "bytes": 529
     },
     {
@@ -28,7 +48,27 @@
       "path": "review/PENDING.md",
       "sha256": "e2fcc1a91d4feb05fab26d28d545a6a75aa5c86e131612093b79a3b55e4dd7a6",
       "bytes": 152
+    },
+    {
+      "path": "sources/bylaws.txt",
+      "sha256": "0a11debc941fd9d80aa5863bf739a513589cb697e201d3d613326cfcf444215a",
+      "bytes": 473
+    },
+    {
+      "path": "sources/source.yaml",
+      "sha256": "5d0b8b14de5cdd5b4f943729f59c7541bcfbcab7d6c29ba49150f84b8fed9267",
+      "bytes": 467
+    },
+    {
+      "path": "topic-index.draft.yaml",
+      "sha256": "2798385d53c4fa6c0d008792fc65a1f84b786ff9c86a39c9031161741607bb19",
+      "bytes": 214
+    },
+    {
+      "path": "topic-index.json",
+      "sha256": "8e3954695d4810be63950723e5eadb73f632a0fa6aaf1bf703bfe6fbdccf8c28",
+      "bytes": 747
     }
   ],
-  "pack_hash": "bb5ed7cb1a6e0cdb01f47b1a6e0813adb04ec57b0fc39c463693fbbb52e1c65f"
+  "pack_hash": "6803ee8410e7ea4401e3fd17fa3fb4e19590fa94636326a483222774999120e4"
 }

@@ -9,35 +9,35 @@ legal_stack:
   - layer: L1
     corpus: fiktiva-rights
     version: 0.1.0
-    pack_hash: 30aaf5ff9e50ec1c54cfa13aa53336f0f5380bfc127caed7c8e7c9a336210503
+    pack_hash: dbc8851045a75427240169bfa60e9021ae870df2809d05e96e208346295d1b63
     mode: reference
   - layer: L2
     corpus: fiktiva-union
     version: 0.1.0
-    pack_hash: 04c4c7b421dcd1722e23be422f21422876cb86198b8780e7f4a3faa3155d8c58
+    pack_hash: 254d205f7f55c1b7442dc7675002ecd6e2fbc3145ecaeac5234284dc7e9e54e8
     mode: binding
     acknowledged_index_only: true
   - layer: L3
     corpus: fiktiva-constitution
     version: 0.1.0
-    pack_hash: 50c0d7c380444ffb949b6faac0a5df6e40d539de51c191090c01db3c2a40d902
+    pack_hash: aefd9bacd67bdaf7597a89738a6a4a7dd31b8786735e51d8f9dd8e570d0fdc7b
     mode: binding
     acknowledged_index_only: true
   - layer: L4
     corpus: fiktiva-statutes
     version: 0.1.0
-    pack_hash: f45fed24ee803c81c210fe01c38cc3f861f1cf9f9e4a608101b0e15a9defe73e
+    pack_hash: e858abcd9128eddfeed3f295058300e9028ca47e389afd41a6d97bfca3078073
     mode: binding
     acknowledged_index_only: true
   - layer: L5
     corpus: fiktiva-region
     version: 0.1.0
-    pack_hash: 3f00ca588d945eee9c9486d6099ba7abf5b51893e35d4d297872cc875e8327f0
+    pack_hash: 996b73b37cf91f89e14533bc4fd34788e87814c5b1a4c3c0d1df98183f734292
     mode: binding
     acknowledged_index_only: true
   - layer: L6
     corpus: fiktiva-bylaws
     version: 0.1.0
-    pack_hash: bb5ed7cb1a6e0cdb01f47b1a6e0813adb04ec57b0fc39c463693fbbb52e1c65f
+    pack_hash: 6803ee8410e7ea4401e3fd17fa3fb4e19590fa94636326a483222774999120e4
     mode: binding
     acknowledged_index_only: true

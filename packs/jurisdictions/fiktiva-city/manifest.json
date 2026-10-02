@@ -15,7 +15,7 @@
     },
     {
       "path": "pack.yaml",
-      "sha256": "98c278c7aba6b2b6fbca572731086f5d7099521b608959fc773ab7cf3cafa5bc",
+      "sha256": "46641c3b36716e1cfec1fcbc01cf3adedf03208b64f7716b1d971e72057bc936",
       "bytes": 1289
     },
     {
@@ -39,5 +39,5 @@
       "bytes": 284
     }
   ],
-  "pack_hash": "0dca85d948dd09adc2c3e83b620f3608ca113bd67fbd7604136b9879b4955419"
+  "pack_hash": "cfbe6a71672fa0b456db286b81ca3959824f342594eab73a014f3fb4b72d53de"
 }

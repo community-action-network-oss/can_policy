@@ -1,0 +1,18 @@
+id: fiktiva-harbor-bylaws
+layer: L6
+jurisdiction: fiktiva
+instrument: Fiktiva Harbor bylaws (invented)
+official_publisher: Invented publisher of the synthetic Fiktiva test world
+source_url: https://example.org/fiktiva/harbor-bylaws
+retrieval_date: 2026-10-03
+version: 0.1.0
+effective_from: 2026-10-03
+effective_to: null
+language: en
+license: "CC0-1.0 (invented text of a fictional world)"
+content_hash: 0fa6c9f961481908fada8207a157862f83ce5c5fbb9539486b2a81529b8092f0
+mode: binding
+status: index_only
+reviewed: false
+reviewer: none
+fictional: true

@@ -1,0 +1,1 @@
+> UNREVIEWED STUB. Invented text of the Fiktiva test world: every article is made up for tests, states no law and must never be cited as law. status stays index_only because no lawyer exists to review an invented world.
