@@ -1,5 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { cpSync, mkdtempSync, readFileSync, writeFileSync, existsSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -50,4 +51,36 @@ test("exported tree reloads to the manifest hash, parents chain, amsterdam is op
   }
   assert.ok(!existsSync(join(out, "nl-amsterdam@1.0.0")));
   assert.equal(exportFixture(REPO, mkdtempSync(join(tmpdir(), "can-exp-")), { withAmsterdam: true }).length, 4);
+});
+
+// Independent re-implementation of can_server src/policy/domain/hash.ts (D-83), over the exported dir only.
+function serverHash(dir, parent) {
+  const sha = (b) => createHash("sha256").update(b).digest("hex");
+  const hashed = (p) => {
+    const parts = p.split("/");
+    if (parts.some((s) => s.startsWith("."))) return false;
+    if (parts.length === 1) return !["manifest.json", "release.json", "CHANGELOG.md"].includes(p);
+    return !["ratifications", "ci", "tools", "test", "node_modules"].includes(parts[0]);
+  };
+  const lines = walk(dir).filter(hashed).sort((a, b) => Buffer.compare(Buffer.from(a), Buffer.from(b))).map((p) => {
+    let b = readFileSync(join(dir, p));
+    if (/\.(json|ya?ml|md|txt)$/.test(p)) b = Buffer.from(b.toString("utf8").replace(/\r\n/g, "\n"), "utf8");
+    return `${p}\t${sha(b)}`;
+  });
+  return sha(["parent:" + (parent ?? "none"), ...lines].join("\n"));
+}
+
+test("source manifest hash == exported manifest hash == server re-implementation", () => {
+  const r = exportFixture(REPO, mkdtempSync(join(tmpdir(), "can-exp-")));
+  let parent = null;
+  for (const x of r) {
+    const src = buildAll(REPO).outputs.find((o) => o.data.pack === x.name).data.pack_hash;
+    const committed = JSON.parse(readFileSync(join(REPO, x.name === "base" || x.name === "constitution" ? `packs/${x.name}` : `packs/jurisdictions/${x.name}`, "manifest.json"), "utf8")).pack_hash;
+    const exported = JSON.parse(readFileSync(join(x.dir, "manifest.json"), "utf8")).pack_hash;
+    const server = serverHash(x.dir, parent);
+    assert.deepEqual([src, committed, exported], [server, server, server], x.name);
+    parent = server;
+  }
+  const rel = JSON.parse(readFileSync(join(REPO, "release.json"), "utf8"));
+  assert.deepEqual(rel.packs.filter((p) => p.name !== "nl-amsterdam").map((p) => p.pack_hash), r.map((x) => x.pack_hash));
 });

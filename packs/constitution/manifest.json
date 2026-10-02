@@ -5,19 +5,19 @@
   "parent": {
     "name": "base",
     "version": "1.0.0",
-    "pack_hash": "37e8654edf4a9febf8a6d6f53f1e330400df74ed71d3b1da9c368bd4fb3aca33"
+    "pack_hash": "cca80d2c4c75576bd0f58e74119616ff57bd729b9d09645ebe0227ff347a4cdd"
   },
   "files": [
     {
-      "path": "packs/constitution/pack.yaml",
+      "path": "pack.yaml",
       "sha256": "fa7749c03cb0a2b54bb482ec9d1bfb2e893c3c66691f5df00c9e2c4035ce7ddd",
       "bytes": 114
     },
     {
-      "path": "packs/constitution/rules.yaml",
+      "path": "rules.yaml",
       "sha256": "54c3d38c78173c5ba256f1d9e70920d4447a42cad7ce1fd2c7c196f9c0819ffd",
       "bytes": 13763
     }
   ],
-  "pack_hash": "c4e2be49c242eb5f07cd9a3ab09a54e54a8c01824310b71d153c8c9566e5ccbb"
+  "pack_hash": "bc5371db3af32e1705caa64c80cbe3cd5423ce8256ab838ab34532df0629f5c3"
 }

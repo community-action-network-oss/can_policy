@@ -11,7 +11,7 @@ Source packs live unversioned in `packs/<name>/`. A release is a directory per p
 ```
 <dir>/<name>@<semver>/
   pack.yaml            name, version, layer, parent as name@semver
-  manifest.json        pack_hash equal to the hash the server computes
+  manifest.json        pack_hash, copied from the source manifest; equals the server hash
   rules.yaml           own rules (base, constitution, overlays)
   limits.yaml          base only today
   content-schemas/     base only: <type>/schema.json, messages.en.json
@@ -21,11 +21,9 @@ Source packs live unversioned in `packs/<name>/`. A release is a directory per p
 
 Paths in the directory are relative to the pack, not to the repo. The server hashes every file in the directory except `manifest.json`, `release.json`, `CHANGELOG.md`, `ratifications/**`, `ci`, `tools`, `test`, `node_modules` and dotfiles, so nothing else may be placed in it. The server needs only `pack.yaml` and `manifest.json`; the other files are read when present.
 
-## Two hashes
+## One hash
 
-The `manifest.json` under `packs/**` and `release.json` use repo-relative paths (`packs/base/rules.yaml`). The exported `manifest.json` uses pack-relative paths (`rules.yaml`), so its `pack_hash` is a different value. The server pins the exported one. The exporter prints it; take the pin from there, never from `release.json`.
-
-Open: `tools/lint-ratifications.mjs` compares a record's `pack_hash` with the source manifest, while the server compares it with the exported hash. A record must carry the exported hash to load, so 10-u28 needs either a lint change or one shared path form.
+Every pack has one `pack_hash` (D-83). Paths are relative to the pack, as the server sees the exported `<name>@<semver>/` directory (`rules.yaml`, `content-schemas/...`). The source `packs/**/manifest.json`, `release.json`, the exported `manifest.json` and ratification records all carry it. The exporter copies the source manifest and fails if the exported directory re-hashes to a different value. `tools/lint-ratifications.mjs` compares a record with this same hash.
 
 ## Cutting a tag (after ratification only)
 

@@ -77,8 +77,13 @@ export function packHash(entries, parentPackHash = null) {
   return sha256(lines.join("\n"));
 }
 
+// Canonical form (D-83): paths are relative to the pack dir, as can_server sees the exported <name>@<semver>/ dir.
+// Files outside pack.dir (base extras such as content-schemas/) keep their path, which is where the exporter puts them.
 export function canonicalManifest(root, pack, parentPackHash = null) {
-  const files = fileEntries(root, pack.files);
+  const pre = pack.dir ? pack.dir + "/" : null;
+  const files = fileEntries(root, pack.files)
+    .map((e) => ({ ...e, path: pre && e.path.startsWith(pre) ? e.path.slice(pre.length) : e.path }))
+    .sort((a, b) => Buffer.compare(Buffer.from(a.path), Buffer.from(b.path)));
   return { files, pack_hash: packHash(files, parentPackHash) };
 }
 

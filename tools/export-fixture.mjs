@@ -1,6 +1,6 @@
 // Writes the released layout can_server reads: <out>/<name>@<semver>/ per pack (D-82).
-// Paths inside a released dir are pack-relative, so the pack_hash written here is the SERVER hash,
-// not the source hash in packs/**/manifest.json (those use repo-relative paths).
+// Source manifests already carry the canonical pack-relative hash (D-83), so the manifest is copied, not recomputed.
+// The exported dir is re-hashed as a check.
 import { mkdirSync, writeFileSync, copyFileSync, existsSync, readdirSync, readFileSync, rmSync } from "node:fs";
 import { join, resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -35,10 +35,12 @@ export function exportFixture(root, out, { withAmsterdam = false } = {}) {
       parent = done.get(y.parent);
       if (!parent) throw new Error(`${y.name}: parent ${y.parent} is not in this export`);
     }
+    const m = JSON.parse(readFileSync(join(root, p.dir, "manifest.json"), "utf8"));
     const rels = walk(dest).filter((f) => isHashed(`p/${f}`, "p"));
-    const { files: entries, pack_hash } = canonicalManifest(dest, { files: rels }, parent?.pack_hash ?? null);
-    const parentRef = y.parent ? { name: y.parent.split("@")[0], version: y.parent.split("@")[1], pack_hash: parent.pack_hash } : null;
-    writeFileSync(join(dest, "manifest.json"), json({ pack: y.name, version: y.version, layer: y.layer, parent: parentRef, files: entries, pack_hash }));
+    const again = canonicalManifest(dest, { files: rels }, parent?.pack_hash ?? null).pack_hash;
+    if (again !== m.pack_hash) throw new Error(`${y.name}: exported dir hashes to ${again}, source manifest says ${m.pack_hash}; run npm run build:pack`);
+    writeFileSync(join(dest, "manifest.json"), json(m));
+    const pack_hash = m.pack_hash;
     done.set(`${y.name}@${y.version}`, { pack_hash });
     result.push({ name: y.name, version: y.version, dir: dest, pack_hash, policy_version: policyVersion(y.name, y.version, pack_hash) });
   }

@@ -5,14 +5,14 @@
   "parent": {
     "name": "constitution",
     "version": "0.1.0",
-    "pack_hash": "9070fd78a547ded893f1ac12bdf1fcdc4f62b0fe6a66d3c1f692f8d24603e019"
+    "pack_hash": "3e319841888fe81b2ce5ed8be6a2adad92b7b9b6ca0cb979fbb8520c52e45912"
   },
   "files": [
     {
-      "path": "packs/jurisdictions/fiktiva-city/pack.yaml",
+      "path": "pack.yaml",
       "sha256": "8b035828dc520aac981e41afd56ca3a79b4fa1ce11384970f21501bd457ecdb0",
       "bytes": 149
     }
   ],
-  "pack_hash": "e6142740211cb97d912ed638256441e574f72384ac4366128b339e2ab8df722e"
+  "pack_hash": "d400b9e26eba00909c4c7034dbb7c1dc192a0d9297d011b53fbba841bacb525c"
 }

@@ -5,14 +5,14 @@
   "parent": {
     "name": "base",
     "version": "0.1.0",
-    "pack_hash": "a443d50dc689e127c5dbf6b172a84985da532d7fed963dcbbd1f754846db9c80"
+    "pack_hash": "3965b0978b2c4e04979e34bd8cadf6236d0a9be05ee1b85181ce99ab6d43ab6a"
   },
   "files": [
     {
-      "path": "packs/constitution/pack.yaml",
+      "path": "pack.yaml",
       "sha256": "7d8c6cc7701a885108c7c8f0941c29fc0c047d376bdfb6ac56fc8b05bc301354",
       "bytes": 133
     }
   ],
-  "pack_hash": "9070fd78a547ded893f1ac12bdf1fcdc4f62b0fe6a66d3c1f692f8d24603e019"
+  "pack_hash": "3e319841888fe81b2ce5ed8be6a2adad92b7b9b6ca0cb979fbb8520c52e45912"
 }
