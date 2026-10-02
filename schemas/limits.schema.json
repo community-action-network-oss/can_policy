@@ -97,12 +97,18 @@
           }
         }
       }
-    }
+    },
+    "archive": {"type": "object", "additionalProperties": false, "required": ["rank_weights"], "properties": {"rank_weights": {"type": "object", "additionalProperties": false, "required": ["problem_type", "constraints", "resources_budget", "scale", "geography_climate", "institutions", "legal_stack", "language", "note"], "properties": {"problem_type": {"type": "number", "minimum": 0, "maximum": 1}, "constraints": {"type": "number", "minimum": 0, "maximum": 1}, "resources_budget": {"type": "number", "minimum": 0, "maximum": 1}, "scale": {"type": "number", "minimum": 0, "maximum": 1}, "geography_climate": {"type": "number", "minimum": 0, "maximum": 1}, "institutions": {"type": "number", "minimum": 0, "maximum": 1}, "legal_stack": {"type": "number", "minimum": 0, "maximum": 1}, "language": {"type": "number", "minimum": 0, "maximum": 1}, "provisional": {"type": "boolean"}, "note": {"type": "string", "minLength": 1}}}, "completeness_bonus": {"$ref": "#/$defs/unitScore"}, "solved_bonus": {"$ref": "#/$defs/unitScore"}, "derank_factor": {"$ref": "#/$defs/unitScore"}, "min_candidate_score": {"$ref": "#/$defs/unitScore"}, "rrf_k": {"$ref": "#/$defs/posInt"}, "top_k_fusion": {"$ref": "#/$defs/posInt"}, "top_n_shown": {"$ref": "#/$defs/posInt"}, "max_per_source_problem": {"$ref": "#/$defs/posInt"}, "taxonomy": {"$ref": "#/$defs/fileRef"}, "cross_language_recall_floor": {"$ref": "#/$defs/unitScore"}}},
+    "metrics": {"type": "object", "additionalProperties": false, "properties": {"min_n": {"$ref": "#/$defs/posInt"}}},
+    "suggestions": {"type": "object", "additionalProperties": false, "properties": {"debounce_trailing_seconds": {"$ref": "#/$defs/seconds"}, "idle_typing_seconds": {"$ref": "#/$defs/seconds"}, "max_runs_per_hour_per_draft": {"$ref": "#/$defs/posInt"}, "stage_draft_expiry_days": {"$ref": "#/$defs/posInt"}, "run_budget_micro_usd": {"$ref": "#/$defs/posInt"}}},
+    "review": {"type": "object", "additionalProperties": false, "properties": {"quorum_completed_reviews": {"$ref": "#/$defs/posInt"}, "recommendation_open_max_days": {"$ref": "#/$defs/posInt"}, "publish_anyway_after_days": {"$ref": "#/$defs/posInt"}}},
+    "stage": {"type": "object", "additionalProperties": false, "properties": {"auto_start_default": {"$ref": "#/$defs/bool"}}},
+    "location": {"type": "object", "additionalProperties": false, "properties": {"k_min_cells": {"$ref": "#/$defs/posInt"}, "h3_resolution": {"$ref": "#/$defs/posInt"}, "challenge_ttl_seconds": {"$ref": "#/$defs/seconds"}, "rate_per_account_per_area_per_hour": {"$ref": "#/$defs/posInt"}, "rate_per_account_per_day": {"$ref": "#/$defs/posInt"}, "impacted_cap_per_area_per_day": {"$ref": "#/$defs/posInt"}, "surge_new_account_days": {"$ref": "#/$defs/posInt"}, "plausibility_max_speed_kmh": {"$ref": "#/$defs/posInt"}, "history_ttl_hours": {"$ref": "#/$defs/posInt"}}}
   },
   "$defs": {
     "posInt": {
       "type": "object", "additionalProperties": false, "required": ["value", "note"],
-      "properties": { "value": { "type": "integer", "minimum": 1 }, "unit": { "type": "string" }, "provisional": { "type": "boolean" }, "note": { "type": "string", "minLength": 1 } }
+      "properties": { "value": { "type": "integer", "minimum": 1 }, "unit": { "type": "string" }, "provisional": { "type": "boolean" }, "public": { "type": "boolean" }, "note": { "type": "string", "minLength": 1 } }
     },
     "count": { "type": "integer", "minimum": 0 },
     "window": {
@@ -111,11 +117,14 @@
     },
     "seconds": {
       "type": "object", "additionalProperties": false, "required": ["seconds", "note"],
-      "properties": { "seconds": { "$ref": "#/$defs/count" }, "provisional": { "type": "boolean" }, "note": { "type": "string", "minLength": 1 } }
+      "properties": { "seconds": { "type": "number", "minimum": 0 }, "provisional": { "type": "boolean" }, "public": { "type": "boolean" }, "note": { "type": "string", "minLength": 1 } }
     },
     "intLeaf": {
       "type": "object", "additionalProperties": false, "required": ["value", "note"],
       "properties": { "value": { "$ref": "#/$defs/count" }, "unit": { "type": "string" }, "provisional": { "type": "boolean" }, "public": { "type": "boolean" }, "note": { "type": "string", "minLength": 1 } }
-    }
+    },
+    "unitScore": {"type": "object", "additionalProperties": false, "required": ["value", "note"], "properties": {"value": {"type": "number", "minimum": 0, "maximum": 1}, "unit": {"type": "string"}, "provisional": {"type": "boolean"}, "public": {"type": "boolean"}, "note": {"type": "string", "minLength": 1}}},
+    "bool": {"type": "object", "additionalProperties": false, "required": ["value", "note"], "properties": {"value": {"type": "boolean"}, "unit": {"type": "string"}, "provisional": {"type": "boolean"}, "public": {"type": "boolean"}, "note": {"type": "string", "minLength": 1}}},
+    "fileRef": {"type": "object", "additionalProperties": false, "required": ["value", "note"], "properties": {"value": {"type": "string", "pattern": "^[A-Za-z0-9._/-]+$"}, "unit": {"type": "string"}, "provisional": {"type": "boolean"}, "public": {"type": "boolean"}, "note": {"type": "string", "minLength": 1}}}
   }
 }
