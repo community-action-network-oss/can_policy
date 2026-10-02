@@ -1,0 +1,33 @@
+# nl-amsterdam overlay skeleton. Placeholders only: no rule here asserts law.
+# Tier and enforcement are the most cautious values (hold) until 10-u22 fills reviewed content.
+# Every TODO rule must be status: proposed (lint). Source URLs stay the literal TODO.
+rules:
+- id: NL-AMS-COMP-1
+  text: "TODO legal review"
+  status: proposed
+  tier: legal_gate
+  enforcement: hold
+  applies_to: [DP-LEGALITY]
+  table: competence.yaml
+  sources: [national-statute, municipal-competence-descriptions]
+- id: NL-AMS-SAFETY-1
+  text: "TODO legal review"
+  status: proposed
+  tier: legal_gate
+  enforcement: hold
+  applies_to: [DP-LEGALITY]
+  sources: [national-statute, municipal-ordinance]
+- id: NL-AMS-PUBLICSPACE-1
+  text: "TODO legal review"
+  status: proposed
+  tier: legal_gate
+  enforcement: hold
+  applies_to: [DP-LEGALITY]
+  sources: [municipal-ordinance, municipal-competence-descriptions]
+- id: NL-AMS-PRIV-1
+  text: "TODO legal review"
+  status: proposed
+  tier: privacy
+  enforcement: hold
+  applies_to: [DP-NAMING]
+  sources: [national-statute, data-protection-authority-guidance]

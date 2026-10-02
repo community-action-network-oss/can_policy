@@ -1,0 +1,43 @@
+{
+  "pack": "nl-amsterdam",
+  "version": "0.1.0",
+  "layer": "jurisdiction",
+  "parent": {
+    "name": "constitution",
+    "version": "0.1.0",
+    "pack_hash": "465d99338475176a000d49c66d14a96e2e7139d7d2163abd609ce15d96871225"
+  },
+  "files": [
+    {
+      "path": "packs/jurisdictions/nl-amsterdam/competence.yaml",
+      "sha256": "a73a5502df4dceb47f0dda69f22ec01dbdceb7cb6386e0db5c00552a376b6dcc",
+      "bytes": 695
+    },
+    {
+      "path": "packs/jurisdictions/nl-amsterdam/messages.nl.json",
+      "sha256": "2b29107db813b8d06c0a8a5d77cb7d3fab62f28a1af97669adad4e5b59db9bcd",
+      "bytes": 298
+    },
+    {
+      "path": "packs/jurisdictions/nl-amsterdam/pack.yaml",
+      "sha256": "608757791820b4e36b7a311e816f1282547829200b3fe421645c1bbcbfcd5a1e",
+      "bytes": 149
+    },
+    {
+      "path": "packs/jurisdictions/nl-amsterdam/reviewer.yaml",
+      "sha256": "1c78cf00816065228192b9a435276a9483946625ad906b508128878730914479",
+      "bytes": 262
+    },
+    {
+      "path": "packs/jurisdictions/nl-amsterdam/rules.yaml",
+      "sha256": "7b6695e061b55c15993e884aeef10d72055a740984bb89579caa61659376e189",
+      "bytes": 1082
+    },
+    {
+      "path": "packs/jurisdictions/nl-amsterdam/sources.md",
+      "sha256": "a37054bd04f62fa7141e3024768204032f4e80c56264a28116686fa0fb85d43b",
+      "bytes": 646
+    }
+  ],
+  "pack_hash": "aa7fc910c33baf4dc670f9fab395b7f589895c8901623a5f63d0cbdf6bcf2bb4"
+}

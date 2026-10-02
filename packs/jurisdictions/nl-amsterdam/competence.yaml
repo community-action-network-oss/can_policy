@@ -1,0 +1,35 @@
+# Skeleton. Roles only, never a named person. body and source are filled by the legal content unit (10-u22).
+# Example of a role: "the municipal department for public space".
+topics:
+  # seed 1
+  explosives-and-violent-incidents:
+    body: ""
+    source: ""
+  # seed 1
+  public-order:
+    body: ""
+    source: ""
+  # seed 1
+  criminal-investigation-and-prosecution:
+    body: ""
+    source: ""
+  # seed 1
+  civil-liberties:
+    body: ""
+    source: ""
+  # seed 2
+  street-cleaning:
+    body: ""
+    source: ""
+  # seed 2
+  waste-collection:
+    body: ""
+    source: ""
+  # seed 2
+  littering-rule-enforcement:
+    body: ""
+    source: ""
+  # seed 2
+  communications:
+    body: ""
+    source: ""

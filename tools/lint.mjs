@@ -89,6 +89,12 @@ export function lint(root, notes = []) {
         if (r.tier !== prev.tier) err(`${f}: ${r.id} changes the tier (${prev.tier} to ${r.tier})`);
         if (ENF.indexOf(r.enforcement) < ENF.indexOf(prev.enforcement)) err(`${f}: ${r.id} weakens enforcement (${prev.enforcement} to ${r.enforcement})`);
       }
+      // a TODO placeholder rule is never active (10-u21)
+      for (const r of own.rules ?? []) if (/TODO/.test(r.text ?? "") && r.status !== "proposed") err(`${f}: ${r.id} has TODO text so it must be status: proposed`);
+      // reviewed: false (reviewer.yaml, as the pack schema is closed) needs the unreviewed banner and a boolean
+      const rv0 = join(root, p.dir, "reviewer.yaml"), rvy = existsSync(rv0) ? parse(readFileSync(rv0, "utf8")) ?? {} : {};
+      if (rvy.reviewed !== undefined && typeof rvy.reviewed !== "boolean") err(`${p.dir}/reviewer.yaml: reviewed must be true or false`);
+      if (rvy.reviewed === false && !readFileSync(join(root, p.dir, "sources.md"), "utf8").includes("Drafted from public sources by the project. Unreviewed. Use only on synthetic evidence.")) err(`${p.dir}/sources.md: a reviewed: false pack must carry the unreviewed banner`);
       // a fictional overlay must say so in sources.md
       const rv = join(root, p.dir, "reviewer.yaml");
       if (existsSync(rv) && parse(readFileSync(rv, "utf8"))?.fictional === true && !/invented/i.test(existsSync(join(root, p.dir, "sources.md")) ? readFileSync(join(root, p.dir, "sources.md"), "utf8") : "")) err(`${p.dir}/sources.md: a fictional overlay must state that it is invented`);

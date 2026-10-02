@@ -1,0 +1,6 @@
+# The pack schema is closed, so the review marking lives here and is enforced by tools/lint.mjs and tools/lint-ratifications.mjs.
+reviewer: none
+reviewed: false
+blocking: true
+languages: [en, nl]
+open_question: docs/open-questions/OQ-amsterdam-overlay-review.md

@@ -1,0 +1,7 @@
+name: nl-amsterdam
+version: 0.1.0
+layer: jurisdiction
+parent: constitution@0.1.0
+effective_from: 2026-10-02
+jurisdiction: nl-amsterdam
+status: draft

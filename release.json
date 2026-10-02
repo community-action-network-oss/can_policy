@@ -12,7 +12,11 @@
     {
       "name": "fiktiva-city",
       "pack_hash": "f78ccda960d191464a9f0575f29d9ffa1f1b5fbe95da882a7d037859f81edaf8"
+    },
+    {
+      "name": "nl-amsterdam",
+      "pack_hash": "aa7fc910c33baf4dc670f9fab395b7f589895c8901623a5f63d0cbdf6bcf2bb4"
     }
   ],
-  "released_at": "2026-10-02T11:54:27.424Z"
+  "released_at": "2026-10-02T11:55:53.455Z"
 }

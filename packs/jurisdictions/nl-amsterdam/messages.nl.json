@@ -1,0 +1,18 @@
+{
+  "route.competence": {
+    "text": "",
+    "needs_translation": true
+  },
+  "route.safety": {
+    "text": "",
+    "needs_translation": true
+  },
+  "route.public-space": {
+    "text": "",
+    "needs_translation": true
+  },
+  "route.privacy": {
+    "text": "",
+    "needs_translation": true
+  }
+}
