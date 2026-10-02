@@ -1,0 +1,36 @@
+[
+  {
+    "article_id": "L6/fiktiva/bylaws/art-1",
+    "topics": [
+      "public-notice"
+    ],
+    "actors": [
+      "city"
+    ],
+    "actions": [
+      "publish"
+    ],
+    "constraint_kinds": [
+      "procedure"
+    ],
+    "always_for_dps": [],
+    "topic_ban": false
+  },
+  {
+    "article_id": "L6/fiktiva/bylaws/art-2",
+    "topics": [
+      "public-space"
+    ],
+    "actors": [
+      "city"
+    ],
+    "actions": [
+      "gather"
+    ],
+    "constraint_kinds": [
+      "procedure"
+    ],
+    "always_for_dps": [],
+    "topic_ban": false
+  }
+]

@@ -8,7 +8,7 @@
   "properties": {
     "name": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
     "version": { "$ref": "#/$defs/semver" },
-    "layer": { "enum": ["base", "constitution", "jurisdiction", "local"] },
+    "layer": { "enum": ["base", "constitution", "jurisdiction", "local", "legal"] },
     "parent": {
       "anyOf": [
         { "type": "null" },
@@ -26,8 +26,8 @@
     "status": { "enum": ["draft", "ratified"] }
   },
   "allOf": [
-    { "if": { "properties": { "layer": { "const": "base" } } }, "then": { "properties": { "parent": { "type": "null" } } }, "else": { "properties": { "parent": { "not": { "type": "null" } } } } },
-    { "if": { "properties": { "layer": { "enum": ["jurisdiction", "local"] } } }, "then": { "required": ["jurisdiction"] } }
+    { "if": { "properties": { "layer": { "enum": ["base", "legal"] } } }, "then": { "properties": { "parent": { "type": "null" } } }, "else": { "properties": { "parent": { "not": { "type": "null" } } } } },
+    { "if": { "properties": { "layer": { "enum": ["jurisdiction", "local", "legal"] } } }, "then": { "required": ["jurisdiction"] } }
   ],
   "$defs": {
     "semver": { "type": "string", "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(-[0-9A-Za-z.-]+)?$" }

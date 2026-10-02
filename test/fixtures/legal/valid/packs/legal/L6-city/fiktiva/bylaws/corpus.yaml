@@ -1,0 +1,21 @@
+id: fiktiva-bylaws
+layer: L6
+jurisdiction: fiktiva
+instrument: Fiktiva City bylaws (invented for tests)
+official_publisher: City of Fiktiva (fictional)
+source_url: https://example.invalid/fiktiva/bylaws
+retrieval_date: 2026-10-02
+version: 0.1.0
+effective_from: 2026-01-01
+effective_to: null
+language: en
+translations:
+  - language: nl
+    translation: true
+license: CC0-1.0 (invented text)
+content_hash: "f27f28f5841843ce2451ae12d9ef05e59d93f333bbeefb50c12e3b05ecac2859"
+mode: reference
+status: draft
+reviewed: false
+reviewer: none
+fictional: true

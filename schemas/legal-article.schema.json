@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "can_policy/legal-article.schema.json",
+  "title": "articles/<article-key>.md frontmatter (topic_ban is never allowed here)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["article_id", "article_key", "heading", "language", "source_locator", "text_sha256"],
+  "properties": {
+    "article_id": { "type": "string", "pattern": "^L[1-6]/[a-z0-9-]+(/[a-z0-9-]+)+/[a-z0-9][a-z0-9.-]*$" },
+    "article_key": { "type": "string", "pattern": "^[a-z0-9][a-z0-9.-]*$" },
+    "heading": { "type": "string", "minLength": 1 },
+    "language": { "type": "string", "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]+)*$" },
+    "source_locator": { "type": "string", "minLength": 1 },
+    "text_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+  }
+}

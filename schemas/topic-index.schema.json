@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "can_policy/topic-index.schema.json",
+  "title": "topic-index.json",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["article_id", "topics", "actors", "actions", "constraint_kinds", "always_for_dps"],
+    "properties": {
+      "article_id": { "type": "string" },
+      "topics": { "$ref": "#/$defs/strings" },
+      "actors": { "$ref": "#/$defs/strings" },
+      "actions": { "$ref": "#/$defs/strings" },
+      "constraint_kinds": { "$ref": "#/$defs/strings" },
+      "always_for_dps": { "$ref": "#/$defs/strings" },
+      "topic_ban": { "type": "boolean", "default": false },
+      "ban_scope": { "$ref": "#/$defs/strings" }
+    },
+    "if": { "properties": { "topic_ban": { "const": true } }, "required": ["topic_ban"] },
+    "then": { "required": ["ban_scope"], "properties": { "ban_scope": { "type": "array", "minItems": 1 } } }
+  },
+  "$defs": { "strings": { "type": "array", "items": { "type": "string", "minLength": 1 } } }
+}

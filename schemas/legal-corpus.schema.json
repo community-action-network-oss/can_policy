@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "can_policy/legal-corpus.schema.json",
+  "title": "corpus.yaml (LEGAL-SOURCE-1 provenance)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "layer", "jurisdiction", "instrument", "official_publisher", "source_url", "retrieval_date", "version", "effective_from", "effective_to", "language", "license", "content_hash", "status", "reviewed", "reviewer"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$", "maxLength": 40 },
+    "layer": { "enum": ["L1", "L2", "L3", "L4", "L5", "L6"] },
+    "jurisdiction": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "instrument": { "type": "string", "minLength": 1 },
+    "official_publisher": { "type": "string", "minLength": 1 },
+    "source_url": { "type": "string", "pattern": "^https?://\\S+$" },
+    "retrieval_date": { "$ref": "#/$defs/date" },
+    "version": { "type": "string", "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)$" },
+    "effective_from": { "$ref": "#/$defs/date" },
+    "effective_to": { "anyOf": [{ "type": "null" }, { "$ref": "#/$defs/date" }] },
+    "language": { "type": "string", "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]+)*$" },
+    "translations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["language", "translation"],
+        "properties": {
+          "language": { "type": "string", "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]+)*$" },
+          "translation": { "const": true },
+          "source_url": { "type": "string" }
+        }
+      }
+    },
+    "license": { "type": "string", "minLength": 1 },
+    "content_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "mode": { "enum": ["binding", "reference"] },
+    "status": { "enum": ["index_only", "draft", "ratified"] },
+    "reviewed": { "type": "boolean" },
+    "reviewer": {
+      "anyOf": [
+        { "const": "none" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["name", "qualification", "date", "scope"],
+          "properties": {
+            "name": { "type": "string", "minLength": 1 },
+            "qualification": { "type": "string", "minLength": 1 },
+            "date": { "$ref": "#/$defs/date" },
+            "scope": { "type": "string", "minLength": 1 }
+          }
+        }
+      ]
+    },
+    "fictional": { "type": "boolean" }
+  },
+  "$defs": { "date": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" } }
+}

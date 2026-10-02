@@ -4,7 +4,7 @@ import { join, resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { discoverPacks, canonicalManifest, readPackYaml } from "./pack-hash.mjs";
 
-const ORDER = { base: 0, constitution: 1, jurisdiction: 2, local: 3 };
+const ORDER = { base: 0, constitution: 1, jurisdiction: 2, local: 3, legal: 4 };
 const json = (o) => JSON.stringify(o, null, 2) + "\n";
 
 // Returns {errors, outputs: [{rel, data}]}. Assumes pack.yaml files already passed schema lint.
@@ -24,6 +24,8 @@ export function buildAll(root) {
       parent = { name: pname, version: par.version, pack_hash: par.pack_hash };
     }
     const { files, pack_hash } = canonicalManifest(root, p, parent?.pack_hash ?? null);
+    // Legal corpora version on their own and are pinned by {id, version, pack_hash}; not in release.json, not in the repo-wide semver.
+    if (p.layer === "legal") { outputs.push({ rel: `${p.dir}/manifest.json`, data: { pack: y.name, version: y.version, layer: y.layer, parent: null, files, pack_hash } }); continue; }
     done.set(y.name, { version: y.version, pack_hash });
     outputs.push({ rel: `${p.dir}/manifest.json`, data: { pack: y.name, version: y.version, layer: y.layer, parent, files, pack_hash } });
   }

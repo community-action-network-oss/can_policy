@@ -36,6 +36,15 @@ export function walk(root, rel = "") {
 const subdirs = (root, rel) =>
   existsSync(join(root, rel)) ? readdirSync(join(root, rel), { withFileTypes: true }).filter((d) => d.isDirectory() && !d.name.startsWith(".")).map((d) => d.name) : [];
 
+// Legal corpus packs: any directory under packs/legal holding corpus.yaml or pack.yaml (10-u41). Additive: other kinds are unchanged.
+// id is the path after the layer dir joined with "-": packs/legal/L2-supranational/nl/echr -> nl-echr.
+export function legalDirs(root, rel = "packs/legal") {
+  if (!existsSync(join(root, rel))) return [];
+  if (rel !== "packs/legal" && (existsSync(join(root, rel, "corpus.yaml")) || existsSync(join(root, rel, "pack.yaml")))) return [rel];
+  return subdirs(root, rel).flatMap((d) => legalDirs(root, `${rel}/${d}`));
+}
+const legalPack = (root, dir) => ({ layer: "legal", id: dir.split("/").slice(3).join("-"), dir, extra: [], files: walk(root, dir).filter((f) => isHashed(f, dir)) });
+
 // Packs present in the tree. A pack dir counts only if it holds a hashed file.
 export function discoverPacks(root) {
   const defs = [
@@ -44,12 +53,13 @@ export function discoverPacks(root) {
     ...subdirs(root, "packs/jurisdictions").map((id) => ({ layer: "jurisdiction", id, dir: `packs/jurisdictions/${id}`, extra: [] })),
     ...subdirs(root, "packs/local").map((id) => ({ layer: "local", id, dir: `packs/local/${id}`, extra: [] })),
   ];
-  return defs
+  const legal = legalDirs(root).map((d) => legalPack(root, d));
+  return [...defs
     .map((p) => {
       const files = [p.dir, ...p.extra].flatMap((e) => (e.includes(".") ? (existsSync(join(root, e)) ? [e] : []) : walk(root, e))).filter((f) => isHashed(f, p.dir));
       return { ...p, files };
     })
-    .filter((p) => p.files.length > 0 || p.layer === "base" && existsSync(join(root, p.dir, "pack.yaml")));
+    .filter((p) => p.files.length > 0 || p.layer === "base" && existsSync(join(root, p.dir, "pack.yaml"))), ...legal];
 }
 
 // Sorted by path in byte order.

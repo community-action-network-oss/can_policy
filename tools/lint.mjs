@@ -9,6 +9,7 @@ import { checkAll } from "./build-pack.mjs";
 import { lintDp } from "./lint-dp.mjs";
 import { lintSchemas } from "./lint-schemas.mjs";
 import { lintRatifications } from "./lint-ratifications.mjs";
+import { lintLegal } from "./lint-legal.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const SCHEMAS = join(HERE, "..", "schemas");
@@ -50,7 +51,7 @@ export function lint(root, notes = []) {
     if (y.name !== p.id) { err(`${rel}: name '${y.name}' must equal directory id '${p.id}'`); packsOk = false; }
     names.set(y.name, y);
   }
-  const versions = new Set([...names.values()].map((y) => y.version));
+  const versions = new Set([...names.values()].filter((y) => y.layer !== "legal").map((y) => y.version));
   if (versions.size > 1) { err(`packs disagree on version (one repo wide semver): ${[...versions].join(", ")}`); packsOk = false; }
   for (const [n, y] of names) {
     if (!y.parent) continue;
@@ -181,14 +182,18 @@ export function lint(root, notes = []) {
   // 4. size and banned characters (fixtures are inputs of the tests, not repo content)
   for (const f of walk(root)) {
     if (f.startsWith("node_modules/") || f.startsWith(".git/") || f.startsWith("test/fixtures/") || f === "package-lock.json" || f.startsWith(".")) continue;
-    if (statSync(join(root, f)).size > MAX_BYTES) err(`${f}: larger than 256 KB`);
-    if (/\.(md|ya?ml|json)$/.test(f) && BANNED.test(readFileSync(join(root, f), "utf8"))) err(`${f}: contains an em or en dash (U+2014 or U+2013)`);
+    // legal text is verbatim official text: no dash check, no cap on articles; sources get 1 MB (docs/legal-corpora.md)
+    const legalText = /^packs\/legal\/.*\/(articles|sources)\//.test(f), isSource = legalText && f.includes("/sources/");
+    if (legalText && !isSource) continue;
+    if (statSync(join(root, f)).size > (isSource ? 1024 * 1024 : MAX_BYTES)) err(`${f}: larger than ${isSource ? "1 MB" : "256 KB"}`);
+    if (!isSource && /\.(md|ya?ml|json)$/.test(f) && BANNED.test(readFileSync(join(root, f), "utf8"))) err(`${f}: contains an em or en dash (U+2014 or U+2013)`);
   }
 
   // 5. generated files match sources
   if (packsOk) errors.push(...checkAll(root).map((m) => `${m}`));
   // 6. ratification records (tools/lint-ratifications.mjs); append-only needs a base ref, run via --against
   if (packsOk) errors.push(...lintRatifications(root, notes));
+  errors.push(...lintLegal(root));
   return errors;
 }
 
