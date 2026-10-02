@@ -8,6 +8,7 @@ import { discoverPacks, walk } from "./pack-hash.mjs";
 import { checkAll } from "./build-pack.mjs";
 import { lintDp } from "./lint-dp.mjs";
 import { lintSchemas } from "./lint-schemas.mjs";
+import { lintRatifications } from "./lint-ratifications.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const SCHEMAS = join(HERE, "..", "schemas");
@@ -180,6 +181,8 @@ export function lint(root, notes = []) {
 
   // 5. generated files match sources
   if (packsOk) errors.push(...checkAll(root).map((m) => `${m}`));
+  // 6. ratification records (tools/lint-ratifications.mjs); append-only needs a base ref, run via --against
+  if (packsOk) errors.push(...lintRatifications(root, notes));
   return errors;
 }
 
