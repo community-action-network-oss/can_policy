@@ -15,6 +15,16 @@
       "bytes": 6581
     },
     {
+      "path": "content-schemas/_shared/bands.json",
+      "sha256": "b6a4e8fa59b93e1628d0863292689e0b53188876e5489c650773d4138e4bdc33",
+      "bytes": 808
+    },
+    {
+      "path": "content-schemas/_shared/schema.json",
+      "sha256": "dd5ef9552c1d280a75fc966bdaff1229ed49d3898c293b34eba20ccfe31050b6",
+      "bytes": 5721
+    },
+    {
       "path": "content-schemas/contribution.clarifying_question/examples/invalid-basis-not-allowed.json",
       "sha256": "9def028e07c2f548327e4c69fa2b55c69a459de4a9bbf271cb15cc246cdc72ca",
       "bytes": 642
@@ -335,9 +345,19 @@
       "bytes": 1932
     },
     {
+      "path": "content-schemas/problem/examples/invalid-context-unknown-taxonomy-id.json",
+      "sha256": "feae70618376efb693e1248c89d4f9cd46ae03375badec02a82456e040fd1f5d",
+      "bytes": 2000
+    },
+    {
       "path": "content-schemas/problem/examples/invalid-filler-everywhere.json",
       "sha256": "e864b7a4e353054e7ae5521ee82111a930d51698a8fadecea96df23e0dbb2898",
       "bytes": 1612
+    },
+    {
+      "path": "content-schemas/problem/examples/invalid-geography-street-address.json",
+      "sha256": "4bf0cd061de0f625be4104d8548e7558f12cbdf0f3d41bcd44010aa22c2a340c",
+      "bytes": 2041
     },
     {
       "path": "content-schemas/problem/examples/invalid-missing-causal-status.json",
@@ -360,6 +380,36 @@
       "bytes": 1916
     },
     {
+      "path": "content-schemas/problem/examples/invalid-stage-cycle.json",
+      "sha256": "492eb3e09290b3739aaf86c01e21f8066737049bf248f438a47738b2c0a7201b",
+      "bytes": 3292
+    },
+    {
+      "path": "content-schemas/problem/examples/invalid-stage-depends-on-unknown.json",
+      "sha256": "8257dc428fbed06af38353273196c2b17b6561987863ae63f42916e217d5b79b",
+      "bytes": 3265
+    },
+    {
+      "path": "content-schemas/problem/examples/invalid-stage-duplicate-name.json",
+      "sha256": "3ae66c61c63485c95988e7072887fd1418651c799316465f2ff7e5ad447ea07b",
+      "bytes": 3239
+    },
+    {
+      "path": "content-schemas/problem/examples/invalid-stage-no-criteria.json",
+      "sha256": "64d57f6efdf51ea4725a52d40109890f13373e8bd62aebd9b8ccd758cb767ee9",
+      "bytes": 3063
+    },
+    {
+      "path": "content-schemas/problem/examples/template-classic-5.json",
+      "sha256": "d79e7c8c1c9916c7ca53471ba2050f92e2cb6bf6325660949b3e8eb3f3c14bb8",
+      "bytes": 2242
+    },
+    {
+      "path": "content-schemas/problem/examples/template-one-stage.json",
+      "sha256": "8bb997bfaac7122c8bbb1f3c542b1229af68c6d1be8fff3eda20c67938b603da",
+      "bytes": 424
+    },
+    {
       "path": "content-schemas/problem/examples/valid-minimal.json",
       "sha256": "3d4b3d457338305d85cdaa11ae6e7aadd2b5a0d509ec72b6911db6cec79daf3d",
       "bytes": 1925
@@ -370,14 +420,24 @@
       "bytes": 2511
     },
     {
+      "path": "content-schemas/problem/examples/valid-with-classic-5.json",
+      "sha256": "b858a45579f21427b02927165314b11359624a508173e4ee4be55460e35bce14",
+      "bytes": 4279
+    },
+    {
+      "path": "content-schemas/problem/examples/valid-with-parallel-stage-plan.json",
+      "sha256": "49194e1fee0fecc67dceaaf3814868fee779fc2e7c89b47de917f4d69caadbe7",
+      "bytes": 4093
+    },
+    {
       "path": "content-schemas/problem/messages.en.json",
-      "sha256": "e6fc0e3f7316957ca84baaf4807ee371926d98ffdf1439da8e9966b42787bd78",
-      "bytes": 8410
+      "sha256": "e2638b62e8eb1b7acdfedfd13082228972bf043bcb1d1989d27cebbe5632a6af",
+      "bytes": 14897
     },
     {
       "path": "content-schemas/problem/schema.json",
-      "sha256": "8de0982cf4258c8330cce99ad57b6fa95dfe20379c2cef266c4aa867c71e4213",
-      "bytes": 27596
+      "sha256": "6137abcc713cb348d6acadde697f8fa696de07c36e01515f0addb4adac5ad310",
+      "bytes": 46028
     },
     {
       "path": "limits.yaml",
@@ -395,5 +455,5 @@
       "bytes": 17486
     }
   ],
-  "pack_hash": "b2cd5828c69122fb89a3a2f471eebd988801e6300860ee79bad081078eb8dc1a"
+  "pack_hash": "82f0ccc97066f7660554da390c47bf6d394e9a72a3e4f20cc93d1917202e6510"
 }

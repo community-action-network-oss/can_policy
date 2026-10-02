@@ -38,7 +38,7 @@ test("valid examples pass (at least 2)", () => {
 });
 
 test("invalid examples: shape ones fail at the expected pointer, DP-level ones pass shape", () => {
-  const inv = examples("invalid-").sort();
+  const inv = examples("invalid-").filter((f) => !/^invalid-(stage|context|geography)-/.test(f)).sort(); // v2 parts: schema-problem-v2.test.mjs
   assert.deepEqual(inv, [...Object.keys(SHAPE), ...DP_LEVEL].sort());
   for (const [f, ptr] of Object.entries(SHAPE)) {
     assert.equal(validate(rd(`examples/${f}`)), false, f);
@@ -59,7 +59,7 @@ test("required list and order equal section 3 of structured-content.md", (t) => 
   assert.ok(schema.properties.existing_efforts && !schema.required.includes("existing_efforts"));
 });
 
-test("every x-ui message id exists and the form has 8 groups", () => {
+test("every x-ui message id exists and the form has 10 groups", () => {
   const ids = new Set(); const groups = new Set();
   (function walk(n) {
     if (Array.isArray(n)) return n.forEach(walk);
@@ -69,7 +69,7 @@ test("every x-ui message id exists and the form has 8 groups", () => {
     Object.values(n).forEach(walk);
   })(schema);
   for (const id of ids) assert.ok(messages[id], `missing message ${id}`);
-  assert.equal(groups.size, 8);
+  assert.equal(groups.size, 10);
 });
 
 test("limits_key points at limits.yaml-equal bounds, DPs are as specified", () => {

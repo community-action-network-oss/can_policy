@@ -4,7 +4,6 @@
   "version": "1.0.0",
   "x-version": "1.0.0",
   "pack": "base@1.0.0",
-  "$comment": "Slots reserved for 10-u69: context_profile, stage_plan and affected_area ($ref sub-schemas) and x-ui.group ids context and plan.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -908,6 +907,432 @@
         ],
         "none_stated": true
       }
+    },
+    "stage_plan": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 12,
+      "items": {
+        "$ref": "#/$defs/stage_node"
+      },
+      "x-ui": {
+        "widget": "stage_plan",
+        "label_msg": "schema.problem.stage_plan.label",
+        "help_msg": "schema.problem.stage_plan.help",
+        "order": 18,
+        "group": "plan"
+      },
+      "x-guidance": {
+        "why": "A plan shows what has to happen and how anyone will know each part is done.",
+        "good": "Two stages that run side by side: Map the broken lights, and Ask the council for its repair schedule.",
+        "bad": "Fix everything."
+      },
+      "x-checks": {
+        "dps": [
+          "DP-STAGE-PLAN",
+          "DP-CRITERIA",
+          "DP-PRIVACY",
+          "DP-NAMING",
+          "DP-TONE",
+          "DP-CRISIS"
+        ],
+        "unique_names": true,
+        "depends_on_resolves": true,
+        "template_default": [
+          "classic-5",
+          "one-stage"
+        ]
+      }
+    },
+    "context_profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "problem_type": {
+          "type": "string",
+          "pattern": "^(unknown|[a-z][a-z0-9_.-]{1,63})$",
+          "maxLength": 64,
+          "x-checks": {
+            "allow_unknown": true,
+            "taxonomy": "archive.taxonomy"
+          },
+          "x-ui": {
+            "widget": "taxonomy_pick",
+            "label_msg": "schema.problem.context_profile.problem_type.label",
+            "help_msg": "schema.problem.context_profile.problem_type.help"
+          }
+        },
+        "category": {
+          "type": "string",
+          "pattern": "^(unknown|[a-z][a-z0-9_.-]{1,63})$",
+          "maxLength": 64,
+          "x-checks": {
+            "allow_unknown": true,
+            "taxonomy": "archive.taxonomy"
+          },
+          "x-ui": {
+            "widget": "taxonomy_pick",
+            "label_msg": "schema.problem.context_profile.category.label",
+            "help_msg": "schema.problem.context_profile.category.help"
+          }
+        },
+        "population_scale": {
+          "type": "string",
+          "enum": [
+            "<100",
+            "<1k",
+            "<10k",
+            "<100k",
+            "<1M",
+            ">=1M",
+            "unknown"
+          ],
+          "x-checks": {
+            "allow_unknown": true
+          },
+          "x-ui": {
+            "widget": "select",
+            "label_msg": "schema.problem.context_profile.population_scale.label",
+            "help_msg": "schema.problem.context_profile.population_scale.help"
+          }
+        },
+        "geography": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "country": {
+              "type": "string",
+              "pattern": "^([A-Z]{2}|unknown)$",
+              "x-ui": {
+                "widget": "text",
+                "label_msg": "schema.problem.context_profile.geography.country.label",
+                "help_msg": "schema.problem.context_profile.geography.country.help"
+              }
+            },
+            "region": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 80,
+              "pattern": "^(?!\\d)(?!.*\\d\\d)(?!.*[#@/\\\\]).*$",
+              "x-checks": {
+                "no_address": true
+              },
+              "x-ui": {
+                "widget": "text",
+                "label_msg": "schema.problem.context_profile.geography.region.label",
+                "help_msg": "schema.problem.context_profile.geography.region.help"
+              }
+            },
+            "settlement_class": {
+              "type": "string",
+              "enum": [
+                "rural",
+                "town",
+                "city",
+                "metro",
+                "unknown"
+              ],
+              "x-ui": {
+                "widget": "select",
+                "label_msg": "schema.problem.context_profile.geography.settlement_class.label"
+              }
+            },
+            "climate_class": {
+              "type": "string",
+              "enum": [
+                "A",
+                "B",
+                "C",
+                "D",
+                "E",
+                "unknown"
+              ],
+              "x-ui": {
+                "widget": "select",
+                "label_msg": "schema.problem.context_profile.geography.climate_class.label",
+                "help_msg": "schema.problem.context_profile.geography.climate_class.help"
+              }
+            }
+          },
+          "x-checks": {
+            "allow_unknown": true,
+            "no_address": true
+          },
+          "x-ui": {
+            "widget": "group",
+            "label_msg": "schema.problem.context_profile.geography.label",
+            "help_msg": "schema.problem.context_profile.geography.help"
+          }
+        },
+        "resource_band": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "people": {
+              "type": "string",
+              "enum": [
+                "none",
+                "<5",
+                "<20",
+                ">=20",
+                "unknown"
+              ],
+              "x-ui": {
+                "widget": "select",
+                "label_msg": "schema.problem.context_profile.resource_band.people.label"
+              }
+            },
+            "in_kind": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unknown"
+              ],
+              "x-ui": {
+                "widget": "select",
+                "label_msg": "schema.problem.context_profile.resource_band.in_kind.label"
+              }
+            }
+          },
+          "x-checks": {
+            "allow_unknown": true,
+            "private_until_publication": true
+          },
+          "x-ui": {
+            "widget": "group",
+            "label_msg": "schema.problem.context_profile.resource_band.label",
+            "help_msg": "schema.problem.context_profile.resource_band.help"
+          }
+        },
+        "budget_band": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "band": {
+              "type": "string",
+              "enum": [
+                "none",
+                "<1k",
+                "<10k",
+                "<100k",
+                ">=100k",
+                "unknown"
+              ],
+              "x-ui": {
+                "widget": "select",
+                "label_msg": "schema.problem.context_profile.budget_band.band.label"
+              }
+            },
+            "currency_class": {
+              "type": "string",
+              "enum": [
+                "low_income",
+                "lower_middle",
+                "upper_middle",
+                "high_income",
+                "unknown"
+              ],
+              "x-ui": {
+                "widget": "select",
+                "label_msg": "schema.problem.context_profile.budget_band.currency_class.label",
+                "help_msg": "schema.problem.context_profile.budget_band.currency_class.help"
+              }
+            }
+          },
+          "x-checks": {
+            "allow_unknown": true,
+            "private_until_publication": true
+          },
+          "x-ui": {
+            "widget": "group",
+            "label_msg": "schema.problem.context_profile.budget_band.label",
+            "help_msg": "schema.problem.context_profile.budget_band.help"
+          }
+        },
+        "institutions": {
+          "type": "array",
+          "maxItems": 8,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]{2,63}$"
+          },
+          "x-checks": {
+            "allow_unknown": true,
+            "roles_only": true
+          },
+          "x-ui": {
+            "widget": "list",
+            "label_msg": "schema.problem.context_profile.institutions.label",
+            "help_msg": "schema.problem.context_profile.institutions.help"
+          }
+        },
+        "legal_stack": {
+          "type": "array",
+          "maxItems": 7,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "layer",
+              "corpus_version"
+            ],
+            "properties": {
+              "layer": {
+                "type": "string",
+                "enum": [
+                  "L0",
+                  "L1",
+                  "L2",
+                  "L3",
+                  "L4",
+                  "L5",
+                  "L6"
+                ]
+              },
+              "corpus_version": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64
+              }
+            }
+          },
+          "x-checks": {
+            "allow_unknown": true,
+            "derived": "jurisdiction_resolver"
+          },
+          "x-ui": {
+            "widget": "readonly",
+            "label_msg": "schema.problem.context_profile.legal_stack.label",
+            "help_msg": "schema.problem.context_profile.legal_stack.help"
+          }
+        },
+        "language": {
+          "type": "string",
+          "pattern": "^(unknown|[A-Za-z]{2,3}(-[A-Za-z0-9]{2,8}){0,3})$",
+          "maxLength": 35,
+          "x-checks": {
+            "allow_unknown": true
+          },
+          "x-ui": {
+            "widget": "text",
+            "label_msg": "schema.problem.context_profile.language.label",
+            "help_msg": "schema.problem.context_profile.language.help"
+          }
+        },
+        "constraints": {
+          "type": "array",
+          "maxItems": 10,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "type",
+              "statement"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "legal",
+                  "time",
+                  "skills",
+                  "political",
+                  "physical"
+                ],
+                "x-ui": {
+                  "widget": "select",
+                  "label_msg": "schema.problem.context_profile.constraints.type.label"
+                }
+              },
+              "statement": {
+                "type": "string",
+                "minLength": 5,
+                "maxLength": 200,
+                "x-ui": {
+                  "widget": "text",
+                  "label_msg": "schema.problem.context_profile.constraints.statement.label",
+                  "help_msg": "schema.problem.context_profile.constraints.statement.help"
+                }
+              }
+            }
+          },
+          "x-checks": {
+            "allow_unknown": true,
+            "dps": [
+              "DP-PRIVACY",
+              "DP-NAMING"
+            ]
+          },
+          "x-ui": {
+            "widget": "list",
+            "label_msg": "schema.problem.context_profile.constraints.label",
+            "help_msg": "schema.problem.context_profile.constraints.help"
+          }
+        }
+      },
+      "x-ui": {
+        "widget": "group",
+        "label_msg": "schema.problem.context_profile.label",
+        "help_msg": "schema.problem.context_profile.help",
+        "order": 19,
+        "group": "context"
+      },
+      "x-guidance": {
+        "why": "Lets people find earlier problems like this one and what worked there.",
+        "good": "A town of about ten thousand people, a mild climate, one municipal lighting office, unknown budget.",
+        "bad": "A street address or the name of an official."
+      },
+      "x-checks": {
+        "allow_unknown": true,
+        "derived_from": [
+          "condition",
+          "affected",
+          "place",
+          "responsible_roles",
+          "assumptions",
+          "out_of_scope",
+          "lawful_options"
+        ],
+        "ai_fill_assist": "poster_confirms"
+      }
+    },
+    "affected_area": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "area_version"
+      ],
+      "properties": {
+        "area_version": {
+          "type": "integer",
+          "minimum": 1,
+          "x-ui": {
+            "widget": "text",
+            "label_msg": "schema.problem.affected_area.area_version.label",
+            "help_msg": "schema.problem.affected_area.area_version.help"
+          }
+        }
+      },
+      "x-ui": {
+        "widget": "area_picker",
+        "label_msg": "schema.problem.affected_area.label",
+        "help_msg": "schema.problem.affected_area.help",
+        "order": 20,
+        "group": "where_since"
+      },
+      "x-guidance": {
+        "why": "Lets people say whether they are affected without sharing where they live.",
+        "good": "The north district, picked from the city's official boundaries.",
+        "bad": "A circle drawn around one house."
+      },
+      "x-checks": {
+        "dps": [
+          "DP-COMPLETENESS"
+        ],
+        "reviewable": true,
+        "reference_only": true
+      }
     }
   },
   "$defs": {
@@ -974,6 +1399,182 @@
           "DP-EVIDENCE-TIER"
         ]
       }
+    },
+    "criterion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "statement",
+        "measure"
+      ],
+      "properties": {
+        "statement": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 300,
+          "x-ui": {
+            "widget": "textarea",
+            "label_msg": "schema.problem.stage_plan.criterion.statement.label",
+            "help_msg": "schema.problem.stage_plan.criterion.statement.help"
+          }
+        },
+        "measure": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 300,
+          "x-ui": {
+            "widget": "textarea",
+            "label_msg": "schema.problem.stage_plan.criterion.measure.label",
+            "help_msg": "schema.problem.stage_plan.criterion.measure.help"
+          }
+        },
+        "target": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200,
+          "x-ui": {
+            "widget": "text",
+            "label_msg": "schema.problem.stage_plan.criterion.target.label",
+            "help_msg": "schema.problem.stage_plan.criterion.target.help"
+          }
+        },
+        "evidence_hint": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 300,
+          "x-ui": {
+            "widget": "textarea",
+            "label_msg": "schema.problem.stage_plan.criterion.evidence_hint.label",
+            "help_msg": "schema.problem.stage_plan.criterion.evidence_hint.help"
+          }
+        },
+        "deadline": {
+          "type": "string",
+          "minLength": 4,
+          "maxLength": 10,
+          "pattern": "^\\d{4}(-\\d{2}(-\\d{2})?)?$",
+          "x-ui": {
+            "widget": "date",
+            "label_msg": "schema.problem.stage_plan.criterion.deadline.label",
+            "help_msg": "schema.problem.stage_plan.criterion.deadline.help"
+          }
+        }
+      }
+    },
+    "stage_node": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "goal",
+        "acceptance_criteria"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 40,
+          "pattern": "^[a-z][a-z0-9_]{1,39}$",
+          "x-ui": {
+            "widget": "text",
+            "label_msg": "schema.problem.stage_plan.stage.name.label",
+            "help_msg": "schema.problem.stage_plan.stage.name.help"
+          }
+        },
+        "label": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 60,
+          "x-ui": {
+            "widget": "text",
+            "label_msg": "schema.problem.stage_plan.stage.label.label",
+            "help_msg": "schema.problem.stage_plan.stage.label.help"
+          }
+        },
+        "goal": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 300,
+          "x-ui": {
+            "widget": "textarea",
+            "label_msg": "schema.problem.stage_plan.stage.goal.label",
+            "help_msg": "schema.problem.stage_plan.stage.goal.help"
+          }
+        },
+        "acceptance_criteria": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 6,
+          "items": {
+            "$ref": "#/$defs/criterion"
+          },
+          "x-ui": {
+            "widget": "list",
+            "label_msg": "schema.problem.stage_plan.stage.acceptance_criteria.label",
+            "help_msg": "schema.problem.stage_plan.stage.acceptance_criteria.help"
+          }
+        },
+        "decision_method": {
+          "type": "string",
+          "enum": [
+            "poster_after_input",
+            "community_vote",
+            "steward",
+            "other_named"
+          ],
+          "default": "poster_after_input",
+          "x-ui": {
+            "widget": "select",
+            "label_msg": "schema.problem.stage_plan.stage.decision_method.label",
+            "help_msg": "schema.problem.stage_plan.stage.decision_method.help"
+          }
+        },
+        "depends_on": {
+          "type": "array",
+          "maxItems": 11,
+          "uniqueItems": true,
+          "default": [],
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]{1,39}$"
+          },
+          "x-ui": {
+            "widget": "list",
+            "label_msg": "schema.problem.stage_plan.stage.depends_on.label",
+            "help_msg": "schema.problem.stage_plan.stage.depends_on.help"
+          }
+        },
+        "required": {
+          "type": "boolean",
+          "default": true,
+          "x-ui": {
+            "widget": "toggle",
+            "label_msg": "schema.problem.stage_plan.stage.required.label"
+          }
+        },
+        "needs_choice": {
+          "type": "boolean",
+          "default": true,
+          "x-ui": {
+            "widget": "toggle",
+            "label_msg": "schema.problem.stage_plan.stage.needs_choice.label"
+          }
+        },
+        "auto_start": {
+          "type": "boolean",
+          "default": true,
+          "x-ui": {
+            "widget": "toggle",
+            "label_msg": "schema.problem.stage_plan.stage.auto_start.label"
+          }
+        }
+      },
+      "x-checks": {
+        "unique_names": true,
+        "depends_on_resolves": true,
+        "acyclic": "DP-STAGE-PLAN"
+      }
     }
-  }
+  },
+  "$comment": "Optional parts (stage_plan, context_profile, affected_area) are filled by 10-u69. $defs criterion and stage_node are inlined copies of _shared/schema.json."
 }

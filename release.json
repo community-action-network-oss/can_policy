@@ -3,12 +3,12 @@
   "packs": [
     {
       "name": "base",
-      "pack_hash": "b2cd5828c69122fb89a3a2f471eebd988801e6300860ee79bad081078eb8dc1a"
+      "pack_hash": "82f0ccc97066f7660554da390c47bf6d394e9a72a3e4f20cc93d1917202e6510"
     },
     {
       "name": "constitution",
-      "pack_hash": "4cdbf256df69dea77fd8aa19cac05ad7e3e6d39a5ce40bcf2f5125f80bd8db24"
+      "pack_hash": "80d73ab433d5d94106eb2168c16c7450ba4adf434a827fe57f0cd50987435045"
     }
   ],
-  "released_at": "2026-10-02T11:05:01.133Z"
+  "released_at": "2026-10-02T11:08:21.008Z"
 }
