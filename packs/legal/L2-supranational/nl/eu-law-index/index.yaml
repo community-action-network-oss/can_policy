@@ -1,0 +1,33 @@
+# Index of EU acts to be vendored for the seed topics. It lists topic areas only and states no legal rule.
+# Every identifier is TODO on purpose: the vendor unit or a reviewer fills them from EUR-Lex.
+# Loader rule: an index_only corpus never produces an article citation. Retrieval reports
+# "no applicable article found in L2 (version)", which is a recorded fact, not a pass.
+entries:
+  - topic_area: data-protection
+    act_title: TODO
+    celex_id: TODO
+    eur_lex_url: TODO
+    why_relevant: Personal data handling in reports, evidence and moderation records.
+    seed: 1
+    vendor_status: pending
+  - topic_area: public-order-cooperation
+    act_title: TODO
+    celex_id: TODO
+    eur_lex_url: TODO
+    why_relevant: Cross-border police and judicial cooperation that may bear on public order problems.
+    seed: 1
+    vendor_status: pending
+  - topic_area: waste
+    act_title: TODO
+    celex_id: TODO
+    eur_lex_url: TODO
+    why_relevant: Waste handling and littering problems.
+    seed: 2
+    vendor_status: pending
+  - topic_area: environment
+    act_title: TODO
+    celex_id: TODO
+    eur_lex_url: TODO
+    why_relevant: Environmental management problems.
+    seed: 2
+    vendor_status: pending

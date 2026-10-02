@@ -1,0 +1,17 @@
+id: nl-eu-law-index
+layer: L2
+jurisdiction: nl
+instrument: eu-law-index
+official_publisher: "TODO: Publications Office of the European Union (EUR-Lex), to be confirmed by the vendor unit"
+source_url: https://eur-lex.europa.eu/
+retrieval_date: 2026-10-03
+version: 0.1.0
+effective_from: 2026-10-03
+effective_to: null
+language: en
+license: "n/a: index only, no legal text is vendored"
+content_hash: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+mode: reference
+status: index_only
+reviewed: false
+reviewer: none

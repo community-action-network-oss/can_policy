@@ -1,0 +1,7 @@
+name: nl-eu-law-index
+version: 0.1.0
+layer: legal
+parent: null
+jurisdiction: nl
+effective_from: 2026-10-03
+status: draft

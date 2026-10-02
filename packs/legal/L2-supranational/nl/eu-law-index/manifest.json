@@ -1,0 +1,24 @@
+{
+  "pack": "nl-eu-law-index",
+  "version": "0.1.0",
+  "layer": "legal",
+  "parent": null,
+  "files": [
+    {
+      "path": "corpus.yaml",
+      "sha256": "534675b58f37f805c366ac5269a2d1d86e6ec896c4e0323f4eb667452619aa30",
+      "bytes": 529
+    },
+    {
+      "path": "index.yaml",
+      "sha256": "ded76bc496b2f6c07e621b13e24e3013d905400455ebd256dbdd8648d7028c8a",
+      "bytes": 1209
+    },
+    {
+      "path": "pack.yaml",
+      "sha256": "becf1517a80dec482adf2aa798ef6d24d174f1dfdd7ad1524ed48b01d7b7a1b7",
+      "bytes": 121
+    }
+  ],
+  "pack_hash": "d9bdf4d078ea95d2dc0cb3db17d9af9ffbe295253c7127be9d6e3dbbcb0f210f"
+}
