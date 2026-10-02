@@ -1,0 +1,6 @@
+name: constitution
+version: 0.1.0
+layer: constitution
+parent: base@0.1.0
+effective_from: 2026-10-01
+status: draft
