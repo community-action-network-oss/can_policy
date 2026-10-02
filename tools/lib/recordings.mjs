@@ -28,7 +28,7 @@ export function deriveFake(cases, schema, { noise = 0, seed = 1 } = {}) {
   return cases.map((c) => {
     let outcome = c.expected_outcome;
     if (noise > 0 && rnd() < noise) { const others = enums.filter((o) => o !== outcome); if (others.length) outcome = others[Math.floor(rnd() * others.length)]; }
-    const output = { outcome, rule_ids: outcome === c.expected_outcome ? c.rule_ids : [], confidence: 0.95, reasons: ["synthetic recording derived from the case table"] };
+    const output = { outcome, rule_ids: outcome === c.expected_outcome ? c.rule_ids : [], confidence: c.expected?.confidence ?? 0.95, reasons: ["synthetic recording derived from the case table"] };
     if (c.field_ref && "field_ref" in props) output.field_ref = c.field_ref;
     if (c.revision_hint && "revision_hint" in props && outcome === c.expected_outcome) output.revision_hint = c.revision_hint;
     for (const [k, v] of Object.entries(c.expected ?? {})) if (k in props && !(k in output)) output[k] = v;

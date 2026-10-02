@@ -8,7 +8,7 @@ import { spawnSync, execFileSync } from "node:child_process";
 import { wilson, ece, loosened, disjointness } from "../tools/lib/metrics.mjs";
 
 const EVAL = join(dirname(fileURLToPath(import.meta.url)), "..", "tools", "eval.mjs");
-const SCHEMA = { type: "object", additionalProperties: false, required: ["outcome", "rule_ids", "confidence", "reasons"], properties: { outcome: { enum: ["publish", "needs_revision", "reject"] }, rule_ids: { type: "array", items: { type: "string" } }, confidence: { type: "number", minimum: 0, maximum: 1 }, reasons: { type: "array", items: { type: "string" } } } };
+const SCHEMA = { type: "object", additionalProperties: false, required: ["outcome", "rule_ids", "confidence", "reasons"], properties: { outcome: { enum: ["publish", "needs_revision", "reject", "route_external"] }, rule_ids: { type: "array", items: { type: "string" } }, confidence: { type: "number", minimum: 0, maximum: 1 }, reasons: { type: "array", items: { type: "string" } } } };
 const mk = (id, expected_outcome, extra = {}) => ({ id, input: `condition: text ${id}`, expected_outcome, rule_ids: expected_outcome === "publish" ? [] : ["R-1"], note: "n", provenance: "fixture", jurisdiction: "fiktiva-city", field_ref: { field: "condition" }, ...extra });
 const CORE = [mk("c1", "publish"), mk("c2", "publish"), mk("c3", "reject"), mk("c4", "needs_revision")];
 const ADV = [mk("a1", "publish")];
@@ -41,6 +41,16 @@ test("a missed harmful case fails recall and names the DP and case", () => {
   const r = run(fixture(undefined, (p) => p.map((x) => (x.case_id === "c3" ? { ...x, output: out("publish") } : x))));
   assert.equal(r.status, 1);
   assert.match(r.stdout, /DP-X/); assert.match(r.stdout, /missed harmful: c3/); assert.match(r.stdout, /did not pass\s+recall_harmful/);
+});
+
+test("max_false_reopen gates a route_external result on a case that does not expect one", () => {
+  const t = "max_false_reopen: 0\n";
+  const bad = (p) => p.map((x) => (x.case_id === "c4" ? { ...x, output: out("route_external") } : x));
+  const r = run(fixture(t, bad));
+  assert.equal(r.status, 1);
+  assert.match(r.stdout, /did not pass\s+false_reopen/); assert.match(r.stdout, /false reopens: c4/);
+  assert.equal(run(fixture(t)).status, 0);
+  assert.equal(run(fixture("", bad)).status, 0); // not set: other DPs are unaffected
 });
 
 test("a malformed output fails schema validity", () => {

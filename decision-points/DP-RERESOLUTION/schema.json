@@ -281,10 +281,28 @@
     },
     "conflict_note": {
       "type": "string",
-      "$comment": "Required on a hold caused by two layers reading differently. Names layers and article ids only."
+      "$comment": "Required on a hold caused by two layers reading differently. Names layers and article ids only.",
+      "maxLength": 600
     }
   },
   "allOf": [
+    {
+      "type": "object",
+      "properties": {
+        "reasons": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 600
+          }
+        },
+        "revision_hint": {
+          "type": "string",
+          "maxLength": 600
+        }
+      },
+      "$comment": "Echo limit, set here because the shared property shapes must match schemas/dp-output.schema.json. Confidence floors: keep >= 0.80, annotate >= 0.50, reopen >= 0.90 (from pack-section.yaml), annotate low_confidence < 0.90; hold has no floor."
+    },
     {
       "if": {
         "type": "object",
@@ -578,6 +596,10 @@
                 }
               }
             }
+          },
+          "confidence": {
+            "type": "number",
+            "minimum": 0.8
           }
         }
       }
@@ -602,7 +624,11 @@
         "properties": {
           "annotate_reason": true,
           "reopen_target": false,
-          "affected_stage_ids": false
+          "affected_stage_ids": false,
+          "confidence": {
+            "type": "number",
+            "minimum": 0.5
+          }
         },
         "anyOf": [
           {
@@ -1021,6 +1047,29 @@
         "properties": {
           "changed_findings": true
         }
+      }
+    },
+    {
+      "if": {
+        "type": "object",
+        "required": [
+          "annotate_reason"
+        ],
+        "properties": {
+          "annotate_reason": {
+            "const": "low_confidence"
+          }
+        }
+      },
+      "then": {
+        "type": "object",
+        "properties": {
+          "confidence": {
+            "type": "number",
+            "exclusiveMaximum": 0.9
+          }
+        },
+        "$comment": "A low_confidence annotate means the model is not sure; at 0.9 or higher it should have reopened or annotated for another reason."
       }
     }
   ]

@@ -99,6 +99,18 @@ const cases = [
   ["L2 finding without corpus_version", { ...leg, resolution: "keep", outcome: "publish", changed_findings: [f({ corpus_version: undefined, effect: "no_effect" })] }, false],
   ["cited finding without article_id", { ...leg, resolution: "keep", outcome: "publish", changed_findings: [f({ article_id: undefined, effect: "no_effect" })] }, false],
   ["unknown effect", { ...leg, resolution: "keep", outcome: "publish", changed_findings: [f({ effect: "permits" })] }, false],
+  // confidence floors from pack-section.yaml, and echo limits
+  ["keep at confidence 0.79", { ...keep, confidence: 0.79 }, false],
+  ["keep at confidence 0.8", { ...keep, confidence: 0.8 }, true],
+  ["annotate at confidence 0.49", { ...annotate, confidence: 0.49 }, false],
+  ["annotate at confidence 0.5", { ...annotate, confidence: 0.5 }, true],
+  ["low_confidence annotate at 0.89", { ...annotate, annotate_reason: "low_confidence", confidence: 0.89 }, true],
+  ["low_confidence annotate at 0.9", { ...annotate, annotate_reason: "low_confidence", confidence: 0.9 }, false],
+  ["hold at confidence 0.2 stays representable", { ...hold, confidence: 0.2 }, true],
+  ["reasons item over 600 characters", { ...keep, reasons: ["x".repeat(601)] }, false],
+  ["reasons item of 600 characters", { ...keep, reasons: ["x".repeat(600)] }, true],
+  ["revision_hint over 600 characters", { ...annotate, revision_hint: "x".repeat(601) }, false],
+  ["conflict_note over 600 characters", { ...hold, hold_reason: "layer_conflict", conflict_note: "x".repeat(601) }, false],
   ["unknown trigger", { ...keep, trigger: "vibes" }, false],
   ["unknown extra key", { ...keep, article_text: "no" }, false],
 ];
