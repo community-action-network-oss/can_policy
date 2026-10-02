@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "limits.schema.json",
+  "title": "limits.yaml: caps, field bounds and cooldowns as pack values",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "caps", "fields", "cooldowns", "grace", "risk_period"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "caps": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["problems_per_account_per_period", "contributions_per_account_per_day", "proposals_per_account_per_problem", "open_drafts_per_account", "appeals_per_account_per_period"],
+      "properties": {
+        "problems_per_account_per_period": { "$ref": "#/$defs/window" },
+        "contributions_per_account_per_day": {
+          "type": "object", "additionalProperties": false, "required": ["total", "per_problem", "note"],
+          "properties": { "total": { "$ref": "#/$defs/count" }, "per_problem": { "$ref": "#/$defs/count" }, "provisional": { "type": "boolean" }, "public": { "type": "boolean" }, "note": { "type": "string", "minLength": 1 } }
+        },
+        "proposals_per_account_per_problem": { "$ref": "#/$defs/intLeaf" },
+        "open_drafts_per_account": { "$ref": "#/$defs/intLeaf" },
+        "appeals_per_account_per_period": { "$ref": "#/$defs/window" }
+      }
+    },
+    "fields": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "list": {
+            "type": "object", "additionalProperties": false, "required": ["note"],
+            "properties": { "min": { "$ref": "#/$defs/count" }, "max": { "$ref": "#/$defs/count" }, "provisional": { "type": "boolean" }, "note": { "type": "string", "minLength": 1 } }
+          }
+        },
+        "additionalProperties": {
+          "type": "object", "additionalProperties": false, "required": ["note"],
+          "properties": { "min_chars": { "$ref": "#/$defs/count" }, "max_chars": { "$ref": "#/$defs/count" }, "provisional": { "type": "boolean" }, "note": { "type": "string", "minLength": 1 } }
+        }
+      }
+    },
+    "cooldowns": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["between_contributions_same_problem", "after_rejected_contribution", "exempt_types"],
+      "properties": {
+        "between_contributions_same_problem": { "$ref": "#/$defs/seconds" },
+        "after_rejected_contribution": { "$ref": "#/$defs/seconds" },
+        "exempt_types": {
+          "type": "object", "additionalProperties": false, "required": ["value", "note"],
+          "properties": { "value": { "type": "array", "items": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" }, "uniqueItems": true }, "note": { "type": "string", "minLength": 1 } }
+        }
+      }
+    },
+    "grace": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_major_draft_days"],
+      "properties": { "schema_major_draft_days": { "$ref": "#/$defs/intLeaf" } }
+    },
+    "risk_period": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["burst_threshold"],
+      "properties": {
+        "burst_threshold": {
+          "type": "object", "additionalProperties": false, "required": ["public", "value", "note"],
+          "properties": {
+            "public": { "const": false },
+            "provisional": { "type": "boolean" },
+            "value": { "type": "object", "additionalProperties": { "type": "number", "minimum": 0 }, "minProperties": 1 },
+            "note": { "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "count": { "type": "integer", "minimum": 0 },
+    "window": {
+      "type": "object", "additionalProperties": false, "required": ["count", "days", "note"],
+      "properties": { "count": { "$ref": "#/$defs/count" }, "days": { "type": "integer", "minimum": 1 }, "provisional": { "type": "boolean" }, "public": { "type": "boolean" }, "note": { "type": "string", "minLength": 1 } }
+    },
+    "seconds": {
+      "type": "object", "additionalProperties": false, "required": ["seconds", "note"],
+      "properties": { "seconds": { "$ref": "#/$defs/count" }, "provisional": { "type": "boolean" }, "note": { "type": "string", "minLength": 1 } }
+    },
+    "intLeaf": {
+      "type": "object", "additionalProperties": false, "required": ["value", "note"],
+      "properties": { "value": { "$ref": "#/$defs/count" }, "unit": { "type": "string" }, "provisional": { "type": "boolean" }, "public": { "type": "boolean" }, "note": { "type": "string", "minLength": 1 } }
+    }
+  }
+}

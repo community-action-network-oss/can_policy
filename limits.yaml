@@ -1,0 +1,52 @@
+# Per-account caps, field bounds and cooldowns. Pack values, never code constants.
+# Defaults: docs/open-questions/OQ-limits.md and docs/design/ai/decision-points.md.
+# Rules and the public: false convention: docs/limits.md
+schema_version: 1
+caps:
+  problems_per_account_per_period:
+    count: 3
+    days: 7
+    note: Problems one account may submit per period.
+  contributions_per_account_per_day:
+    total: 20
+    per_problem: 8
+    note: All contribution types except the exempt ones under cooldowns.
+  proposals_per_account_per_problem:
+    value: 2
+    note: Proposals one account may make on one problem.
+  open_drafts_per_account:
+    value: 5
+    note: Unsubmitted drafts.
+  appeals_per_account_per_period:
+    count: 3
+    days: 7
+    note: Appeals per period.
+# Entries are added by the content schema units, for example:
+#   fields: problem: condition: min_chars, max_chars, note
+#   fields: problem: list: min, max, note
+fields: {}
+cooldowns:
+  between_contributions_same_problem:
+    seconds: 120
+    provisional: true
+    note: Reflection delay, final length is OQ-cooldown-lengths.
+  after_rejected_contribution:
+    seconds: 600
+    provisional: true
+    note: Delay after a reject, final length is OQ-cooldown-lengths.
+  exempt_types:
+    value: [progress_update, verification_evidence]
+    note: Never delayed and not counted against the daily contribution cap.
+grace:
+  schema_major_draft_days:
+    value: 30
+    unit: days
+    note: How long an old-major draft stays usable after a schema major bump.
+risk_period:
+  burst_threshold:
+    public: false
+    provisional: true
+    value:
+      events: 37
+      window_seconds: 90
+    note: Burst that tightens caps. Never shown in any explanation.

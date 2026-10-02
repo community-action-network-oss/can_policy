@@ -20,6 +20,8 @@ const metaV = ajv.compile(loadSchema("content-schema.meta.json"));
 const contentAjv = new Ajv2020({ strict: true, strictTypes: false });
 ["version", "pack", "x-ui", "x-guidance", "x-checks", "x-version"].forEach((keyword) => contentAjv.addKeyword({ keyword }));
 
+const limitsV = ajv.compile(loadSchema("limits.schema.json"));
+
 const fmt = (errs) => errs.map((e) => `${e.instancePath || "/"} ${e.message}`).join("; ");
 const dirs = (root, rel) => (existsSync(join(root, rel)) ? readdirSync(join(root, rel), { withFileTypes: true }).filter((d) => d.isDirectory() && !d.name.startsWith(".")) : []);
 
@@ -68,6 +70,31 @@ export function lint(root) {
     if (!metaV(s)) { err(`${rel}: fails content schema meta check: ${fmt(metaV.errors)}`); continue; }
     // "id" is the schema name here, not a legacy $id
     try { contentAjv.compile(Object.fromEntries(Object.entries(s).filter(([k]) => k !== "id"))); } catch (e) { err(`${rel}: not a valid JSON Schema 2020-12 (${e.message})`); }
+  }
+
+  // 3b. limits.yaml: schema, min <= max, and agreement with content schema x-guidance
+  if (existsSync(join(root, "limits.yaml"))) {
+    let L = null;
+    try { L = parse(readFileSync(join(root, "limits.yaml"), "utf8")); } catch (e) { err(`limits.yaml: invalid YAML (${e.message})`); }
+    if (L && !limitsV(L)) err(`limits.yaml: fails limits schema: ${fmt(limitsV.errors)}`);
+    else if (L) {
+      for (const [type, fields] of Object.entries(L.fields)) {
+        for (const [field, b] of Object.entries(fields)) {
+          const [lo, hi] = field === "list" ? ["min", "max"] : ["min_chars", "max_chars"];
+          if (b[lo] !== undefined && b[hi] !== undefined && b[lo] > b[hi]) err(`limits.yaml: fields.${type}.${field}: ${lo} is greater than ${hi}`);
+        }
+        const sp = join(root, "content-schemas", type, "schema.json");
+        if (!existsSync(sp)) continue; // no schema yet: nothing to compare
+        let s; try { s = JSON.parse(readFileSync(sp, "utf8")); } catch { continue; } // reported in check 3
+        for (const [field, b] of Object.entries(fields)) {
+          if (field === "list") continue; // list bounds have no single schema counterpart yet
+          const prop = s.properties?.[field];
+          if (!prop) { err(`limits.yaml: fields.${type}.${field} has no property '${field}' in content-schemas/${type}/schema.json`); continue; }
+          const g = prop["x-guidance"] ?? {};
+          for (const k of ["min_chars", "max_chars"]) if (b[k] !== undefined && b[k] !== g[k]) err(`limits.yaml: fields.${type}.${field}.${k} is ${b[k]} but x-guidance says ${g[k]}`);
+        }
+      }
+    }
   }
 
   // 4. size and banned characters (fixtures are inputs of the tests, not repo content)
