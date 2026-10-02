@@ -8,7 +8,11 @@
     {
       "name": "constitution",
       "pack_hash": "041cf6ef91b2f8e3b053640a30b9ebe12558f32cbee0494b34d8ea15bbfc0e34"
+    },
+    {
+      "name": "fiktiva-city",
+      "pack_hash": "7d284c2b46faf2afaee6750374bde3fd992bda608a686ae1ec0e53c3cf6c1bda"
     }
   ],
-  "released_at": "2026-10-02T11:29:23.548Z"
+  "released_at": "2026-10-02T11:34:24.004Z"
 }

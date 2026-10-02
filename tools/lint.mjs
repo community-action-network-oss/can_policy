@@ -58,6 +58,42 @@ export function lint(root, notes = []) {
     else if (names.get(pn).version !== pv) { err(`pack ${n}: parent version ${pv} does not match ${pn}@${names.get(pn).version}`); packsOk = false; }
   }
 
+  // 1a. overlay rules: a jurisdiction or local pack may add or narrow, never weaken (same refusals as can_server resolveLayers)
+  if (packsOk) {
+    const ENF = ["advisory", "needs_revision", "reject", "hold"];
+    const rulesOf = (p) => { try { return parse(readFileSync(join(root, p.dir, "rules.yaml"), "utf8")) ?? {}; } catch { return {}; } };
+    const byName = new Map(packs.map((p) => [p.id, p]));
+    const base = byName.has("base") ? rulesOf(byName.get("base")) : {};
+    const core = new Set(base.protected_core ?? []);
+    for (const p of packs.filter((q) => q.layer === "jurisdiction" || q.layer === "local")) {
+      const f = `${p.dir}/rules.yaml`, own = rulesOf(p);
+      if (own.protected_core) err(`${f}: only the base pack may list protected_core`);
+      const higher = new Map(); // nearest ancestor wins, as in the server merge
+      for (let n = names.get(p.id)?.parent, seen = 0; n && seen < 4; seen++) {
+        const pn = typeof n === "string" ? n.split("@")[0] : n.name, q = byName.get(pn);
+        if (!q) break;
+        for (const r of rulesOf(q).rules ?? []) if (!higher.has(r.id)) higher.set(r.id, r);
+        n = names.get(pn)?.parent;
+      }
+      const seenIds = new Set();
+      for (const r of own.rules ?? []) {
+        if (seenIds.has(r.id)) err(`${f}: duplicate rule ${r.id}`);
+        seenIds.add(r.id);
+        if (!ENF.includes(r.enforcement)) err(`${f}: ${r.id} has unknown enforcement '${r.enforcement}'`);
+        const prev = higher.get(r.id);
+        if (r.narrows !== undefined && r.narrows !== r.id) err(`${f}: ${r.id} narrows '${r.narrows}'; a narrowing rule must reuse the id it narrows`);
+        if (!prev) { if (r.narrows !== undefined) err(`${f}: ${r.id} narrows a rule that no higher layer has`); continue; }
+        if (core.has(r.id)) err(`${f}: ${r.id} touches a protected_core rule`);
+        else if (r.narrows !== r.id) err(`${f}: ${r.id} reuses a higher layer id without 'narrows: ${r.id}'`);
+        if (r.tier !== prev.tier) err(`${f}: ${r.id} changes the tier (${prev.tier} to ${r.tier})`);
+        if (ENF.indexOf(r.enforcement) < ENF.indexOf(prev.enforcement)) err(`${f}: ${r.id} weakens enforcement (${prev.enforcement} to ${r.enforcement})`);
+      }
+      // a fictional overlay must say so in sources.md
+      const rv = join(root, p.dir, "reviewer.yaml");
+      if (existsSync(rv) && parse(readFileSync(rv, "utf8"))?.fictional === true && !/invented/i.test(existsSync(join(root, p.dir, "sources.md")) ? readFileSync(join(root, p.dir, "sources.md"), "utf8") : "")) err(`${p.dir}/sources.md: a fictional overlay must state that it is invented`);
+    }
+  }
+
   // 2. decision points
   for (const d of dirs(root, "decision-points")) {
     const b = `decision-points/${d.name}`;
