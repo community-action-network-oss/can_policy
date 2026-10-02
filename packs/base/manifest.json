@@ -1726,18 +1726,18 @@
     },
     {
       "path": "decision-points/DP-ELIGIBILITY/eval/README.md",
-      "sha256": "f2759116998fe892c62efb020de5ca3c36bd52d966a4b8e89a5e4be5d14f3e7d",
-      "bytes": 695
+      "sha256": "53709e1e3e64b25aef542896a73d0a1a572dcc9332367dd9d19e182374955945",
+      "bytes": 1425
     },
     {
       "path": "decision-points/DP-ELIGIBILITY/eval/adversarial.jsonl",
-      "sha256": "ac5c4c7093e4b0abf462cd5f1d24251a978802db1884557c5fbcc6873480a8b6",
-      "bytes": 2228
+      "sha256": "38da4ec3be99805db24f36938a18ac70eecb60f615f70f44031ce296e5b953fb",
+      "bytes": 5720
     },
     {
       "path": "decision-points/DP-ELIGIBILITY/eval/core.jsonl",
-      "sha256": "00cb6b1d5da93a74da6f512372ec4df23616d66dce1580a7aa46db793901337a",
-      "bytes": 4858
+      "sha256": "f94c0fe14e16d0f5b2501bbdce88dceb95d66f0256f5d9c972863273f1c6e85e",
+      "bytes": 19321
     },
     {
       "path": "decision-points/DP-ELIGIBILITY/eval/thresholds.yaml",
@@ -1746,23 +1746,23 @@
     },
     {
       "path": "decision-points/DP-ELIGIBILITY/examples/cases.json",
-      "sha256": "ff18ecda80488fc20216c84de08a70b1c413a89063ad33f4c065ef74694b89e7",
-      "bytes": 4873
+      "sha256": "e930a34af4da4b577cb2679769c9246e30be714bdd1e6f4bd5ff602dac7356e9",
+      "bytes": 24288
     },
     {
       "path": "decision-points/DP-ELIGIBILITY/pack-section.yaml",
-      "sha256": "275a740e47f641ce2e9caf0dc3c00fdcbbf83ec575e478140f2f2c4fd9f1474f",
-      "bytes": 334
+      "sha256": "2a3082081682fb2d6fb164dbc3bbfb1d81f477b0826dd00622d4da975532ddef",
+      "bytes": 382
     },
     {
       "path": "decision-points/DP-ELIGIBILITY/prompt.md",
-      "sha256": "1ab5606db8aed4773ea6d36ea6003d7916ee87a9a278765dfab17af65dd4f5b0",
-      "bytes": 1460
+      "sha256": "1350c0aeedca6c5c9682cb361e07056d3954635cce3295c1933e5a3ffb01cbfc",
+      "bytes": 3351
     },
     {
       "path": "decision-points/DP-ELIGIBILITY/schema.json",
-      "sha256": "ad7cc9593113a7e516e6a60734d7a7eb53744bcd09e275d7563edc54822eb461",
-      "bytes": 1686
+      "sha256": "1375d87a157468bcf46d6b8824787821eec0bc6220436b78a1210a935f0c2a38",
+      "bytes": 6612
     },
     {
       "path": "decision-points/DP-EVIDENCE-TIER/eval/README.md",
@@ -1846,18 +1846,18 @@
     },
     {
       "path": "decision-points/DP-LEGAL/eval/README.md",
-      "sha256": "aa88f9462c1981d78a6db6c27bcadb67dd6edb9499bbe2348d9bf76610ffba19",
-      "bytes": 1146
+      "sha256": "c5dbb0d8fce70b994e68033194e787f4ac7d564afca1c8dd889c6c2e0c70d63c",
+      "bytes": 1791
     },
     {
       "path": "decision-points/DP-LEGAL/eval/adversarial.jsonl",
-      "sha256": "50401cff040396d9a16942a785d4d1df4376719de29929db79cc602b35aea198",
-      "bytes": 2372
+      "sha256": "2b4e5e69ac921040e9a7bf02723171b8614bdd5aedcd0c97ed6043b690ad57b0",
+      "bytes": 5681
     },
     {
       "path": "decision-points/DP-LEGAL/eval/core.jsonl",
-      "sha256": "f628479a2297c42335780a8a0518ba6f1c7c054ebe297adbcfd3798ea43a6667",
-      "bytes": 3071
+      "sha256": "cf56c002002d03359b776b463e48c321fb93e5179a2a470e042b08cee83de942",
+      "bytes": 16684
     },
     {
       "path": "decision-points/DP-LEGAL/eval/thresholds.yaml",
@@ -1866,38 +1866,38 @@
     },
     {
       "path": "decision-points/DP-LEGAL/examples/cases.json",
-      "sha256": "adb59aa2e4d89a34b771d94ecd653b2cbbc7e2b8bf7e03855b5a91803ebe44e0",
-      "bytes": 3524
+      "sha256": "62d9a4f5f5cf0b8ce4b45ac4575d36ec09ba56f155b6c750741c045a45d69a43",
+      "bytes": 21731
     },
     {
       "path": "decision-points/DP-LEGAL/pack-section.yaml",
-      "sha256": "99eece2d1f9e80b1764d83d54e3154d4cf47d85a19482ef05f20f984aefac8cf",
-      "bytes": 208
+      "sha256": "6d8e7d187cfdf7c136d39c077e9f83fd2d925f3e5a2aa4a247a95d61f0cd749f",
+      "bytes": 237
     },
     {
       "path": "decision-points/DP-LEGAL/prompt.md",
-      "sha256": "531d8533fc6070da6e202fff2f8bf42dca63c9c5f50b69eb3c8e3d7977dbaddc",
-      "bytes": 1722
+      "sha256": "cbfccd663f087d42bfba9c9f58fceade5fcc31574bd9ea963bdb4aaa8f1c2334",
+      "bytes": 3263
     },
     {
       "path": "decision-points/DP-LEGAL/schema.json",
-      "sha256": "d046dda331ea3c547681392247b063b6570ff6b4187086e3c543c37f6f204188",
-      "bytes": 1426
+      "sha256": "06f07abda399cf56637859bd1c6ecbb4ea21d1a978763b6d4997be3598f25021",
+      "bytes": 6352
     },
     {
       "path": "decision-points/DP-LEGALITY/eval/README.md",
-      "sha256": "bf543decf03212c90ef59b12aca4fa7644341885fb280914300211e947b6beba",
-      "bytes": 1256
+      "sha256": "b8b7e72c58b390f78a1baae6e19811c07f80031fd7ad4b5e66721f09d0ff0ffc",
+      "bytes": 2553
     },
     {
       "path": "decision-points/DP-LEGALITY/eval/adversarial.jsonl",
-      "sha256": "ce374cb457d3c82570898694094b5d0e81e8e0469dfd46d0dd8193071e07376d",
-      "bytes": 3122
+      "sha256": "bdeca463bc7545243de00e5061e5662c809ced0dc71cc3a6c1dd85db04dec947",
+      "bytes": 7386
     },
     {
       "path": "decision-points/DP-LEGALITY/eval/core.jsonl",
-      "sha256": "c615b38a84116e41776bc6f1f375fba9c659b36b68c7bbe6f029c477c9291266",
-      "bytes": 4674
+      "sha256": "2a1eec902235af9f2c39831365b76b169b0aa2dba324be471139c95a61fb4413",
+      "bytes": 25031
     },
     {
       "path": "decision-points/DP-LEGALITY/eval/thresholds.yaml",
@@ -1906,23 +1906,23 @@
     },
     {
       "path": "decision-points/DP-LEGALITY/examples/cases.json",
-      "sha256": "4f808ecc6aaa980e18ef508df60583bc62f6b169e38091251ccf741d40ae3f58",
-      "bytes": 4957
+      "sha256": "4daa0a38b5a73b42d8342c2d6d8c94499487e352bb8539607c895b1585e39043",
+      "bytes": 31885
     },
     {
       "path": "decision-points/DP-LEGALITY/pack-section.yaml",
-      "sha256": "947b2cea4864160aadb4fb26120a568df7a093c7639c8fda72c71ec6a5d84a02",
-      "bytes": 326
+      "sha256": "0574839856fc096e2dbb19670c52a24ef12da165809c5c0019346481f7cbc3f0",
+      "bytes": 374
     },
     {
       "path": "decision-points/DP-LEGALITY/prompt.md",
-      "sha256": "a2c2d07ef6f06c9e4c950e7226c02b87c7e62f18b6462cf7d8734388614b94a2",
-      "bytes": 2049
+      "sha256": "dd5b227937210c757e35bf2d5894fd5c34808881bbdfbdeb25f7e5c380d2c62c",
+      "bytes": 4263
     },
     {
       "path": "decision-points/DP-LEGALITY/schema.json",
-      "sha256": "01472f07976e5bfe84fa8727319e40f1bb42a2b34d094639038cd875f2b6c507",
-      "bytes": 2328
+      "sha256": "0e2fc7ebbe9fb9fc908d4a8411fe91fe4d5dbc787e2fb933cf5f08162edeee90",
+      "bytes": 9002
     },
     {
       "path": "decision-points/DP-NAMING/eval/README.md",
@@ -2135,5 +2135,5 @@
       "bytes": 17486
     }
   ],
-  "pack_hash": "4de91abb8ea5e3bc24e2d2b9203054dac83e9602f0138845592417cd566b369f"
+  "pack_hash": "dc86e4ede11c808e9e53a893a4e923bdaf3725becad184aa2898cddfaa6e5dcf"
 }
