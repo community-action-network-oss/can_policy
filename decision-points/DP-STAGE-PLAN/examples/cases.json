@@ -273,7 +273,7 @@
       "STAGE-GATE-1",
       "PLAN-CHANGE-1"
     ],
-    "note": "plan change with a reason, a justified removal and reachable criteria",
+    "note": "boundary: plan change publishes only because the reason, the removal and the reachability all hold",
     "provenance": "fixture",
     "jurisdiction": "fiktiva-city",
     "field_ref": {

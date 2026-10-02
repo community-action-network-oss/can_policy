@@ -1,7 +1,7 @@
 [
   {
     "id": "ex-PU-01",
-    "input": "jurisdiction: fiktiva-city\nposter_request: yes\nguidelines: fiktiva-guidelines@0.1.0\nreview_complete: yes\nreviews_completed: 3\nreview_quorum_met: yes\nreview_days_open: 9\nrecommendations_open: 0\nrecommendations_accepted: 2\nrecommendations_declined: 0\nfinal_criteria_count: 2\narchive_suggestions_accepted: 0\ndp_outcome DP-ELIGIBILITY: publish\ndp_outcome DP-COMPLETENESS: publish\ndp_outcome DP-ASSUMPTIONS: publish\ndp_outcome DP-PRIVACY: publish\ndp_outcome DP-FRAMING: publish\ndp_outcome DP-DUPLICATE: publish\ndp_outcome DP-NAMING: publish\ndp_outcome DP-TONE: publish\ndp_outcome DP-EVIDENCE-TIER: publish\ndp_outcome DP-SOURCE-TRUST: publish\ndp_outcome DP-CRITERIA: publish\ndp_outcome DP-STAGE-PLAN: publish\ndp_outcome DP-LEGALITY: publish\ndp_outcome DP-CRISIS: publish",
+    "input": "jurisdiction: fiktiva-city\nposter_request: yes\nprotected_core: clear\nguidelines: fiktiva-guidelines@0.1.0\nreview_complete: yes\nreviews_completed: 3\nreview_quorum_met: yes\nreview_days_open: 9\nrecommendations_open: 0\nrecommendations_accepted: 2\nrecommendations_declined: 0\nfinal_criteria_count: 2\narchive_suggestions_accepted: 0\ndp_outcome DP-ELIGIBILITY: publish\ndp_outcome DP-COMPLETENESS: publish\ndp_outcome DP-ASSUMPTIONS: publish\ndp_outcome DP-PRIVACY: publish\ndp_outcome DP-FRAMING: publish\ndp_outcome DP-DUPLICATE: publish\ndp_outcome DP-NAMING: publish\ndp_outcome DP-TONE: publish\ndp_outcome DP-EVIDENCE-TIER: publish\ndp_outcome DP-SOURCE-TRUST: publish\ndp_outcome DP-CRITERIA: publish\ndp_outcome DP-STAGE-PLAN: publish\ndp_outcome DP-LEGALITY: publish\ndp_outcome DP-CRISIS: publish",
     "expected_outcome": "publish",
     "rule_ids": [
       "REVIEW-1",
@@ -76,7 +76,8 @@
       "checks": {
         "review_complete": true,
         "final_criteria_present": true,
-        "archive_used_as_review": false
+        "archive_used_as_review": false,
+        "protected_core_clear": true
       },
       "reviews_completed": 3,
       "open_count": 0,
@@ -85,7 +86,7 @@
   },
   {
     "id": "ex-PU-02",
-    "input": "jurisdiction: fiktiva-city\nposter_request: yes\nguidelines: fiktiva-guidelines@0.1.0\nreview_complete: yes\nreviews_completed: 4\nreview_quorum_met: yes\nreview_days_open: 11\nrecommendations_open: 1\nrecommendations_accepted: 1\nrecommendations_declined: 1\nfinal_criteria_count: 2\narchive_suggestions_accepted: 0\ndp_outcome DP-ELIGIBILITY: publish\ndp_outcome DP-COMPLETENESS: publish\ndp_outcome DP-ASSUMPTIONS: publish\ndp_outcome DP-PRIVACY: publish\ndp_outcome DP-FRAMING: publish\ndp_outcome DP-DUPLICATE: publish\ndp_outcome DP-NAMING: publish\ndp_outcome DP-TONE: publish\ndp_outcome DP-EVIDENCE-TIER: publish\ndp_outcome DP-SOURCE-TRUST: publish\ndp_outcome DP-CRITERIA: publish\ndp_outcome DP-STAGE-PLAN: publish\ndp_outcome DP-LEGALITY: publish\ndp_outcome DP-CRISIS: publish\nreco_open o-1 path=stage_plan.s-2: \"The second stage could name who checks the repair.\"\nreco_declined d-1 path=title: \"The title is the name residents already use.\"",
+    "input": "jurisdiction: fiktiva-city\nposter_request: yes\nprotected_core: clear\nguidelines: fiktiva-guidelines@0.1.0\nreview_complete: yes\nreviews_completed: 4\nreview_quorum_met: yes\nreview_days_open: 11\nrecommendations_open: 1\nrecommendations_accepted: 1\nrecommendations_declined: 1\nfinal_criteria_count: 2\narchive_suggestions_accepted: 0\ndp_outcome DP-ELIGIBILITY: publish\ndp_outcome DP-COMPLETENESS: publish\ndp_outcome DP-ASSUMPTIONS: publish\ndp_outcome DP-PRIVACY: publish\ndp_outcome DP-FRAMING: publish\ndp_outcome DP-DUPLICATE: publish\ndp_outcome DP-NAMING: publish\ndp_outcome DP-TONE: publish\ndp_outcome DP-EVIDENCE-TIER: publish\ndp_outcome DP-SOURCE-TRUST: publish\ndp_outcome DP-CRITERIA: publish\ndp_outcome DP-STAGE-PLAN: publish\ndp_outcome DP-LEGALITY: publish\ndp_outcome DP-CRISIS: publish\nreco_open o-1 path=stage_plan.s-2: \"The second stage could name who checks the repair.\"\nreco_declined d-1 path=title: \"The title is the name residents already use.\"",
     "expected_outcome": "publish",
     "rule_ids": [
       "REVIEW-1",
@@ -160,7 +161,8 @@
       "checks": {
         "review_complete": true,
         "final_criteria_present": true,
-        "archive_used_as_review": false
+        "archive_used_as_review": false,
+        "protected_core_clear": true
       },
       "reviews_completed": 4,
       "open_count": 1,
@@ -175,7 +177,7 @@
   },
   {
     "id": "ex-PU-03",
-    "input": "jurisdiction: fiktiva-city\nposter_request: yes\nguidelines: fiktiva-guidelines@0.1.0\nreview_complete: yes\nreviews_completed: 1\nreview_quorum_met: no\nreview_days_open: 16\nrecommendations_open: 0\nrecommendations_accepted: 0\nrecommendations_declined: 0\nfinal_criteria_count: 1\narchive_suggestions_accepted: 0\ndp_outcome DP-ELIGIBILITY: publish\ndp_outcome DP-COMPLETENESS: publish\ndp_outcome DP-ASSUMPTIONS: publish\ndp_outcome DP-PRIVACY: publish\ndp_outcome DP-FRAMING: publish\ndp_outcome DP-DUPLICATE: publish\ndp_outcome DP-NAMING: publish\ndp_outcome DP-TONE: publish\ndp_outcome DP-EVIDENCE-TIER: publish\ndp_outcome DP-SOURCE-TRUST: publish\ndp_outcome DP-CRITERIA: publish\ndp_outcome DP-STAGE-PLAN: publish\ndp_outcome DP-LEGALITY: publish\ndp_outcome DP-CRISIS: publish",
+    "input": "jurisdiction: fiktiva-city\nposter_request: yes\nprotected_core: clear\nguidelines: fiktiva-guidelines@0.1.0\nreview_complete: yes\nreviews_completed: 1\nreview_quorum_met: no\nreview_days_open: 16\nrecommendations_open: 0\nrecommendations_accepted: 0\nrecommendations_declined: 0\nfinal_criteria_count: 1\narchive_suggestions_accepted: 0\ndp_outcome DP-ELIGIBILITY: publish\ndp_outcome DP-COMPLETENESS: publish\ndp_outcome DP-ASSUMPTIONS: publish\ndp_outcome DP-PRIVACY: publish\ndp_outcome DP-FRAMING: publish\ndp_outcome DP-DUPLICATE: publish\ndp_outcome DP-NAMING: publish\ndp_outcome DP-TONE: publish\ndp_outcome DP-EVIDENCE-TIER: publish\ndp_outcome DP-SOURCE-TRUST: publish\ndp_outcome DP-CRITERIA: publish\ndp_outcome DP-STAGE-PLAN: publish\ndp_outcome DP-LEGALITY: publish\ndp_outcome DP-CRISIS: publish",
     "expected_outcome": "publish",
     "rule_ids": [
       "REVIEW-1",
@@ -249,7 +251,8 @@
       "checks": {
         "review_complete": true,
         "final_criteria_present": true,
-        "archive_used_as_review": false
+        "archive_used_as_review": false,
+        "protected_core_clear": true
       },
       "reviews_completed": 1,
       "open_count": 0,
@@ -258,7 +261,7 @@
   },
   {
     "id": "ex-PU-04",
-    "input": "jurisdiction: fiktiva-city\nposter_request: yes\nguidelines: fiktiva-guidelines@0.1.0\nreview_complete: yes\nreviews_completed: 3\nreview_quorum_met: yes\nreview_days_open: 9\nrecommendations_open: 0\nrecommendations_accepted: 2\nrecommendations_declined: 0\nfinal_criteria_count: 2\narchive_suggestions_accepted: 0\ndp_outcome DP-ELIGIBILITY: publish\ndp_outcome DP-COMPLETENESS: publish\ndp_outcome DP-ASSUMPTIONS: publish\ndp_outcome DP-PRIVACY: publish\ndp_outcome DP-FRAMING: publish\ndp_outcome DP-DUPLICATE: publish\ndp_outcome DP-NAMING: publish\ndp_outcome DP-TONE: publish\ndp_outcome DP-EVIDENCE-TIER: publish\ndp_outcome DP-SOURCE-TRUST: publish\ndp_outcome DP-CRITERIA: needs_revision field=criteria\ndp_outcome DP-STAGE-PLAN: publish\ndp_outcome DP-LEGALITY: publish\ndp_outcome DP-CRISIS: publish",
+    "input": "jurisdiction: fiktiva-city\nposter_request: yes\nprotected_core: clear\nguidelines: fiktiva-guidelines@0.1.0\nreview_complete: yes\nreviews_completed: 3\nreview_quorum_met: yes\nreview_days_open: 9\nrecommendations_open: 0\nrecommendations_accepted: 2\nrecommendations_declined: 0\nfinal_criteria_count: 2\narchive_suggestions_accepted: 0\ndp_outcome DP-ELIGIBILITY: publish\ndp_outcome DP-COMPLETENESS: publish\ndp_outcome DP-ASSUMPTIONS: publish\ndp_outcome DP-PRIVACY: publish\ndp_outcome DP-FRAMING: publish\ndp_outcome DP-DUPLICATE: publish\ndp_outcome DP-NAMING: publish\ndp_outcome DP-TONE: publish\ndp_outcome DP-EVIDENCE-TIER: publish\ndp_outcome DP-SOURCE-TRUST: publish\ndp_outcome DP-CRITERIA: needs_revision field=criteria\ndp_outcome DP-STAGE-PLAN: publish\ndp_outcome DP-LEGALITY: publish\ndp_outcome DP-CRISIS: publish",
     "expected_outcome": "needs_revision",
     "rule_ids": [
       "REVIEW-1",
@@ -334,7 +337,8 @@
       "checks": {
         "review_complete": true,
         "final_criteria_present": true,
-        "archive_used_as_review": false
+        "archive_used_as_review": false,
+        "protected_core_clear": true
       },
       "reviews_completed": 3,
       "open_count": 0,
@@ -343,7 +347,7 @@
   },
   {
     "id": "ex-PU-05",
-    "input": "jurisdiction: fiktiva-city\nposter_request: yes\nguidelines: fiktiva-guidelines@0.1.0\nreview_complete: yes\nreviews_completed: 3\nreview_quorum_met: yes\nreview_days_open: 9\nrecommendations_open: 0\nrecommendations_accepted: 2\nrecommendations_declined: 0\nfinal_criteria_count: 0\narchive_suggestions_accepted: 0\ndp_outcome DP-ELIGIBILITY: publish\ndp_outcome DP-COMPLETENESS: publish\ndp_outcome DP-ASSUMPTIONS: publish\ndp_outcome DP-PRIVACY: publish\ndp_outcome DP-FRAMING: publish\ndp_outcome DP-DUPLICATE: publish\ndp_outcome DP-NAMING: publish\ndp_outcome DP-TONE: publish\ndp_outcome DP-EVIDENCE-TIER: publish\ndp_outcome DP-SOURCE-TRUST: publish\ndp_outcome DP-CRITERIA: publish\ndp_outcome DP-STAGE-PLAN: publish\ndp_outcome DP-LEGALITY: publish\ndp_outcome DP-CRISIS: publish",
+    "input": "jurisdiction: fiktiva-city\nposter_request: yes\nprotected_core: clear\nguidelines: fiktiva-guidelines@0.1.0\nreview_complete: yes\nreviews_completed: 3\nreview_quorum_met: yes\nreview_days_open: 9\nrecommendations_open: 0\nrecommendations_accepted: 2\nrecommendations_declined: 0\nfinal_criteria_count: 0\narchive_suggestions_accepted: 0\ndp_outcome DP-ELIGIBILITY: publish\ndp_outcome DP-COMPLETENESS: publish\ndp_outcome DP-ASSUMPTIONS: publish\ndp_outcome DP-PRIVACY: publish\ndp_outcome DP-FRAMING: publish\ndp_outcome DP-DUPLICATE: publish\ndp_outcome DP-NAMING: publish\ndp_outcome DP-TONE: publish\ndp_outcome DP-EVIDENCE-TIER: publish\ndp_outcome DP-SOURCE-TRUST: publish\ndp_outcome DP-CRITERIA: publish\ndp_outcome DP-STAGE-PLAN: publish\ndp_outcome DP-LEGALITY: publish\ndp_outcome DP-CRISIS: publish",
     "expected_outcome": "needs_revision",
     "rule_ids": [
       "REVIEW-1",
@@ -418,7 +422,8 @@
       "checks": {
         "review_complete": true,
         "final_criteria_present": false,
-        "archive_used_as_review": false
+        "archive_used_as_review": false,
+        "protected_core_clear": true
       },
       "reviews_completed": 3,
       "open_count": 0,
@@ -427,7 +432,7 @@
   },
   {
     "id": "ex-PU-06",
-    "input": "jurisdiction: fiktiva-city\nposter_request: yes\nguidelines: fiktiva-guidelines@0.1.0\nreview_complete: yes\nreviews_completed: 3\nreview_quorum_met: yes\nreview_days_open: 9\nrecommendations_open: 0\nrecommendations_accepted: 2\nrecommendations_declined: 0\nfinal_criteria_count: 2\narchive_suggestions_accepted: 0\ndp_outcome DP-ELIGIBILITY: publish\ndp_outcome DP-COMPLETENESS: publish\ndp_outcome DP-ASSUMPTIONS: publish\ndp_outcome DP-PRIVACY: publish\ndp_outcome DP-FRAMING: publish\ndp_outcome DP-DUPLICATE: publish\ndp_outcome DP-NAMING: publish\ndp_outcome DP-TONE: publish\ndp_outcome DP-EVIDENCE-TIER: publish\ndp_outcome DP-SOURCE-TRUST: publish\ndp_outcome DP-CRITERIA: publish\ndp_outcome DP-STAGE-PLAN: publish\ndp_outcome DP-LEGALITY: reject field=title\ndp_outcome DP-CRISIS: publish",
+    "input": "jurisdiction: fiktiva-city\nposter_request: yes\nprotected_core: clear\nguidelines: fiktiva-guidelines@0.1.0\nreview_complete: yes\nreviews_completed: 3\nreview_quorum_met: yes\nreview_days_open: 9\nrecommendations_open: 0\nrecommendations_accepted: 2\nrecommendations_declined: 0\nfinal_criteria_count: 2\narchive_suggestions_accepted: 0\ndp_outcome DP-ELIGIBILITY: publish\ndp_outcome DP-COMPLETENESS: publish\ndp_outcome DP-ASSUMPTIONS: publish\ndp_outcome DP-PRIVACY: publish\ndp_outcome DP-FRAMING: publish\ndp_outcome DP-DUPLICATE: publish\ndp_outcome DP-NAMING: publish\ndp_outcome DP-TONE: publish\ndp_outcome DP-EVIDENCE-TIER: publish\ndp_outcome DP-SOURCE-TRUST: publish\ndp_outcome DP-CRITERIA: publish\ndp_outcome DP-STAGE-PLAN: publish\ndp_outcome DP-LEGALITY: reject field=title\ndp_outcome DP-CRISIS: publish",
     "expected_outcome": "reject",
     "rule_ids": [
       "REVIEW-1"
@@ -438,7 +443,6 @@
     "field_ref": {
       "field": "publication"
     },
-    "shot": true,
     "expected": {
       "prior_outcomes": [
         {
@@ -497,12 +501,18 @@
           "dp": "DP-CRISIS",
           "outcome": "publish"
         }
-      ]
+      ],
+      "checks": {
+        "review_complete": true,
+        "final_criteria_present": true,
+        "archive_used_as_review": false,
+        "protected_core_clear": true
+      }
     }
   },
   {
     "id": "ex-PU-07",
-    "input": "jurisdiction: fiktiva-city\nposter_request: yes\nguidelines: fiktiva-guidelines@0.1.0\nreview_complete: no\nreviews_completed: 2\nreview_quorum_met: no\nreview_days_open: 3\nrecommendations_open: 0\nrecommendations_accepted: 2\nrecommendations_declined: 0\nfinal_criteria_count: 2\narchive_suggestions_accepted: 0\ndp_outcome DP-ELIGIBILITY: publish\ndp_outcome DP-COMPLETENESS: publish\ndp_outcome DP-ASSUMPTIONS: publish\ndp_outcome DP-PRIVACY: publish\ndp_outcome DP-FRAMING: publish\ndp_outcome DP-DUPLICATE: publish\ndp_outcome DP-NAMING: publish\ndp_outcome DP-TONE: publish\ndp_outcome DP-EVIDENCE-TIER: publish\ndp_outcome DP-SOURCE-TRUST: publish\ndp_outcome DP-CRITERIA: publish\ndp_outcome DP-STAGE-PLAN: publish\ndp_outcome DP-LEGALITY: publish\ndp_outcome DP-CRISIS: route_external",
+    "input": "jurisdiction: fiktiva-city\nposter_request: yes\nprotected_core: clear\nguidelines: fiktiva-guidelines@0.1.0\nreview_complete: no\nreviews_completed: 2\nreview_quorum_met: no\nreview_days_open: 3\nrecommendations_open: 0\nrecommendations_accepted: 2\nrecommendations_declined: 0\nfinal_criteria_count: 2\narchive_suggestions_accepted: 0\ndp_outcome DP-ELIGIBILITY: publish\ndp_outcome DP-COMPLETENESS: publish\ndp_outcome DP-ASSUMPTIONS: publish\ndp_outcome DP-PRIVACY: publish\ndp_outcome DP-FRAMING: publish\ndp_outcome DP-DUPLICATE: publish\ndp_outcome DP-NAMING: publish\ndp_outcome DP-TONE: publish\ndp_outcome DP-EVIDENCE-TIER: publish\ndp_outcome DP-SOURCE-TRUST: publish\ndp_outcome DP-CRITERIA: publish\ndp_outcome DP-STAGE-PLAN: publish\ndp_outcome DP-LEGALITY: publish\ndp_outcome DP-CRISIS: route_external",
     "expected_outcome": "route_external",
     "rule_ids": [
       "REVIEW-1"
@@ -571,12 +581,18 @@
           "dp": "DP-CRISIS",
           "outcome": "route_external"
         }
-      ]
+      ],
+      "checks": {
+        "review_complete": false,
+        "final_criteria_present": true,
+        "archive_used_as_review": false,
+        "protected_core_clear": true
+      }
     }
   },
   {
     "id": "ex-PU-08",
-    "input": "jurisdiction: fiktiva-city\nposter_request: yes\nguidelines: fiktiva-guidelines@0.1.0\nreview_complete: no\nreviews_completed: 0\nreview_quorum_met: no\nreview_days_open: 6\nrecommendations_open: 0\nrecommendations_accepted: 0\nrecommendations_declined: 0\nfinal_criteria_count: 2\narchive_suggestions_accepted: 0\ndp_outcome DP-ELIGIBILITY: publish\ndp_outcome DP-COMPLETENESS: publish\ndp_outcome DP-ASSUMPTIONS: publish\ndp_outcome DP-PRIVACY: publish\ndp_outcome DP-FRAMING: publish\ndp_outcome DP-DUPLICATE: publish\ndp_outcome DP-NAMING: publish\ndp_outcome DP-TONE: publish\ndp_outcome DP-EVIDENCE-TIER: publish\ndp_outcome DP-SOURCE-TRUST: publish\ndp_outcome DP-CRITERIA: publish\ndp_outcome DP-STAGE-PLAN: publish\ndp_outcome DP-LEGALITY: publish\ndp_outcome DP-CRISIS: publish",
+    "input": "jurisdiction: fiktiva-city\nposter_request: yes\nprotected_core: clear\nguidelines: fiktiva-guidelines@0.1.0\nreview_complete: no\nreviews_completed: 0\nreview_quorum_met: no\nreview_days_open: 6\nrecommendations_open: 0\nrecommendations_accepted: 0\nrecommendations_declined: 0\nfinal_criteria_count: 2\narchive_suggestions_accepted: 0\ndp_outcome DP-ELIGIBILITY: publish\ndp_outcome DP-COMPLETENESS: publish\ndp_outcome DP-ASSUMPTIONS: publish\ndp_outcome DP-PRIVACY: publish\ndp_outcome DP-FRAMING: publish\ndp_outcome DP-DUPLICATE: publish\ndp_outcome DP-NAMING: publish\ndp_outcome DP-TONE: publish\ndp_outcome DP-EVIDENCE-TIER: publish\ndp_outcome DP-SOURCE-TRUST: publish\ndp_outcome DP-CRITERIA: publish\ndp_outcome DP-STAGE-PLAN: publish\ndp_outcome DP-LEGALITY: publish\ndp_outcome DP-CRISIS: publish",
     "expected_outcome": "hold",
     "rule_ids": [],
     "note": "zero completed reviews: hold, never publish",
@@ -590,13 +606,14 @@
       "checks": {
         "review_complete": false,
         "final_criteria_present": true,
-        "archive_used_as_review": false
+        "archive_used_as_review": false,
+        "protected_core_clear": true
       }
     }
   },
   {
     "id": "ex-PU-09",
-    "input": "jurisdiction: fiktiva-city\nposter_request: yes\nguidelines: fiktiva-guidelines@0.1.0\nreview_complete: yes\nreviews_completed: 3\nreview_quorum_met: yes\nreview_days_open: 9\nrecommendations_open: 0\nrecommendations_accepted: 2\nrecommendations_declined: 0\nfinal_criteria_count: 2\narchive_suggestions_accepted: 0\ndp_outcome DP-ELIGIBILITY: publish\ndp_outcome DP-COMPLETENESS: publish\ndp_outcome DP-ASSUMPTIONS: publish\ndp_outcome DP-PRIVACY: hold\ndp_outcome DP-FRAMING: publish\ndp_outcome DP-DUPLICATE: publish\ndp_outcome DP-NAMING: publish\ndp_outcome DP-TONE: publish\ndp_outcome DP-EVIDENCE-TIER: publish\ndp_outcome DP-SOURCE-TRUST: publish\ndp_outcome DP-CRITERIA: publish\ndp_outcome DP-STAGE-PLAN: publish\ndp_outcome DP-LEGALITY: publish\ndp_outcome DP-CRISIS: publish",
+    "input": "jurisdiction: fiktiva-city\nposter_request: yes\nprotected_core: clear\nguidelines: fiktiva-guidelines@0.1.0\nreview_complete: yes\nreviews_completed: 3\nreview_quorum_met: yes\nreview_days_open: 9\nrecommendations_open: 0\nrecommendations_accepted: 2\nrecommendations_declined: 0\nfinal_criteria_count: 2\narchive_suggestions_accepted: 0\ndp_outcome DP-ELIGIBILITY: publish\ndp_outcome DP-COMPLETENESS: publish\ndp_outcome DP-ASSUMPTIONS: publish\ndp_outcome DP-PRIVACY: hold\ndp_outcome DP-FRAMING: publish\ndp_outcome DP-DUPLICATE: publish\ndp_outcome DP-NAMING: publish\ndp_outcome DP-TONE: publish\ndp_outcome DP-EVIDENCE-TIER: publish\ndp_outcome DP-SOURCE-TRUST: publish\ndp_outcome DP-CRITERIA: publish\ndp_outcome DP-STAGE-PLAN: publish\ndp_outcome DP-LEGALITY: publish\ndp_outcome DP-CRISIS: publish",
     "expected_outcome": "hold",
     "rule_ids": [],
     "note": "a held decision point: hold",
@@ -669,7 +686,7 @@
   },
   {
     "id": "ex-PU-10",
-    "input": "jurisdiction: fiktiva-city\nposter_request: yes\nguidelines: fiktiva-guidelines@0.1.0\nreview_complete: yes\nreviews_completed: 3\nreview_quorum_met: yes\nreview_days_open: 9\nrecommendations_open: 0\nrecommendations_accepted: 2\nrecommendations_declined: 0\nfinal_criteria_count: 2\narchive_suggestions_accepted: 0\ndp_outcome DP-ELIGIBILITY: publish\ndp_outcome DP-COMPLETENESS: publish\ndp_outcome DP-ASSUMPTIONS: publish\ndp_outcome DP-PRIVACY: publish\ndp_outcome DP-FRAMING: publish\ndp_outcome DP-DUPLICATE: publish\ndp_outcome DP-NAMING: publish\ndp_outcome DP-EVIDENCE-TIER: publish\ndp_outcome DP-SOURCE-TRUST: publish\ndp_outcome DP-CRITERIA: publish\ndp_outcome DP-STAGE-PLAN: publish\ndp_outcome DP-LEGALITY: publish\ndp_outcome DP-CRISIS: publish",
+    "input": "jurisdiction: fiktiva-city\nposter_request: yes\nprotected_core: clear\nguidelines: fiktiva-guidelines@0.1.0\nreview_complete: yes\nreviews_completed: 3\nreview_quorum_met: yes\nreview_days_open: 9\nrecommendations_open: 0\nrecommendations_accepted: 2\nrecommendations_declined: 0\nfinal_criteria_count: 2\narchive_suggestions_accepted: 0\ndp_outcome DP-ELIGIBILITY: publish\ndp_outcome DP-COMPLETENESS: publish\ndp_outcome DP-ASSUMPTIONS: publish\ndp_outcome DP-PRIVACY: publish\ndp_outcome DP-FRAMING: publish\ndp_outcome DP-DUPLICATE: publish\ndp_outcome DP-NAMING: publish\ndp_outcome DP-EVIDENCE-TIER: publish\ndp_outcome DP-SOURCE-TRUST: publish\ndp_outcome DP-CRITERIA: publish\ndp_outcome DP-STAGE-PLAN: publish\ndp_outcome DP-LEGALITY: publish\ndp_outcome DP-CRISIS: publish",
     "expected_outcome": "hold",
     "rule_ids": [],
     "note": "one dp_outcome line is absent: fail closed",
@@ -687,7 +704,7 @@
   },
   {
     "id": "ex-PU-11",
-    "input": "jurisdiction: fiktiva-city\nposter_request: no\nguidelines: fiktiva-guidelines@0.1.0\nreview_complete: yes\nreviews_completed: 3\nreview_quorum_met: yes\nreview_days_open: 9\nrecommendations_open: 0\nrecommendations_accepted: 2\nrecommendations_declined: 0\nfinal_criteria_count: 2\narchive_suggestions_accepted: 0\ndp_outcome DP-ELIGIBILITY: publish\ndp_outcome DP-COMPLETENESS: publish\ndp_outcome DP-ASSUMPTIONS: publish\ndp_outcome DP-PRIVACY: publish\ndp_outcome DP-FRAMING: publish\ndp_outcome DP-DUPLICATE: publish\ndp_outcome DP-NAMING: publish\ndp_outcome DP-TONE: publish\ndp_outcome DP-EVIDENCE-TIER: publish\ndp_outcome DP-SOURCE-TRUST: publish\ndp_outcome DP-CRITERIA: publish\ndp_outcome DP-STAGE-PLAN: publish\ndp_outcome DP-LEGALITY: publish\ndp_outcome DP-CRISIS: publish",
+    "input": "jurisdiction: fiktiva-city\nposter_request: no\nprotected_core: clear\nguidelines: fiktiva-guidelines@0.1.0\nreview_complete: yes\nreviews_completed: 3\nreview_quorum_met: yes\nreview_days_open: 9\nrecommendations_open: 0\nrecommendations_accepted: 2\nrecommendations_declined: 0\nfinal_criteria_count: 2\narchive_suggestions_accepted: 0\ndp_outcome DP-ELIGIBILITY: publish\ndp_outcome DP-COMPLETENESS: publish\ndp_outcome DP-ASSUMPTIONS: publish\ndp_outcome DP-PRIVACY: publish\ndp_outcome DP-FRAMING: publish\ndp_outcome DP-DUPLICATE: publish\ndp_outcome DP-NAMING: publish\ndp_outcome DP-TONE: publish\ndp_outcome DP-EVIDENCE-TIER: publish\ndp_outcome DP-SOURCE-TRUST: publish\ndp_outcome DP-CRITERIA: publish\ndp_outcome DP-STAGE-PLAN: publish\ndp_outcome DP-LEGALITY: publish\ndp_outcome DP-CRISIS: publish",
     "expected_outcome": "hold",
     "rule_ids": [],
     "note": "the poster has not requested publication",

@@ -19,11 +19,11 @@ const run = (name, validate, cases) => test(name, () => {
 // ---- DP-PUBLISH
 const DPS = ["ELIGIBILITY", "COMPLETENESS", "ASSUMPTIONS", "PRIVACY", "FRAMING", "DUPLICATE", "NAMING", "TONE", "EVIDENCE-TIER", "SOURCE-TRUST", "CRITERIA", "STAGE-PLAN", "LEGALITY", "CRISIS"].map((d) => `DP-${d}`);
 const po = (over = {}) => DPS.map((dp) => ({ dp, outcome: over[dp] ?? "publish" }));
-const checks = { review_complete: true, final_criteria_present: true, archive_used_as_review: false };
+const checks = { review_complete: true, final_criteria_present: true, archive_used_as_review: false, protected_core_clear: true };
 const cite = { ref: "o-1", path: "stage_plan.s-2", weight_reason: "Weighed; shown as a hint." };
 const ppub = { outcome: "publish", rule_ids: ["REVIEW-1", "RECO-1"], confidence: 0.95, reasons: ["r"], prior_outcomes: po(), checks, reviews_completed: 3, open_count: 1, open_recommendations_cited: [cite] };
 const pnr = { ...ppub, outcome: "needs_revision", revision_hint: "Fix the criteria.", prior_outcomes: po({ "DP-CRITERIA": "needs_revision" }) };
-const prej = { outcome: "reject", rule_ids: ["REVIEW-1"], confidence: 0.95, reasons: ["r"], prior_outcomes: po({ "DP-LEGALITY": "reject" }) };
+const prej = { outcome: "reject", rule_ids: ["REVIEW-1"], confidence: 0.95, reasons: ["r"], checks, prior_outcomes: po({ "DP-LEGALITY": "reject" }) };
 const pext = { ...prej, outcome: "route_external", confidence: 0.92, prior_outcomes: po({ "DP-CRISIS": "route_external" }) };
 const phold = { outcome: "hold", rule_ids: [], confidence: 0.4, reasons: ["r"], hold_reason: "cannot_decide" };
 run("DP-PUBLISH schema negatives", load("DP-PUBLISH"), [
@@ -36,6 +36,17 @@ run("DP-PUBLISH schema negatives", load("DP-PUBLISH"), [
   ["valid hold", phold, true],
   ["valid hold prior_held", { ...phold, hold_reason: "prior_held", prior_outcomes: po({ "DP-PRIVACY": "hold" }) }, true],
   ["valid hold review_incomplete", { ...phold, hold_reason: "review_incomplete", checks: { ...checks, review_complete: false } }, true],
+  ["valid hold protected_core_refused", { ...phold, hold_reason: "protected_core_refused", checks: { ...checks, protected_core_clear: false } }, true],
+  ["hold protected_core_refused with the core clear", { ...phold, hold_reason: "protected_core_refused", checks }, false],
+  ["hold protected_core_refused without checks", { ...phold, hold_reason: "protected_core_refused" }, false],
+  ["publish with the protected core refused", { ...ppub, checks: { ...checks, protected_core_clear: false } }, false],
+  ["needs_revision with the protected core refused", { ...pnr, checks: { ...checks, protected_core_clear: false } }, false],
+  ["reject beside a protected-core refusal", { ...prej, checks: { ...checks, protected_core_clear: false } }, false],
+  ["route_external beside a protected-core refusal", { ...pext, checks: { ...checks, protected_core_clear: false } }, false],
+  ["reject without checks", { ...prej, checks: undefined }, false],
+  ["route_external without checks", { ...pext, checks: undefined }, false],
+  ["checks without protected_core_clear", { ...ppub, checks: { review_complete: true, final_criteria_present: true, archive_used_as_review: false } }, false],
+  ["hold missing_input protected_core", { ...phold, hold_reason: "missing_input", missing_inputs: ["protected_core"] }, true],
   ["valid hold missing_input", { ...phold, hold_reason: "missing_input", missing_inputs: ["dp_outcomes"] }, true],
   ["escalate_human outcome", { ...phold, outcome: "escalate_human" }, false],
   ["publish with one prior needs_revision", { ...ppub, prior_outcomes: po({ "DP-TONE": "needs_revision" }) }, false],

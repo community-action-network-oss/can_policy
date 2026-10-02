@@ -110,7 +110,8 @@
       "required": [
         "review_complete",
         "final_criteria_present",
-        "archive_used_as_review"
+        "archive_used_as_review",
+        "protected_core_clear"
       ],
       "properties": {
         "review_complete": {
@@ -121,6 +122,9 @@
         },
         "archive_used_as_review": {
           "const": false
+        },
+        "protected_core_clear": {
+          "type": "boolean"
         }
       }
     },
@@ -170,6 +174,7 @@
         "missing_input",
         "ambiguous_input",
         "not_requested",
+        "protected_core_refused",
         "review_incomplete",
         "prior_held",
         "cannot_decide"
@@ -178,12 +183,13 @@
     "missing_inputs": {
       "type": "array",
       "minItems": 1,
-      "maxItems": 14,
+      "maxItems": 15,
       "uniqueItems": true,
       "items": {
         "enum": [
           "jurisdiction",
           "poster_request",
+          "protected_core",
           "guidelines",
           "review_complete",
           "reviews_completed",
@@ -539,13 +545,17 @@
             "type": "object",
             "required": [
               "review_complete",
-              "final_criteria_present"
+              "final_criteria_present",
+              "protected_core_clear"
             ],
             "properties": {
               "review_complete": {
                 "const": true
               },
               "final_criteria_present": {
+                "const": true
+              },
+              "protected_core_clear": {
                 "const": true
               }
             }
@@ -621,10 +631,14 @@
           "checks": {
             "type": "object",
             "required": [
-              "review_complete"
+              "review_complete",
+              "protected_core_clear"
             ],
             "properties": {
               "review_complete": {
+                "const": true
+              },
+              "protected_core_clear": {
                 "const": true
               }
             }
@@ -657,9 +671,21 @@
         "required": [
           "rule_ids",
           "confidence",
-          "prior_outcomes"
+          "prior_outcomes",
+          "checks"
         ],
         "properties": {
+          "checks": {
+            "type": "object",
+            "required": [
+              "protected_core_clear"
+            ],
+            "properties": {
+              "protected_core_clear": {
+                "const": true
+              }
+            }
+          },
           "rule_ids": {
             "type": "array",
             "minItems": 1
@@ -722,9 +748,21 @@
         "required": [
           "rule_ids",
           "confidence",
-          "prior_outcomes"
+          "prior_outcomes",
+          "checks"
         ],
         "properties": {
+          "checks": {
+            "type": "object",
+            "required": [
+              "protected_core_clear"
+            ],
+            "properties": {
+              "protected_core_clear": {
+                "const": true
+              }
+            }
+          },
           "rule_ids": {
             "type": "array",
             "minItems": 1
@@ -829,6 +867,7 @@
             "enum": [
               "ambiguous_input",
               "not_requested",
+              "protected_core_refused",
               "review_incomplete",
               "prior_held",
               "cannot_decide"
@@ -843,6 +882,70 @@
             "const": "hold"
           },
           "missing_inputs": false
+        }
+      }
+    },
+    {
+      "if": {
+        "type": "object",
+        "required": [
+          "hold_reason"
+        ],
+        "properties": {
+          "hold_reason": {
+            "const": "protected_core_refused"
+          }
+        }
+      },
+      "then": {
+        "type": "object",
+        "required": [
+          "checks"
+        ],
+        "properties": {
+          "checks": {
+            "type": "object",
+            "required": [
+              "protected_core_clear"
+            ],
+            "properties": {
+              "protected_core_clear": {
+                "const": false
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "type": "object",
+        "required": [
+          "checks"
+        ],
+        "properties": {
+          "checks": {
+            "type": "object",
+            "required": [
+              "protected_core_clear"
+            ],
+            "properties": {
+              "protected_core_clear": {
+                "const": false
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "type": "object",
+        "required": [
+          "outcome"
+        ],
+        "properties": {
+          "outcome": {
+            "const": "hold"
+          }
         }
       }
     },
