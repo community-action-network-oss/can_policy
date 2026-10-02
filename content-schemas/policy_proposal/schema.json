@@ -147,6 +147,7 @@
       }
     },
     "protected_core_check": {
+      "type": "object",
       "additionalProperties": false,
       "required": [
         "acknowledged",

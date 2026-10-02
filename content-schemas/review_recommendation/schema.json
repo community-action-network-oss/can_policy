@@ -182,6 +182,7 @@
         ]
       },
       "then": {
+        "type": "object",
         "required": [
           "resolution_reason"
         ],

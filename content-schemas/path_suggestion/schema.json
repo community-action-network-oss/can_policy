@@ -200,6 +200,7 @@
                 "if": {
                   "properties": {
                     "result": {
+                      "type": "string",
                       "pattern": "^unlawful_at_"
                     }
                   },
@@ -208,6 +209,7 @@
                   ]
                 },
                 "then": {
+                  "type": "object",
                   "required": [
                     "citation"
                   ],
@@ -290,6 +292,7 @@
                 ]
               },
               "then": {
+                "type": "object",
                 "required": [
                   "gap"
                 ],

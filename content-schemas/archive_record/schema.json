@@ -1135,6 +1135,7 @@
               ]
             },
             "then": {
+              "type": "object",
               "required": [
                 "layer"
               ],
@@ -1568,8 +1569,10 @@
         ]
       },
       "then": {
+        "type": "object",
         "properties": {
           "outcome": {
+            "type": "object",
             "required": [
               "unresolved"
             ],

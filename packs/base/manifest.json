@@ -106,8 +106,8 @@
     },
     {
       "path": "content-schemas/archive_record/schema.json",
-      "sha256": "e4b5c920b709655cc03c9f949424ca6c574608657815fea958fb0ac5d93fbe2a",
-      "bytes": 50078
+      "sha256": "a8ad3dead264f1b8098c59ed2150b86dce15a5970ef603c96174ae7c01f50d9a",
+      "bytes": 50166
     },
     {
       "path": "content-schemas/contribution.clarifying_question/examples/invalid-basis-not-allowed.json",
@@ -871,8 +871,8 @@
     },
     {
       "path": "content-schemas/path_suggestion/schema.json",
-      "sha256": "6ad21c7a0c49b7a281946e6bdc04ecac6ccfb119134a30e3b6c74d8902117e2c",
-      "bytes": 23630
+      "sha256": "6ca7dcecfe44ffb831771a2a5d2027e0569d0c07adc9c8e153b26f5e9c18574f",
+      "bytes": 23740
     },
     {
       "path": "content-schemas/policy_proposal/examples/invalid-example-is-raw-text.json",
@@ -916,8 +916,8 @@
     },
     {
       "path": "content-schemas/policy_proposal/schema.json",
-      "sha256": "87823d163370f92f8d0ad858002ee2b863f998bdb2c2e982e39d558147cfcde2",
-      "bytes": 9771
+      "sha256": "bfff3c960c114ca26e0ea885849f91b0af3dab8a3faadd6542288549b6816980",
+      "bytes": 9795
     },
     {
       "path": "content-schemas/problem/examples/guidance-index.json",
@@ -1021,8 +1021,8 @@
     },
     {
       "path": "content-schemas/problem/schema.json",
-      "sha256": "6137abcc713cb348d6acadde697f8fa696de07c36e01515f0addb4adac5ad310",
-      "bytes": 46028
+      "sha256": "4e41e62b780cc38883e60526f19f4c5310db7bbc3a235a20e65b81e39144dd08",
+      "bytes": 46083
     },
     {
       "path": "content-schemas/review_recommendation/examples/invalid-accepted-without-resolution-reason.json",
@@ -1061,8 +1061,8 @@
     },
     {
       "path": "content-schemas/review_recommendation/schema.json",
-      "sha256": "6a96cf9bd54e043bddede2786346125913bc5850fea3b39c2ef3d8f0943b87af",
-      "bytes": 5590
+      "sha256": "acfa2a921dc3bdff7f966a30001745be95a95c1c00bb5296779878a6eab64bda",
+      "bytes": 5616
     },
     {
       "path": "content-schemas/stage_choice/examples/invalid-decider-is-named-person.json",
@@ -2135,5 +2135,5 @@
       "bytes": 17486
     }
   ],
-  "pack_hash": "a6d96cac8676d3421ae6cd2f3b64f98f846b855470aae2128efc3de390a40636"
+  "pack_hash": "d399f8449e35094c24065538063e010aa9184d67bc5d0ffdbf12215ce242ce7f"
 }
