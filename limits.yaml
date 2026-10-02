@@ -98,6 +98,78 @@ fields:
       min: 0
       max: 6
       note: Evidence refs per contribution, 0 to 6.
+  contribution.constraint:
+    claim:
+      min_chars: 20
+      max_chars: 500
+      note: Length of the contribution claim.
+    list:
+      min: 0
+      max: 6
+      note: Evidence refs per contribution, 0 to 6.
+  contribution.stakeholder_perspective:
+    claim:
+      min_chars: 20
+      max_chars: 500
+      note: Length of the contribution claim.
+    list:
+      min: 0
+      max: 6
+      note: Evidence refs per contribution, 0 to 6.
+  contribution.proposed_solution:
+    claim:
+      min_chars: 20
+      max_chars: 500
+      note: Length of the contribution claim.
+    list:
+      min: 0
+      max: 6
+      note: Evidence refs per contribution, 0 to 6.
+  contribution.proposal_improvement:
+    claim:
+      min_chars: 20
+      max_chars: 500
+      note: Length of the contribution claim.
+    list:
+      min: 0
+      max: 6
+      note: Evidence refs per contribution, 0 to 6.
+  contribution.risk:
+    claim:
+      min_chars: 20
+      max_chars: 500
+      note: Length of the contribution claim.
+    list:
+      min: 0
+      max: 6
+      note: Evidence refs per contribution, 0 to 6.
+  contribution.implementation_offer:
+    claim:
+      min_chars: 20
+      max_chars: 500
+      note: Length of the contribution claim.
+    list:
+      min: 0
+      max: 6
+      note: Evidence refs per contribution, 0 to 6.
+  contribution.progress_update:
+    claim:
+      min_chars: 20
+      max_chars: 500
+      note: Length of the contribution claim.
+    list:
+      min: 0
+      max: 6
+      note: Evidence refs per contribution, 0 to 6.
+  contribution.verification_evidence:
+    claim:
+      min_chars: 20
+      max_chars: 500
+      note: Length of the contribution claim.
+    list:
+      min: 0
+      max: 6
+      note: Evidence refs per contribution, 0 to 6.
 cooldowns:
   between_contributions_same_problem:
     seconds: 120

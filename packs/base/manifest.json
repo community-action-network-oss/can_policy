@@ -65,6 +65,46 @@
       "bytes": 8943
     },
     {
+      "path": "content-schemas/contribution.constraint/examples/invalid-basis-not-allowed.json",
+      "sha256": "c7a26b5a83b807d3ff1376580e419460a2d1aa728617f5de03f74352bee472fa",
+      "bytes": 701
+    },
+    {
+      "path": "content-schemas/contribution.constraint/examples/invalid-claim-too-short.json",
+      "sha256": "9ceb961ab5f8848f0642ff577fcbcd1f58a263dd2e709e9643033339bbdc321f",
+      "bytes": 663
+    },
+    {
+      "path": "content-schemas/contribution.constraint/examples/invalid-source-not-allowed.json",
+      "sha256": "8eb18e22bd8d4004138a33f851ad00c11a239e938103f310f498c1e4e001130f",
+      "bytes": 710
+    },
+    {
+      "path": "content-schemas/contribution.constraint/examples/invalid-too-many-evidence-refs.json",
+      "sha256": "8e0c38ad2b06129c5fe89395597ae4f06bd6383f418ad52c653c0c80738bcddc",
+      "bytes": 1284
+    },
+    {
+      "path": "content-schemas/contribution.constraint/examples/valid-1.json",
+      "sha256": "695ee8614355c89eb07499e96b0a3bc8d250a5651b4dceeb8ed10676241b2b6f",
+      "bytes": 706
+    },
+    {
+      "path": "content-schemas/contribution.constraint/examples/valid-2.json",
+      "sha256": "1350648c2a80ed8da10ed574b428bdd662c5e78e95a63a493d0e6370e5189df6",
+      "bytes": 443
+    },
+    {
+      "path": "content-schemas/contribution.constraint/messages.en.json",
+      "sha256": "d76838020c6c180fa4ec35ef52c44feacd9067ad4b700d25f2f51678141c44e0",
+      "bytes": 2949
+    },
+    {
+      "path": "content-schemas/contribution.constraint/schema.json",
+      "sha256": "65ccba85a7dd4fe1e8b0361a8cd900f65ed496104d11b0b0098fa3659442ab40",
+      "bytes": 10426
+    },
+    {
       "path": "content-schemas/contribution.evidence/examples/invalid-basis-not-allowed.json",
       "sha256": "de5171fc88ec97f442c6af8426ab8608df9274a64dfcc11c4b6adb9f8dc9ae1a",
       "bytes": 685
@@ -165,6 +205,46 @@
       "bytes": 9472
     },
     {
+      "path": "content-schemas/contribution.implementation_offer/examples/invalid-basis-not-allowed.json",
+      "sha256": "37425795d6aefe48bbae4c9588ad118bd044911cf847cc47a8d35d9d64f9dbc8",
+      "bytes": 756
+    },
+    {
+      "path": "content-schemas/contribution.implementation_offer/examples/invalid-claim-too-short.json",
+      "sha256": "cc5d59c2a79ee93944630503a89b211b6005da8e89c3b0dc832aae8ca3ace10a",
+      "bytes": 718
+    },
+    {
+      "path": "content-schemas/contribution.implementation_offer/examples/invalid-missing-lawful-basis.json",
+      "sha256": "4f4ec7023bb22bfeeaac389f04c5e42c319f6cf039a9412e4b44bbd33feee343",
+      "bytes": 680
+    },
+    {
+      "path": "content-schemas/contribution.implementation_offer/examples/invalid-too-many-evidence-refs.json",
+      "sha256": "6fd73a6ecda929e2268c27e736cf5990a72014553dd5e809cce7c0842a10cb68",
+      "bytes": 1339
+    },
+    {
+      "path": "content-schemas/contribution.implementation_offer/examples/valid-1.json",
+      "sha256": "0bb936af5d5d7ef6ee832c0083a24aeaedbe2e1e3437bcfc78e1b1b0bc91e38d",
+      "bytes": 761
+    },
+    {
+      "path": "content-schemas/contribution.implementation_offer/examples/valid-2.json",
+      "sha256": "50fc60aaf893200d51efe31681ed43b90b87130cf683d65fdeba66e9d85113ed",
+      "bytes": 498
+    },
+    {
+      "path": "content-schemas/contribution.implementation_offer/messages.en.json",
+      "sha256": "decf55afa4a882b5c7a88ec98af600df65a4a4c3aade33dadb01d520bf54efa5",
+      "bytes": 3030
+    },
+    {
+      "path": "content-schemas/contribution.implementation_offer/schema.json",
+      "sha256": "b6004f8c6bbc1174caa0ccffd330e10fd9b78bca7b63981561ec9d3854b53d58",
+      "bytes": 10879
+    },
+    {
       "path": "content-schemas/contribution.interpretation/examples/invalid-basis-not-allowed.json",
       "sha256": "aef4234e677bdb88ecdbbdce0cf1373594f2bb8c23e640e3e35eef5a7d8ea439",
       "bytes": 615
@@ -203,6 +283,46 @@
       "path": "content-schemas/contribution.interpretation/schema.json",
       "sha256": "71d0c1f8540d0f89aeb2ccb7e06812285b55c1232aedbeca5930139668b36aa2",
       "bytes": 8085
+    },
+    {
+      "path": "content-schemas/contribution.moderation_feedback/README.md",
+      "sha256": "469cd9ab9db2151bbce0f387c41b4528d876642bee357564aaeb5d066516f7fb",
+      "bytes": 571
+    },
+    {
+      "path": "content-schemas/contribution.moderation_feedback/examples/invalid-extra-field.json",
+      "sha256": "09d8b5a6fe86db855cb970af79b75af817fe86252a72b840d9bda67bf0c9aa62",
+      "bytes": 51
+    },
+    {
+      "path": "content-schemas/contribution.moderation_feedback/examples/invalid-missing-type.json",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+      "bytes": 3
+    },
+    {
+      "path": "content-schemas/contribution.moderation_feedback/examples/invalid-other-type.json",
+      "sha256": "a193119bd99fe4424d98ffe53862b087f66f32fdf851fdd9764b596b49f40900",
+      "bytes": 28
+    },
+    {
+      "path": "content-schemas/contribution.moderation_feedback/examples/valid-1.json",
+      "sha256": "8591bb9a6a745e8d98fce91aa002074af58746761b96261da1d641e89749cf1e",
+      "bytes": 36
+    },
+    {
+      "path": "content-schemas/contribution.moderation_feedback/examples/valid-2.json",
+      "sha256": "8591bb9a6a745e8d98fce91aa002074af58746761b96261da1d641e89749cf1e",
+      "bytes": 36
+    },
+    {
+      "path": "content-schemas/contribution.moderation_feedback/messages.en.json",
+      "sha256": "8946e8c9737a9294c300c552001f980a106115e3db180668b2c1cb06a851cceb",
+      "bytes": 83
+    },
+    {
+      "path": "content-schemas/contribution.moderation_feedback/schema.json",
+      "sha256": "f9df20fb41a35e4bd4ec542b15c095ebc37236164bbb42a8cd99a94bc4fd0ba9",
+      "bytes": 851
     },
     {
       "path": "content-schemas/contribution.observation/examples/invalid-address-in-where-coarse.json",
@@ -295,6 +415,166 @@
       "bytes": 8126
     },
     {
+      "path": "content-schemas/contribution.progress_update/examples/invalid-basis-not-allowed.json",
+      "sha256": "221a8f119805420dc5a41ca58ea9720b1d2aa25e523d851d16ecb5e80c43e97b",
+      "bytes": 697
+    },
+    {
+      "path": "content-schemas/contribution.progress_update/examples/invalid-claim-too-short.json",
+      "sha256": "7f0ce72e85bd26ad140c0da7ae29d0876d4c9c336178a3bbdf81fdfb3f9db7d3",
+      "bytes": 659
+    },
+    {
+      "path": "content-schemas/contribution.progress_update/examples/invalid-task-ref-not-ref.json",
+      "sha256": "0b7a6b7f408ff0ebf7ca18bcdda0711cc3e35d713f71b5766f8d36ba632e67e7",
+      "bytes": 694
+    },
+    {
+      "path": "content-schemas/contribution.progress_update/examples/invalid-too-many-evidence-refs.json",
+      "sha256": "76528660a826540116b29465d651ed2529c7d8bc31a3e5bb28b9a9264626b288",
+      "bytes": 1280
+    },
+    {
+      "path": "content-schemas/contribution.progress_update/examples/valid-1.json",
+      "sha256": "bd3a62f9777b14da75f267b085c92fdb7078c43cd2fe65cab1eee1e2f97b958e",
+      "bytes": 702
+    },
+    {
+      "path": "content-schemas/contribution.progress_update/examples/valid-2.json",
+      "sha256": "ee0d89d9bd192e1e8d7438379e3c352eecef94e5a569970e97700d6152ac0bc4",
+      "bytes": 439
+    },
+    {
+      "path": "content-schemas/contribution.progress_update/messages.en.json",
+      "sha256": "afb42e0032e32799f909f4d517f64b94524fd728c1dec7f9ad6f5e4da04468da",
+      "bytes": 3003
+    },
+    {
+      "path": "content-schemas/contribution.progress_update/schema.json",
+      "sha256": "3b2cc2fe3759dec2829e68c3b68f42432e217cde13c2fc947085bfd297ae0795",
+      "bytes": 11105
+    },
+    {
+      "path": "content-schemas/contribution.proposal_improvement/examples/invalid-basis-not-allowed.json",
+      "sha256": "04af3397fdb7da494c5fd95b1bd9931de260638f52b19c9036fcfaf85c276998",
+      "bytes": 1178
+    },
+    {
+      "path": "content-schemas/contribution.proposal_improvement/examples/invalid-claim-too-short.json",
+      "sha256": "5ee0d4b028d8a92a800daa1c28650e341298a42d45fd903029df16ff18829123",
+      "bytes": 1140
+    },
+    {
+      "path": "content-schemas/contribution.proposal_improvement/examples/invalid-improves-not-ref.json",
+      "sha256": "87d3de750c3c9e102005f77754a934672e26aa197c6294fa82d7b4ac1c2f8979",
+      "bytes": 1180
+    },
+    {
+      "path": "content-schemas/contribution.proposal_improvement/examples/invalid-too-many-evidence-refs.json",
+      "sha256": "32d9711ec1ba89616d15002c95ccd30e871a90902a7ff7988da594fed36bb18d",
+      "bytes": 1761
+    },
+    {
+      "path": "content-schemas/contribution.proposal_improvement/examples/valid-1.json",
+      "sha256": "fb006885f06e788b0bb27f10ac24c9323c023d069acc3c3e9694a1e72f8eb563",
+      "bytes": 1183
+    },
+    {
+      "path": "content-schemas/contribution.proposal_improvement/examples/valid-2.json",
+      "sha256": "2069c00dfef966f6371707244357f81ff5c1957b1eee876b071d3350e3d6835b",
+      "bytes": 920
+    },
+    {
+      "path": "content-schemas/contribution.proposal_improvement/messages.en.json",
+      "sha256": "62454a3c56e52789a00e6fa6278691a6ba2192fe3fd19ec1ed439ea2ab4f29e9",
+      "bytes": 3985
+    },
+    {
+      "path": "content-schemas/contribution.proposal_improvement/schema.json",
+      "sha256": "5a09b0aa30733f877c058ee40a198907454eda730a6580771449ad00898f6cc8",
+      "bytes": 14972
+    },
+    {
+      "path": "content-schemas/contribution.proposed_solution/examples/invalid-basis-not-allowed.json",
+      "sha256": "87439ddb5b22b212dda4517a1c14059b0bfd02dfe6879d03fe37cc1ea4846c2c",
+      "bytes": 1063
+    },
+    {
+      "path": "content-schemas/contribution.proposed_solution/examples/invalid-claim-too-short.json",
+      "sha256": "36250c7f0c62e761f147875e1a3a8ff4e9b0e84ab7e79b915caa7f8a9b87697d",
+      "bytes": 1025
+    },
+    {
+      "path": "content-schemas/contribution.proposed_solution/examples/invalid-risks-empty.json",
+      "sha256": "1e4f1fdc5a8ddfb6615635a746a9ee6ff406084c01a5c6f992867f9ea08cc19f",
+      "bytes": 1009
+    },
+    {
+      "path": "content-schemas/contribution.proposed_solution/examples/invalid-too-many-evidence-refs.json",
+      "sha256": "b8eedee778ff4410881c6fcdf6b7a5d76a142b968e089b8e7ee3559ee6cbb44f",
+      "bytes": 1646
+    },
+    {
+      "path": "content-schemas/contribution.proposed_solution/examples/valid-1.json",
+      "sha256": "fd03b3261785773b2e02f27adbac3525e74e3398427b7b0faa536ffe5596cf12",
+      "bytes": 1068
+    },
+    {
+      "path": "content-schemas/contribution.proposed_solution/examples/valid-2.json",
+      "sha256": "11a92200239fe19a78468dc50d33e1eb4678c3f40855274759d3d2f266e89b16",
+      "bytes": 805
+    },
+    {
+      "path": "content-schemas/contribution.proposed_solution/messages.en.json",
+      "sha256": "f8850f9be7bc9498cbf758e6c49067baff6d1256db12b1890081ed15ce366412",
+      "bytes": 3581
+    },
+    {
+      "path": "content-schemas/contribution.proposed_solution/schema.json",
+      "sha256": "644deef4f175a857a3637be194b611625941bf3b3bc16ffb373b6dc97fae9bb5",
+      "bytes": 13575
+    },
+    {
+      "path": "content-schemas/contribution.risk/examples/invalid-basis-not-allowed.json",
+      "sha256": "543f11c0755e3a35d1a65a7b35865f1c21405e2ca2b2c381cffc6d52ef4027c4",
+      "bytes": 715
+    },
+    {
+      "path": "content-schemas/contribution.risk/examples/invalid-claim-too-short.json",
+      "sha256": "8dc8ee8e3ed8b8d9ceedaf4c31fb226323a1523d1e911f3d7fb044f476492e42",
+      "bytes": 677
+    },
+    {
+      "path": "content-schemas/contribution.risk/examples/invalid-missing-mitigation-idea.json",
+      "sha256": "7b3f5317fbb56b7c39cfa39d86c919290b3e9219543ca4124f921b813aca5857",
+      "bytes": 649
+    },
+    {
+      "path": "content-schemas/contribution.risk/examples/invalid-too-many-evidence-refs.json",
+      "sha256": "a3b13e0a76e87f04a0490920754daf1cff85a512b43dfe545a7ccb800f8390ef",
+      "bytes": 1298
+    },
+    {
+      "path": "content-schemas/contribution.risk/examples/valid-1.json",
+      "sha256": "5b2fdb439b63e170d2048edb83e43f259d5470224a676ed4e03cb6d560de7eba",
+      "bytes": 720
+    },
+    {
+      "path": "content-schemas/contribution.risk/examples/valid-2.json",
+      "sha256": "0c8ad080d6e48055e9672f0aef244391c948a820fe7cfc1f5a9a2436d176982f",
+      "bytes": 457
+    },
+    {
+      "path": "content-schemas/contribution.risk/messages.en.json",
+      "sha256": "040228b151a9abe42cc5873af7fd36b684fa0b0d20312cb5e30237e48ba9bd46",
+      "bytes": 2849
+    },
+    {
+      "path": "content-schemas/contribution.risk/schema.json",
+      "sha256": "96f5c6c83d5fba073a8d8a2403a9130f3ee3c887d49c8fe281e5ab21a8a6cfa6",
+      "bytes": 10609
+    },
+    {
       "path": "content-schemas/contribution.root_cause/examples/invalid-basis-not-allowed.json",
       "sha256": "08efdb2540f0370b056b32596a6860a5ffc7e10d71b6df5a29f7a4b7e5edb43d",
       "bytes": 757
@@ -333,6 +613,91 @@
       "path": "content-schemas/contribution.root_cause/schema.json",
       "sha256": "a57bd10e9f37c16b4ca6fff6a3f431d83811053d171e844faf7bc76e80c1fab0",
       "bytes": 9579
+    },
+    {
+      "path": "content-schemas/contribution.stakeholder_perspective/examples/invalid-basis-not-allowed.json",
+      "sha256": "0129494afdaad9944d78e95129c1187b909374995869e7fd54b76dc436e7e3ae",
+      "bytes": 660
+    },
+    {
+      "path": "content-schemas/contribution.stakeholder_perspective/examples/invalid-claim-too-short.json",
+      "sha256": "f76339f2dde4b1c4f51c356c99c627cc66d4674fcad451bb8f4c6ea6cec3ddbf",
+      "bytes": 622
+    },
+    {
+      "path": "content-schemas/contribution.stakeholder_perspective/examples/invalid-group-handle.json",
+      "sha256": "ed4804bd777e430d072181af892ab4eb90ffd8b72e665b1ca6b32bc3012def2e",
+      "bytes": 644
+    },
+    {
+      "path": "content-schemas/contribution.stakeholder_perspective/examples/invalid-person-field.json",
+      "sha256": "5bdb4902a8eef9b0ba0140c29e735291314788240afe207692235c792a0a3d37",
+      "bytes": 691
+    },
+    {
+      "path": "content-schemas/contribution.stakeholder_perspective/examples/invalid-too-many-evidence-refs.json",
+      "sha256": "95ef63c50f7a3e8167bdbf05df9495a938b2510ff8550e2d9650535f74036883",
+      "bytes": 1243
+    },
+    {
+      "path": "content-schemas/contribution.stakeholder_perspective/examples/valid-1.json",
+      "sha256": "917b9f6815ebea5175bed1c2dd8e357c544003e230256d4b32ed0d2284a40021",
+      "bytes": 665
+    },
+    {
+      "path": "content-schemas/contribution.stakeholder_perspective/examples/valid-2.json",
+      "sha256": "17861ed7963ca0e53c22bd271baa76fe463bb7814eb2a021a5538a2f90219dd1",
+      "bytes": 402
+    },
+    {
+      "path": "content-schemas/contribution.stakeholder_perspective/messages.en.json",
+      "sha256": "5edaee1a3a412b4ab0ccd7e2c4cd9ee0e56e88bcad66f0efb5dcf190968ce6d0",
+      "bytes": 2853
+    },
+    {
+      "path": "content-schemas/contribution.stakeholder_perspective/schema.json",
+      "sha256": "a0cecf0d88833bf184a1d183ad156aa315e5ffd408d01d613846b17bc7bc3b84",
+      "bytes": 10042
+    },
+    {
+      "path": "content-schemas/contribution.verification_evidence/examples/invalid-basis-not-allowed.json",
+      "sha256": "18c6778ee69cc7c6ba0c2ac327ae9d1c735de90fd24a57763be162ee50b7eae6",
+      "bytes": 738
+    },
+    {
+      "path": "content-schemas/contribution.verification_evidence/examples/invalid-claim-too-short.json",
+      "sha256": "bf6a2455cd1433d6e860aceedc82ba9b78920ae1a4f3a7daa7694ce4f0712816",
+      "bytes": 700
+    },
+    {
+      "path": "content-schemas/contribution.verification_evidence/examples/invalid-too-many-evidence-refs.json",
+      "sha256": "869bc04469883bb590e9a860d6f68127278e089f81ad1c08c08b7c04fc9bd8e3",
+      "bytes": 1321
+    },
+    {
+      "path": "content-schemas/contribution.verification_evidence/examples/invalid-url-not-http.json",
+      "sha256": "1ce40191218a43ef65c3e33d2df243ef4d0768440483263c648d8a211480a9e7",
+      "bytes": 730
+    },
+    {
+      "path": "content-schemas/contribution.verification_evidence/examples/valid-1.json",
+      "sha256": "91108cad808ee89a86d8d658934e8ce971f9f57ef6022950c4c89011427921c4",
+      "bytes": 743
+    },
+    {
+      "path": "content-schemas/contribution.verification_evidence/examples/valid-2.json",
+      "sha256": "9415cab1d88b17379f5ddf4dcc459132598d74c02bbb494ef17fb365084a3d5b",
+      "bytes": 480
+    },
+    {
+      "path": "content-schemas/contribution.verification_evidence/messages.en.json",
+      "sha256": "0d899f304b8783bcd727b1839fff72f0794e6fdbf5f6973a668b83cc69ed2e08",
+      "bytes": 3249
+    },
+    {
+      "path": "content-schemas/contribution.verification_evidence/schema.json",
+      "sha256": "7f3839d33aeea9b9fef83a8f081fd3c24d0fe878a08a4fcc3680147a056782bc",
+      "bytes": 11271
     },
     {
       "path": "content-schemas/problem/examples/guidance-index.json",
@@ -441,8 +806,8 @@
     },
     {
       "path": "limits.yaml",
-      "sha256": "ffabf85e4cf12320decce6ea825ff2fd2f7c6c8c535018d81946726d8161aa13",
-      "bytes": 3700
+      "sha256": "cd230f236e12f3c6fadfbf3e3e65687ebee5384b0099e953e86109be42696e53",
+      "bytes": 5454
     },
     {
       "path": "packs/base/pack.yaml",
@@ -455,5 +820,5 @@
       "bytes": 17486
     }
   ],
-  "pack_hash": "82f0ccc97066f7660554da390c47bf6d394e9a72a3e4f20cc93d1917202e6510"
+  "pack_hash": "67e960864130db9152783638555207790c63917fc0a37ff7f896400054a1d667"
 }
