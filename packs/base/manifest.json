@@ -2125,6 +2125,46 @@
       "bytes": 7783
     },
     {
+      "path": "decision-points/DP-STAGE-PLAN/eval/README.md",
+      "sha256": "b906d20d50556326a05a75a403bb0f98954498ca5c1f1cd2091c797d0ca54620",
+      "bytes": 3782
+    },
+    {
+      "path": "decision-points/DP-STAGE-PLAN/eval/adversarial.jsonl",
+      "sha256": "d4faf86bd539f693ee7c1137fa824fb77d65466c449afad13ad4f4fa21620d09",
+      "bytes": 20107
+    },
+    {
+      "path": "decision-points/DP-STAGE-PLAN/eval/core.jsonl",
+      "sha256": "22873a2f600c87292e9bd3957b6f744b7d9e70f4f5bd15b575afbd7d43df6193",
+      "bytes": 35880
+    },
+    {
+      "path": "decision-points/DP-STAGE-PLAN/eval/thresholds.yaml",
+      "sha256": "7ce2bb88d1e3aa70a6e385793ca63b99ecae01510fce2e9b790da8e26e4c46e0",
+      "bytes": 342
+    },
+    {
+      "path": "decision-points/DP-STAGE-PLAN/examples/cases.json",
+      "sha256": "42ba98ef0176630831b5f403e739db7186ead70667acc60d4fdae0959dc82aa9",
+      "bytes": 19772
+    },
+    {
+      "path": "decision-points/DP-STAGE-PLAN/pack-section.yaml",
+      "sha256": "a9ecbb592b2946341c3c8b228d1f3371c2adc5b2347acca3b858a366a5bc6d4a",
+      "bytes": 532
+    },
+    {
+      "path": "decision-points/DP-STAGE-PLAN/prompt.md",
+      "sha256": "4eac1f4477f30938442bd479849a6724e50937f850c9b1b6bf6bb3649666c85d",
+      "bytes": 6714
+    },
+    {
+      "path": "decision-points/DP-STAGE-PLAN/schema.json",
+      "sha256": "3bd8ab72e97fc3697ea65510083a0814fb91238d999bdd2e9d5fe632b9bbfc0a",
+      "bytes": 11629
+    },
+    {
       "path": "decision-points/DP-TONE/eval/README.md",
       "sha256": "b0710e332c029f04bdf448f13b955e06599c0661ca84f25859942fd4e3fccc8e",
       "bytes": 764
@@ -2255,5 +2295,5 @@
       "bytes": 17486
     }
   ],
-  "pack_hash": "cdbf774aaa959f09b9fed4ac257261292dc69c0f9a632ee275cc0a8b91438539"
+  "pack_hash": "572909c1ff24a64f4263d0e77a66e0464465bb4338de4340bc7757d0ea40ff43"
 }
