@@ -24,7 +24,10 @@ const cases = [
   ["conflict hold with conflict_note", { outcome: "hold", conflict_note: "n", legal_findings: [f({ finding: "conflict" })] }, true],
   ["L1 finding without corpus_version", { outcome: "publish", legal_findings: [{ layer: "L1", finding: "none_found" }] }, false],
   ["L1 cited finding without article_id", { outcome: "publish", legal_findings: [{ layer: "L1", corpus_version: "v1", finding: "permits" }] }, false],
-  ["L0 finding needs no citation", { outcome: "publish", legal_findings: [{ layer: "L0", finding: "none_found" }] }, true],
+  ["L0 none_found only is not a judged layer: publish rejected", { outcome: "publish", legal_findings: [{ layer: "L0", finding: "none_found" }] }, false],
+  ["L0 none_found only with hold", { outcome: "hold", legal_findings: [{ layer: "L0", finding: "none_found" }] }, true],
+  ["L0 none_found alongside a judged layer may publish", { outcome: "publish", legal_findings: [{ layer: "L0", finding: "none_found" }, f()] }, true],
+  ["L0 finding needs no citation", { outcome: "hold", legal_findings: [{ layer: "L0", finding: "none_found" }] }, true],
 ];
 const legalityOnly = [
   ["publish with a constrains finding", { outcome: "publish", legal_findings: [f({ finding: "constrains" })] }, false],
@@ -37,6 +40,7 @@ const legalityOnly = [
   ["cited stuck_payload complete", { outcome: "hold", rule_ids: ["LEGAL-CITE-1"], legal_findings: [f()], stuck_payload: { ...stuck, layer: "L1", article_id: "a1", corpus_version: "v1" } }, true],
 ];
 const eligOnly = [
+  ["publish with a constrains finding", { outcome: "publish", legal_findings: [f({ finding: "constrains" })] }, false],
   ["reject without a cited rule", { outcome: "reject" }, false],
   ["reject with a cited rule", { outcome: "reject", rule_ids: ["ELIG-PUBLIC-1"] }, true],
   ["route_external without route_key", { outcome: "route_external" }, false],
@@ -44,6 +48,7 @@ const eligOnly = [
   ["route_external with a slug route_key", { outcome: "route_external", route_key: "fiktiva-ombudsman" }, true],
 ];
 const legalOnly = [
+  ["L0 none_found only with escalate_human", { outcome: "escalate_human", legal_findings: [{ layer: "L0", finding: "none_found" }] }, true],
   ["escalate_human with conflict but no conflict_note", { outcome: "escalate_human", legal_findings: [f({ finding: "conflict" })] }, false],
   ["escalate_human with conflict and conflict_note", { outcome: "escalate_human", conflict_note: "n", legal_findings: [f({ finding: "conflict" })] }, true],
 ];

@@ -409,6 +409,76 @@
           "route_key": true
         }
       }
+    },
+    {
+      "if": {
+        "type": "object",
+        "required": [
+          "legal_findings"
+        ],
+        "properties": {
+          "legal_findings": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "layer",
+                "finding"
+              ],
+              "properties": {
+                "layer": {
+                  "const": "L0"
+                },
+                "finding": {
+                  "const": "none_found"
+                }
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "type": "object",
+        "properties": {
+          "outcome": {
+            "const": "hold"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "type": "object",
+        "required": [
+          "outcome"
+        ],
+        "properties": {
+          "outcome": {
+            "const": "publish"
+          }
+        }
+      },
+      "then": {
+        "type": "object",
+        "properties": {
+          "legal_findings": {
+            "not": {
+              "type": "array",
+              "contains": {
+                "type": "object",
+                "required": [
+                  "finding"
+                ],
+                "properties": {
+                  "finding": {
+                    "const": "constrains"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   ]
 }

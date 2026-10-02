@@ -306,6 +306,45 @@
           }
         }
       }
+    },
+    {
+      "if": {
+        "type": "object",
+        "required": [
+          "legal_findings"
+        ],
+        "properties": {
+          "legal_findings": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "layer",
+                "finding"
+              ],
+              "properties": {
+                "layer": {
+                  "const": "L0"
+                },
+                "finding": {
+                  "const": "none_found"
+                }
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "type": "object",
+        "properties": {
+          "outcome": {
+            "enum": [
+              "hold",
+              "escalate_human"
+            ]
+          }
+        }
+      }
     }
   ]
 }

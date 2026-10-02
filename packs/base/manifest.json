@@ -1731,8 +1731,8 @@
     },
     {
       "path": "decision-points/DP-ELIGIBILITY/eval/adversarial.jsonl",
-      "sha256": "ed6bf38f3c5f62e4192aece4349757da763a9ced3c8ca7e2d8e47eb64d0a40bb",
-      "bytes": 11252
+      "sha256": "7ee1e13815460bcf1e21cbce8374363d3999d24d9d59df6585650fc15620d88e",
+      "bytes": 11938
     },
     {
       "path": "decision-points/DP-ELIGIBILITY/eval/core.jsonl",
@@ -1756,13 +1756,13 @@
     },
     {
       "path": "decision-points/DP-ELIGIBILITY/prompt.md",
-      "sha256": "62b12ad42d71aa6f190010cb02d6fd46a7b5d67d7b112eb28f938e82564497aa",
-      "bytes": 4781
+      "sha256": "587ae652378118f32fb8dd2925291a98db89e9b36fab5c013a38f36b2b6efb1d",
+      "bytes": 5459
     },
     {
       "path": "decision-points/DP-ELIGIBILITY/schema.json",
-      "sha256": "8d172584a1d70022dcf57e4f7eba1de322ee34f41358275fc8429de35e65ac17",
-      "bytes": 9430
+      "sha256": "6c3937825ebcb3c32243765044ef75dae368f2f727dccac3f2d50bbfb95099b1",
+      "bytes": 10885
     },
     {
       "path": "decision-points/DP-EVIDENCE-TIER/eval/README.md",
@@ -1851,8 +1851,8 @@
     },
     {
       "path": "decision-points/DP-LEGAL/eval/adversarial.jsonl",
-      "sha256": "ecb73366902e9a5e57631aa14adf9e30505317b6b7879137f5b8f00374d21065",
-      "bytes": 11004
+      "sha256": "2c50ad39a235f59c40f9a826737bf2a5e6a6f23256cfeb4dffc2873065aac85d",
+      "bytes": 11590
     },
     {
       "path": "decision-points/DP-LEGAL/eval/core.jsonl",
@@ -1876,13 +1876,13 @@
     },
     {
       "path": "decision-points/DP-LEGAL/prompt.md",
-      "sha256": "2555165a6cfb118a285f86c8b789377810e5be0992187d01fd219a8c8ee5b3f2",
-      "bytes": 4750
+      "sha256": "d63e16ad8f40b2fdc12223e605c68ea6a0585ad98c37c411000904d200fec656",
+      "bytes": 5179
     },
     {
       "path": "decision-points/DP-LEGAL/schema.json",
-      "sha256": "97c16664b9929953ba6d7ec37cd7816f0b45b6cc649f5198572ef4e96713627c",
-      "bytes": 7177
+      "sha256": "023b8300bd2b3cae80d6ed5bce96b501d7fdbf381da6ba6c783812ac3f3fcbd3",
+      "bytes": 7988
     },
     {
       "path": "decision-points/DP-LEGALITY/eval/README.md",
@@ -1891,8 +1891,8 @@
     },
     {
       "path": "decision-points/DP-LEGALITY/eval/adversarial.jsonl",
-      "sha256": "d02f61c4659bc1d277eb52ecd0a1a0c8e8745999ea94ebdcc0f532d1cd597aa0",
-      "bytes": 13063
+      "sha256": "120da0ee5bbd16082b0f1105f02177288c0062747e69eea322b68ef437b72ffa",
+      "bytes": 13724
     },
     {
       "path": "decision-points/DP-LEGALITY/eval/core.jsonl",
@@ -1916,13 +1916,13 @@
     },
     {
       "path": "decision-points/DP-LEGALITY/prompt.md",
-      "sha256": "236bcd985fda5d41d562e19e604264531e861b2cf6dda0735dec30ed0d5391fc",
-      "bytes": 5563
+      "sha256": "f04ab0cec9788dd41acb8d1a1008e727623414d862b77bacf3630f16534d02ac",
+      "bytes": 6122
     },
     {
       "path": "decision-points/DP-LEGALITY/schema.json",
-      "sha256": "0665c0bb8bb1cf4731c0eb847c10a071d216045cf35bab75b25d0479d9f8c98a",
-      "bytes": 12235
+      "sha256": "53a0c034039126a856e52fd2800fca99145209d1bf09a501ed2eeaa4a04a82aa",
+      "bytes": 12985
     },
     {
       "path": "decision-points/DP-NAMING/eval/README.md",
@@ -2175,5 +2175,5 @@
       "bytes": 17486
     }
   ],
-  "pack_hash": "da6a088b4a060648e75aa680dba20c03340a0897bc7379663cfb05e06c48fe96"
+  "pack_hash": "b17cc8f27445ae1bd0e28174f41cf57f065b6789c9e8c9eb74eca2f05947ec12"
 }
