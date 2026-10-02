@@ -34,7 +34,8 @@
             "good": { "type": "string" },
             "bad": { "type": "string" },
             "min_chars": { "type": "integer", "minimum": 0 },
-            "max_chars": { "type": "integer", "minimum": 1 }
+            "max_chars": { "type": "integer", "minimum": 1 },
+            "limits_key": { "type": "string" }
           }
         },
         "x-checks": {

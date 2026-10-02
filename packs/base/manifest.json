@@ -1,0 +1,24 @@
+{
+  "pack": "base",
+  "version": "0.1.0",
+  "layer": "base",
+  "parent": null,
+  "files": [
+    {
+      "path": "limits.yaml",
+      "sha256": "a423e31ac6b47e580217e33284f06489c53a5e3c2198dbd5b8961e66098d7059",
+      "bytes": 1715
+    },
+    {
+      "path": "packs/base/pack.yaml",
+      "sha256": "ea253b702ee65c304494af930ce316cd14822f1ca3cadb8e8f5c5c30576f98c1",
+      "bytes": 92
+    },
+    {
+      "path": "packs/base/rules.yaml",
+      "sha256": "ad54357cabbb29525a03dce64fc0389da76624bd227d225049ecabd3ed32bda7",
+      "bytes": 17486
+    }
+  ],
+  "pack_hash": "8f83abe33565e9520625c1a034fb257a9fd77e86fd6bf3736d9dcf5c6bb1d524"
+}
