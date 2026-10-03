@@ -1,0 +1,83 @@
+name: Propose a rule
+description: Suggest new or changed rule wording, a limit value, a legal stack pin or a simulation idea. No git needed.
+title: "Rule proposal: "
+labels: ["policy-proposal"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you. You do not need any special qualification to suggest something. A maintainer will turn this into a draft and show it to you. Nothing here changes the live platform by itself: every change is checked and then approved by named humans.
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of change is this?
+      options:
+        - Rule wording
+        - A limit value (for example a daily cap)
+        - A legal stack pin (which version of a legal text a place uses)
+        - A simulation idea
+        - A protected core rule (we will route this as a constitutional amendment, see below)
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: |
+        Protected core rules (Constitution I.2) can change only by a constitutional amendment (Article VIII.2), not by a rule proposal. Choose that option if your idea needs one to change. We will explain the amendment route, and this is not a failed proposal.
+  - type: dropdown
+    id: layer
+    attributes:
+      label: Layer
+      description: Where does this apply? Pick the closest one.
+      options:
+        - Platform wide (base rules)
+        - One jurisdiction (city, region or country)
+        - A legal text (L1 UN, L2 supranational, L3 constitution, L4 national, L5 regional, L6 city)
+        - Not sure
+    validations:
+      required: true
+  - type: input
+    id: jurisdiction
+    attributes:
+      label: Jurisdiction
+      description: Country, region or city this concerns, or "all".
+    validations:
+      required: true
+  - type: input
+    id: source_url
+    attributes:
+      label: Source URL
+      description: A public page that supports this (law, report, guidance). Write "none" if you have none.
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why it matters
+      description: What goes wrong today, or what could go right? Plain words are best. Use an invented example, never a real person or incident.
+    validations:
+      required: true
+  - type: textarea
+    id: change
+    attributes:
+      label: What should change
+      description: The wording or value you suggest, and what it replaces if you know. If you do not know the file, just describe it.
+    validations:
+      required: true
+  - type: dropdown
+    id: ai_use
+    attributes:
+      label: Did an AI tool help with this?
+      description: Honest answers never count against you. If yes, say which tool and how in the next box.
+      options:
+        - No AI tool was used
+        - Yes, for wording or translation
+        - Yes, for research
+        - Yes, for something else (explain below)
+    validations:
+      required: true
+  - type: textarea
+    id: ai_detail
+    attributes:
+      label: AI details (if any)
+      description: Tool, model if you know it, what it did, and what you checked yourself. Please do not paste private prompts or personal data.
+

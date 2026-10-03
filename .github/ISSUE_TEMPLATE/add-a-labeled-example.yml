@@ -1,0 +1,88 @@
+name: Add a labeled example
+description: Suggest an example or test case for a decision point, an archive eval record, or a note on how two jurisdictions differ. No git needed.
+title: "Example: "
+labels: ["example"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you. Examples teach the platform what good judgement looks like. Every example must be invented: no real person, no real incident, no link to live data about a real incident.
+  - type: dropdown
+    id: layer
+    attributes:
+      label: Layer
+      options:
+        - Platform wide (base rules)
+        - One jurisdiction
+        - A legal text layer (L1 to L6)
+        - Archive eval record or query problem
+        - Not sure
+    validations:
+      required: true
+  - type: input
+    id: jurisdiction
+    attributes:
+      label: Jurisdiction
+      description: Use an invented place (for example Fiktiva) unless the example is about a real legal text. For a difference between two places, name both.
+    validations:
+      required: true
+  - type: input
+    id: source_url
+    attributes:
+      label: Source URL
+      description: Public page that backs the label, or "none".
+    validations:
+      required: true
+  - type: textarea
+    id: example
+    attributes:
+      label: The example
+      description: The invented text or situation, as a person would write it.
+    validations:
+      required: true
+  - type: textarea
+    id: label
+    attributes:
+      label: What the right answer is
+      description: What should the platform do with it (accept, refuse, ask for more, flag a legal problem), and why.
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why it matters
+      description: What is hard or easy to get wrong here?
+    validations:
+      required: true
+  - type: textarea
+    id: change
+    attributes:
+      label: What changes
+      description: Which decision point or eval this should be added to, if you know. Otherwise leave "not sure".
+    validations:
+      required: true
+  - type: checkboxes
+    id: fictional
+    attributes:
+      label: Invented
+      options:
+        - label: This example is invented, with no real person or incident and no live link to real incident data.
+          required: true
+  - type: dropdown
+    id: ai_use
+    attributes:
+      label: Did an AI tool help with this?
+      description: Honest answers never count against you. If yes, say which tool and how in the next box.
+      options:
+        - No AI tool was used
+        - Yes, for wording or translation
+        - Yes, for research
+        - Yes, for something else (explain below)
+    validations:
+      required: true
+  - type: textarea
+    id: ai_detail
+    attributes:
+      label: AI details (if any)
+      description: Tool, model if you know it, what it did, and what you checked yourself. Please do not paste private prompts or personal data.
+

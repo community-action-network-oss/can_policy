@@ -1,0 +1,100 @@
+name: Report a wrong or missing law or article
+description: A legal text we hold is wrong, out of date or missing an article. No git needed.
+title: "Legal text: "
+labels: ["legal-corpus"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you. Today every real legal text here is an unreviewed stub, so corrections are valuable. Article text must be copied word for word from the official source. Never paste a summary or a machine translation as the text. This is not legal advice to anyone.
+  - type: dropdown
+    id: layer
+    attributes:
+      label: Layer
+      options:
+        - L1 UN
+        - L2 supranational
+        - L3 constitution
+        - L4 national
+        - L5 regional
+        - L6 city
+    validations:
+      required: true
+  - type: input
+    id: jurisdiction
+    attributes:
+      label: Jurisdiction
+    validations:
+      required: true
+  - type: input
+    id: instrument
+    attributes:
+      label: Which text and article
+      description: For example the name of the law and the article number.
+    validations:
+      required: true
+  - type: input
+    id: source_url
+    attributes:
+      label: Official source URL
+      description: The page or file of the official publisher.
+    validations:
+      required: true
+  - type: input
+    id: publisher
+    attributes:
+      label: Official publisher
+    validations:
+      required: true
+  - type: input
+    id: retrieval_date
+    attributes:
+      label: Date you read or downloaded it
+    validations:
+      required: true
+  - type: input
+    id: version_dates
+    attributes:
+      label: Version and effective date
+      description: Which version, in force from when, and until when if it has ended.
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why it matters
+      description: What is wrong or missing, and what that could cause.
+    validations:
+      required: true
+  - type: textarea
+    id: change
+    attributes:
+      label: What should change
+      description: The exact official wording, word for word, in the authoritative language. If two layers seem to disagree, describe both articles and do not pick a winner.
+    validations:
+      required: true
+  - type: textarea
+    id: reviewer
+    attributes:
+      label: Review
+      description: Name, qualification and scope of the human who checked this against the official text. If nobody has, write "please find me a reviewer". That is a normal request.
+    validations:
+      required: true
+  - type: dropdown
+    id: ai_use
+    attributes:
+      label: Did an AI tool help with this?
+      description: Honest answers never count against you. If yes, say which tool and how in the next box.
+      options:
+        - No AI tool was used
+        - Yes, for wording or translation
+        - Yes, for research
+        - Yes, for something else (explain below)
+    validations:
+      required: true
+  - type: textarea
+    id: ai_detail
+    attributes:
+      label: AI details (if any)
+      description: Tool, model if you know it, what it did, and what you checked yourself. Please do not paste private prompts or personal data.
+

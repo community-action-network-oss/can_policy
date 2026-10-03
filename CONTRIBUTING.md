@@ -1,5 +1,15 @@
 # Contributing to can_policy
 
+## If you are not an engineer
+
+You do not need git, a terminal or any code skill. Lawyers, activists, rights and policy experts, and anyone who knows how a rule works in practice are welcome here. Your expertise is the point, and you are never asked to prove it before you may suggest something.
+
+Start with `docs/contribute-without-git.md`. It walks through the GitHub website from the first click to a proposed change, or you can fill in an issue form and a maintainer drafts the change with you. If your proposal is about a law or an article of a law, also read `docs/contributing-legal-corpus.md`.
+
+Two things to know up front. Nothing you propose takes effect on its own: every change is checked, then approved by named humans. And a few core protections cannot be changed by a normal proposal at all (see the guide, "What cannot be changed here").
+
+## If you are an engineer
+
 This repo holds the rules the platform runs on. Changes are proposed as pull requests and ratified before they take effect.
 
 ## Opening a policy PR
