@@ -197,7 +197,21 @@ export function lintEvalArchive(root = ROOT, dir = join(root, "evals", "archive"
       else if (frontMatter(file).article_id !== cit.article_id) err(`fit ${c.id}: article front matter id differs from ${cit.article_id}`);
     }
   }
-  for (const l of ["L1", "L2", "L3", "L4", "L5", "L6"]) if (!covered.has(l)) err(`no planted illegal-at-${l} case`);
+  for (const l of ["L2", "L3", "L4", "L5", "L6"]) if (!covered.has(l)) err(`no planted illegal-at-${l} case`);
+  // Silence is not permission (DP-LEGALITY): lawful needs a cited article; a reference layer informs but never makes a stage unlawful (legal-stack.md).
+  const refLayer = (jur, layer) => raw[jur]?.find((l) => l.layer === layer)?.mode === "reference";
+  for (const c of leg.cases ?? []) {
+    if (c.expected_result === "lawful" && !c.expected_citation) err(`fit ${c.id}: lawful with no citation rests on silence (none_found), expected unknown`);
+    const m = /^unlawful_at_(L[1-6])$/.exec(c.expected_result);
+    if (m && refLayer(c.target_jurisdiction, m[1])) err(`fit ${c.id}: ${m[1]} is a reference layer for ${c.target_jurisdiction}, it cannot make an option unlawful`);
+  }
+  if (!(leg.cases ?? []).some((c) => c.expected_result === "unknown" && c.expected_citation?.layer === "L1")) err("fit/legality.json needs a reference-layer L1 case expected as unknown");
+  for (const r of Object.values(recs)) for (const o of r.options ?? []) {
+    const jur = metaBy[r.id]?.jurisdiction, c = (leg.cases ?? []).find((x) => x.target_jurisdiction === jur && x.option_summary === o.summary);
+    if (o.legality === "lawful" && c && !c.expected_citation) err(`record ${r.id}: option '${o.summary}' is lawful by silence only`);
+    const m = /^unlawful_at_(L[1-6])$/.exec(o.legality ?? "");
+    if (m && refLayer(jur, m[1])) err(`record ${r.id}: ${m[1]} is a reference layer, option cannot be ${o.legality}`);
+  }
   if (!(leg.cases ?? []).some((c) => c.expected_result === "lawful")) err("fit/legality.json needs at least one lawful control");
 
   // fit: budget
@@ -301,6 +315,9 @@ test("the lint catches planted problems", () => {
   assert.ok(mutate((d) => edit(d, "queries/core.json", (o) => { o.queries[0].draft_text += " Mr. Jansen said so."; })).some((e) => /deny-list/.test(e)));
   assert.ok(mutate((d) => edit(d, "records/evalrec-s1-ams-happy.json", (o) => { o.evidence_refs[0].uri = "https://real-news.example/x"; })).some((e) => /evidence\.sim\.test/.test(e)));
   assert.ok(mutate((d) => edit(d, "fit/legality.json", (o) => { o.cases = o.cases.filter((c) => c.expected_result !== "unlawful_at_L5"); })).some((e) => /illegal-at-L5/.test(e)));
+  assert.ok(mutate((d) => edit(d, "fit/legality.json", (o) => { o.cases.find((c) => c.id === "fit-ctl-city-fee").expected_result = "lawful"; })).some((e) => /rests on silence/.test(e)));
+  assert.ok(mutate((d) => edit(d, "fit/legality.json", (o) => { const c = o.cases.find((x) => x.id === "fit-l1-city"); c.expected_result = "unlawful_at_L1"; })).some((e) => /reference layer/.test(e)));
+  assert.ok(mutate((d) => edit(d, "records/evalrec-s2-city-happy.json", (o) => { o.options.find((x) => /waste bag/.test(x.summary)).legality = "lawful"; })).some((e) => /lawful by silence/.test(e)));
   assert.ok(mutate((d) => edit(d, "fit/differences.json", (o) => { o.pairs[0].statements[0].is_true = !o.pairs[0].statements[0].is_true; })).some((e) => /is_true/.test(e)));
   assert.ok(mutate((d) => edit(d, "fit/budget.json", (o) => { o.cases[0].expected_fit = "fits"; })).some((e) => /disagree/.test(e)));
   assert.ok(mutate((d) => edit(d, "records/evalrec-s1-ams-stuck.json", (o) => { o.challenges = []; })).some((e) => /ARCHIVE-1/.test(e)));

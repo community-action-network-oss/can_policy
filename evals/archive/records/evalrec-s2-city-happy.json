@@ -169,7 +169,7 @@
     {
       "stage": "collection_design",
       "summary": "Charge a fee per waste bag to pay for extra pickups.",
-      "legality": "lawful",
+      "legality": "unknown",
       "chosen": true,
       "reason": "It raises money for extra pickups without a new budget line."
     },

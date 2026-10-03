@@ -164,7 +164,7 @@
     {
       "stage": "design_prevention",
       "summary": "Fly lantern drones over the night market to watch the crowd.",
-      "legality": "unlawful_at_L2",
+      "legality": "unknown",
       "chosen": true,
       "reason": "Chosen because it looked cheapest, before the legal check."
     },

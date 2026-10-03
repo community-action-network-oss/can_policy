@@ -176,7 +176,7 @@
     {
       "stage": "collection_design",
       "summary": "Charge a fee per waste bag to pay for extra pickups.",
-      "legality": "lawful",
+      "legality": "unknown",
       "chosen": false,
       "reason": "Set aside after the review compared both options."
     }

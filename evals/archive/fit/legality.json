@@ -6,19 +6,19 @@
       "id": "fit-l1-city",
       "target_jurisdiction": "fiktiva-city",
       "option_summary": "Ban all evening gatherings in the old square.",
-      "expected_result": "unlawful_at_L1",
+      "expected_result": "unknown",
       "expected_citation": {
         "layer": "L1",
         "article_id": "L1/fiktiva/rights/art-3",
         "corpus_version": "fiktiva-rights@0.1.0+dbc8851045a7"
       },
-      "note": "L1 is reference mode in this pack: whether a reference layer makes an option unlawful is a design default, see docs/eval-archive.md."
+      "note": "L1 is a reference layer here: it informs but does not bind (legal-stack.md, DP-REUSE-FIT), so the expected result is hold (unknown) with the L1 article cited, not unlawful."
     },
     {
       "id": "fit-l1-north",
       "target_jurisdiction": "fiktiva-north",
       "option_summary": "Ban all evening gatherings in the market lanes.",
-      "expected_result": "unlawful_at_L1",
+      "expected_result": "unknown",
       "expected_citation": {
         "layer": "L1",
         "article_id": "L1/fiktiva/rights/art-3",
@@ -42,13 +42,13 @@
       "id": "fit-l2-north",
       "target_jurisdiction": "fiktiva-north",
       "option_summary": "Fly lantern drones over the night market to watch the crowd.",
-      "expected_result": "unlawful_at_L2",
+      "expected_result": "unknown",
       "expected_citation": {
         "layer": "L2",
         "article_id": "L2/fiktiva/north-union/art-4",
         "corpus_version": "fiktiva-north-union@0.1.0+702b57d16923"
       },
-      "note": "Control: identical text to the city article, different corpus."
+      "note": "Control: identical text to the city article, different corpus. L2 is a reference layer in fiktiva-north, so the expected result is hold (unknown) with the L2 article cited, not unlawful."
     },
     {
       "id": "fit-l2-city-festival",
@@ -138,8 +138,8 @@
       "id": "fit-ctl-city-fee",
       "target_jurisdiction": "fiktiva-city",
       "option_summary": "Charge a fee per waste bag to pay for extra pickups.",
-      "expected_result": "lawful",
-      "note": "Control for planted difference a. No city article forbids the fee; lawfulness is silence at L1 to L6 (basis: silence). A reviewer may prefer unknown, see docs/eval-archive.md."
+      "expected_result": "unknown",
+      "note": "Control for planted difference a. No city article forbids or permits the fee: every applicable layer is none_found, and no applicable article is not permission, so the expected result is hold (unknown), never lawful (DP-LEGALITY, DP-REUSE-FIT)."
     },
     {
       "id": "fit-ctl-north-stall",

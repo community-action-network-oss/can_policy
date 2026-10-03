@@ -11,7 +11,7 @@ The runner and the register gate are unit 13-u19. Until real model runs exist th
 | `records/*.json` | 27 `archive_record` documents (`source: simulation`), one file per record, file name is the id |
 | `record-meta.json` | seed, jurisdiction, variant and language of each record; `stale_pin` marks a deliberately old corpus pin |
 | `queries/*.json` | 31 query problems: `core`, `paraphrases`, `translations`, `distractors` |
-| `fit/legality.json` | planted illegal-at-L1 to L6 options with the expected layer and article, plus lawful controls |
+| `fit/legality.json` | planted illegal-at-L2 to L6 options, reference-layer L1 holds (`unknown`) with the expected layer and article, plus lawful controls |
 | `fit/budget.json` | planted over-budget paths (`exceeds` with the gap) and fits controls |
 | `fit/stale.json` | expected stale-corpus flags per record and target jurisdiction |
 | `fit/holds.json` | missing-corpus and unresolved-stack holds, plus no-hold guards |
@@ -35,7 +35,7 @@ Schema: `schemas/eval-archive.schema.json` (strict, strictTypes, strictRequired)
 
 ## Fit rules used by the labels
 
-- Legality: the citation is `{layer, article_id, corpus_version}`; `corpus_version` is `<corpus>@<version>+<first 12 hex of pack_hash>` taken from the target jurisdiction's `pack.yaml`. When two layers disagree the higher layer wins (the festival-day drone case is `unlawful_at_L2` although L6 allows it). L1 is a `reference` layer in these packs, so `unlawful_at_L1` is a design default. A fiktiva-city collection fee is labelled `lawful` by silence; a reviewer may prefer `unknown`.
+- Legality: the citation is `{layer, article_id, corpus_version}`; `corpus_version` is `<corpus>@<version>+<first 12 hex of pack_hash>` taken from the target jurisdiction's `pack.yaml`. When two layers disagree the higher layer wins (the festival-day drone case is `unlawful_at_L2` although L6 allows it). L1 (both stacks) and L2 (north) are `reference` layers in these packs: it informs but does not bind (`docs/design/ai/legal-stack.md`), so those cases (`fit-l1-*`, `fit-l2-north`) are expected as `unknown` (hold) with the article cited, never `unlawful_at_L1`/`L2`. A fiktiva-city collection fee is `unknown` (hold): every applicable layer is none_found, and no applicable article is not permission (DP-LEGALITY, DP-REUSE-FIT); only a cited permitting article makes a stage `lawful`. The north contrast stays `unlawful_at_L4`. The lint fails a `lawful` case or record option that rests on silence, and any `unlawful_at_Lk` on a reference layer. Other `lawful` record options (lighting, bins) carry no planted legality case and are not checked.
 - Budget: a path `exceeds` when its source budget band or people band is above the declared one. `stretch` is not planted yet.
 - Stale: a flag for every layer where the record's pin differs from the target's pin.
 - Holds: a layer with no corpus (and not `not_applicable`) holds, as does an unresolved stack.

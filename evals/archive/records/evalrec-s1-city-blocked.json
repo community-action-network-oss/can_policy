@@ -168,7 +168,7 @@
     {
       "stage": "design_prevention",
       "summary": "Ban all evening gatherings in the old square.",
-      "legality": "unlawful_at_L1",
+      "legality": "unknown",
       "chosen": true,
       "reason": "Chosen because it looked cheapest, before the legal check."
     },
