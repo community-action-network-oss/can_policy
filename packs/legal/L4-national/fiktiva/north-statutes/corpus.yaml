@@ -1,0 +1,18 @@
+id: fiktiva-north-statutes
+layer: L4
+jurisdiction: fiktiva
+instrument: Fiktiva North statutes (invented)
+official_publisher: Invented publisher of the synthetic Fiktiva North test world
+source_url: https://example.org/fiktiva-north/statutes
+retrieval_date: 2026-10-03
+version: 0.2.0
+effective_from: 2026-10-03
+effective_to: null
+language: en
+license: CC0-1.0 (invented text of a fictional world)
+content_hash: a0dbb2949c1a1222756cb9cdb4b077a6d27507ba19bff790cfc3740350f04e8c
+mode: binding
+status: index_only
+reviewed: false
+reviewer: none
+fictional: true

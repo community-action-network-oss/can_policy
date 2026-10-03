@@ -1,0 +1,59 @@
+{
+  "pack": "fiktiva-north-statutes",
+  "version": "0.2.0",
+  "layer": "legal",
+  "parent": null,
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "b5fa2425d59b804aaad2fd5b9c0d6c4a7566f5f740ce157770c1ac1d664f0ca1",
+      "bytes": 226
+    },
+    {
+      "path": "articles/art-10.md",
+      "sha256": "d7b6be4583b972db0821803d2da978c45c0599350946dfe9e2fd5e12a9d30f13",
+      "bytes": 398
+    },
+    {
+      "path": "articles/art-7.md",
+      "sha256": "05037a379bdf4f7e011c747cf39378b9c7f889a4ecfab45e47c6618be9f2ddfe",
+      "bytes": 457
+    },
+    {
+      "path": "corpus.yaml",
+      "sha256": "3e4b23c1c5c8f5d53487e9e7f5988d561bf5f8c1117802e13bae8e7da75bbd8a",
+      "bytes": 555
+    },
+    {
+      "path": "pack.yaml",
+      "sha256": "bf50c4b60a71b013da926db1bc8dbd06f3fef5d7bdd0b9b580157873f7b9d445",
+      "bytes": 133
+    },
+    {
+      "path": "review/PENDING.md",
+      "sha256": "e2fcc1a91d4feb05fab26d28d545a6a75aa5c86e131612093b79a3b55e4dd7a6",
+      "bytes": 152
+    },
+    {
+      "path": "sources/source.yaml",
+      "sha256": "a51e7f6ffc2d99ead4486115cba97deb75e5715b9fb809ccfdb082d3b0f8c02a",
+      "bytes": 486
+    },
+    {
+      "path": "sources/statutes.txt",
+      "sha256": "90a2285e16f25339d049141b4d2be250ad49c4f07e1899f8278192ad28e9198d",
+      "bytes": 416
+    },
+    {
+      "path": "topic-index.draft.yaml",
+      "sha256": "2798385d53c4fa6c0d008792fc65a1f84b786ff9c86a39c9031161741607bb19",
+      "bytes": 214
+    },
+    {
+      "path": "topic-index.json",
+      "sha256": "63085949337c43464a5dd3edae981ba87f09d5908de999efb778dfa2d7d1f510",
+      "bytes": 392
+    }
+  ],
+  "pack_hash": "335df1e6e07c1dd357570c8977af46daacbc49715aabbade9fe514f24bc98fa0"
+}

@@ -38,7 +38,7 @@ test("one changed byte in a schema changes pack_hash and the version suffix", ()
 test("exported tree reloads to the manifest hash, parents chain, amsterdam is opt-in", () => {
   const out = mkdtempSync(join(tmpdir(), "can-exp-"));
   const r = exportFixture(REPO, out);
-  assert.deepEqual(r.map((x) => x.name), ["base", "constitution", "fiktiva-city"]);
+  assert.deepEqual(r.map((x) => x.name), ["base", "constitution", "fiktiva-city", "fiktiva-north"]);
   let parent = null;
   for (const x of r) {
     for (const need of ["pack.yaml", "manifest.json"]) assert.ok(existsSync(join(x.dir, need)), `${x.name} ${need}`);
@@ -47,10 +47,10 @@ test("exported tree reloads to the manifest hash, parents chain, amsterdam is op
     assert.equal(canonicalManifest(x.dir, { files: rels }, parent).pack_hash, m.pack_hash);
     assert.equal(m.pack_hash, x.pack_hash);
     assert.ok(rels.every((f) => !f.startsWith("packs/")), "paths are pack relative");
-    parent = m.pack_hash;
+    if (x.name !== "fiktiva-city") parent = m.pack_hash; // siblings share the constitution parent (fiktiva-north, 10-u67)
   }
   assert.ok(!existsSync(join(out, "nl-amsterdam@1.0.0")));
-  assert.equal(exportFixture(REPO, mkdtempSync(join(tmpdir(), "can-exp-")), { withAmsterdam: true }).length, 4);
+  assert.equal(exportFixture(REPO, mkdtempSync(join(tmpdir(), "can-exp-")), { withAmsterdam: true }).length, 5);
 });
 
 // Independent re-implementation of can_server src/policy/domain/hash.ts (D-83), over the exported dir only.
@@ -79,7 +79,7 @@ test("source manifest hash == exported manifest hash == server re-implementation
     const exported = JSON.parse(readFileSync(join(x.dir, "manifest.json"), "utf8")).pack_hash;
     const server = serverHash(x.dir, parent);
     assert.deepEqual([src, committed, exported], [server, server, server], x.name);
-    parent = server;
+    if (x.name !== "fiktiva-city") parent = server; // siblings share the constitution parent (fiktiva-north, 10-u67)
   }
   const rel = JSON.parse(readFileSync(join(REPO, "release.json"), "utf8"));
   assert.deepEqual(rel.packs.filter((p) => p.name !== "nl-amsterdam").map((p) => p.pack_hash), r.map((x) => x.pack_hash));

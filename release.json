@@ -14,9 +14,13 @@
       "pack_hash": "406fa6d0bd85f749786a05cecbfb2a22fe81bab63dd4ff35886d66476950826f"
     },
     {
+      "name": "fiktiva-north",
+      "pack_hash": "5726b2aa04ba9724717ae0f024e9fbbdb8683bd7cc8342c80e38c7400a3785c8"
+    },
+    {
       "name": "nl-amsterdam",
       "pack_hash": "75fe824b31a305c8e61d54e4bde3ad0b761973631e3d40bddad7fbeb84777529"
     }
   ],
-  "released_at": "2026-10-03T00:04:04.502Z"
+  "released_at": "2026-10-03T00:06:54.773Z"
 }

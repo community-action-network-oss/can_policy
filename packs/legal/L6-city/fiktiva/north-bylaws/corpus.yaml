@@ -1,0 +1,18 @@
+id: fiktiva-north-bylaws
+layer: L6
+jurisdiction: fiktiva
+instrument: Fiktiva North bylaws (invented)
+official_publisher: Invented publisher of the synthetic Fiktiva North test world
+source_url: https://example.org/fiktiva-north/bylaws
+retrieval_date: 2026-10-03
+version: 0.1.0
+effective_from: 2026-10-03
+effective_to: null
+language: en
+license: CC0-1.0 (invented text of a fictional world)
+content_hash: 90d83e99ebfffd00b8140dccb7d60b239d8f1c13b84c23293f7727e5a7d5a5a8
+mode: binding
+status: index_only
+reviewed: false
+reviewer: none
+fictional: true

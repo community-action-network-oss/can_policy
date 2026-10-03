@@ -1,0 +1,54 @@
+{
+  "pack": "fiktiva-north-union",
+  "version": "0.1.0",
+  "layer": "legal",
+  "parent": null,
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "b5fa2425d59b804aaad2fd5b9c0d6c4a7566f5f740ce157770c1ac1d664f0ca1",
+      "bytes": 226
+    },
+    {
+      "path": "articles/art-4.md",
+      "sha256": "07fd1f220e409743a3f8cef406c655d49f641cdd800ffb8582c58fca88a6e0ca",
+      "bytes": 351
+    },
+    {
+      "path": "corpus.yaml",
+      "sha256": "c079abea2ecd33496a25caebe9261201f09da3e08c23c47de9e8e3812f022583",
+      "bytes": 554
+    },
+    {
+      "path": "pack.yaml",
+      "sha256": "a98d5c792b349283079ae45b6914f4a24ba5c8fc38d60bc301b50f72910a43a5",
+      "bytes": 130
+    },
+    {
+      "path": "review/PENDING.md",
+      "sha256": "e2fcc1a91d4feb05fab26d28d545a6a75aa5c86e131612093b79a3b55e4dd7a6",
+      "bytes": 152
+    },
+    {
+      "path": "sources/source.yaml",
+      "sha256": "30ff45806836d1fa007ae475200d2ce330d5f1762ec00267438de6f9122e5337",
+      "bytes": 485
+    },
+    {
+      "path": "sources/union.txt",
+      "sha256": "2abe263e20141d3a57cf1c66c08ba4936f155f8b106a99d5cde1b574e387c7b3",
+      "bytes": 178
+    },
+    {
+      "path": "topic-index.draft.yaml",
+      "sha256": "2798385d53c4fa6c0d008792fc65a1f84b786ff9c86a39c9031161741607bb19",
+      "bytes": 214
+    },
+    {
+      "path": "topic-index.json",
+      "sha256": "b1e718c3ec676f81f94c00236ced6a5fe18eb47758c0ca6fd1dd1aff81f3e25c",
+      "bytes": 194
+    }
+  ],
+  "pack_hash": "702b57d169235b35fa883631c9b1bc77b12e00e269a8887395be7530e96c9938"
+}

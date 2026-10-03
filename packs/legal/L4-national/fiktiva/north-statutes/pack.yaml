@@ -1,0 +1,7 @@
+name: fiktiva-north-statutes
+version: 0.2.0
+layer: legal
+parent: null
+jurisdiction: fiktiva
+effective_from: 2026-10-03
+status: draft
