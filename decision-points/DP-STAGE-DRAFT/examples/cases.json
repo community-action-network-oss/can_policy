@@ -1,7 +1,7 @@
 [
   {
     "id": "ex-SD-01",
-    "input": "jurisdiction: fiktiva-city\ntrigger: accepted_suggestions\nproblem_state: active\nlegal_stack: resolved\nsuggestion_count: 1\nsuggestion g-1 meta: credit=present\nsource_stage_count: 2\nsource_stage t-1 meta: suggestion=g-1 legality=lawful resource_fit=fits depends_on=none\nsource_stage t-1 name: \"request_light\"\nsource_stage t-1 goal: \"Ask the district roads office for a lit crossing.\"\nsource_stage t-1 criteria: \"A written reply from the roads office is on file.\"\nsource_stage t-2 meta: suggestion=g-1 legality=lawful resource_fit=fits depends_on=t-1\nsource_stage t-2 name: \"traffic_count\"\nsource_stage t-2 goal: \"Count cars at the crossing for one week.\"\nsource_stage t-2 criteria: \"A seven day count is attached.\"\nfinal_count: 1\nfinal f-1: \"A lit crossing is in use near the primary school.\"",
+    "input": "jurisdiction: fiktiva-city\ntrigger: accepted_suggestions\nproblem_state: active\nlegal_stack: resolved\nproblem: \"Children cross a busy road to reach the primary school and the crossing has no light.\"\nsuggestion_count: 1\nsuggestion g-1 meta: credit=present\nsource_stage_count: 2\nsource_stage t-1 meta: suggestion=g-1 legality=lawful resource_fit=fits depends_on=none\nsource_stage t-1 name: \"request_light\"\nsource_stage t-1 goal: \"Ask the district roads office for a lit crossing.\"\nsource_stage t-1 criteria: \"A written reply from the roads office is on file.\"\nsource_stage t-2 meta: suggestion=g-1 legality=lawful resource_fit=fits depends_on=t-1\nsource_stage t-2 name: \"traffic_count\"\nsource_stage t-2 goal: \"Count cars at the crossing for one week.\"\nsource_stage t-2 criteria: \"A seven day count is attached.\"\nadaptation_count: 0\nfinal_count: 1\nfinal f-1: \"A lit crossing is in use near the primary school.\"",
     "expected_outcome": "publish",
     "rule_ids": [
       "REUSE-CREDIT-1",
@@ -66,7 +66,7 @@
   },
   {
     "id": "ex-SD-02",
-    "input": "jurisdiction: fiktiva-harbor\ntrigger: accepted_suggestions\nproblem_state: active\nlegal_stack: resolved\nsuggestion_count: 1\nsuggestion g-1 meta: credit=present\nsource_stage_count: 2\nsource_stage t-1 meta: suggestion=g-1 legality=lawful resource_fit=fits depends_on=none\nsource_stage t-1 name: \"clear_drain\"\nsource_stage t-1 goal: \"Ask the harbour office to clear the drain.\"\nsource_stage t-1 criteria: \"The harbour office log shows the drain cleared.\"\nsource_stage t-2 meta: suggestion=g-1 legality=unlawful_at_L4 resource_fit=fits depends_on=t-1\nsource_stage t-2 name: \"monthly_check\"\nsource_stage t-2 goal: \"Agree a monthly check.\"\nsource_stage t-2 criteria: \"Three monthly checks are logged.\"\nfinal_count: 1\nfinal f-1: \"The harbour steps drain is clear.\"",
+    "input": "jurisdiction: fiktiva-harbor\ntrigger: accepted_suggestions\nproblem_state: active\nlegal_stack: resolved\nproblem: \"The drain at the harbour steps blocks every autumn and floods the steps.\"\nsuggestion_count: 1\nsuggestion g-1 meta: credit=present\nsource_stage_count: 2\nsource_stage t-1 meta: suggestion=g-1 legality=lawful resource_fit=fits depends_on=none\nsource_stage t-1 name: \"clear_drain\"\nsource_stage t-1 goal: \"Ask the harbour office to clear the drain.\"\nsource_stage t-1 criteria: \"The harbour office log shows the drain cleared.\"\nsource_stage t-2 meta: suggestion=g-1 legality=unlawful_at_L4 resource_fit=fits depends_on=t-1\nsource_stage t-2 name: \"monthly_check\"\nsource_stage t-2 goal: \"Agree a monthly check.\"\nsource_stage t-2 criteria: \"Three monthly checks are logged.\"\nadaptation_count: 0\nfinal_count: 1\nfinal f-1: \"The harbour steps drain is clear.\"",
     "expected_outcome": "publish",
     "rule_ids": [
       "REUSE-CREDIT-1",
@@ -114,7 +114,7 @@
   },
   {
     "id": "ex-SD-03",
-    "input": "jurisdiction: fiktiva-north\ntrigger: accepted_suggestions\nproblem_state: active\nlegal_stack: resolved\nsuggestion_count: 1\nsuggestion g-1 meta: credit=present\nsource_stage_count: 2\nsource_stage t-1 meta: suggestion=g-1 legality=lawful resource_fit=fits depends_on=none\nsource_stage t-1 name: \"petition\"\nsource_stage t-1 goal: \"Gather a petition for a shelter.\"\nsource_stage t-1 criteria: \"At least forty signatures are collected.\"\nsource_stage t-2 meta: suggestion=g-1 legality=unknown resource_fit=fits depends_on=t-1\nsource_stage t-2 name: \"ask_transport\"\nsource_stage t-2 goal: \"Ask the transport office for a shelter.\"\nsource_stage t-2 criteria: \"The transport office has scheduled the shelter.\"\nfinal_count: 1\nfinal f-1: \"A shelter stands at the market bus stop.\"",
+    "input": "jurisdiction: fiktiva-harbor\ntrigger: accepted_suggestions\nproblem_state: active\nlegal_stack: resolved\nproblem: \"People wait in the rain at the market bus stop with no cover.\"\nsuggestion_count: 1\nsuggestion g-1 meta: credit=present\nsource_stage_count: 2\nsource_stage t-1 meta: suggestion=g-1 legality=lawful resource_fit=fits depends_on=none\nsource_stage t-1 name: \"petition\"\nsource_stage t-1 goal: \"Gather a petition for a shelter.\"\nsource_stage t-1 criteria: \"At least forty signatures are collected.\"\nsource_stage t-2 meta: suggestion=g-1 legality=unknown resource_fit=fits depends_on=t-1\nsource_stage t-2 name: \"ask_transport\"\nsource_stage t-2 goal: \"Ask the transport office for a shelter.\"\nsource_stage t-2 criteria: \"The transport office has scheduled the shelter.\"\nadaptation_count: 0\nfinal_count: 1\nfinal f-1: \"A shelter stands at the market bus stop.\"",
     "expected_outcome": "needs_revision",
     "rule_ids": [
       "REUSE-CREDIT-1",
@@ -122,7 +122,7 @@
     ],
     "note": "the only stage that covers the final criterion is unknown, so the draft cannot be offered",
     "provenance": "fixture",
-    "jurisdiction": "fiktiva-north",
+    "jurisdiction": "fiktiva-harbor",
     "field_ref": {
       "field": "stage_draft"
     },
@@ -138,11 +138,11 @@
       "review_still_required": true,
       "archive_used_as_review": false
     },
-    "shot": true
+    "shot": false
   },
   {
     "id": "ex-SD-04",
-    "input": "jurisdiction: fiktiva-city\ntrigger: accepted_suggestions\nproblem_state: active\nlegal_stack: unresolved\nsuggestion_count: 1\nsuggestion g-1 meta: credit=present\nsource_stage_count: 2\nsource_stage t-1 meta: suggestion=g-1 legality=lawful resource_fit=fits depends_on=none\nsource_stage t-1 name: \"request_light\"\nsource_stage t-1 goal: \"Ask the district roads office for a lit crossing.\"\nsource_stage t-1 criteria: \"A written reply from the roads office is on file.\"\nsource_stage t-2 meta: suggestion=g-1 legality=lawful resource_fit=fits depends_on=t-1\nsource_stage t-2 name: \"traffic_count\"\nsource_stage t-2 goal: \"Count cars at the crossing for one week.\"\nsource_stage t-2 criteria: \"A seven day count is attached.\"\nfinal_count: 1\nfinal f-1: \"A lit crossing is in use near the primary school.\"",
+    "input": "jurisdiction: fiktiva-city\ntrigger: accepted_suggestions\nproblem_state: active\nlegal_stack: unresolved\nproblem: \"Children cross a busy road to reach the primary school and the crossing has no light.\"\nsuggestion_count: 1\nsuggestion g-1 meta: credit=present\nsource_stage_count: 2\nsource_stage t-1 meta: suggestion=g-1 legality=lawful resource_fit=fits depends_on=none\nsource_stage t-1 name: \"request_light\"\nsource_stage t-1 goal: \"Ask the district roads office for a lit crossing.\"\nsource_stage t-1 criteria: \"A written reply from the roads office is on file.\"\nsource_stage t-2 meta: suggestion=g-1 legality=lawful resource_fit=fits depends_on=t-1\nsource_stage t-2 name: \"traffic_count\"\nsource_stage t-2 goal: \"Count cars at the crossing for one week.\"\nsource_stage t-2 criteria: \"A seven day count is attached.\"\nadaptation_count: 0\nfinal_count: 1\nfinal f-1: \"A lit crossing is in use near the primary school.\"",
     "expected_outcome": "hold",
     "rule_ids": [],
     "note": "legal stack unresolved",
@@ -160,7 +160,7 @@
   },
   {
     "id": "ex-SD-05",
-    "input": "jurisdiction: fiktiva-harbor\ntrigger: accepted_suggestions\nproblem_state: active\nlegal_stack: resolved\nsuggestion_count: 1\nsuggestion g-1 meta: credit=absent\nsource_stage_count: 2\nsource_stage t-1 meta: suggestion=g-1 legality=lawful resource_fit=fits depends_on=none\nsource_stage t-1 name: \"request_light\"\nsource_stage t-1 goal: \"Ask the district roads office for a lit crossing.\"\nsource_stage t-1 criteria: \"A written reply from the roads office is on file.\"\nsource_stage t-2 meta: suggestion=g-1 legality=lawful resource_fit=fits depends_on=t-1\nsource_stage t-2 name: \"traffic_count\"\nsource_stage t-2 goal: \"Count cars at the crossing for one week.\"\nsource_stage t-2 criteria: \"A seven day count is attached.\"\nfinal_count: 1\nfinal f-1: \"A lit crossing is in use near the primary school.\"",
+    "input": "jurisdiction: fiktiva-harbor\ntrigger: accepted_suggestions\nproblem_state: active\nlegal_stack: resolved\nproblem: \"Children cross a busy road to reach the primary school and the crossing has no light.\"\nsuggestion_count: 1\nsuggestion g-1 meta: credit=absent\nsource_stage_count: 2\nsource_stage t-1 meta: suggestion=g-1 legality=lawful resource_fit=fits depends_on=none\nsource_stage t-1 name: \"request_light\"\nsource_stage t-1 goal: \"Ask the district roads office for a lit crossing.\"\nsource_stage t-1 criteria: \"A written reply from the roads office is on file.\"\nsource_stage t-2 meta: suggestion=g-1 legality=lawful resource_fit=fits depends_on=t-1\nsource_stage t-2 name: \"traffic_count\"\nsource_stage t-2 goal: \"Count cars at the crossing for one week.\"\nsource_stage t-2 criteria: \"A seven day count is attached.\"\nadaptation_count: 0\nfinal_count: 1\nfinal f-1: \"A lit crossing is in use near the primary school.\"",
     "expected_outcome": "hold",
     "rule_ids": [],
     "note": "credit absent on the suggestion",
@@ -181,12 +181,12 @@
   },
   {
     "id": "ex-SD-06",
-    "input": "jurisdiction: fiktiva-north\ntrigger: accepted_suggestions\nproblem_state: draft\nlegal_stack: resolved\nsuggestion_count: 1\nsuggestion g-1 meta: credit=present\nsource_stage_count: 2\nsource_stage t-1 meta: suggestion=g-1 legality=lawful resource_fit=fits depends_on=none\nsource_stage t-1 name: \"request_light\"\nsource_stage t-1 goal: \"Ask the district roads office for a lit crossing.\"\nsource_stage t-1 criteria: \"A written reply from the roads office is on file.\"\nsource_stage t-2 meta: suggestion=g-1 legality=lawful resource_fit=fits depends_on=t-1\nsource_stage t-2 name: \"traffic_count\"\nsource_stage t-2 goal: \"Count cars at the crossing for one week.\"\nsource_stage t-2 criteria: \"A seven day count is attached.\"\nfinal_count: 1\nfinal f-1: \"A lit crossing is in use near the primary school.\"",
+    "input": "jurisdiction: fiktiva-harbor\ntrigger: accepted_suggestions\nproblem_state: draft\nlegal_stack: resolved\nproblem: \"Children cross a busy road to reach the primary school and the crossing has no light.\"\nsuggestion_count: 1\nsuggestion g-1 meta: credit=present\nsource_stage_count: 2\nsource_stage t-1 meta: suggestion=g-1 legality=lawful resource_fit=fits depends_on=none\nsource_stage t-1 name: \"request_light\"\nsource_stage t-1 goal: \"Ask the district roads office for a lit crossing.\"\nsource_stage t-1 criteria: \"A written reply from the roads office is on file.\"\nsource_stage t-2 meta: suggestion=g-1 legality=lawful resource_fit=fits depends_on=t-1\nsource_stage t-2 name: \"traffic_count\"\nsource_stage t-2 goal: \"Count cars at the crossing for one week.\"\nsource_stage t-2 criteria: \"A seven day count is attached.\"\nadaptation_count: 0\nfinal_count: 1\nfinal f-1: \"A lit crossing is in use near the primary school.\"",
     "expected_outcome": "hold",
     "rule_ids": [],
     "note": "problem not active",
     "provenance": "fixture",
-    "jurisdiction": "fiktiva-north",
+    "jurisdiction": "fiktiva-harbor",
     "field_ref": {
       "field": "stage_draft"
     },
@@ -199,7 +199,7 @@
   },
   {
     "id": "ex-SD-07",
-    "input": "jurisdiction: fiktiva-city\ntrigger: poster_request\nproblem_state: active\nlegal_stack: resolved\nsuggestion_count: 1\nsuggestion g-1 meta: credit=present\nsource_stage_count: 2\nsource_stage t-1 meta: suggestion=g-1 legality=lawful resource_fit=fits depends_on=none\nsource_stage t-1 name: \"ask_parks\"\nsource_stage t-1 goal: \"Ask the parks office for a bench.\"\nsource_stage t-1 criteria: \"The parks office has agreed in writing.\"\nsource_stage t-2 meta: suggestion=g-1 legality=lawful resource_fit=fits depends_on=t-1\nsource_stage t-2 name: \"raise_fund\"\nsource_stage t-2 goal: \"Raise a small fund for the paving.\"\nsource_stage t-2 criteria: \"The fund reaches the quoted amount.\"\nfinal_count: 1\nfinal f-1: \"A bench is installed in the village park.\"",
+    "input": "jurisdiction: fiktiva-city\ntrigger: poster_request\nproblem_state: active\nlegal_stack: resolved\nproblem: \"Older residents have nowhere to rest in the village park.\"\nsuggestion_count: 1\nsuggestion g-1 meta: credit=present\nsource_stage_count: 2\nsource_stage t-1 meta: suggestion=g-1 legality=lawful resource_fit=fits depends_on=none\nsource_stage t-1 name: \"ask_parks\"\nsource_stage t-1 goal: \"Ask the parks office for a bench.\"\nsource_stage t-1 criteria: \"The parks office has agreed in writing.\"\nsource_stage t-2 meta: suggestion=g-1 legality=lawful resource_fit=fits depends_on=t-1\nsource_stage t-2 name: \"raise_fund\"\nsource_stage t-2 goal: \"Raise a small fund for the paving.\"\nsource_stage t-2 criteria: \"The fund reaches the quoted amount.\"\nadaptation_count: 0\nfinal_count: 1\nfinal f-1: \"A bench is installed in the village park.\"",
     "expected_outcome": "publish",
     "rule_ids": [
       "REUSE-CREDIT-1",
@@ -264,7 +264,7 @@
   },
   {
     "id": "ex-SD-08",
-    "input": "jurisdiction: fiktiva-harbor\ntrigger: accepted_suggestions\nproblem_state: active\nlegal_stack: resolved\nsuggestion_count: 1\nsuggestion g-1 meta: credit=present\nsource_stage_count: 2\nsource_stage t-1 meta: suggestion=g-1 legality=lawful resource_fit=fits depends_on=none\nsource_stage t-1 name: \"ask_library\"\nsource_stage t-1 goal: \"Ask the library board for longer hours.\"\nsource_stage t-1 criteria: \"The board has voted on the request.\"\nsource_stage t-2 meta: suggestion=g-1 legality=lawful resource_fit=fits depends_on=t-1\nsource_stage t-2 name: \"trial\"\nsource_stage t-2 goal: \"Run a four week trial.\"\nsource_stage t-2 criteria: \"Four weeks of evening opening are logged.\"\nfinal_count: 2\nfinal f-1: \"The library opens on one more evening each week.\"\nfinal f-2: \"Opening hours are posted at the library door.\"",
+    "input": "jurisdiction: fiktiva-harbor\ntrigger: accepted_suggestions\nproblem_state: active\nlegal_stack: resolved\nproblem: \"Working families cannot use the library because it closes before they finish work.\"\nsuggestion_count: 1\nsuggestion g-1 meta: credit=present\nsource_stage_count: 2\nsource_stage t-1 meta: suggestion=g-1 legality=lawful resource_fit=fits depends_on=none\nsource_stage t-1 name: \"ask_library\"\nsource_stage t-1 goal: \"Ask the library board for longer hours.\"\nsource_stage t-1 criteria: \"The board has voted on the request.\"\nsource_stage t-2 meta: suggestion=g-1 legality=lawful resource_fit=fits depends_on=t-1\nsource_stage t-2 name: \"trial\"\nsource_stage t-2 goal: \"Run a four week trial.\"\nsource_stage t-2 criteria: \"Four weeks of evening opening are logged.\"\nadaptation_count: 0\nfinal_count: 2\nfinal f-1: \"The library opens on one more evening each week.\"\nfinal f-2: \"Opening hours are posted at the library door.\"",
     "expected_outcome": "needs_revision",
     "rule_ids": [
       "REUSE-CREDIT-1",
@@ -290,7 +290,7 @@
   },
   {
     "id": "ex-SD-09",
-    "input": "jurisdiction: fiktiva-north\ntrigger: accepted_suggestions\nproblem_state: active\nlegal_stack: resolved\nsuggestion_count: 2\nsuggestion g-1 meta: credit=present\nsuggestion g-2 meta: credit=present\nsource_stage_count: 2\nsource_stage t-1 meta: suggestion=g-1 legality=lawful resource_fit=fits depends_on=none\nsource_stage t-1 name: \"reach_owner\"\nsource_stage t-1 goal: \"Reach the owner of the lot.\"\nsource_stage t-1 criteria: \"The owner has replied.\"\nsource_stage t-2 meta: suggestion=g-2 legality=lawful resource_fit=fits depends_on=t-1\nsource_stage t-2 name: \"sign_loan\"\nsource_stage t-2 goal: \"Sign a land loan.\"\nsource_stage t-2 criteria: \"A signed loan agreement exists.\"\nfinal_count: 1\nfinal f-1: \"A shared garden plot is agreed on the empty lot.\"",
+    "input": "jurisdiction: fiktiva-harbor\ntrigger: accepted_suggestions\nproblem_state: active\nlegal_stack: resolved\nproblem: \"An empty lot in the district is unused and residents want to grow food together.\"\nsuggestion_count: 2\nsuggestion g-1 meta: credit=present\nsuggestion g-2 meta: credit=present\nsource_stage_count: 2\nsource_stage t-1 meta: suggestion=g-1 legality=lawful resource_fit=fits depends_on=none\nsource_stage t-1 name: \"reach_owner\"\nsource_stage t-1 goal: \"Reach the owner of the lot.\"\nsource_stage t-1 criteria: \"The owner has replied.\"\nsource_stage t-2 meta: suggestion=g-2 legality=lawful resource_fit=fits depends_on=t-1\nsource_stage t-2 name: \"sign_loan\"\nsource_stage t-2 goal: \"Sign a land loan.\"\nsource_stage t-2 criteria: \"A signed loan agreement exists.\"\nadaptation_count: 0\nfinal_count: 1\nfinal f-1: \"A shared garden plot is agreed on the empty lot.\"",
     "expected_outcome": "publish",
     "rule_ids": [
       "REUSE-CREDIT-1",
@@ -298,7 +298,7 @@
     ],
     "note": "two suggestions both credited",
     "provenance": "fixture",
-    "jurisdiction": "fiktiva-north",
+    "jurisdiction": "fiktiva-harbor",
     "field_ref": {
       "field": "stage_draft"
     },
@@ -356,7 +356,7 @@
   },
   {
     "id": "ex-SD-10",
-    "input": "jurisdiction: fiktiva-city\ntrigger: accepted_suggestions\nproblem_state: active\nlegal_stack: resolved\nsuggestion_count: 1\nsuggestion g-1 meta: credit=present\nsource_stage_count: 2\nsource_stage t-1 meta: suggestion=g-1 legality=lawful resource_fit=fits depends_on=none\nsource_stage t-1 name: \"request_light\"\nsource_stage t-1 goal: \"Ask the district roads office for a lit crossing.\"\nsource_stage t-1 criteria: \"A written reply from the roads office is on file.\"\nsource_stage t-2 meta: suggestion=g-1 legality=lawful resource_fit=fits depends_on=t-1\nsource_stage t-2 name: \"traffic_count\"\nsource_stage t-2 goal: \"Count cars at the crossing for one week.\"\nsource_stage t-2 criteria: \"A seven day count is attached.\"\nfinal_count: 0",
+    "input": "jurisdiction: fiktiva-city\ntrigger: accepted_suggestions\nproblem_state: active\nlegal_stack: resolved\nproblem: \"Children cross a busy road to reach the primary school and the crossing has no light.\"\nsuggestion_count: 1\nsuggestion g-1 meta: credit=present\nsource_stage_count: 2\nsource_stage t-1 meta: suggestion=g-1 legality=lawful resource_fit=fits depends_on=none\nsource_stage t-1 name: \"request_light\"\nsource_stage t-1 goal: \"Ask the district roads office for a lit crossing.\"\nsource_stage t-1 criteria: \"A written reply from the roads office is on file.\"\nsource_stage t-2 meta: suggestion=g-1 legality=lawful resource_fit=fits depends_on=t-1\nsource_stage t-2 name: \"traffic_count\"\nsource_stage t-2 goal: \"Count cars at the crossing for one week.\"\nsource_stage t-2 criteria: \"A seven day count is attached.\"\nadaptation_count: 0\nfinal_count: 0",
     "expected_outcome": "needs_revision",
     "rule_ids": [
       "REUSE-CREDIT-1",
@@ -375,6 +375,73 @@
       "draft_only": true,
       "review_still_required": true,
       "archive_used_as_review": false
+    },
+    "shot": false
+  },
+  {
+    "id": "ex-SD-11",
+    "input": "jurisdiction: fiktiva-city\ntrigger: accepted_suggestions\nproblem_state: active\nlegal_stack: resolved\nproblem: \"Older residents have nowhere to rest in the village park.\"\nsuggestion_count: 1\nsuggestion g-1 meta: credit=present\nsource_stage_count: 2\nsource_stage t-1 meta: suggestion=g-1 legality=lawful resource_fit=fits depends_on=none\nsource_stage t-1 name: \"ask_parks\"\nsource_stage t-1 goal: \"Ask the parks office for a bench.\"\nsource_stage t-1 criteria: \"The parks office has agreed in writing.\"\nsource_stage t-2 meta: suggestion=g-1 legality=lawful resource_fit=fits depends_on=t-1\nsource_stage t-2 name: \"raise_fund\"\nsource_stage t-2 goal: \"Raise a small fund for the paving.\"\nsource_stage t-2 criteria: \"The fund reaches the quoted amount.\"\nadaptation_count: 1\nadaptation k-1 meta: stage=t-2 kind=drop_step\nfinal_count: 1\nfinal f-1: \"A bench is installed in the village park.\"",
+    "expected_outcome": "publish",
+    "rule_ids": [
+      "REUSE-CREDIT-1",
+      "REUSE-NOBLOCK-1"
+    ],
+    "note": "an accepted drop_step leaves the stage out and it is not a skip",
+    "provenance": "fixture",
+    "jurisdiction": "fiktiva-city",
+    "field_ref": {
+      "field": "stage_draft"
+    },
+    "expected": {
+      "draft_plan": [
+        {
+          "name": "ask_parks_office",
+          "goal": "Ask the parks office of this place to agree to a bench in the village park.",
+          "criteria": [
+            {
+              "statement": "The parks office has agreed to a bench.",
+              "measure": "A written agreement from the parks office is attached."
+            }
+          ],
+          "decision_method": "poster_after_input",
+          "derived_from": [
+            "t-1"
+          ],
+          "covers": [
+            "f-1"
+          ],
+          "auto_start": true
+        }
+      ],
+      "credited_suggestions": [
+        "g-1"
+      ],
+      "skipped_source_stages": [],
+      "uncovered_final_criteria": [],
+      "draft_only": true,
+      "review_still_required": true,
+      "archive_used_as_review": false
+    },
+    "shot": true
+  },
+  {
+    "id": "ex-SD-12",
+    "input": "jurisdiction: fiktiva-harbor\ntrigger: accepted_suggestions\nproblem_state: active\nlegal_stack: resolved\nsuggestion_count: 1\nsuggestion g-1 meta: credit=present\nsource_stage_count: 2\nsource_stage t-1 meta: suggestion=g-1 legality=lawful resource_fit=fits depends_on=none\nsource_stage t-1 name: \"ask_parks\"\nsource_stage t-1 goal: \"Ask the parks office for a bench.\"\nsource_stage t-1 criteria: \"The parks office has agreed in writing.\"\nsource_stage t-2 meta: suggestion=g-1 legality=lawful resource_fit=fits depends_on=t-1\nsource_stage t-2 name: \"raise_fund\"\nsource_stage t-2 goal: \"Raise a small fund for the paving.\"\nsource_stage t-2 criteria: \"The fund reaches the quoted amount.\"\nadaptation_count: 0\nfinal_count: 1\nfinal f-1: \"A bench is installed in the village park.\"",
+    "expected_outcome": "hold",
+    "rule_ids": [],
+    "note": "no problem line",
+    "provenance": "fixture",
+    "jurisdiction": "fiktiva-harbor",
+    "field_ref": {
+      "field": "stage_draft"
+    },
+    "expected": {
+      "hold_reason": "missing_input",
+      "draft_only": true,
+      "archive_used_as_review": false,
+      "missing_inputs": [
+        "problem"
+      ]
     },
     "shot": false
   }

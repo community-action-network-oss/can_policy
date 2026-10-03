@@ -166,6 +166,7 @@ run("DP-STAGE-DRAFT schema negatives", load("DP-STAGE-DRAFT"), [
   ["stage name with capitals", withStage({ name: "Ask Roads" }), false],
   ["stage name too short", withStage({ name: "a" }), false],
   ["unknown decision method", withStage({ decision_method: "auto_decide" }), false],
+  ["a decision method other than the default", withStage({ decision_method: "community_vote" }), false],
   ["auto_start as a string", withStage({ auto_start: "true" }), false],
   ["stage with an unknown key", withStage({ publish_now: true }), false],
   ["stage with a status key", withStage({ status: "started" }), false],

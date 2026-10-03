@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "can_policy/decision-points/DP-STAGE-DRAFT/schema.json",
-  "$comment": "Extends schemas/dp-output.schema.json: the shared keys are unchanged except outcome, which is narrowed. Unsafe outputs are unrepresentable: a draft is only offered (publish) with REUSE-CREDIT-1 and REUSE-NOBLOCK-1, confidence 0.85 or more, a draft_plan whose every stage names its source stages (derived_from) and the final criteria it covers, credited_suggestions, skipped_source_stages, an empty uncovered_final_criteria, draft_only true, review_still_required true and archive_used_as_review false; the DP never publishes a plan. JSON Schema cannot compare against the input: the handler checks that every derived_from ref is an input source stage with legality lawful, that skipped_source_stages equals exactly the input source stages whose legality is not lawful, that credited_suggestions equals the suggestions of the used source stages, that draft stage names are unique and depends_on names resolve to earlier draft stages, that uncovered_final_criteria equals the input final criteria that no draft stage covers (and every covers ref is an input final ref), and that a publish is refused when legal_stack is not resolved, a credit is absent or final_count is 0; any mismatch is a hold (see eval/README.md).",
+  "$comment": "Extends schemas/dp-output.schema.json: the shared keys are unchanged except outcome, which is narrowed. Unsafe outputs are unrepresentable: a draft is only offered (publish) with REUSE-CREDIT-1 and REUSE-NOBLOCK-1, confidence 0.85 or more, a draft_plan whose every stage names its source stages (derived_from) and the final criteria it covers, credited_suggestions, skipped_source_stages, an empty uncovered_final_criteria, draft_only true, review_still_required true and archive_used_as_review false; the DP never publishes a plan. JSON Schema cannot compare against the input: the handler checks that every derived_from ref is an input source stage with legality lawful and without an accepted drop_step adaptation, that skipped_source_stages equals exactly the input source stages whose legality is not lawful (a drop_step stage is neither used nor skipped), that credited_suggestions equals the suggestions of the used source stages, that draft stage names are unique and depends_on names resolve to earlier draft stages, that uncovered_final_criteria equals the input final criteria that no draft stage covers (and every covers ref is an input final ref), and that a publish is refused when legal_stack is not resolved, a credit is absent or final_count is 0; any mismatch is a hold (see eval/README.md).",
   "title": "DP-STAGE-DRAFT output",
   "type": "object",
   "additionalProperties": false,
@@ -115,12 +115,7 @@
             }
           },
           "decision_method": {
-            "enum": [
-              "poster_after_input",
-              "community_vote",
-              "steward",
-              "other_named"
-            ]
+            "const": "poster_after_input"
           },
           "depends_on": {
             "type": "array",
@@ -204,7 +199,7 @@
     "missing_inputs": {
       "type": "array",
       "minItems": 1,
-      "maxItems": 11,
+      "maxItems": 14,
       "uniqueItems": true,
       "items": {
         "enum": [
@@ -216,8 +211,11 @@
           "suggestion_lines",
           "source_stage_count",
           "source_stage_lines",
+          "adaptation_count",
+          "adaptation_lines",
           "final_count",
           "final_criteria",
+          "problem",
           "attribution"
         ]
       }

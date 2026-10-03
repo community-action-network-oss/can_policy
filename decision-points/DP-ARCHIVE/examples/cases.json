@@ -48,7 +48,7 @@
     ],
     "note": "closed record keeps the failed path",
     "provenance": "fixture",
-    "jurisdiction": "fiktiva-north",
+    "jurisdiction": "fiktiva-harbor",
     "field_ref": {
       "field": "archive_record"
     },
@@ -201,7 +201,7 @@
     ],
     "note": "redirected record, one stage, no failures",
     "provenance": "fixture",
-    "jurisdiction": "fiktiva-north",
+    "jurisdiction": "fiktiva-harbor",
     "field_ref": {
       "field": "archive_record"
     },
