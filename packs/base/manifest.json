@@ -1406,18 +1406,18 @@
     },
     {
       "path": "decision-points/DP-ARCHIVE/eval/README.md",
-      "sha256": "a3d39233ae7410c3a9a580410784ed3aebfa7cc85a9e775d20162fa3dd436bb2",
-      "bytes": 4152
+      "sha256": "5548c63f708cf9df272ddd82497c56a690f968b53c89262f5cfca9276b0905c7",
+      "bytes": 4917
     },
     {
       "path": "decision-points/DP-ARCHIVE/eval/adversarial.jsonl",
-      "sha256": "1d6a437c0d311bbe7bdb3a094f8a76fde4bb3f19cef6533c298dcec997e70f76",
-      "bytes": 11943
+      "sha256": "db2c690a6d86cd9ee169fbcd9ccc4019c7610bcf47237c79fbfe7fde3e93c1f0",
+      "bytes": 13029
     },
     {
       "path": "decision-points/DP-ARCHIVE/eval/core.jsonl",
-      "sha256": "e46b6ccb8747971fdc7ac2b0e5c6bfaf8b666cdbe1654493bf7eb617d0fb7bc1",
-      "bytes": 18120
+      "sha256": "3dab84186010a3c5498381e6a1275d610258b06adfe0423bd8126f6043e67341",
+      "bytes": 19134
     },
     {
       "path": "decision-points/DP-ARCHIVE/eval/thresholds.yaml",
@@ -1436,13 +1436,13 @@
     },
     {
       "path": "decision-points/DP-ARCHIVE/prompt.md",
-      "sha256": "3e38a3c3b800d50d67af93e727271d8a94017f883fec06a94c9dbcd52010561b",
-      "bytes": 8391
+      "sha256": "eafb2b98c3a14c4b3e1deb97f64c191883fd2b2ace16faca99606bd5ab57eceb",
+      "bytes": 9159
     },
     {
       "path": "decision-points/DP-ARCHIVE/schema.json",
-      "sha256": "b40b52e5b8749e23affda7ef2e99b3a86be4c0970f72ffb5fc73ef96477f9575",
-      "bytes": 9482
+      "sha256": "6dd161a58d95fedc6eab4954f197dc4efb2fc3e4f5825ac5f02e6fa8e14f0be6",
+      "bytes": 10056
     },
     {
       "path": "decision-points/DP-ASSUMPTIONS/eval/README.md",
@@ -2166,8 +2166,8 @@
     },
     {
       "path": "decision-points/DP-REUSE-FIT/eval/README.md",
-      "sha256": "794c90a3797f630cab9f0a2e824ed62e1e217f84bce459820ce7765df96ceb8d",
-      "bytes": 5639
+      "sha256": "ff3e8c0397f8d265880451b1f80f7df21d4fd8cc5866fe28acb5de9b1aa68b29",
+      "bytes": 6859
     },
     {
       "path": "decision-points/DP-REUSE-FIT/eval/adversarial.jsonl",
@@ -2176,8 +2176,8 @@
     },
     {
       "path": "decision-points/DP-REUSE-FIT/eval/core.jsonl",
-      "sha256": "354c0a11c919f09a821c6d482aa3f2bcd6c32ae9dd8c783061115bf9e451f688",
-      "bytes": 22344
+      "sha256": "1430c2ac5c50ede969d34af8e5af41b5400d97a8b5d99f58368ce550e1bc078f",
+      "bytes": 26843
     },
     {
       "path": "decision-points/DP-REUSE-FIT/eval/thresholds.yaml",
@@ -2196,13 +2196,13 @@
     },
     {
       "path": "decision-points/DP-REUSE-FIT/prompt.md",
-      "sha256": "4b51599eecaf7b8c83452838eb12135a9c273fbac3b5ce7f08cfd711092c6f73",
-      "bytes": 7421
+      "sha256": "d0d718df3697c1f0177e7dbfeda47128f217aa2b43c3bcdeb3363e16f221cc09",
+      "bytes": 7940
     },
     {
       "path": "decision-points/DP-REUSE-FIT/schema.json",
-      "sha256": "6e69a9d659f0e3d51f6a235709f518f096d6bf835548029f935ef683f4f65694",
-      "bytes": 10199
+      "sha256": "475c8dc5352bd5c1fc993aacddc35af78ea20c72934553ea2b342700c415d222",
+      "bytes": 10975
     },
     {
       "path": "decision-points/DP-SOURCE-TRUST/eval/README.md",
@@ -2246,8 +2246,8 @@
     },
     {
       "path": "decision-points/DP-STAGE-DRAFT/eval/README.md",
-      "sha256": "96dc11dc4d31f1f23685c7281caad7d31c8d5bc135107de4c342d1ec0cb66e46",
-      "bytes": 5484
+      "sha256": "6399d8080690a59f76847f095c0314f884952de7c655eb4fbaa929afef24e8fc",
+      "bytes": 6085
     },
     {
       "path": "decision-points/DP-STAGE-DRAFT/eval/adversarial.jsonl",
@@ -2256,8 +2256,8 @@
     },
     {
       "path": "decision-points/DP-STAGE-DRAFT/eval/core.jsonl",
-      "sha256": "83c43bcef47aa44d04894a19cf4661d3aedb046a7d77500789efacc47e203a55",
-      "bytes": 40034
+      "sha256": "321389e9ccbc53e5554936d9e5e025ae47f3303d43c1badb930ff0ef5eb38174",
+      "bytes": 41399
     },
     {
       "path": "decision-points/DP-STAGE-DRAFT/eval/thresholds.yaml",
@@ -2276,13 +2276,13 @@
     },
     {
       "path": "decision-points/DP-STAGE-DRAFT/prompt.md",
-      "sha256": "6e5facb22aa86ba5794d491d6ccdf8b68cdc60c71263f4ab209c6281675aeffc",
-      "bytes": 8474
+      "sha256": "556b53808adae0820966bd6efdd9bc9860ef071e76393d1b1e341dac50cfc416",
+      "bytes": 8733
     },
     {
       "path": "decision-points/DP-STAGE-DRAFT/schema.json",
-      "sha256": "141d98176fc57ef2ba07412d15306f93328d9f8d1a4271441ad2a21288108bd6",
-      "bytes": 11926
+      "sha256": "034e8297da07cbc553570f1067be85707af5756746e959c4298488ed47330ef3",
+      "bytes": 12901
     },
     {
       "path": "decision-points/DP-STAGE-PLAN/eval/README.md",
@@ -2495,5 +2495,5 @@
       "bytes": 17486
     }
   ],
-  "pack_hash": "5c93216b19475bd3617a54d4536553eaa210976adcca616c9d35e7f6ab7e918a"
+  "pack_hash": "4ec60324117b9cd4453464a2c881c0d8b0f929f65f61bc3004b10ea19bb59aa0"
 }

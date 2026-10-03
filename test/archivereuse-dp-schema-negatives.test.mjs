@@ -133,7 +133,7 @@ const dhold = { ...hold, hold_reason: "legality_unchecked" };
 const withStage = (o) => ({ ...dpub, draft_plan: [{ ...stage, ...o }] });
 run("DP-STAGE-DRAFT schema negatives", load("DP-STAGE-DRAFT"), [
   ["valid publish", dpub, true],
-  ["valid publish without optional keys", { ...dpub, draft_plan: [{ name: "ask_roads_office", goal: stage.goal, criteria: stage.criteria, derived_from: ["t-1"], covers: [] }] }, true],
+  ["valid publish without optional keys", { ...dpub, draft_plan: [{ name: "ask_roads_office", goal: stage.goal, criteria: stage.criteria, derived_from: ["t-1"], covers: [], auto_start: true }] }, true],
   ["valid needs_revision", dnr, true],
   ["valid legality_unchecked hold", dhold, true],
   ...holdCases({ ...hold }),
@@ -182,4 +182,32 @@ run("DP-STAGE-DRAFT schema negatives", load("DP-STAGE-DRAFT"), [
   ["hold with a draft_plan", { ...dhold, draft_plan: [stage] }, false],
   ["hold with credited_suggestions", { ...dhold, credited_suggestions: ["g-1"] }, false],
   ["hold with archive_used_as_review true", { ...dhold, archive_used_as_review: true }, false],
+]);
+
+// 10-u65 fix: personal data in free text (reasons, hints) must be unrepresentable.
+const PROBES = ["call a@b.org or +31 6 1234 5678", "a\uFF20b.org", "www.evil.org", "ftp://x", "see HTTP now", "WWW.evil.org", "call 0612345678", "call 06-1234-5678 now", "1 2 3 4 5 6 7"];
+const probeCases = (valid, key) => PROBES.map((p) => [`${key} with ${JSON.stringify(p)}`, key === "reasons" ? { ...valid, reasons: [p] } : { ...valid, [key]: p }, false]);
+run("DP-ARCHIVE personal-data probes", load("DP-ARCHIVE"), [
+  ["clean control", { ...anr, revision_hint: "Fix c-1 within 14 days." }, true],
+  ...probeCases(apub, "reasons"), ...probeCases(anr, "revision_hint"),
+  ...PROBES.map((p) => [`missing hint ${JSON.stringify(p)}`, { ...anr, missing: [{ field: "challenges", hint: p }] }, false]),
+]);
+run("DP-REUSE-FIT personal-data probes", load("DP-REUSE-FIT"), [
+  ["clean control", { ...rnr, revision_hint: "Add your helpers, about 12 of them." }, true],
+  ...probeCases(rpub, "reasons"), ...probeCases(rnr, "revision_hint"),
+  ...PROBES.map((p) => [`adaptation reason ${JSON.stringify(p)}`, { ...rpub, adaptations: [{ stage_ref: "s-2", kind: "scale_down", reason: p }] }, false]),
+  ["review_still_required false on a hold", { ...rhold, review_still_required: false }, false],
+  ["review_still_required true on a hold", { ...rhold, review_still_required: true }, true],
+  ["auto_adopt true on a hold", { ...rhold, auto_adopt: true }, false],
+]);
+run("DP-STAGE-DRAFT personal-data probes and constants", load("DP-STAGE-DRAFT"), [
+  ["clean control", { ...dnr, revision_hint: "Add a stage for f-2 within 14 days." }, true],
+  ...probeCases(dpub, "reasons"), ...probeCases(dnr, "revision_hint"),
+  ...PROBES.map((p) => [`goal ${JSON.stringify(p)}`, withStage({ goal: `Ask the office: ${p}` }), false]),
+  ...PROBES.map((p) => [`measure ${JSON.stringify(p)}`, withStage({ criteria: [{ statement: "The roads office has replied in writing.", measure: `Attach proof: ${p}` }] }), false]),
+  ["auto_start false", withStage({ auto_start: false }), false],
+  ["auto_start omitted", withStage({ auto_start: undefined }), false],
+  ["review_still_required false on a hold", { ...dhold, review_still_required: false }, false],
+  ["review_still_required true on a hold", { ...dhold, review_still_required: true }, true],
+  ["draft_only false on a hold", { ...dhold, draft_only: false }, false],
 ]);

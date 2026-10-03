@@ -3,24 +3,24 @@
   "packs": [
     {
       "name": "base",
-      "pack_hash": "5c93216b19475bd3617a54d4536553eaa210976adcca616c9d35e7f6ab7e918a"
+      "pack_hash": "4ec60324117b9cd4453464a2c881c0d8b0f929f65f61bc3004b10ea19bb59aa0"
     },
     {
       "name": "constitution",
-      "pack_hash": "ac1c2caa003c5d4269900eaa2d23f98e26043ff4a5937409384a5d2ad289e4fa"
+      "pack_hash": "936c9a2eaf668d6c9224db1ea7e20a249ad8b7e7b31c194f6d347bfdf32a2c2c"
     },
     {
       "name": "fiktiva-city",
-      "pack_hash": "406fa6d0bd85f749786a05cecbfb2a22fe81bab63dd4ff35886d66476950826f"
+      "pack_hash": "6ffdf12027e62fc764808b2789afc3ed16873a557f8a1a7bc5fb08bd25726ff0"
     },
     {
       "name": "fiktiva-north",
-      "pack_hash": "5726b2aa04ba9724717ae0f024e9fbbdb8683bd7cc8342c80e38c7400a3785c8"
+      "pack_hash": "ed2bfee32df75876369e69c5c88f32cacda422823f9801f21d9dae40ad6e63bf"
     },
     {
       "name": "nl-amsterdam",
-      "pack_hash": "75fe824b31a305c8e61d54e4bde3ad0b761973631e3d40bddad7fbeb84777529"
+      "pack_hash": "9276896f5c84d5ab6c9a651e74ceb08b8a10549b66ab8c18b538fb5cedc74e2b"
     }
   ],
-  "released_at": "2026-10-03T00:06:54.773Z"
+  "released_at": "2026-10-03T00:11:06.934Z"
 }

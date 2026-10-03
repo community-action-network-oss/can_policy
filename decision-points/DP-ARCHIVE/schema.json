@@ -109,7 +109,7 @@
             "type": "string",
             "minLength": 1,
             "maxLength": 300,
-            "pattern": "^(?!.*@)(?!.*https?://).*$"
+            "pattern": "^(?![\\s\\S]*(?:@|＠|://|[Ww][Ww][Ww]\\.|[Hh][Tt][Tt][Pp]))(?![\\s\\S]*\\p{Nd}(?:[ .()+\\-/]*\\p{Nd}){6})[\\s\\S]*$"
           }
         }
       }
@@ -156,12 +156,14 @@
           "maxItems": 6,
           "items": {
             "type": "string",
-            "maxLength": 600
+            "maxLength": 600,
+            "pattern": "^(?![\\s\\S]*(?:@|＠|://|[Ww][Ww][Ww]\\.|[Hh][Tt][Tt][Pp]))(?![\\s\\S]*\\p{Nd}(?:[ .()+\\-/]*\\p{Nd}){6})[\\s\\S]*$"
           }
         },
         "revision_hint": {
           "type": "string",
-          "maxLength": 600
+          "maxLength": 600,
+          "pattern": "^(?![\\s\\S]*(?:@|＠|://|[Ww][Ww][Ww]\\.|[Hh][Tt][Tt][Pp]))(?![\\s\\S]*\\p{Nd}(?:[ .()+\\-/]*\\p{Nd}){6})[\\s\\S]*$"
         },
         "rule_ids": {
           "type": "array",
@@ -174,7 +176,7 @@
           }
         }
       },
-      "$comment": "Echo limits and the rules this DP may cite, set here because the shared property shapes must match schemas/dp-output.schema.json."
+      "$comment": "Echo limits and the rules this DP may cite, set here because the shared property shapes must match schemas/dp-output.schema.json. The personal-data pattern on reasons, revision_hint and every hint or reason string rejects an at sign (also full-width), a scheme separator, www., http and a run of 7 or more digits with separators."
     },
     {
       "if": {
