@@ -5,6 +5,8 @@ import { parse } from "yaml";
 import { readFileSync, existsSync, readdirSync } from "node:fs";
 import { join, dirname, normalize } from "node:path";
 import { fileURLToPath } from "node:url";
+import { execFileSync } from "node:child_process";
+import { loosened } from "./lib/metrics.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const loadSchema = (n) => JSON.parse(readFileSync(join(HERE, "..", "schemas", n), "utf8"));
@@ -13,6 +15,7 @@ const ajv = new Ajv2020({ allErrors: true, strict: true, strictTypes: true, stri
 const personaV = ajv.compile(loadSchema("persona.schema.json"));
 const scriptV = ajv.compile(loadSchema("script.schema.json"));
 const seedV = ajv.compile(loadSchema("seed.schema.json"));
+const thresholdsV = ajv.compile(loadSchema("thresholds.schema.json"));
 
 // Persona catalog: docs/design/ai/simulation.md section 2 plus the lifecycle v2 and archive personas (11-u01 step 7).
 // adv-reuse-inject is new: the doc names it only as "an attacker persona".
@@ -59,6 +62,7 @@ export function lintSimulation(root) {
   const err = (m) => errors.push(m);
   const sim = join(root, "simulation");
   if (!existsSync(sim)) return errors;
+  if (existsSync(join(sim, "thresholds.yaml"))) errors.push(...lintThresholds(root)); // presence in the real tree is pinned by test/thresholds.test.mjs
   const load = (rel, kind) => {
     const abs = join(root, rel);
     if (!existsSync(abs)) { err(`${rel}: missing`); return null; }
@@ -146,8 +150,52 @@ function validateProblem(root, body, rel, err) {
   if (!problemV(body)) err(`${rel}: not valid for the problem content schema: ${fmt(problemV.errors)}`);
 }
 
+// Graduation thresholds (11-u09): schema, text scan, and the reply-allowance source must exist in limits.yaml (D-85).
+export function lintThresholds(root) {
+  const rel = "simulation/thresholds.yaml", abs = join(root, rel), errors = [];
+  if (!existsSync(abs)) return [`${rel}: missing`];
+  const text = readFileSync(abs, "utf8");
+  scanText(rel, text, { pii: true }, (m) => errors.push(m));
+  let doc;
+  try { doc = parse(text); } catch (e) { return [...errors, `${rel}: not valid YAML (${e.message})`]; }
+  // The 10-u03 test fixture keeps the placeholder `graduation: {}`; only that exact stub is tolerated (fixtures are outside 11-u09's writes).
+  if (JSON.stringify(doc) === '{"graduation":{}}') return errors;
+  if (!thresholdsV(doc)) return [...errors, `${rel}: fails thresholds schema: ${fmt(thresholdsV.errors)}`];
+  const src = doc.g9.params.reply_allowance.limit_source.split("#")[1].split(".");
+  let node; try { node = parse(readFileSync(join(root, "limits.yaml"), "utf8")); } catch { node = null; }
+  for (const k of src) node = node?.[k];
+  if (!node) errors.push(`${rel}: g9 reply_allowance.limit_source '${doc.g9.params.reply_allowance.limit_source}' does not exist in limits.yaml`);
+  return errors;
+}
+
+// Every way a graduation threshold got looser from old to next. Numbers use the min_/max_ floor/ceiling rule of eval;
+// true -> false, a shorter list and a removed key also count. Tightening (including null -> value) is allowed.
+export function loosenedThresholds(old, next) {
+  const out = [];
+  const walk = (a, b, path) => {
+    for (const [k, av] of Object.entries(a ?? {})) {
+      const p = `${path}.${k}`, bv = b?.[k];
+      if (av && typeof av === "object" && !Array.isArray(av)) { walk(av, bv, p); continue; }
+      if (typeof av === "boolean" && av && bv !== true) out.push(`${p} ${av} -> ${bv}`);
+      else if (Array.isArray(av) && !(Array.isArray(bv) && av.every((x) => bv.includes(x)))) out.push(`${p} lost a member`);
+      else if (av === null || typeof av !== "number") continue;
+      else out.push(...loosened({ [k]: av }, { [k]: bv }).map((d) => `${path}.${d}`));
+    }
+  };
+  for (let n = 1; n <= 13; n++) walk(old?.[`g${n}`]?.params, next?.[`g${n}`]?.params, `g${n}`);
+  return out;
+}
+
+// node tools/lint-simulation.mjs --diff-against <git ref>: fail when a threshold is looser than at that ref.
+function diffAgainst(root, ref) {
+  let old;
+  try { old = execFileSync("git", ["-C", root, "show", `${ref}:./simulation/thresholds.yaml`], { encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] }); } catch { return []; } // new at ref: nothing to loosen
+  return loosenedThresholds(parse(old), parse(readFileSync(join(root, "simulation", "thresholds.yaml"), "utf8"))).map((d) => `threshold loosened vs ${ref}: ${d}`);
+}
+
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  const errs = lintSimulation(join(HERE, ".."));
+  const ref = process.argv[process.argv.indexOf("--diff-against") + 1];
+  const errs = [...lintSimulation(join(HERE, "..")), ...(process.argv.includes("--diff-against") ? diffAgainst(join(HERE, ".."), ref) : [])];
   errs.forEach((e) => console.error("lint-simulation: " + e));
   console.log(errs.length ? `lint-simulation: ${errs.length} error(s)` : "lint-simulation: ok");
   process.exit(errs.length ? 1 : 0);

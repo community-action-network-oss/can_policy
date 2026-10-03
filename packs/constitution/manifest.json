@@ -5,7 +5,7 @@
   "parent": {
     "name": "base",
     "version": "1.0.0",
-    "pack_hash": "8716a8ec746cc0ded92f5a9c8d0b01077a8ad020e12a61e3ba532807fb010c02"
+    "pack_hash": "81efa40e6a9c466e557971bc6cce9ae808476bed1a60e95f5942478cf0ab90c8"
   },
   "files": [
     {
@@ -19,5 +19,5 @@
       "bytes": 13763
     }
   ],
-  "pack_hash": "7bd5e3bf7475671b580f5885813c3d95aa5c4470dbc9a9c652f36c5338363e78"
+  "pack_hash": "8865298b968531075727017981cb9a52bdcd959e95be2b27a6925e54a114c0ed"
 }
