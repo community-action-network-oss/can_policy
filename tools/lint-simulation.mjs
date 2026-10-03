@@ -3,7 +3,7 @@
 import Ajv2020 from "ajv/dist/2020.js";
 import { parse } from "yaml";
 import { readFileSync, existsSync, readdirSync } from "node:fs";
-import { join, dirname, normalize } from "node:path";
+import { join, dirname, normalize, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
 import { loosened } from "./lib/metrics.mjs";
@@ -123,6 +123,8 @@ export function lintSimulation(root) {
     if (s.id !== id) err(`${rel}: id '${s.id}' must equal its directory name '${id}'`);
     if (!framings) err(`${rel}: simulation/FRAMINGS.json is missing`);
     else if (framings[String(s.number)] !== s.framing) err(`${rel}: framing is not byte for byte the D-56 framing ${s.number} in simulation/FRAMINGS.json`);
+    const handled = new Set([rel, `${dir}/${s.problem}`, `${dir}/${s.stage_plan}`]);
+    lintSeedFiles(root, dir, handled, err);
     for (const pid of s.personas) if (!personaIds.has(pid)) err(`${rel}: persona '${pid}' does not exist under simulation/personas`);
     for (const k of ["problem", "rubric", "stage_plan"]) {
       const abs = inside(join(root, dir), s[k]);
@@ -138,6 +140,39 @@ export function lintSimulation(root) {
     }
   }
   return errors;
+}
+
+// Every other file in a seed directory (variants, evidence, rubric, ...) gets the same text scan; JSON files that declare
+// what they are are validated against that content schema. seed.yaml, problem and stage plan are handled above.
+function lintSeedFiles(root, dir, skip, err) {
+  const files = (d) => readdirSync(join(root, d), { withFileTypes: true }).flatMap((e) => (e.name.startsWith(".") ? [] : e.isDirectory() ? files(`${d}/${e.name}`) : [`${d}/${e.name}`]));
+  for (const rel of files(dir).sort()) {
+    if (skip.has(rel)) continue;
+    const text = readFileSync(join(root, rel), "utf8");
+    scanText(rel, text, { pii: true }, err);
+    if (!rel.endsWith(".json")) continue;
+    let body;
+    try { body = JSON.parse(text); } catch (e) { err(`${rel}: not valid JSON (${e.message})`); continue; }
+    const sub = relative(dir, rel);
+    if (/^variants\/[^/]+\/contributions\//.test(sub) && typeof body?.type === "string") validateContent(root, `contribution.${body.type}`, body, rel, err);
+    else if (/^variants\/[^/]+\/submission\.json$/.test(sub)) validateContent(root, "problem", body, rel, err);
+    else if (/^evidence\//.test(sub) && body?.body && body.stage) validateContent(root, "stage_evidence", body.body, rel, err);
+  }
+}
+
+// A body must be valid for its content schema (same non-strict compile as lint.mjs).
+const contentV = new Map();
+function validateContent(root, id, body, rel, err) {
+  const sp = join(root, "content-schemas", id, "schema.json");
+  if (!existsSync(sp)) { err(`${rel}: no content schema '${id}'`); return; }
+  if (!contentV.has(sp)) {
+    const a = new Ajv2020({ strict: true, strictTypes: false, allErrors: true });
+    ["version", "pack", "x-ui", "x-guidance", "x-checks", "x-version"].forEach((keyword) => a.addKeyword({ keyword }));
+    const { id: _id, ...schema } = JSON.parse(readFileSync(sp, "utf8"));
+    contentV.set(sp, a.compile(schema));
+  }
+  const v = contentV.get(sp);
+  if (!v(body)) err(`${rel}: not valid for the ${id} content schema: ${fmt(v.errors)}`);
 }
 
 // The problem body must be valid for the problem content schema (same non-strict compile as lint.mjs).

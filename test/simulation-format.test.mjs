@@ -30,7 +30,7 @@ function run(mutate = () => {}) {
   const w = (rel, text) => { mkdirSync(join(d, rel, ".."), { recursive: true }); writeFileSync(join(d, rel), text); };
   cpSync(join(REPO, "simulation", "FRAMINGS.json"), join(d, "simulation", "FRAMINGS.json"), { recursive: true });
   mkdirSync(join(d, "content-schemas", "problem"), { recursive: true });
-  cpSync(join(REPO, "content-schemas", "problem", "schema.json"), join(d, "content-schemas", "problem", "schema.json"));
+  for (const c of ["problem", "contribution.observation", "stage_evidence"]) { mkdirSync(join(d, "content-schemas", c), { recursive: true }); cpSync(join(REPO, "content-schemas", c, "schema.json"), join(d, "content-schemas", c, "schema.json")); }
   w("simulation/personas/sub-careful/persona.yaml", yaml(persona()));
   w("simulation/personas/sub-careful/script.json", JSON.stringify(script));
   w("simulation/seeds/seed-1-amsterdam-safety/seed.yaml", yaml(seed()));
@@ -90,3 +90,14 @@ test("a variant script*.json is linted too: em dash, non-sim host, schema", () =
   has(run((w) => w(V, step({ fields: { condition: "see https://news.example.org/a" } }))), /script-variant\.json.*host/);
   has(run((w) => w(V, JSON.stringify({ steps: [{ id: "v1", action: "eval" }] }))), /script-variant\.json.*script schema/);
 });
+
+// 11-u08 step 0: every file in a seed directory is scanned, and typed JSON is schema-checked.
+const SD = "simulation/seeds/seed-1-amsterdam-safety";
+const CONTRIB = { type: "observation", basis: "cited", target: "seed-1-problem", claim: "The invented tables disagree about the trend.", evidence_refs: [{ url: "https://evidence.sim.test/e1", supports: "Supports the claim (synthetic)." }], uncertainty: "Invented figures.", assumptions: [], what_observed: "Two invented tables side by side.", when: "Four invented quarters", where_coarse: "City centre", how_observed: "Read the invented tables." };
+test("a clean variant file and contribution pass", () => assert.deepEqual(run((w) => { w(`${SD}/variants/happy/variant.yaml`, "id: happy\n"); w(`${SD}/variants/happy/contributions/01.json`, JSON.stringify(CONTRIB)); }), []));
+test("a variant file with an em dash fails", () => has(run((w) => w(`${SD}/variants/happy/variant.yaml`, "description: a — b\n")), /variants\/happy\/variant\.yaml: .*dash/));
+test("a variant file with a non-sim host fails", () => has(run((w) => w(`${SD}/variants/happy/variant.yaml`, "note: see https://news.example.org/a\n")), /host 'news\.example\.org'/));
+test("an evidence file with a credential fails", () => has(run((w) => w(`${SD}/evidence/e.json`, '{"note":"password: hunter2hunter2"}')), /evidence\/e\.json: .*credential/));
+test("a rubric with a street address fails", () => has(run((w) => w(`${SD}/rubric.yaml`, "x: lives at 12 Main Street\n")), /rubric\.yaml: .*street-address/));
+test("a contribution invalid for its type schema fails", () => has(run((w) => w(`${SD}/variants/happy/contributions/01.json`, JSON.stringify({ ...CONTRIB, claim: "short" }))), /contribution\.observation content schema/));
+test("an invalid stage evidence body fails", () => has(run((w) => w(`${SD}/evidence/s.json`, JSON.stringify({ stage: "x_y", body: { stage_ref: "x_y" } }))), /stage_evidence content schema/));
