@@ -82,3 +82,11 @@ test("raw_http is only for adv-schema-bypass", () => has(run((w) => w("simulatio
 test("an unknown script action fails", () => has(run((w) => w("simulation/personas/sub-careful/script.json", JSON.stringify({ steps: [{ id: "s1", action: "eval" }] }))), /script schema/));
 test("an expected step_id that is not in the script fails", () => has(run((w) => w(P, yaml(persona({ expected: [{ step_id: "nope", outcomes: ["publish"] }] })))), /nope/));
 test("a problem body invalid for the problem schema fails", () => has(run((w) => w("simulation/seeds/seed-1-amsterdam-safety/problem.json", "{}")), /problem content schema/));
+test("a variant script*.json is linted too: em dash, non-sim host, schema", () => {
+  const V = "simulation/personas/sub-careful/script-variant.json";
+  const step = (o) => JSON.stringify({ steps: [{ id: "v1", action: "submit", content_type: "problem", fields: { condition: "x" }, expect: { outcome: "publish" }, ...o }] });
+  assert.deepEqual(run((w) => w(V, step({}))), []);
+  has(run((w) => w(V, step({ fields: { condition: "a \u2014 b" } }))), /script-variant\.json.*dash/);
+  has(run((w) => w(V, step({ fields: { condition: "see https://news.example.org/a" } }))), /script-variant\.json.*host/);
+  has(run((w) => w(V, JSON.stringify({ steps: [{ id: "v1", action: "eval" }] }))), /script-variant\.json.*script schema/);
+});

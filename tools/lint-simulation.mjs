@@ -93,19 +93,23 @@ export function lintSimulation(root) {
     if (refs.prompt) scanText(`${dir}/${p.prompt}`, readFileSync(refs.prompt, "utf8"), { pii: true }, err);
     if (refs.attack_data) scanText(`${dir}/${p.attack_data}`, readFileSync(refs.attack_data, "utf8"), { pii: false }, err);
     if (refs.script) {
-      const srel = `${dir}/${p.script}`, text = readFileSync(refs.script, "utf8");
-      scanText(srel, text, { pii: true }, err);
-      let s = null;
-      try { s = JSON.parse(text); } catch (e) { err(`${srel}: not valid JSON (${e.message})`); }
-      if (s && !scriptV(s)) err(`${srel}: fails script schema: ${fmt(scriptV.errors)}`);
-      else if (s) {
-        const ids = s.steps.map((x) => x.id);
-        ids.forEach((x, i) => { if (ids.indexOf(x) !== i) err(`${srel}: duplicate step id '${x}'`); });
-        for (const st of s.steps) {
-          if (st.when?.after_step && !ids.includes(st.when.after_step)) err(`${srel}: step ${st.id} runs after unknown step '${st.when.after_step}'`);
-          if (st.action === "raw_http" && id !== "adv-schema-bypass") err(`${srel}: step ${st.id} uses raw_http, which only adv-schema-bypass may`);
+      // The named script plus every variant script*.json in the persona directory (11-u02 variants) get every check.
+      const variants = readdirSync(join(root, dir)).filter((f) => /^script.*\.json$/.test(f) && join(root, dir, f) !== refs.script).sort();
+      for (const f of [p.script, ...variants]) {
+        const srel = `${dir}/${f}`, text = readFileSync(join(root, dir, f), "utf8"), main = f === p.script;
+        scanText(srel, text, { pii: true }, err);
+        let s = null;
+        try { s = JSON.parse(text); } catch (e) { err(`${srel}: not valid JSON (${e.message})`); }
+        if (s && !scriptV(s)) err(`${srel}: fails script schema: ${fmt(scriptV.errors)}`);
+        else if (s) {
+          const ids = s.steps.map((x) => x.id);
+          ids.forEach((x, i) => { if (ids.indexOf(x) !== i) err(`${srel}: duplicate step id '${x}'`); });
+          for (const st of s.steps) {
+            if (st.when?.after_step && !ids.includes(st.when.after_step)) err(`${srel}: step ${st.id} runs after unknown step '${st.when.after_step}'`);
+            if (st.action === "raw_http" && id !== "adv-schema-bypass") err(`${srel}: step ${st.id} uses raw_http, which only adv-schema-bypass may`);
+          }
+          if (main) for (const e of p.expected) if (!ids.includes(e.step_id)) err(`${rel}: expected step_id '${e.step_id}' is not a step of ${p.script}`);
         }
-        for (const e of p.expected) if (!ids.includes(e.step_id)) err(`${rel}: expected step_id '${e.step_id}' is not a step of ${p.script}`);
       }
     }
   }
