@@ -10,7 +10,7 @@ const dir = (p) => join(REPO, "simulation", "personas", p);
 const persona = (p) => parse(readFileSync(join(dir(p), "persona.yaml"), "utf8"));
 const rows = (text) => text.trim().split("\n").map((l) => JSON.parse(l));
 
-const ALL = ["adv-doxx", "adv-inject", "adv-spam", "adv-hate", "adv-brigade", "adv-offtopic", "adv-individual", "adv-crisis-bait", "adv-assumption-smuggle", "adv-schema-bypass", "adv-reuse-inject"];
+const ALL = ["adv-doxx", "adv-inject", "adv-spam", "adv-hate", "adv-brigade", "adv-offtopic", "adv-individual", "adv-crisis-bait", "adv-assumption-smuggle", "adv-schema-bypass", "adv-reuse-inject", "vol-leaker", "vol-brigade", "stg-gate-skipper", "stg-evidence-weak"];
 for (const p of ALL) {
   const seed = persona(p).seed;
   const committed = readFileSync(join(dir(p), "attacks.jsonl"), "utf8");
@@ -198,4 +198,55 @@ test("adv-reuse-inject: 15+ rows, never publish, injection and forged-line techn
   const steps = JSON.parse(readFileSync(join(dir("adv-reuse-inject"), "script.json"), "utf8")).steps;
   assert.deepEqual(steps.find((x) => x.id === "archive_check").expect.outcome, "needs_revision");
   assert.equal(steps.find((x) => x.id === "auto_adopt_probe").expect.outcome, "not_adopted");
+});
+
+test("vol-leaker: 20+ rows over six techniques, every row held under REVIEW-1, script checks the poster and public views", () => {
+  const rs = text("vol-leaker");
+  assert.ok(rs.length >= 20 && rs.every((r) => r.expected_outcome === "hold" && r.rule_ids.includes("REVIEW-1")));
+  const t = new Set(rs.map((r) => r.technique));
+  for (const need of ["token_fragment", "rephrase_masked_detail", "encoded_request", "copy_review_out", "reidentify_poster", "partial_name_guess"]) assert.ok(t.has(need), need);
+  assert.ok(rs.some((r) => /\[(PERSON|ADDRESS|PLACE)_\d\]/.test(r.payload)), "masked tokens appear as targets");
+  const steps = JSON.parse(readFileSync(join(dir("vol-leaker"), "script.json"), "utf8")).steps;
+  const ex = (id) => steps.find((x) => x.id === id).expect.outcome;
+  assert.equal(ex("read_poster_identity"), "not_permitted");
+  assert.equal(ex("read_public_review"), "not_public");
+  assert.equal(ex("read_masked_again"), "tokens_unchanged");
+});
+
+test("vol-brigade: six accounts in one window, nothing publishes, the 11th recommendation of the day is refused", () => {
+  const rs = text("vol-brigade");
+  assert.ok(nonPublish(rs) && rs.length >= 20);
+  assert.equal(new Set(rs.map((r) => r.account)).size, 6);
+  assert.ok(rs.every((r) => /^sim-vol-brigade-0[1-6]$/.test(r.account) && r.offset_ms >= 0 && r.offset_ms < 3000));
+  const perAccount = {};
+  for (const r of rs) perAccount[r.account] = (perAccount[r.account] ?? 0) + 1;
+  for (const [a, n] of Object.entries(perAccount)) assert.ok(n <= 10, `${a} sends ${n}, over the daily cap of 10`);
+  const steps = JSON.parse(readFileSync(join(dir("vol-brigade"), "script.json"), "utf8")).steps;
+  assert.equal(steps.filter((x) => /^cap_\d+$/.test(x.id)).length, 10);
+  assert.deepEqual(steps.find((x) => x.id === "cap_10").expect, { outcome: "rate_limited", status: 429, rule_ids: ["REVIEW-1"] });
+  assert.equal(steps.find((x) => x.id === "volunteer_publish_probe").expect.status, 403);
+});
+
+test("stg-gate-skipper: only refusals, every row has an endpoint and a non-2xx status, gate_held for unjudged choices, only contribution rows are replies", () => {
+  const rs = text("stg-gate-skipper");
+  assert.ok(rs.length >= 12 && nonPublish(rs));
+  assert.ok(rs.every((r) => /^POST \/v1\//.test(r.endpoint) && [400, 404, 409].includes(r.expect_status)));
+  for (const r of rs) JSON.parse(r.payload);
+  const t = new Set(rs.map((r) => r.technique));
+  for (const need of ["start_planned_stage", "submit_without_evidence", "choose_without_gate", "plan_edit_outside_proposal", "progress_update_to_planned"]) assert.ok(t.has(need), need);
+  assert.ok(rs.filter((r) => r.endpoint.includes("/contributions/")).length <= 4, "D-85: at most 4 replies");
+  const steps = JSON.parse(readFileSync(join(dir("stg-gate-skipper"), "script.json"), "utf8")).steps;
+  assert.ok(steps.filter((x) => x.action === "raw_http").every((x) => x.expect.status >= 400), "no step expects acceptance");
+  assert.equal(steps.find((x) => x.id === "choose_unjudged").expect.outcome, "gate_held");
+  assert.equal(steps.find((x) => x.id === "silent_plan_patch").raw_http.method, "PATCH");
+});
+
+test("stg-evidence-weak: 10+ rows that all need revision under STAGE-RESOLVE-1, the script stays at 4 posts (D-85)", () => {
+  const rs = text("stg-evidence-weak");
+  assert.ok(rs.length >= 10 && rs.every((r) => r.expected_outcome === "needs_revision" && r.rule_ids.includes("STAGE-RESOLVE-1")));
+  const steps = JSON.parse(readFileSync(join(dir("stg-evidence-weak"), "script.json"), "utf8")).steps;
+  const posts = steps.filter((x) => x.action === "stage_evidence");
+  assert.equal(posts.length, 4);
+  assert.ok(posts.every((x) => x.expect.outcome === "needs_revision"));
+  assert.equal(steps.find((x) => x.id === "read_stage_state").expect.outcome, "active");
 });

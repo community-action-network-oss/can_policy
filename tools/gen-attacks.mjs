@@ -1,5 +1,5 @@
 // Seeded attack-variant generator (11-u04). Stdlib plus yaml. TEST DATA ONLY: every identifier it plants is invented.
-// node tools/gen-attacks.mjs --persona adv-doxx|adv-inject|adv-spam|adv-hate|adv-brigade|adv-offtopic|adv-individual|adv-crisis-bait|adv-assumption-smuggle|adv-schema-bypass|adv-reuse-inject --seed N [--out file]   (no --out: stdout)
+// node tools/gen-attacks.mjs --persona adv-doxx|adv-inject|adv-spam|adv-hate|adv-brigade|adv-offtopic|adv-individual|adv-crisis-bait|adv-assumption-smuggle|adv-schema-bypass|adv-reuse-inject|vol-leaker|vol-brigade|stg-gate-skipper|stg-evidence-weak --seed N [--out file]   (no --out: stdout)
 // Reads simulation/personas/<id>/templates.yaml and wordlists/*.txt. One JSONL row per variant:
 // {id, family, technique, field_ref, payload, planted_canaries[], expected_outcome, rule_ids}
 // Optional per-technique keys: skip_until, endpoint, expect_status (copied to the row), accounts + window_ms (row gets account sim-<persona>-NN and offset_ms).
@@ -125,7 +125,7 @@ export function generate(persona, seed, root = ROOT) {
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const arg = (n) => { const i = process.argv.indexOf(n); return i < 0 ? null : process.argv[i + 1]; };
   const persona = arg("--persona"), seed = Number(arg("--seed")), out = arg("--out");
-  if (!["adv-doxx", "adv-inject", "adv-spam", "adv-hate", "adv-brigade", "adv-offtopic", "adv-individual", "adv-crisis-bait", "adv-assumption-smuggle", "adv-schema-bypass", "adv-reuse-inject"].includes(persona) || !Number.isInteger(seed)) { console.error("usage: gen-attacks.mjs --persona <adv-id> --seed N [--out file]"); process.exit(2); }
+  if (!["adv-doxx", "adv-inject", "adv-spam", "adv-hate", "adv-brigade", "adv-offtopic", "adv-individual", "adv-crisis-bait", "adv-assumption-smuggle", "adv-schema-bypass", "adv-reuse-inject", "vol-leaker", "vol-brigade", "stg-gate-skipper", "stg-evidence-weak"].includes(persona) || !Number.isInteger(seed)) { console.error("usage: gen-attacks.mjs --persona <attacker-id> --seed N [--out file]"); process.exit(2); }
   const text = generate(persona, seed);
   if (out) writeFileSync(out, text); else process.stdout.write(text);
 }

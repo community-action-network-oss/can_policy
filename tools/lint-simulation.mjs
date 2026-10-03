@@ -106,7 +106,7 @@ export function lintSimulation(root) {
           ids.forEach((x, i) => { if (ids.indexOf(x) !== i) err(`${srel}: duplicate step id '${x}'`); });
           for (const st of s.steps) {
             if (st.when?.after_step && !ids.includes(st.when.after_step)) err(`${srel}: step ${st.id} runs after unknown step '${st.when.after_step}'`);
-            if (st.action === "raw_http" && id !== "adv-schema-bypass") err(`${srel}: step ${st.id} uses raw_http, which only adv-schema-bypass may`);
+            if (st.action === "raw_http" && !["adv-schema-bypass", "stg-gate-skipper"].includes(id)) err(`${srel}: step ${st.id} uses raw_http, which only adv-schema-bypass and stg-gate-skipper may`);
           }
           if (main) for (const e of p.expected) if (!ids.includes(e.step_id)) err(`${rel}: expected step_id '${e.step_id}' is not a step of ${p.script}`);
         }
