@@ -1,0 +1,265 @@
+{
+  "id": "evalrec-s1-north-stuck",
+  "problem_ref": "evalprob-s1-north-stuck",
+  "terminal_state": "stuck",
+  "source": "simulation",
+  "snapshot": {
+    "condition": "Residents report recurring loud explosions and street fights after dark that make people feel unsafe (simulation, synthetic evidence).",
+    "affected": "Residents, small businesses and visitors in the area, as groups.",
+    "place": {
+      "jurisdiction": "Fiktiva North",
+      "coarse_area": "Fiktiva North, market lanes"
+    },
+    "observed_facts": [
+      "The invented incident table lists 39 blast reports over four quarters (synthetic)."
+    ],
+    "final_acceptance_criteria": [
+      {
+        "statement": "A public summary lists each incident category and its trend.",
+        "measure": "Summary checked against the invented incident table."
+      },
+      {
+        "statement": "The pilot area shows fewer reported blasts in the pilot season.",
+        "measure": "Count of reports in the pilot season against the baseline."
+      }
+    ]
+  },
+  "context_profile": {
+    "problem_type": "public_safety",
+    "category": "explosives_violence",
+    "population_scale": "<10k",
+    "geography": {
+      "country": "unknown",
+      "region": "Fiktiva North",
+      "settlement_class": "town",
+      "climate_class": "D"
+    },
+    "resource_band": {
+      "people": "<5",
+      "in_kind": "yes"
+    },
+    "budget_band": {
+      "band": "<1k",
+      "currency_class": "upper_middle"
+    },
+    "institutions": [
+      "municipal_safety_dept",
+      "police_liaison_role"
+    ],
+    "legal_stack": [
+      {
+        "layer": "L1",
+        "corpus_version": "fiktiva-rights@0.1.0+dbc8851045a7"
+      },
+      {
+        "layer": "L2",
+        "corpus_version": "fiktiva-north-union@0.1.0+702b57d16923"
+      },
+      {
+        "layer": "L3",
+        "corpus_version": "fiktiva-constitution@0.1.0+aefd9bacd67b"
+      },
+      {
+        "layer": "L4",
+        "corpus_version": "fiktiva-north-statutes@0.2.0+335df1e6e07c"
+      },
+      {
+        "layer": "L6",
+        "corpus_version": "fiktiva-north-bylaws@0.1.0+f4efc4e65a37"
+      }
+    ],
+    "language": "en",
+    "constraints": [
+      {
+        "type": "legal",
+        "statement": "Prevention duties are split between several bodies."
+      },
+      {
+        "type": "time",
+        "statement": "The pilot must end within one season."
+      }
+    ]
+  },
+  "executed_path": [
+    {
+      "name": "understand_incidents",
+      "goal": "Describe the incident categories and how they changed, with the uncertainty stated.",
+      "criteria": [
+        {
+          "statement": "The stage result is written down.",
+          "measure": "A short public note lists what was found."
+        }
+      ],
+      "outcome": "resolved",
+      "duration_band": "<1m",
+      "cost_band": "none",
+      "depends_on": []
+    },
+    {
+      "name": "map_competences",
+      "goal": "List which bodies hold which duties for prevention and response, as roles.",
+      "criteria": [
+        {
+          "statement": "The stage result is written down.",
+          "measure": "A short public note lists what was found."
+        }
+      ],
+      "outcome": "resolved",
+      "duration_band": "<1m",
+      "cost_band": "none",
+      "depends_on": []
+    },
+    {
+      "name": "design_prevention",
+      "goal": "Choose one prevention option that fits the findings and the duties.",
+      "criteria": [
+        {
+          "statement": "The stage result is written down.",
+          "measure": "A short public note lists what was found."
+        }
+      ],
+      "outcome": "resolved",
+      "duration_band": "<1m",
+      "cost_band": "none",
+      "depends_on": [
+        "understand_incidents",
+        "map_competences"
+      ],
+      "chosen_option": "Improve street lighting and add a staffed evening kiosk."
+    },
+    {
+      "name": "implement_pilot",
+      "goal": "Run the chosen option in a bounded area for a fixed period.",
+      "criteria": [
+        {
+          "statement": "The stage result is written down.",
+          "measure": "A short public note lists what was found."
+        }
+      ],
+      "outcome": "blocked",
+      "duration_band": "<1y",
+      "cost_band": "none",
+      "depends_on": [
+        "design_prevention"
+      ],
+      "chosen_option": "Improve street lighting and add a staffed evening kiosk."
+    },
+    {
+      "name": "measure_outcome",
+      "goal": "Measure the result against the criteria and write it down.",
+      "criteria": [
+        {
+          "statement": "The stage result is written down.",
+          "measure": "A short public note lists what was found."
+        }
+      ],
+      "outcome": "abandoned",
+      "duration_band": "<1w",
+      "cost_band": "none",
+      "depends_on": [
+        "implement_pilot"
+      ]
+    }
+  ],
+  "options": [
+    {
+      "stage": "design_prevention",
+      "summary": "Improve street lighting and add a staffed evening kiosk.",
+      "legality": "lawful",
+      "chosen": true,
+      "reason": "Both steps fit the duties found and the budget band."
+    },
+    {
+      "stage": "design_prevention",
+      "summary": "Close the underpass at night.",
+      "legality": "unknown",
+      "chosen": false,
+      "reason": "Set aside after the review compared both options."
+    }
+  ],
+  "evidence_refs": [
+    {
+      "uri": "https://evidence.sim.test/archive-eval/s1-north-stuck/1",
+      "tier": "statistics_body",
+      "stage": "understand_incidents"
+    },
+    {
+      "uri": "https://evidence.sim.test/archive-eval/s1-north-stuck/2",
+      "tier": "other"
+    }
+  ],
+  "challenges": [
+    {
+      "stage": "implement_pilot",
+      "tried": "Asked the responsible office for approval to start the pilot.",
+      "why_failed_or_blocked": "The needed approval never arrived within the pilot season.",
+      "kind": "institutional",
+      "resolution": "unresolved"
+    },
+    {
+      "stage": "measure_outcome",
+      "tried": "Prepared this stage for the time the approval came.",
+      "why_failed_or_blocked": "The earlier stage never finished, so this one could not start.",
+      "kind": "institutional",
+      "resolution": "unresolved"
+    }
+  ],
+  "costs": {
+    "total_band": "<1k",
+    "currency_class": "upper_middle",
+    "labour_hours_band": "<100",
+    "in_kind": "yes",
+    "none_stated": false
+  },
+  "outcome": {
+    "criteria_results": [
+      {
+        "criterion_ref": 1,
+        "result": "not_met"
+      },
+      {
+        "criterion_ref": 2,
+        "result": "not_met"
+      }
+    ],
+    "summary": "The pilot never started because the approval did not come.",
+    "unresolved": true
+  },
+  "versions": {
+    "policy_version": "base@1.0.0",
+    "schema_version": "1.0.0",
+    "archive_schema_version": "1.0.0",
+    "legal_corpus_versions": [
+      {
+        "layer": "L1",
+        "corpus_version": "fiktiva-rights@0.1.0+dbc8851045a7"
+      },
+      {
+        "layer": "L2",
+        "corpus_version": "fiktiva-north-union@0.1.0+702b57d16923"
+      },
+      {
+        "layer": "L3",
+        "corpus_version": "fiktiva-constitution@0.1.0+aefd9bacd67b"
+      },
+      {
+        "layer": "L4",
+        "corpus_version": "fiktiva-north-statutes@0.2.0+335df1e6e07c"
+      },
+      {
+        "layer": "L6",
+        "corpus_version": "fiktiva-north-bylaws@0.1.0+f4efc4e65a37"
+      }
+    ]
+  },
+  "attribution": {
+    "credit_text": "Based on a simulated record made for the archive eval set.",
+    "source_url": "https://evidence.sim.test/archive-eval/s1-north-stuck",
+    "license": "CC-BY-4.0"
+  },
+  "quality": {
+    "completeness": 0.8,
+    "ratified": true,
+    "dp_archive_run_id": "run-eval-s1-north-stuck"
+  }
+}

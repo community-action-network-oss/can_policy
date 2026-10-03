@@ -1,0 +1,149 @@
+{
+  "kind": "archive-eval-fit-budget",
+  "synthetic": true,
+  "rule": "A source need exceeds the declared band when its budget band or people band is above the declared one. Stretch is not planted yet.",
+  "cases": [
+    {
+      "id": "fit-b-city-to-north",
+      "source_record_id": "evalrec-s2-city-happy",
+      "target_jurisdiction": "fiktiva-north",
+      "declared": {
+        "budget_band": "<1k",
+        "resource_people": "<5",
+        "resource_in_kind": "yes"
+      },
+      "source_need": {
+        "budget_band": "<10k",
+        "resource_people": "<20"
+      },
+      "expected_fit": "exceeds",
+      "gap_dimensions": [
+        "budget_band",
+        "resource_band"
+      ]
+    },
+    {
+      "id": "fit-b-ams-to-north",
+      "source_record_id": "evalrec-s2-ams-happy",
+      "target_jurisdiction": "fiktiva-north",
+      "declared": {
+        "budget_band": "<1k",
+        "resource_people": "<5",
+        "resource_in_kind": "yes"
+      },
+      "source_need": {
+        "budget_band": "<100k",
+        "resource_people": "<20"
+      },
+      "expected_fit": "exceeds",
+      "gap_dimensions": [
+        "budget_band",
+        "resource_band"
+      ]
+    },
+    {
+      "id": "fit-b-ams-to-city",
+      "source_record_id": "evalrec-s1-ams-happy",
+      "target_jurisdiction": "fiktiva-city",
+      "declared": {
+        "budget_band": "<10k",
+        "resource_people": "<20",
+        "resource_in_kind": "yes"
+      },
+      "source_need": {
+        "budget_band": "<100k",
+        "resource_people": "<20"
+      },
+      "expected_fit": "exceeds",
+      "gap_dimensions": [
+        "budget_band"
+      ]
+    },
+    {
+      "id": "fit-b-city1-to-north",
+      "source_record_id": "evalrec-s1-city-happy",
+      "target_jurisdiction": "fiktiva-north",
+      "declared": {
+        "budget_band": "<1k",
+        "resource_people": "<5",
+        "resource_in_kind": "yes"
+      },
+      "source_need": {
+        "budget_band": "<10k",
+        "resource_people": "<20"
+      },
+      "expected_fit": "exceeds",
+      "gap_dimensions": [
+        "budget_band",
+        "resource_band"
+      ]
+    },
+    {
+      "id": "fit-b-ams-blocked-to-north",
+      "source_record_id": "evalrec-s2-ams-blocked",
+      "target_jurisdiction": "fiktiva-north",
+      "declared": {
+        "budget_band": "<1k",
+        "resource_people": "<5",
+        "resource_in_kind": "yes"
+      },
+      "source_need": {
+        "budget_band": "<100k",
+        "resource_people": "<20"
+      },
+      "expected_fit": "exceeds",
+      "gap_dimensions": [
+        "budget_band",
+        "resource_band"
+      ]
+    },
+    {
+      "id": "fit-ctl-north-to-city",
+      "source_record_id": "evalrec-s2-north-happy",
+      "target_jurisdiction": "fiktiva-city",
+      "declared": {
+        "budget_band": "<10k",
+        "resource_people": "<20",
+        "resource_in_kind": "yes"
+      },
+      "source_need": {
+        "budget_band": "<1k",
+        "resource_people": "<5"
+      },
+      "expected_fit": "fits",
+      "gap_dimensions": []
+    },
+    {
+      "id": "fit-ctl-north-self",
+      "source_record_id": "evalrec-s1-north-happy",
+      "target_jurisdiction": "fiktiva-north",
+      "declared": {
+        "budget_band": "<1k",
+        "resource_people": "<5",
+        "resource_in_kind": "yes"
+      },
+      "source_need": {
+        "budget_band": "<1k",
+        "resource_people": "<5"
+      },
+      "expected_fit": "fits",
+      "gap_dimensions": []
+    },
+    {
+      "id": "fit-ctl-city-self",
+      "source_record_id": "evalrec-s1-city-happy",
+      "target_jurisdiction": "fiktiva-city",
+      "declared": {
+        "budget_band": "<10k",
+        "resource_people": "<20",
+        "resource_in_kind": "yes"
+      },
+      "source_need": {
+        "budget_band": "<10k",
+        "resource_people": "<20"
+      },
+      "expected_fit": "fits",
+      "gap_dimensions": []
+    }
+  ]
+}

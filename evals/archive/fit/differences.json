@@ -1,0 +1,903 @@
+{
+  "kind": "archive-eval-fit-differences",
+  "synthetic": true,
+  "dimensions_from": "limits.yaml archive.rank_weights",
+  "pairs": [
+    {
+      "id": "diff-core-c3--evalrec-s2-north-happy",
+      "query_id": "q-core-c3",
+      "record_id": "evalrec-s2-north-happy",
+      "statements": [
+        {
+          "dimension": "problem_type",
+          "verdict": "same",
+          "query_value": "public_space",
+          "record_value": "public_space",
+          "is_true": true
+        },
+        {
+          "dimension": "constraints",
+          "verdict": "same",
+          "query_value": "physical,skills",
+          "record_value": "physical,skills",
+          "is_true": true
+        },
+        {
+          "dimension": "resources_budget",
+          "verdict": "same",
+          "query_value": "<5|<1k",
+          "record_value": "<5|<1k",
+          "is_true": true
+        },
+        {
+          "dimension": "scale",
+          "verdict": "same",
+          "query_value": "<10k",
+          "record_value": "<10k",
+          "is_true": true
+        },
+        {
+          "dimension": "geography_climate",
+          "verdict": "same",
+          "query_value": "town|D",
+          "record_value": "town|D",
+          "is_true": true
+        },
+        {
+          "dimension": "institutions",
+          "verdict": "same",
+          "query_value": "municipal_waste_dept",
+          "record_value": "municipal_waste_dept",
+          "is_true": true
+        },
+        {
+          "dimension": "legal_stack",
+          "verdict": "same",
+          "query_value": "L1:fiktiva-rights@0.1.0+dbc8851045a7,L2:fiktiva-north-union@0.1.0+702b57d16923,L3:fiktiva-constitution@0.1.0+aefd9bacd67b,L4:fiktiva-north-statutes@0.2.0+335df1e6e07c,L6:fiktiva-north-bylaws@0.1.0+f4efc4e65a37",
+          "record_value": "L1:fiktiva-rights@0.1.0+dbc8851045a7,L2:fiktiva-north-union@0.1.0+702b57d16923,L3:fiktiva-constitution@0.1.0+aefd9bacd67b,L4:fiktiva-north-statutes@0.2.0+335df1e6e07c,L6:fiktiva-north-bylaws@0.1.0+f4efc4e65a37",
+          "is_true": true
+        },
+        {
+          "dimension": "language",
+          "verdict": "same",
+          "query_value": "en",
+          "record_value": "en",
+          "is_true": true
+        },
+        {
+          "dimension": "problem_type",
+          "verdict": "different",
+          "query_value": "public_space",
+          "record_value": "public_space",
+          "is_true": false
+        }
+      ]
+    },
+    {
+      "id": "diff-core-c3--evalrec-s2-city-happy",
+      "query_id": "q-core-c3",
+      "record_id": "evalrec-s2-city-happy",
+      "statements": [
+        {
+          "dimension": "problem_type",
+          "verdict": "same",
+          "query_value": "public_space",
+          "record_value": "public_space",
+          "is_true": true
+        },
+        {
+          "dimension": "constraints",
+          "verdict": "same",
+          "query_value": "physical,skills",
+          "record_value": "physical,skills",
+          "is_true": true
+        },
+        {
+          "dimension": "resources_budget",
+          "verdict": "close",
+          "query_value": "<5|<1k",
+          "record_value": "<20|<10k",
+          "is_true": true
+        },
+        {
+          "dimension": "scale",
+          "verdict": "close",
+          "query_value": "<10k",
+          "record_value": "<100k",
+          "is_true": true
+        },
+        {
+          "dimension": "geography_climate",
+          "verdict": "different",
+          "query_value": "town|D",
+          "record_value": "city|B",
+          "is_true": true
+        },
+        {
+          "dimension": "institutions",
+          "verdict": "same",
+          "query_value": "municipal_waste_dept",
+          "record_value": "municipal_waste_dept",
+          "is_true": true
+        },
+        {
+          "dimension": "legal_stack",
+          "verdict": "different",
+          "query_value": "L1:fiktiva-rights@0.1.0+dbc8851045a7,L2:fiktiva-north-union@0.1.0+702b57d16923,L3:fiktiva-constitution@0.1.0+aefd9bacd67b,L4:fiktiva-north-statutes@0.2.0+335df1e6e07c,L6:fiktiva-north-bylaws@0.1.0+f4efc4e65a37",
+          "record_value": "L1:fiktiva-rights@0.1.0+dbc8851045a7,L2:fiktiva-union@0.1.0+254d205f7f55,L3:fiktiva-constitution@0.1.0+aefd9bacd67b,L4:fiktiva-statutes@0.1.0+e858abcd9128,L5:fiktiva-region@0.1.0+996b73b37cf9,L6:fiktiva-bylaws@0.1.0+6803ee8410e7",
+          "is_true": true
+        },
+        {
+          "dimension": "language",
+          "verdict": "same",
+          "query_value": "en",
+          "record_value": "en",
+          "is_true": true
+        },
+        {
+          "dimension": "resources_budget",
+          "verdict": "same",
+          "query_value": "<5|<1k",
+          "record_value": "<5|<1k",
+          "is_true": false
+        },
+        {
+          "dimension": "problem_type",
+          "verdict": "different",
+          "query_value": "public_space",
+          "record_value": "public_space",
+          "is_true": false
+        }
+      ]
+    },
+    {
+      "id": "diff-core-c3--evalrec-s2-ams-happy",
+      "query_id": "q-core-c3",
+      "record_id": "evalrec-s2-ams-happy",
+      "statements": [
+        {
+          "dimension": "problem_type",
+          "verdict": "same",
+          "query_value": "public_space",
+          "record_value": "public_space",
+          "is_true": true
+        },
+        {
+          "dimension": "constraints",
+          "verdict": "same",
+          "query_value": "physical,skills",
+          "record_value": "physical,skills",
+          "is_true": true
+        },
+        {
+          "dimension": "resources_budget",
+          "verdict": "different",
+          "query_value": "<5|<1k",
+          "record_value": "<20|<100k",
+          "is_true": true
+        },
+        {
+          "dimension": "scale",
+          "verdict": "different",
+          "query_value": "<10k",
+          "record_value": "<1M",
+          "is_true": true
+        },
+        {
+          "dimension": "geography_climate",
+          "verdict": "different",
+          "query_value": "town|D",
+          "record_value": "metro|C",
+          "is_true": true
+        },
+        {
+          "dimension": "institutions",
+          "verdict": "same",
+          "query_value": "municipal_waste_dept",
+          "record_value": "municipal_waste_dept",
+          "is_true": true
+        },
+        {
+          "dimension": "legal_stack",
+          "verdict": "different",
+          "query_value": "L1:fiktiva-rights@0.1.0+dbc8851045a7,L2:fiktiva-north-union@0.1.0+702b57d16923,L3:fiktiva-constitution@0.1.0+aefd9bacd67b,L4:fiktiva-north-statutes@0.2.0+335df1e6e07c,L6:fiktiva-north-bylaws@0.1.0+f4efc4e65a37",
+          "record_value": "L2:nl-eu-law-index@0.1.0+d9bdf4d078ea,L4:nl-statutes@0.1.0+a81a14382ce9,L5:nl-noord-holland@0.1.0+e299b986587e,L6:nl-amsterdam-bylaws@0.1.0+9a2ae679b76b",
+          "is_true": true
+        },
+        {
+          "dimension": "language",
+          "verdict": "different",
+          "query_value": "en",
+          "record_value": "nl",
+          "is_true": true
+        },
+        {
+          "dimension": "resources_budget",
+          "verdict": "same",
+          "query_value": "<5|<1k",
+          "record_value": "<5|<1k",
+          "is_true": false
+        },
+        {
+          "dimension": "problem_type",
+          "verdict": "different",
+          "query_value": "public_space",
+          "record_value": "public_space",
+          "is_true": false
+        }
+      ]
+    },
+    {
+      "id": "diff-core-c3--evalrec-s1-north-happy",
+      "query_id": "q-core-c3",
+      "record_id": "evalrec-s1-north-happy",
+      "statements": [
+        {
+          "dimension": "problem_type",
+          "verdict": "different",
+          "query_value": "public_space",
+          "record_value": "public_safety",
+          "is_true": true
+        },
+        {
+          "dimension": "constraints",
+          "verdict": "different",
+          "query_value": "physical,skills",
+          "record_value": "legal,time",
+          "is_true": true
+        },
+        {
+          "dimension": "resources_budget",
+          "verdict": "same",
+          "query_value": "<5|<1k",
+          "record_value": "<5|<1k",
+          "is_true": true
+        },
+        {
+          "dimension": "scale",
+          "verdict": "same",
+          "query_value": "<10k",
+          "record_value": "<10k",
+          "is_true": true
+        },
+        {
+          "dimension": "geography_climate",
+          "verdict": "same",
+          "query_value": "town|D",
+          "record_value": "town|D",
+          "is_true": true
+        },
+        {
+          "dimension": "institutions",
+          "verdict": "different",
+          "query_value": "municipal_waste_dept",
+          "record_value": "municipal_safety_dept,police_liaison_role",
+          "is_true": true
+        },
+        {
+          "dimension": "legal_stack",
+          "verdict": "same",
+          "query_value": "L1:fiktiva-rights@0.1.0+dbc8851045a7,L2:fiktiva-north-union@0.1.0+702b57d16923,L3:fiktiva-constitution@0.1.0+aefd9bacd67b,L4:fiktiva-north-statutes@0.2.0+335df1e6e07c,L6:fiktiva-north-bylaws@0.1.0+f4efc4e65a37",
+          "record_value": "L1:fiktiva-rights@0.1.0+dbc8851045a7,L2:fiktiva-north-union@0.1.0+702b57d16923,L3:fiktiva-constitution@0.1.0+aefd9bacd67b,L4:fiktiva-north-statutes@0.2.0+335df1e6e07c,L6:fiktiva-north-bylaws@0.1.0+f4efc4e65a37",
+          "is_true": true
+        },
+        {
+          "dimension": "language",
+          "verdict": "same",
+          "query_value": "en",
+          "record_value": "en",
+          "is_true": true
+        },
+        {
+          "dimension": "problem_type",
+          "verdict": "same",
+          "query_value": "public_space",
+          "record_value": "public_space",
+          "is_true": false
+        },
+        {
+          "dimension": "resources_budget",
+          "verdict": "different",
+          "query_value": "<5|<1k",
+          "record_value": "<5|<1k",
+          "is_true": false
+        }
+      ]
+    },
+    {
+      "id": "diff-core-c4--evalrec-s2-city-happy",
+      "query_id": "q-core-c4",
+      "record_id": "evalrec-s2-city-happy",
+      "statements": [
+        {
+          "dimension": "problem_type",
+          "verdict": "same",
+          "query_value": "public_space",
+          "record_value": "public_space",
+          "is_true": true
+        },
+        {
+          "dimension": "constraints",
+          "verdict": "same",
+          "query_value": "physical,skills",
+          "record_value": "physical,skills",
+          "is_true": true
+        },
+        {
+          "dimension": "resources_budget",
+          "verdict": "same",
+          "query_value": "<20|<10k",
+          "record_value": "<20|<10k",
+          "is_true": true
+        },
+        {
+          "dimension": "scale",
+          "verdict": "same",
+          "query_value": "<100k",
+          "record_value": "<100k",
+          "is_true": true
+        },
+        {
+          "dimension": "geography_climate",
+          "verdict": "same",
+          "query_value": "city|B",
+          "record_value": "city|B",
+          "is_true": true
+        },
+        {
+          "dimension": "institutions",
+          "verdict": "same",
+          "query_value": "municipal_waste_dept",
+          "record_value": "municipal_waste_dept",
+          "is_true": true
+        },
+        {
+          "dimension": "legal_stack",
+          "verdict": "same",
+          "query_value": "L1:fiktiva-rights@0.1.0+dbc8851045a7,L2:fiktiva-union@0.1.0+254d205f7f55,L3:fiktiva-constitution@0.1.0+aefd9bacd67b,L4:fiktiva-statutes@0.1.0+e858abcd9128,L5:fiktiva-region@0.1.0+996b73b37cf9,L6:fiktiva-bylaws@0.1.0+6803ee8410e7",
+          "record_value": "L1:fiktiva-rights@0.1.0+dbc8851045a7,L2:fiktiva-union@0.1.0+254d205f7f55,L3:fiktiva-constitution@0.1.0+aefd9bacd67b,L4:fiktiva-statutes@0.1.0+e858abcd9128,L5:fiktiva-region@0.1.0+996b73b37cf9,L6:fiktiva-bylaws@0.1.0+6803ee8410e7",
+          "is_true": true
+        },
+        {
+          "dimension": "language",
+          "verdict": "same",
+          "query_value": "en",
+          "record_value": "en",
+          "is_true": true
+        },
+        {
+          "dimension": "problem_type",
+          "verdict": "different",
+          "query_value": "public_space",
+          "record_value": "public_space",
+          "is_true": false
+        }
+      ]
+    },
+    {
+      "id": "diff-core-c4--evalrec-s2-north-blocked",
+      "query_id": "q-core-c4",
+      "record_id": "evalrec-s2-north-blocked",
+      "statements": [
+        {
+          "dimension": "problem_type",
+          "verdict": "same",
+          "query_value": "public_space",
+          "record_value": "public_space",
+          "is_true": true
+        },
+        {
+          "dimension": "constraints",
+          "verdict": "same",
+          "query_value": "physical,skills",
+          "record_value": "physical,skills",
+          "is_true": true
+        },
+        {
+          "dimension": "resources_budget",
+          "verdict": "close",
+          "query_value": "<20|<10k",
+          "record_value": "<5|<1k",
+          "is_true": true
+        },
+        {
+          "dimension": "scale",
+          "verdict": "close",
+          "query_value": "<100k",
+          "record_value": "<10k",
+          "is_true": true
+        },
+        {
+          "dimension": "geography_climate",
+          "verdict": "different",
+          "query_value": "city|B",
+          "record_value": "town|D",
+          "is_true": true
+        },
+        {
+          "dimension": "institutions",
+          "verdict": "same",
+          "query_value": "municipal_waste_dept",
+          "record_value": "municipal_waste_dept",
+          "is_true": true
+        },
+        {
+          "dimension": "legal_stack",
+          "verdict": "different",
+          "query_value": "L1:fiktiva-rights@0.1.0+dbc8851045a7,L2:fiktiva-union@0.1.0+254d205f7f55,L3:fiktiva-constitution@0.1.0+aefd9bacd67b,L4:fiktiva-statutes@0.1.0+e858abcd9128,L5:fiktiva-region@0.1.0+996b73b37cf9,L6:fiktiva-bylaws@0.1.0+6803ee8410e7",
+          "record_value": "L1:fiktiva-rights@0.1.0+dbc8851045a7,L2:fiktiva-north-union@0.1.0+702b57d16923,L3:fiktiva-constitution@0.1.0+aefd9bacd67b,L4:fiktiva-north-statutes@0.2.0+335df1e6e07c,L6:fiktiva-north-bylaws@0.1.0+f4efc4e65a37",
+          "is_true": true
+        },
+        {
+          "dimension": "language",
+          "verdict": "same",
+          "query_value": "en",
+          "record_value": "en",
+          "is_true": true
+        },
+        {
+          "dimension": "resources_budget",
+          "verdict": "same",
+          "query_value": "<20|<10k",
+          "record_value": "<20|<10k",
+          "is_true": false
+        },
+        {
+          "dimension": "problem_type",
+          "verdict": "different",
+          "query_value": "public_space",
+          "record_value": "public_space",
+          "is_true": false
+        }
+      ]
+    },
+    {
+      "id": "diff-core-c1--evalrec-s1-ams-happy",
+      "query_id": "q-core-c1",
+      "record_id": "evalrec-s1-ams-happy",
+      "statements": [
+        {
+          "dimension": "problem_type",
+          "verdict": "same",
+          "query_value": "public_safety",
+          "record_value": "public_safety",
+          "is_true": true
+        },
+        {
+          "dimension": "constraints",
+          "verdict": "same",
+          "query_value": "legal,time",
+          "record_value": "legal,time",
+          "is_true": true
+        },
+        {
+          "dimension": "resources_budget",
+          "verdict": "same",
+          "query_value": "<20|<100k",
+          "record_value": "<20|<100k",
+          "is_true": true
+        },
+        {
+          "dimension": "scale",
+          "verdict": "same",
+          "query_value": "<1M",
+          "record_value": "<1M",
+          "is_true": true
+        },
+        {
+          "dimension": "geography_climate",
+          "verdict": "same",
+          "query_value": "metro|C",
+          "record_value": "metro|C",
+          "is_true": true
+        },
+        {
+          "dimension": "institutions",
+          "verdict": "same",
+          "query_value": "municipal_safety_dept,police_liaison_role",
+          "record_value": "municipal_safety_dept,police_liaison_role",
+          "is_true": true
+        },
+        {
+          "dimension": "legal_stack",
+          "verdict": "same",
+          "query_value": "L2:nl-eu-law-index@0.1.0+d9bdf4d078ea,L4:nl-statutes@0.1.0+a81a14382ce9,L5:nl-noord-holland@0.1.0+e299b986587e,L6:nl-amsterdam-bylaws@0.1.0+9a2ae679b76b",
+          "record_value": "L2:nl-eu-law-index@0.1.0+d9bdf4d078ea,L4:nl-statutes@0.1.0+a81a14382ce9,L5:nl-noord-holland@0.1.0+e299b986587e,L6:nl-amsterdam-bylaws@0.1.0+9a2ae679b76b",
+          "is_true": true
+        },
+        {
+          "dimension": "language",
+          "verdict": "same",
+          "query_value": "en",
+          "record_value": "en",
+          "is_true": true
+        },
+        {
+          "dimension": "problem_type",
+          "verdict": "different",
+          "query_value": "public_safety",
+          "record_value": "public_safety",
+          "is_true": false
+        }
+      ]
+    },
+    {
+      "id": "diff-core-c1--evalrec-s1-city-happy",
+      "query_id": "q-core-c1",
+      "record_id": "evalrec-s1-city-happy",
+      "statements": [
+        {
+          "dimension": "problem_type",
+          "verdict": "same",
+          "query_value": "public_safety",
+          "record_value": "public_safety",
+          "is_true": true
+        },
+        {
+          "dimension": "constraints",
+          "verdict": "same",
+          "query_value": "legal,time",
+          "record_value": "legal,time",
+          "is_true": true
+        },
+        {
+          "dimension": "resources_budget",
+          "verdict": "close",
+          "query_value": "<20|<100k",
+          "record_value": "<20|<10k",
+          "is_true": true
+        },
+        {
+          "dimension": "scale",
+          "verdict": "close",
+          "query_value": "<1M",
+          "record_value": "<100k",
+          "is_true": true
+        },
+        {
+          "dimension": "geography_climate",
+          "verdict": "different",
+          "query_value": "metro|C",
+          "record_value": "city|B",
+          "is_true": true
+        },
+        {
+          "dimension": "institutions",
+          "verdict": "same",
+          "query_value": "municipal_safety_dept,police_liaison_role",
+          "record_value": "municipal_safety_dept,police_liaison_role",
+          "is_true": true
+        },
+        {
+          "dimension": "legal_stack",
+          "verdict": "different",
+          "query_value": "L2:nl-eu-law-index@0.1.0+d9bdf4d078ea,L4:nl-statutes@0.1.0+a81a14382ce9,L5:nl-noord-holland@0.1.0+e299b986587e,L6:nl-amsterdam-bylaws@0.1.0+9a2ae679b76b",
+          "record_value": "L1:fiktiva-rights@0.1.0+dbc8851045a7,L2:fiktiva-union@0.1.0+254d205f7f55,L3:fiktiva-constitution@0.1.0+aefd9bacd67b,L4:fiktiva-statutes@0.1.0+e858abcd9128,L5:fiktiva-region@0.1.0+996b73b37cf9,L6:fiktiva-bylaws@0.1.0+6803ee8410e7",
+          "is_true": true
+        },
+        {
+          "dimension": "language",
+          "verdict": "same",
+          "query_value": "en",
+          "record_value": "en",
+          "is_true": true
+        },
+        {
+          "dimension": "resources_budget",
+          "verdict": "same",
+          "query_value": "<20|<100k",
+          "record_value": "<20|<100k",
+          "is_true": false
+        },
+        {
+          "dimension": "problem_type",
+          "verdict": "different",
+          "query_value": "public_safety",
+          "record_value": "public_safety",
+          "is_true": false
+        }
+      ]
+    },
+    {
+      "id": "diff-core-c6--evalrec-s1-north-stuck",
+      "query_id": "q-core-c6",
+      "record_id": "evalrec-s1-north-stuck",
+      "statements": [
+        {
+          "dimension": "problem_type",
+          "verdict": "same",
+          "query_value": "public_safety",
+          "record_value": "public_safety",
+          "is_true": true
+        },
+        {
+          "dimension": "constraints",
+          "verdict": "same",
+          "query_value": "legal,time",
+          "record_value": "legal,time",
+          "is_true": true
+        },
+        {
+          "dimension": "resources_budget",
+          "verdict": "same",
+          "query_value": "<5|<1k",
+          "record_value": "<5|<1k",
+          "is_true": true
+        },
+        {
+          "dimension": "scale",
+          "verdict": "same",
+          "query_value": "<10k",
+          "record_value": "<10k",
+          "is_true": true
+        },
+        {
+          "dimension": "geography_climate",
+          "verdict": "same",
+          "query_value": "town|D",
+          "record_value": "town|D",
+          "is_true": true
+        },
+        {
+          "dimension": "institutions",
+          "verdict": "same",
+          "query_value": "municipal_safety_dept,police_liaison_role",
+          "record_value": "municipal_safety_dept,police_liaison_role",
+          "is_true": true
+        },
+        {
+          "dimension": "legal_stack",
+          "verdict": "same",
+          "query_value": "L1:fiktiva-rights@0.1.0+dbc8851045a7,L2:fiktiva-north-union@0.1.0+702b57d16923,L3:fiktiva-constitution@0.1.0+aefd9bacd67b,L4:fiktiva-north-statutes@0.2.0+335df1e6e07c,L6:fiktiva-north-bylaws@0.1.0+f4efc4e65a37",
+          "record_value": "L1:fiktiva-rights@0.1.0+dbc8851045a7,L2:fiktiva-north-union@0.1.0+702b57d16923,L3:fiktiva-constitution@0.1.0+aefd9bacd67b,L4:fiktiva-north-statutes@0.2.0+335df1e6e07c,L6:fiktiva-north-bylaws@0.1.0+f4efc4e65a37",
+          "is_true": true
+        },
+        {
+          "dimension": "language",
+          "verdict": "same",
+          "query_value": "en",
+          "record_value": "en",
+          "is_true": true
+        },
+        {
+          "dimension": "problem_type",
+          "verdict": "different",
+          "query_value": "public_safety",
+          "record_value": "public_safety",
+          "is_true": false
+        }
+      ]
+    },
+    {
+      "id": "diff-dist-legal-1--evalrec-s2-city-happy",
+      "query_id": "q-dist-legal-1",
+      "record_id": "evalrec-s2-city-happy",
+      "statements": [
+        {
+          "dimension": "problem_type",
+          "verdict": "same",
+          "query_value": "public_space",
+          "record_value": "public_space",
+          "is_true": true
+        },
+        {
+          "dimension": "constraints",
+          "verdict": "same",
+          "query_value": "physical,skills",
+          "record_value": "physical,skills",
+          "is_true": true
+        },
+        {
+          "dimension": "resources_budget",
+          "verdict": "close",
+          "query_value": "<5|<1k",
+          "record_value": "<20|<10k",
+          "is_true": true
+        },
+        {
+          "dimension": "scale",
+          "verdict": "close",
+          "query_value": "<10k",
+          "record_value": "<100k",
+          "is_true": true
+        },
+        {
+          "dimension": "geography_climate",
+          "verdict": "different",
+          "query_value": "town|D",
+          "record_value": "city|B",
+          "is_true": true
+        },
+        {
+          "dimension": "institutions",
+          "verdict": "same",
+          "query_value": "municipal_waste_dept",
+          "record_value": "municipal_waste_dept",
+          "is_true": true
+        },
+        {
+          "dimension": "legal_stack",
+          "verdict": "different",
+          "query_value": "L1:fiktiva-rights@0.1.0+dbc8851045a7,L2:fiktiva-north-union@0.1.0+702b57d16923,L3:fiktiva-constitution@0.1.0+aefd9bacd67b,L4:fiktiva-north-statutes@0.2.0+335df1e6e07c,L6:fiktiva-north-bylaws@0.1.0+f4efc4e65a37",
+          "record_value": "L1:fiktiva-rights@0.1.0+dbc8851045a7,L2:fiktiva-union@0.1.0+254d205f7f55,L3:fiktiva-constitution@0.1.0+aefd9bacd67b,L4:fiktiva-statutes@0.1.0+e858abcd9128,L5:fiktiva-region@0.1.0+996b73b37cf9,L6:fiktiva-bylaws@0.1.0+6803ee8410e7",
+          "is_true": true
+        },
+        {
+          "dimension": "language",
+          "verdict": "same",
+          "query_value": "en",
+          "record_value": "en",
+          "is_true": true
+        },
+        {
+          "dimension": "resources_budget",
+          "verdict": "same",
+          "query_value": "<5|<1k",
+          "record_value": "<5|<1k",
+          "is_true": false
+        },
+        {
+          "dimension": "problem_type",
+          "verdict": "different",
+          "query_value": "public_space",
+          "record_value": "public_space",
+          "is_true": false
+        }
+      ]
+    },
+    {
+      "id": "diff-tr-nl-c3--evalrec-s2-ams-happy",
+      "query_id": "q-tr-nl-c3",
+      "record_id": "evalrec-s2-ams-happy",
+      "statements": [
+        {
+          "dimension": "problem_type",
+          "verdict": "same",
+          "query_value": "public_space",
+          "record_value": "public_space",
+          "is_true": true
+        },
+        {
+          "dimension": "constraints",
+          "verdict": "same",
+          "query_value": "physical,skills",
+          "record_value": "physical,skills",
+          "is_true": true
+        },
+        {
+          "dimension": "resources_budget",
+          "verdict": "different",
+          "query_value": "<5|<1k",
+          "record_value": "<20|<100k",
+          "is_true": true
+        },
+        {
+          "dimension": "scale",
+          "verdict": "different",
+          "query_value": "<10k",
+          "record_value": "<1M",
+          "is_true": true
+        },
+        {
+          "dimension": "geography_climate",
+          "verdict": "different",
+          "query_value": "town|D",
+          "record_value": "metro|C",
+          "is_true": true
+        },
+        {
+          "dimension": "institutions",
+          "verdict": "same",
+          "query_value": "municipal_waste_dept",
+          "record_value": "municipal_waste_dept",
+          "is_true": true
+        },
+        {
+          "dimension": "legal_stack",
+          "verdict": "different",
+          "query_value": "L1:fiktiva-rights@0.1.0+dbc8851045a7,L2:fiktiva-north-union@0.1.0+702b57d16923,L3:fiktiva-constitution@0.1.0+aefd9bacd67b,L4:fiktiva-north-statutes@0.2.0+335df1e6e07c,L6:fiktiva-north-bylaws@0.1.0+f4efc4e65a37",
+          "record_value": "L2:nl-eu-law-index@0.1.0+d9bdf4d078ea,L4:nl-statutes@0.1.0+a81a14382ce9,L5:nl-noord-holland@0.1.0+e299b986587e,L6:nl-amsterdam-bylaws@0.1.0+9a2ae679b76b",
+          "is_true": true
+        },
+        {
+          "dimension": "language",
+          "verdict": "same",
+          "query_value": "nl",
+          "record_value": "nl",
+          "is_true": true
+        },
+        {
+          "dimension": "resources_budget",
+          "verdict": "same",
+          "query_value": "<5|<1k",
+          "record_value": "<5|<1k",
+          "is_true": false
+        },
+        {
+          "dimension": "problem_type",
+          "verdict": "different",
+          "query_value": "public_space",
+          "record_value": "public_space",
+          "is_true": false
+        }
+      ]
+    },
+    {
+      "id": "diff-tr-sw-c1--evalrec-s1-ams-revise",
+      "query_id": "q-tr-sw-c1",
+      "record_id": "evalrec-s1-ams-revise",
+      "statements": [
+        {
+          "dimension": "problem_type",
+          "verdict": "same",
+          "query_value": "public_safety",
+          "record_value": "public_safety",
+          "is_true": true
+        },
+        {
+          "dimension": "constraints",
+          "verdict": "same",
+          "query_value": "legal,time",
+          "record_value": "legal,time",
+          "is_true": true
+        },
+        {
+          "dimension": "resources_budget",
+          "verdict": "same",
+          "query_value": "<20|<100k",
+          "record_value": "<20|<100k",
+          "is_true": true
+        },
+        {
+          "dimension": "scale",
+          "verdict": "same",
+          "query_value": "<1M",
+          "record_value": "<1M",
+          "is_true": true
+        },
+        {
+          "dimension": "geography_climate",
+          "verdict": "same",
+          "query_value": "metro|C",
+          "record_value": "metro|C",
+          "is_true": true
+        },
+        {
+          "dimension": "institutions",
+          "verdict": "same",
+          "query_value": "municipal_safety_dept,police_liaison_role",
+          "record_value": "municipal_safety_dept,police_liaison_role",
+          "is_true": true
+        },
+        {
+          "dimension": "legal_stack",
+          "verdict": "same",
+          "query_value": "L2:nl-eu-law-index@0.1.0+d9bdf4d078ea,L4:nl-statutes@0.1.0+a81a14382ce9,L5:nl-noord-holland@0.1.0+e299b986587e,L6:nl-amsterdam-bylaws@0.1.0+9a2ae679b76b",
+          "record_value": "L2:nl-eu-law-index@0.1.0+d9bdf4d078ea,L4:nl-statutes@0.1.0+a81a14382ce9,L5:nl-noord-holland@0.1.0+e299b986587e,L6:nl-amsterdam-bylaws@0.1.0+9a2ae679b76b",
+          "is_true": true
+        },
+        {
+          "dimension": "language",
+          "verdict": "different",
+          "query_value": "sw",
+          "record_value": "nl",
+          "is_true": true
+        },
+        {
+          "dimension": "language",
+          "verdict": "same",
+          "query_value": "sw",
+          "record_value": "sw",
+          "is_true": false
+        },
+        {
+          "dimension": "problem_type",
+          "verdict": "different",
+          "query_value": "public_safety",
+          "record_value": "public_safety",
+          "is_true": false
+        }
+      ]
+    }
+  ]
+}

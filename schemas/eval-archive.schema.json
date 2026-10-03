@@ -1,0 +1,203 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "eval-archive.schema.json",
+  "title": "evals/archive/**: synthetic labelled data for the archive retrieval and reuse-fit eval (13-u18). Record files use the archive_record content schema instead.",
+  "type": "object",
+  "oneOf": [
+    { "$ref": "#/$defs/queries" },
+    { "$ref": "#/$defs/record_meta" },
+    { "$ref": "#/$defs/fit_legality" },
+    { "$ref": "#/$defs/fit_budget" },
+    { "$ref": "#/$defs/fit_stale" },
+    { "$ref": "#/$defs/fit_holds" },
+    { "$ref": "#/$defs/fit_differences" },
+    { "$ref": "#/$defs/thresholds" }
+  ],
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{3,63}$" },
+    "layer": { "type": "string", "enum": ["L1", "L2", "L3", "L4", "L5", "L6"] },
+    "text": { "type": "string", "minLength": 5, "maxLength": 700 },
+    "jur": { "type": "string", "enum": ["nl-amsterdam", "fiktiva-city", "fiktiva-north"] },
+    "limit_ref": { "type": "string", "pattern": "^archive\\.[a-z_.]+$" },
+    "citation": {
+      "type": "object", "additionalProperties": false, "required": ["layer", "article_id", "corpus_version"],
+      "properties": { "layer": { "$ref": "#/$defs/layer" }, "article_id": { "type": "string", "pattern": "^L[1-6]/[a-z0-9-]+/[a-z0-9-]+/art-[0-9]+$" }, "corpus_version": { "type": "string", "minLength": 1, "maxLength": 64 } }
+    },
+    "queries": {
+      "type": "object", "additionalProperties": false, "required": ["kind", "synthetic", "queries"],
+      "properties": {
+        "kind": { "const": "archive-eval-queries" },
+        "synthetic": { "const": true },
+        "queries": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/query" } }
+      }
+    },
+    "query": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "group", "synthetic", "language", "jurisdiction", "seed_condition", "draft_text", "context_profile", "judgments", "relevant_record_ids", "expect_empty"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "group": { "type": "string", "enum": ["core", "paraphrase", "translation", "distractor"] },
+        "synthetic": { "const": true },
+        "language": { "type": "string", "minLength": 2, "maxLength": 35 },
+        "jurisdiction": { "$ref": "#/$defs/jur" },
+        "seed_condition": { "type": "string", "enum": ["seed-1", "seed-2", "none"] },
+        "draft_text": { "type": "string", "minLength": 40, "maxLength": 600 },
+        "context_profile": { "type": "object" },
+        "judgments": { "type": "array", "items": { "type": "object", "additionalProperties": false, "required": ["record_id", "grade"], "properties": { "record_id": { "$ref": "#/$defs/id" }, "grade": { "type": "integer", "minimum": 0, "maximum": 2 } } } },
+        "relevant_record_ids": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/$defs/id" } },
+        "expect_empty": { "type": "boolean" },
+        "paraphrase_of": { "$ref": "#/$defs/id" },
+        "translation_of": { "$ref": "#/$defs/id" },
+        "translation": {
+          "type": "object", "additionalProperties": false, "required": ["method", "reviewed", "note"],
+          "properties": { "method": { "type": "string", "enum": ["machine", "model_drafted", "human"] }, "reviewed": { "type": "boolean" }, "note": { "$ref": "#/$defs/text" } }
+        },
+        "distractor": {
+          "type": "object", "additionalProperties": false, "required": ["kind", "note"],
+          "properties": { "kind": { "type": "string", "enum": ["same_words_different_type", "same_type_incompatible_legal_stack"] }, "note": { "$ref": "#/$defs/text" } }
+        }
+      }
+    },
+    "record_meta": {
+      "type": "object", "additionalProperties": false, "required": ["kind", "synthetic", "note", "records"],
+      "properties": {
+        "kind": { "const": "archive-eval-record-meta" },
+        "synthetic": { "const": true },
+        "note": { "$ref": "#/$defs/text" },
+        "records": {
+          "type": "array", "minItems": 1,
+          "items": {
+            "type": "object", "additionalProperties": false, "required": ["id", "seed", "jurisdiction", "variant", "language", "synthetic"],
+            "properties": {
+              "id": { "$ref": "#/$defs/id" },
+              "seed": { "type": "string", "enum": ["seed-1", "seed-2"] },
+              "jurisdiction": { "$ref": "#/$defs/jur" },
+              "variant": { "type": "string", "enum": ["happy", "revise", "stuck", "blocked", "redirected"] },
+              "language": { "type": "string", "minLength": 2, "maxLength": 35 },
+              "synthetic": { "const": true },
+              "fee_option": { "type": "boolean" },
+              "stale_pin": { "type": "object", "additionalProperties": false, "required": ["layer", "corpus_version"], "properties": { "layer": { "$ref": "#/$defs/layer" }, "corpus_version": { "type": "string", "minLength": 1, "maxLength": 64 } } }
+            }
+          }
+        }
+      }
+    },
+    "fit_legality": {
+      "type": "object", "additionalProperties": false, "required": ["kind", "synthetic", "cases"],
+      "properties": {
+        "kind": { "const": "archive-eval-fit-legality" },
+        "synthetic": { "const": true },
+        "cases": {
+          "type": "array", "minItems": 1,
+          "items": {
+            "type": "object", "additionalProperties": false, "required": ["id", "target_jurisdiction", "option_summary", "expected_result", "note"],
+            "properties": {
+              "id": { "$ref": "#/$defs/id" }, "target_jurisdiction": { "$ref": "#/$defs/jur" }, "option_summary": { "$ref": "#/$defs/text" },
+              "expected_result": { "type": "string", "pattern": "^(lawful|unknown|unlawful_at_L[1-6])$" },
+              "expected_citation": { "$ref": "#/$defs/citation" }, "note": { "$ref": "#/$defs/text" }
+            }
+          }
+        }
+      }
+    },
+    "fit_budget": {
+      "type": "object", "additionalProperties": false, "required": ["kind", "synthetic", "rule", "cases"],
+      "properties": {
+        "kind": { "const": "archive-eval-fit-budget" },
+        "synthetic": { "const": true },
+        "rule": { "$ref": "#/$defs/text" },
+        "cases": {
+          "type": "array", "minItems": 1,
+          "items": {
+            "type": "object", "additionalProperties": false, "required": ["id", "source_record_id", "target_jurisdiction", "declared", "source_need", "expected_fit", "gap_dimensions"],
+            "properties": {
+              "id": { "$ref": "#/$defs/id" }, "source_record_id": { "$ref": "#/$defs/id" }, "target_jurisdiction": { "$ref": "#/$defs/jur" },
+              "declared": { "type": "object", "additionalProperties": false, "required": ["budget_band", "resource_people", "resource_in_kind"], "properties": { "budget_band": { "type": "string" }, "resource_people": { "type": "string" }, "resource_in_kind": { "type": "string" } } },
+              "source_need": { "type": "object", "additionalProperties": false, "required": ["budget_band", "resource_people"], "properties": { "budget_band": { "type": "string" }, "resource_people": { "type": "string" } } },
+              "expected_fit": { "type": "string", "enum": ["fits", "stretch", "exceeds"] },
+              "gap_dimensions": { "type": "array", "uniqueItems": true, "items": { "type": "string", "enum": ["budget_band", "resource_band"] } }
+            }
+          }
+        }
+      }
+    },
+    "fit_stale": {
+      "type": "object", "additionalProperties": false, "required": ["kind", "synthetic", "cases"],
+      "properties": {
+        "kind": { "const": "archive-eval-fit-stale" },
+        "synthetic": { "const": true },
+        "cases": {
+          "type": "array", "minItems": 1,
+          "items": {
+            "type": "object", "additionalProperties": false, "required": ["id", "source_record_id", "target_jurisdiction", "expected_flags"],
+            "properties": {
+              "id": { "$ref": "#/$defs/id" }, "source_record_id": { "$ref": "#/$defs/id" }, "target_jurisdiction": { "$ref": "#/$defs/jur" },
+              "expected_flags": { "type": "array", "items": { "type": "object", "additionalProperties": false, "required": ["layer", "source_corpus_version", "target_corpus_version"], "properties": { "layer": { "$ref": "#/$defs/layer" }, "source_corpus_version": { "type": "string" }, "target_corpus_version": { "type": "string" } } } }
+            }
+          }
+        }
+      }
+    },
+    "fit_holds": {
+      "type": "object", "additionalProperties": false, "required": ["kind", "synthetic", "cases"],
+      "properties": {
+        "kind": { "const": "archive-eval-fit-holds" },
+        "synthetic": { "const": true },
+        "cases": {
+          "type": "array", "minItems": 1,
+          "items": {
+            "type": "object", "additionalProperties": false, "required": ["id", "target_jurisdiction", "unresolved_stack", "expected_hold", "missing_layers", "note"],
+            "properties": {
+              "id": { "$ref": "#/$defs/id" }, "target_jurisdiction": { "type": "string", "enum": ["nl-amsterdam", "fiktiva-city", "fiktiva-north", "unresolved"] },
+              "unresolved_stack": { "type": "boolean" }, "expected_hold": { "type": "boolean" },
+              "missing_layers": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/$defs/layer" } }, "note": { "$ref": "#/$defs/text" }
+            }
+          }
+        }
+      }
+    },
+    "fit_differences": {
+      "type": "object", "additionalProperties": false, "required": ["kind", "synthetic", "dimensions_from", "pairs"],
+      "properties": {
+        "kind": { "const": "archive-eval-fit-differences" },
+        "synthetic": { "const": true },
+        "dimensions_from": { "type": "string" },
+        "pairs": {
+          "type": "array", "minItems": 1,
+          "items": {
+            "type": "object", "additionalProperties": false, "required": ["id", "query_id", "record_id", "statements"],
+            "properties": {
+              "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{3,120}$" }, "query_id": { "$ref": "#/$defs/id" }, "record_id": { "$ref": "#/$defs/id" },
+              "statements": {
+                "type": "array", "minItems": 1,
+                "items": {
+                  "type": "object", "additionalProperties": false, "required": ["dimension", "verdict", "query_value", "record_value", "is_true"],
+                  "properties": { "dimension": { "type": "string" }, "verdict": { "type": "string", "enum": ["same", "close", "different"] }, "query_value": { "type": "string" }, "record_value": { "type": "string" }, "is_true": { "type": "boolean" } }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "metric_min": { "type": "object", "additionalProperties": false, "required": ["min", "why"], "properties": { "min": { "type": "number", "minimum": 0, "maximum": 1 }, "k": { "type": "integer", "minimum": 1 }, "k_from_limit": { "$ref": "#/$defs/limit_ref" }, "floor_from_limit": { "$ref": "#/$defs/limit_ref" }, "why": { "$ref": "#/$defs/text" } } },
+    "thresholds": {
+      "type": "object", "additionalProperties": false,
+      "required": ["kind", "schema_version", "provisional", "fake_recordings_satisfy", "min_sizes", "limits_used", "recall_at_k", "ndcg_at_k", "cross_language_recall_gap", "explanation_accuracy", "fit_planted_illegality_recall", "fit_over_budget_detection"],
+      "properties": {
+        "kind": { "const": "archive-eval-thresholds" },
+        "schema_version": { "const": 1 },
+        "provisional": { "const": true },
+        "fake_recordings_satisfy": { "const": false },
+        "min_sizes": { "type": "object", "additionalProperties": false, "required": ["records", "queries", "layers_with_planted_illegality"], "properties": { "records": { "type": "integer", "minimum": 1 }, "queries": { "type": "integer", "minimum": 1 }, "layers_with_planted_illegality": { "type": "integer", "minimum": 1, "maximum": 6 } } },
+        "limits_used": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "$ref": "#/$defs/limit_ref" } },
+        "recall_at_k": { "$ref": "#/$defs/metric_min" },
+        "ndcg_at_k": { "$ref": "#/$defs/metric_min" },
+        "cross_language_recall_gap": { "type": "object", "additionalProperties": false, "required": ["max", "floor_from_limit", "why"], "properties": { "max": { "type": "number", "minimum": 0, "maximum": 1 }, "floor_from_limit": { "$ref": "#/$defs/limit_ref" }, "why": { "$ref": "#/$defs/text" } } },
+        "explanation_accuracy": { "$ref": "#/$defs/metric_min" },
+        "fit_planted_illegality_recall": { "$ref": "#/$defs/metric_min" },
+        "fit_over_budget_detection": { "$ref": "#/$defs/metric_min" }
+      }
+    }
+  }
+}

@@ -1,0 +1,264 @@
+{
+  "id": "evalrec-s2-ams-blocked",
+  "problem_ref": "evalprob-s2-ams-blocked",
+  "terminal_state": "closed",
+  "source": "simulation",
+  "snapshot": {
+    "condition": "The city centre stays dirty although cleaning money is spent every year; bins overflow early in the week (simulation, synthetic evidence).",
+    "affected": "Residents, shops and visitors in the centre, as groups.",
+    "place": {
+      "jurisdiction": "Amsterdam",
+      "coarse_area": "Amsterdam, districts not named"
+    },
+    "observed_facts": [
+      "The invented cleanliness table shows an index of 58 in the first and last quarter (synthetic)."
+    ],
+    "final_acceptance_criteria": [
+      {
+        "statement": "A baseline cleanliness reading is recorded with its method.",
+        "measure": "Reading checked against the invented cleanliness table."
+      },
+      {
+        "statement": "The pilot zone shows a higher cleanliness index than the baseline.",
+        "measure": "Index in the pilot season against the baseline reading."
+      }
+    ]
+  },
+  "context_profile": {
+    "problem_type": "public_space",
+    "category": "waste_collection",
+    "population_scale": "<1M",
+    "geography": {
+      "country": "NL",
+      "region": "Noord-Holland",
+      "settlement_class": "metro",
+      "climate_class": "C"
+    },
+    "resource_band": {
+      "people": "<20",
+      "in_kind": "yes"
+    },
+    "budget_band": {
+      "band": "<100k",
+      "currency_class": "high_income"
+    },
+    "institutions": [
+      "municipal_waste_dept"
+    ],
+    "legal_stack": [
+      {
+        "layer": "L2",
+        "corpus_version": "nl-eu-law-index@0.1.0+d9bdf4d078ea"
+      },
+      {
+        "layer": "L4",
+        "corpus_version": "nl-statutes@0.1.0+a81a14382ce9"
+      },
+      {
+        "layer": "L5",
+        "corpus_version": "nl-noord-holland@0.1.0+e299b986587e"
+      },
+      {
+        "layer": "L6",
+        "corpus_version": "nl-amsterdam-bylaws@0.1.0+9a2ae679b76b"
+      }
+    ],
+    "language": "en",
+    "constraints": [
+      {
+        "type": "physical",
+        "statement": "Narrow lanes limit where bins fit."
+      },
+      {
+        "type": "skills",
+        "statement": "Few people can plan collection rounds."
+      }
+    ]
+  },
+  "executed_path": [
+    {
+      "name": "measure_baseline",
+      "goal": "Record the cleanliness index before any change and write the method down.",
+      "criteria": [
+        {
+          "statement": "The stage result is written down.",
+          "measure": "A short public note lists what was found."
+        }
+      ],
+      "outcome": "resolved",
+      "duration_band": "<1m",
+      "cost_band": "none",
+      "depends_on": []
+    },
+    {
+      "name": "collection_design",
+      "goal": "Choose one change to bin capacity, pickup timing or signage.",
+      "criteria": [
+        {
+          "statement": "The stage result is written down.",
+          "measure": "A short public note lists what was found."
+        }
+      ],
+      "outcome": "resolved",
+      "duration_band": "<1m",
+      "cost_band": "none",
+      "depends_on": [
+        "measure_baseline"
+      ],
+      "chosen_option": "Add bins and extra pickups paid from the general budget."
+    },
+    {
+      "name": "enforcement_and_comms",
+      "goal": "Plan plain notices about where waste goes, with no group singled out.",
+      "criteria": [
+        {
+          "statement": "The stage result is written down.",
+          "measure": "A short public note lists what was found."
+        }
+      ],
+      "outcome": "blocked",
+      "duration_band": "<1y",
+      "cost_band": "none",
+      "depends_on": [
+        "measure_baseline"
+      ]
+    },
+    {
+      "name": "pilot",
+      "goal": "Run the change and the notices in a bounded zone for a fixed period.",
+      "criteria": [
+        {
+          "statement": "The stage result is written down.",
+          "measure": "A short public note lists what was found."
+        }
+      ],
+      "outcome": "abandoned",
+      "duration_band": "<1w",
+      "cost_band": "none",
+      "depends_on": [
+        "collection_design",
+        "enforcement_and_comms"
+      ]
+    },
+    {
+      "name": "measure_result",
+      "goal": "Measure the index again and compare it with the baseline.",
+      "criteria": [
+        {
+          "statement": "The stage result is written down.",
+          "measure": "A short public note lists what was found."
+        }
+      ],
+      "outcome": "abandoned",
+      "duration_band": "<1w",
+      "cost_band": "none",
+      "depends_on": [
+        "pilot"
+      ]
+    }
+  ],
+  "options": [
+    {
+      "stage": "collection_design",
+      "summary": "Add bins and extra pickups paid from the general budget.",
+      "legality": "lawful",
+      "chosen": true,
+      "reason": "It needs no new charge and fits the lanes."
+    },
+    {
+      "stage": "collection_design",
+      "summary": "Charge a fee per waste bag to pay for extra pickups.",
+      "legality": "unknown",
+      "chosen": false,
+      "reason": "Set aside after the review compared both options."
+    }
+  ],
+  "evidence_refs": [
+    {
+      "uri": "https://evidence.sim.test/archive-eval/s2-ams-blocked/1",
+      "tier": "statistics_body",
+      "stage": "measure_baseline"
+    },
+    {
+      "uri": "https://evidence.sim.test/archive-eval/s2-ams-blocked/2",
+      "tier": "other"
+    }
+  ],
+  "challenges": [
+    {
+      "stage": "enforcement_and_comms",
+      "tried": "Chose the option and asked for the matching approval.",
+      "why_failed_or_blocked": "The chosen option is barred by the law at the layer shown.",
+      "kind": "institutional",
+      "resolution": "A lawful analogue was suggested but the poster closed the problem."
+    },
+    {
+      "stage": "pilot",
+      "tried": "Prepared this stage for the time the approval came.",
+      "why_failed_or_blocked": "The earlier stage never finished, so this one could not start.",
+      "kind": "institutional",
+      "resolution": "unresolved"
+    },
+    {
+      "stage": "measure_result",
+      "tried": "Prepared this stage for the time the approval came.",
+      "why_failed_or_blocked": "The earlier stage never finished, so this one could not start.",
+      "kind": "institutional",
+      "resolution": "unresolved"
+    }
+  ],
+  "costs": {
+    "total_band": "<100k",
+    "currency_class": "high_income",
+    "labour_hours_band": "<100",
+    "in_kind": "yes",
+    "none_stated": false
+  },
+  "outcome": {
+    "criteria_results": [
+      {
+        "criterion_ref": 1,
+        "result": "not_met"
+      },
+      {
+        "criterion_ref": 2,
+        "result": "not_met"
+      }
+    ],
+    "summary": "The problem was closed because the chosen option cannot be done lawfully here.",
+    "unresolved": true
+  },
+  "versions": {
+    "policy_version": "base@1.0.0",
+    "schema_version": "1.0.0",
+    "archive_schema_version": "1.0.0",
+    "legal_corpus_versions": [
+      {
+        "layer": "L2",
+        "corpus_version": "nl-eu-law-index@0.1.0+d9bdf4d078ea"
+      },
+      {
+        "layer": "L4",
+        "corpus_version": "nl-statutes@0.1.0+a81a14382ce9"
+      },
+      {
+        "layer": "L5",
+        "corpus_version": "nl-noord-holland@0.1.0+e299b986587e"
+      },
+      {
+        "layer": "L6",
+        "corpus_version": "nl-amsterdam-bylaws@0.1.0+9a2ae679b76b"
+      }
+    ]
+  },
+  "attribution": {
+    "credit_text": "Based on a simulated record made for the archive eval set.",
+    "source_url": "https://evidence.sim.test/archive-eval/s2-ams-blocked",
+    "license": "CC-BY-4.0"
+  },
+  "quality": {
+    "completeness": 0.9,
+    "ratified": true,
+    "dp_archive_run_id": "run-eval-s2-ams-blocked"
+  }
+}

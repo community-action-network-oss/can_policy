@@ -1,0 +1,1268 @@
+{
+  "kind": "archive-eval-queries",
+  "synthetic": true,
+  "queries": [
+    {
+      "id": "q-tr-nl-c1",
+      "group": "translation",
+      "synthetic": true,
+      "language": "nl",
+      "jurisdiction": "nl-amsterdam",
+      "seed_condition": "seed-1",
+      "draft_text": "Veel mensen in mijn deel van Amsterdam voelen zich na donker onveilig door steeds terugkerende harde explosies en vechtpartijen op straat. We willen dat de stad begrijpt wat er speelt en een preventieve maatregel test.",
+      "context_profile": {
+        "problem_type": "public_safety",
+        "category": "explosives_violence",
+        "population_scale": "<1M",
+        "geography": {
+          "country": "NL",
+          "region": "Noord-Holland",
+          "settlement_class": "metro",
+          "climate_class": "C"
+        },
+        "resource_band": {
+          "people": "<20",
+          "in_kind": "yes"
+        },
+        "budget_band": {
+          "band": "<100k",
+          "currency_class": "high_income"
+        },
+        "institutions": [
+          "municipal_safety_dept",
+          "police_liaison_role"
+        ],
+        "legal_stack": [
+          {
+            "layer": "L2",
+            "corpus_version": "nl-eu-law-index@0.1.0+d9bdf4d078ea"
+          },
+          {
+            "layer": "L4",
+            "corpus_version": "nl-statutes@0.1.0+a81a14382ce9"
+          },
+          {
+            "layer": "L5",
+            "corpus_version": "nl-noord-holland@0.1.0+e299b986587e"
+          },
+          {
+            "layer": "L6",
+            "corpus_version": "nl-amsterdam-bylaws@0.1.0+9a2ae679b76b"
+          }
+        ],
+        "language": "nl",
+        "constraints": [
+          {
+            "type": "legal",
+            "statement": "Prevention duties are split between several bodies."
+          },
+          {
+            "type": "time",
+            "statement": "The pilot must end within one season."
+          }
+        ]
+      },
+      "judgments": [
+        {
+          "record_id": "evalrec-s1-ams-happy",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s1-ams-revise",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s1-ams-stuck",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s1-ams-blocked",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s1-ams-redirected",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s1-city-happy",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-city-blocked",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-city-redirected",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-north-happy",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-north-stuck",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-north-revise",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-north-blocked",
+          "grade": 1
+        }
+      ],
+      "relevant_record_ids": [
+        "evalrec-s1-ams-happy",
+        "evalrec-s1-ams-revise",
+        "evalrec-s1-ams-stuck",
+        "evalrec-s1-ams-blocked",
+        "evalrec-s1-ams-redirected",
+        "evalrec-s1-city-happy",
+        "evalrec-s1-city-blocked",
+        "evalrec-s1-city-redirected",
+        "evalrec-s1-north-happy",
+        "evalrec-s1-north-stuck",
+        "evalrec-s1-north-revise",
+        "evalrec-s1-north-blocked"
+      ],
+      "expect_empty": false,
+      "translation_of": "q-core-c1",
+      "translation": {
+        "method": "model_drafted",
+        "reviewed": false,
+        "note": "Written by the drafting model, natural register, not yet read by a native speaker."
+      }
+    },
+    {
+      "id": "q-tr-nl-c2",
+      "group": "translation",
+      "synthetic": true,
+      "language": "nl",
+      "jurisdiction": "nl-amsterdam",
+      "seed_condition": "seed-2",
+      "draft_text": "Het centrum van Amsterdam blijft vies, ook al gaat er veel geld naar schoonmaak. Vuilnisbakken zijn vroeg in de week al overvol. We willen eerst de beginsituatie meten en daarna een aanpassing van bakken en ophaalrondes proberen.",
+      "context_profile": {
+        "problem_type": "public_space",
+        "category": "waste_collection",
+        "population_scale": "<1M",
+        "geography": {
+          "country": "NL",
+          "region": "Noord-Holland",
+          "settlement_class": "metro",
+          "climate_class": "C"
+        },
+        "resource_band": {
+          "people": "<20",
+          "in_kind": "yes"
+        },
+        "budget_band": {
+          "band": "<100k",
+          "currency_class": "high_income"
+        },
+        "institutions": [
+          "municipal_waste_dept"
+        ],
+        "legal_stack": [
+          {
+            "layer": "L2",
+            "corpus_version": "nl-eu-law-index@0.1.0+d9bdf4d078ea"
+          },
+          {
+            "layer": "L4",
+            "corpus_version": "nl-statutes@0.1.0+a81a14382ce9"
+          },
+          {
+            "layer": "L5",
+            "corpus_version": "nl-noord-holland@0.1.0+e299b986587e"
+          },
+          {
+            "layer": "L6",
+            "corpus_version": "nl-amsterdam-bylaws@0.1.0+9a2ae679b76b"
+          }
+        ],
+        "language": "nl",
+        "constraints": [
+          {
+            "type": "physical",
+            "statement": "Narrow lanes limit where bins fit."
+          },
+          {
+            "type": "skills",
+            "statement": "Few people can plan collection rounds."
+          }
+        ]
+      },
+      "judgments": [
+        {
+          "record_id": "evalrec-s2-ams-happy",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-ams-revise",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-ams-stuck",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-ams-blocked",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-ams-redirected",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-city-happy",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-city-revise",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-city-stuck",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-city-blocked",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-city-redirected",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-north-happy",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-north-blocked",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-north-stuck",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-north-redirected",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-north-happy-old",
+          "grade": 1
+        }
+      ],
+      "relevant_record_ids": [
+        "evalrec-s2-ams-happy",
+        "evalrec-s2-ams-revise",
+        "evalrec-s2-ams-stuck",
+        "evalrec-s2-ams-blocked",
+        "evalrec-s2-ams-redirected",
+        "evalrec-s2-city-happy",
+        "evalrec-s2-city-revise",
+        "evalrec-s2-city-stuck",
+        "evalrec-s2-city-blocked",
+        "evalrec-s2-city-redirected",
+        "evalrec-s2-north-happy",
+        "evalrec-s2-north-blocked",
+        "evalrec-s2-north-stuck",
+        "evalrec-s2-north-redirected",
+        "evalrec-s2-north-happy-old"
+      ],
+      "expect_empty": false,
+      "translation_of": "q-core-c2",
+      "translation": {
+        "method": "model_drafted",
+        "reviewed": false,
+        "note": "Written by the drafting model, natural register, not yet read by a native speaker."
+      }
+    },
+    {
+      "id": "q-tr-nl-c3",
+      "group": "translation",
+      "synthetic": true,
+      "language": "nl",
+      "jurisdiction": "fiktiva-north",
+      "seed_condition": "seed-2",
+      "draft_text": "In ons stadje in Fiktiva Noord zitten de vuilnisbakken vol en ligt er zwerfafval in de marktstegen. We willen meer ophaalrondes en bakken proberen, met een klein budget en weinig vrijwilligers.",
+      "context_profile": {
+        "problem_type": "public_space",
+        "category": "waste_collection",
+        "population_scale": "<10k",
+        "geography": {
+          "country": "unknown",
+          "region": "Fiktiva North",
+          "settlement_class": "town",
+          "climate_class": "D"
+        },
+        "resource_band": {
+          "people": "<5",
+          "in_kind": "yes"
+        },
+        "budget_band": {
+          "band": "<1k",
+          "currency_class": "upper_middle"
+        },
+        "institutions": [
+          "municipal_waste_dept"
+        ],
+        "legal_stack": [
+          {
+            "layer": "L1",
+            "corpus_version": "fiktiva-rights@0.1.0+dbc8851045a7"
+          },
+          {
+            "layer": "L2",
+            "corpus_version": "fiktiva-north-union@0.1.0+702b57d16923"
+          },
+          {
+            "layer": "L3",
+            "corpus_version": "fiktiva-constitution@0.1.0+aefd9bacd67b"
+          },
+          {
+            "layer": "L4",
+            "corpus_version": "fiktiva-north-statutes@0.2.0+335df1e6e07c"
+          },
+          {
+            "layer": "L6",
+            "corpus_version": "fiktiva-north-bylaws@0.1.0+f4efc4e65a37"
+          }
+        ],
+        "language": "nl",
+        "constraints": [
+          {
+            "type": "physical",
+            "statement": "Narrow lanes limit where bins fit."
+          },
+          {
+            "type": "skills",
+            "statement": "Few people can plan collection rounds."
+          }
+        ]
+      },
+      "judgments": [
+        {
+          "record_id": "evalrec-s2-ams-happy",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-ams-revise",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-ams-stuck",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-ams-blocked",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-ams-redirected",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-city-happy",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-city-revise",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-city-stuck",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-city-blocked",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-city-redirected",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-north-happy",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-north-blocked",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-north-stuck",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-north-redirected",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-north-happy-old",
+          "grade": 2
+        }
+      ],
+      "relevant_record_ids": [
+        "evalrec-s2-ams-happy",
+        "evalrec-s2-ams-revise",
+        "evalrec-s2-ams-stuck",
+        "evalrec-s2-ams-blocked",
+        "evalrec-s2-ams-redirected",
+        "evalrec-s2-city-happy",
+        "evalrec-s2-city-revise",
+        "evalrec-s2-city-stuck",
+        "evalrec-s2-city-blocked",
+        "evalrec-s2-city-redirected",
+        "evalrec-s2-north-happy",
+        "evalrec-s2-north-blocked",
+        "evalrec-s2-north-stuck",
+        "evalrec-s2-north-redirected",
+        "evalrec-s2-north-happy-old"
+      ],
+      "expect_empty": false,
+      "translation_of": "q-core-c3",
+      "translation": {
+        "method": "model_drafted",
+        "reviewed": false,
+        "note": "Written by the drafting model, natural register, not yet read by a native speaker."
+      }
+    },
+    {
+      "id": "q-tr-sw-c1",
+      "group": "translation",
+      "synthetic": true,
+      "language": "sw",
+      "jurisdiction": "nl-amsterdam",
+      "seed_condition": "seed-1",
+      "draft_text": "Watu wengi katika sehemu yangu ya Amsterdam wanahisi si salama baada ya giza kwa sababu ya milipuko mikubwa inayojirudia na mapigano mitaani. Tunataka jiji lielewe kinachotokea na lijaribu hatua moja ya kuzuia.",
+      "context_profile": {
+        "problem_type": "public_safety",
+        "category": "explosives_violence",
+        "population_scale": "<1M",
+        "geography": {
+          "country": "NL",
+          "region": "Noord-Holland",
+          "settlement_class": "metro",
+          "climate_class": "C"
+        },
+        "resource_band": {
+          "people": "<20",
+          "in_kind": "yes"
+        },
+        "budget_band": {
+          "band": "<100k",
+          "currency_class": "high_income"
+        },
+        "institutions": [
+          "municipal_safety_dept",
+          "police_liaison_role"
+        ],
+        "legal_stack": [
+          {
+            "layer": "L2",
+            "corpus_version": "nl-eu-law-index@0.1.0+d9bdf4d078ea"
+          },
+          {
+            "layer": "L4",
+            "corpus_version": "nl-statutes@0.1.0+a81a14382ce9"
+          },
+          {
+            "layer": "L5",
+            "corpus_version": "nl-noord-holland@0.1.0+e299b986587e"
+          },
+          {
+            "layer": "L6",
+            "corpus_version": "nl-amsterdam-bylaws@0.1.0+9a2ae679b76b"
+          }
+        ],
+        "language": "sw",
+        "constraints": [
+          {
+            "type": "legal",
+            "statement": "Prevention duties are split between several bodies."
+          },
+          {
+            "type": "time",
+            "statement": "The pilot must end within one season."
+          }
+        ]
+      },
+      "judgments": [
+        {
+          "record_id": "evalrec-s1-ams-happy",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s1-ams-revise",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s1-ams-stuck",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s1-ams-blocked",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s1-ams-redirected",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s1-city-happy",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-city-blocked",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-city-redirected",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-north-happy",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-north-stuck",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-north-revise",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-north-blocked",
+          "grade": 1
+        }
+      ],
+      "relevant_record_ids": [
+        "evalrec-s1-ams-happy",
+        "evalrec-s1-ams-revise",
+        "evalrec-s1-ams-stuck",
+        "evalrec-s1-ams-blocked",
+        "evalrec-s1-ams-redirected",
+        "evalrec-s1-city-happy",
+        "evalrec-s1-city-blocked",
+        "evalrec-s1-city-redirected",
+        "evalrec-s1-north-happy",
+        "evalrec-s1-north-stuck",
+        "evalrec-s1-north-revise",
+        "evalrec-s1-north-blocked"
+      ],
+      "expect_empty": false,
+      "translation_of": "q-core-c1",
+      "translation": {
+        "method": "machine",
+        "reviewed": false,
+        "note": "Machine produced and unreviewed. A maintainer reviews it later."
+      }
+    },
+    {
+      "id": "q-tr-sw-c2",
+      "group": "translation",
+      "synthetic": true,
+      "language": "sw",
+      "jurisdiction": "nl-amsterdam",
+      "seed_condition": "seed-2",
+      "draft_text": "Katikati ya jiji la Amsterdam bado ni chafu ingawa pesa nyingi hutumika kusafisha. Mapipa hujaa kupita kiasi mapema wiki. Tunataka kupima hali ya kuanzia kisha kujaribu mabadiliko ya mapipa na ratiba za kuzoa taka.",
+      "context_profile": {
+        "problem_type": "public_space",
+        "category": "waste_collection",
+        "population_scale": "<1M",
+        "geography": {
+          "country": "NL",
+          "region": "Noord-Holland",
+          "settlement_class": "metro",
+          "climate_class": "C"
+        },
+        "resource_band": {
+          "people": "<20",
+          "in_kind": "yes"
+        },
+        "budget_band": {
+          "band": "<100k",
+          "currency_class": "high_income"
+        },
+        "institutions": [
+          "municipal_waste_dept"
+        ],
+        "legal_stack": [
+          {
+            "layer": "L2",
+            "corpus_version": "nl-eu-law-index@0.1.0+d9bdf4d078ea"
+          },
+          {
+            "layer": "L4",
+            "corpus_version": "nl-statutes@0.1.0+a81a14382ce9"
+          },
+          {
+            "layer": "L5",
+            "corpus_version": "nl-noord-holland@0.1.0+e299b986587e"
+          },
+          {
+            "layer": "L6",
+            "corpus_version": "nl-amsterdam-bylaws@0.1.0+9a2ae679b76b"
+          }
+        ],
+        "language": "sw",
+        "constraints": [
+          {
+            "type": "physical",
+            "statement": "Narrow lanes limit where bins fit."
+          },
+          {
+            "type": "skills",
+            "statement": "Few people can plan collection rounds."
+          }
+        ]
+      },
+      "judgments": [
+        {
+          "record_id": "evalrec-s2-ams-happy",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-ams-revise",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-ams-stuck",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-ams-blocked",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-ams-redirected",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-city-happy",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-city-revise",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-city-stuck",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-city-blocked",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-city-redirected",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-north-happy",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-north-blocked",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-north-stuck",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-north-redirected",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-north-happy-old",
+          "grade": 1
+        }
+      ],
+      "relevant_record_ids": [
+        "evalrec-s2-ams-happy",
+        "evalrec-s2-ams-revise",
+        "evalrec-s2-ams-stuck",
+        "evalrec-s2-ams-blocked",
+        "evalrec-s2-ams-redirected",
+        "evalrec-s2-city-happy",
+        "evalrec-s2-city-revise",
+        "evalrec-s2-city-stuck",
+        "evalrec-s2-city-blocked",
+        "evalrec-s2-city-redirected",
+        "evalrec-s2-north-happy",
+        "evalrec-s2-north-blocked",
+        "evalrec-s2-north-stuck",
+        "evalrec-s2-north-redirected",
+        "evalrec-s2-north-happy-old"
+      ],
+      "expect_empty": false,
+      "translation_of": "q-core-c2",
+      "translation": {
+        "method": "machine",
+        "reviewed": false,
+        "note": "Machine produced and unreviewed. A maintainer reviews it later."
+      }
+    },
+    {
+      "id": "q-tr-hi-c1",
+      "group": "translation",
+      "synthetic": true,
+      "language": "hi",
+      "jurisdiction": "nl-amsterdam",
+      "seed_condition": "seed-1",
+      "draft_text": "एम्स्टर्डम के मेरे इलाके में बार-बार होने वाले तेज़ धमाकों और सड़क पर झगड़ों की वजह से लोग अंधेरा होने के बाद असुरक्षित महसूस करते हैं। हम चाहते हैं कि शहर समझे कि क्या हो रहा है और रोकथाम का एक कदम आज़माए।",
+      "context_profile": {
+        "problem_type": "public_safety",
+        "category": "explosives_violence",
+        "population_scale": "<1M",
+        "geography": {
+          "country": "NL",
+          "region": "Noord-Holland",
+          "settlement_class": "metro",
+          "climate_class": "C"
+        },
+        "resource_band": {
+          "people": "<20",
+          "in_kind": "yes"
+        },
+        "budget_band": {
+          "band": "<100k",
+          "currency_class": "high_income"
+        },
+        "institutions": [
+          "municipal_safety_dept",
+          "police_liaison_role"
+        ],
+        "legal_stack": [
+          {
+            "layer": "L2",
+            "corpus_version": "nl-eu-law-index@0.1.0+d9bdf4d078ea"
+          },
+          {
+            "layer": "L4",
+            "corpus_version": "nl-statutes@0.1.0+a81a14382ce9"
+          },
+          {
+            "layer": "L5",
+            "corpus_version": "nl-noord-holland@0.1.0+e299b986587e"
+          },
+          {
+            "layer": "L6",
+            "corpus_version": "nl-amsterdam-bylaws@0.1.0+9a2ae679b76b"
+          }
+        ],
+        "language": "hi",
+        "constraints": [
+          {
+            "type": "legal",
+            "statement": "Prevention duties are split between several bodies."
+          },
+          {
+            "type": "time",
+            "statement": "The pilot must end within one season."
+          }
+        ]
+      },
+      "judgments": [
+        {
+          "record_id": "evalrec-s1-ams-happy",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s1-ams-revise",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s1-ams-stuck",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s1-ams-blocked",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s1-ams-redirected",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s1-city-happy",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-city-blocked",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-city-redirected",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-north-happy",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-north-stuck",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-north-revise",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-north-blocked",
+          "grade": 1
+        }
+      ],
+      "relevant_record_ids": [
+        "evalrec-s1-ams-happy",
+        "evalrec-s1-ams-revise",
+        "evalrec-s1-ams-stuck",
+        "evalrec-s1-ams-blocked",
+        "evalrec-s1-ams-redirected",
+        "evalrec-s1-city-happy",
+        "evalrec-s1-city-blocked",
+        "evalrec-s1-city-redirected",
+        "evalrec-s1-north-happy",
+        "evalrec-s1-north-stuck",
+        "evalrec-s1-north-revise",
+        "evalrec-s1-north-blocked"
+      ],
+      "expect_empty": false,
+      "translation_of": "q-core-c1",
+      "translation": {
+        "method": "machine",
+        "reviewed": false,
+        "note": "Machine produced and unreviewed. A maintainer reviews it later."
+      }
+    },
+    {
+      "id": "q-tr-hi-c2",
+      "group": "translation",
+      "synthetic": true,
+      "language": "hi",
+      "jurisdiction": "nl-amsterdam",
+      "seed_condition": "seed-2",
+      "draft_text": "एम्स्टर्डम का शहर-केंद्र गंदा ही रहता है, जबकि सफ़ाई पर बहुत पैसा खर्च होता है। हफ़्ते की शुरुआत में ही कूड़ेदान भर जाते हैं। हम पहले शुरुआती स्थिति मापना चाहते हैं और फिर कूड़ेदानों और कचरा उठाने के समय में बदलाव आज़माना चाहते हैं।",
+      "context_profile": {
+        "problem_type": "public_space",
+        "category": "waste_collection",
+        "population_scale": "<1M",
+        "geography": {
+          "country": "NL",
+          "region": "Noord-Holland",
+          "settlement_class": "metro",
+          "climate_class": "C"
+        },
+        "resource_band": {
+          "people": "<20",
+          "in_kind": "yes"
+        },
+        "budget_band": {
+          "band": "<100k",
+          "currency_class": "high_income"
+        },
+        "institutions": [
+          "municipal_waste_dept"
+        ],
+        "legal_stack": [
+          {
+            "layer": "L2",
+            "corpus_version": "nl-eu-law-index@0.1.0+d9bdf4d078ea"
+          },
+          {
+            "layer": "L4",
+            "corpus_version": "nl-statutes@0.1.0+a81a14382ce9"
+          },
+          {
+            "layer": "L5",
+            "corpus_version": "nl-noord-holland@0.1.0+e299b986587e"
+          },
+          {
+            "layer": "L6",
+            "corpus_version": "nl-amsterdam-bylaws@0.1.0+9a2ae679b76b"
+          }
+        ],
+        "language": "hi",
+        "constraints": [
+          {
+            "type": "physical",
+            "statement": "Narrow lanes limit where bins fit."
+          },
+          {
+            "type": "skills",
+            "statement": "Few people can plan collection rounds."
+          }
+        ]
+      },
+      "judgments": [
+        {
+          "record_id": "evalrec-s2-ams-happy",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-ams-revise",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-ams-stuck",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-ams-blocked",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-ams-redirected",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-city-happy",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-city-revise",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-city-stuck",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-city-blocked",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-city-redirected",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-north-happy",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-north-blocked",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-north-stuck",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-north-redirected",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-north-happy-old",
+          "grade": 1
+        }
+      ],
+      "relevant_record_ids": [
+        "evalrec-s2-ams-happy",
+        "evalrec-s2-ams-revise",
+        "evalrec-s2-ams-stuck",
+        "evalrec-s2-ams-blocked",
+        "evalrec-s2-ams-redirected",
+        "evalrec-s2-city-happy",
+        "evalrec-s2-city-revise",
+        "evalrec-s2-city-stuck",
+        "evalrec-s2-city-blocked",
+        "evalrec-s2-city-redirected",
+        "evalrec-s2-north-happy",
+        "evalrec-s2-north-blocked",
+        "evalrec-s2-north-stuck",
+        "evalrec-s2-north-redirected",
+        "evalrec-s2-north-happy-old"
+      ],
+      "expect_empty": false,
+      "translation_of": "q-core-c2",
+      "translation": {
+        "method": "machine",
+        "reviewed": false,
+        "note": "Machine produced and unreviewed. A maintainer reviews it later."
+      }
+    },
+    {
+      "id": "q-tr-en-nl-orig-1",
+      "group": "translation",
+      "synthetic": true,
+      "language": "en",
+      "jurisdiction": "nl-amsterdam",
+      "seed_condition": "seed-1",
+      "draft_text": "After sunset we keep hearing heavy bangs in our neighbourhood and there are often fights in the street. Neighbours no longer dare to walk outside. Who is responsible here, and what small step can we start with to improve things?",
+      "context_profile": {
+        "problem_type": "public_safety",
+        "category": "explosives_violence",
+        "population_scale": "<1M",
+        "geography": {
+          "country": "NL",
+          "region": "Noord-Holland",
+          "settlement_class": "metro",
+          "climate_class": "C"
+        },
+        "resource_band": {
+          "people": "<20",
+          "in_kind": "yes"
+        },
+        "budget_band": {
+          "band": "<100k",
+          "currency_class": "high_income"
+        },
+        "institutions": [
+          "municipal_safety_dept",
+          "police_liaison_role"
+        ],
+        "legal_stack": [
+          {
+            "layer": "L2",
+            "corpus_version": "nl-eu-law-index@0.1.0+d9bdf4d078ea"
+          },
+          {
+            "layer": "L4",
+            "corpus_version": "nl-statutes@0.1.0+a81a14382ce9"
+          },
+          {
+            "layer": "L5",
+            "corpus_version": "nl-noord-holland@0.1.0+e299b986587e"
+          },
+          {
+            "layer": "L6",
+            "corpus_version": "nl-amsterdam-bylaws@0.1.0+9a2ae679b76b"
+          }
+        ],
+        "language": "en",
+        "constraints": [
+          {
+            "type": "legal",
+            "statement": "Prevention duties are split between several bodies."
+          },
+          {
+            "type": "time",
+            "statement": "The pilot must end within one season."
+          }
+        ]
+      },
+      "judgments": [
+        {
+          "record_id": "evalrec-s1-ams-happy",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s1-ams-revise",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s1-ams-stuck",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s1-ams-blocked",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s1-ams-redirected",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s1-city-happy",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-city-blocked",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-city-redirected",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-north-happy",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-north-stuck",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-north-revise",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-north-blocked",
+          "grade": 1
+        }
+      ],
+      "relevant_record_ids": [
+        "evalrec-s1-ams-happy",
+        "evalrec-s1-ams-revise",
+        "evalrec-s1-ams-stuck",
+        "evalrec-s1-ams-blocked",
+        "evalrec-s1-ams-redirected",
+        "evalrec-s1-city-happy",
+        "evalrec-s1-city-blocked",
+        "evalrec-s1-city-redirected",
+        "evalrec-s1-north-happy",
+        "evalrec-s1-north-stuck",
+        "evalrec-s1-north-revise",
+        "evalrec-s1-north-blocked"
+      ],
+      "expect_empty": false,
+      "translation_of": "q-nl-orig-1",
+      "translation": {
+        "method": "model_drafted",
+        "reviewed": false,
+        "note": "Written by the drafting model, natural register, not yet read by a native speaker."
+      }
+    },
+    {
+      "id": "q-tr-en-nl-orig-2",
+      "group": "translation",
+      "synthetic": true,
+      "language": "en",
+      "jurisdiction": "nl-amsterdam",
+      "seed_condition": "seed-2",
+      "draft_text": "The inner city is dirty while the municipality spends a lot on cleaning. Bins overflow on busy days. How can we measure what is really going on and try one change?",
+      "context_profile": {
+        "problem_type": "public_space",
+        "category": "waste_collection",
+        "population_scale": "<1M",
+        "geography": {
+          "country": "NL",
+          "region": "Noord-Holland",
+          "settlement_class": "metro",
+          "climate_class": "C"
+        },
+        "resource_band": {
+          "people": "<20",
+          "in_kind": "yes"
+        },
+        "budget_band": {
+          "band": "<100k",
+          "currency_class": "high_income"
+        },
+        "institutions": [
+          "municipal_waste_dept"
+        ],
+        "legal_stack": [
+          {
+            "layer": "L2",
+            "corpus_version": "nl-eu-law-index@0.1.0+d9bdf4d078ea"
+          },
+          {
+            "layer": "L4",
+            "corpus_version": "nl-statutes@0.1.0+a81a14382ce9"
+          },
+          {
+            "layer": "L5",
+            "corpus_version": "nl-noord-holland@0.1.0+e299b986587e"
+          },
+          {
+            "layer": "L6",
+            "corpus_version": "nl-amsterdam-bylaws@0.1.0+9a2ae679b76b"
+          }
+        ],
+        "language": "en",
+        "constraints": [
+          {
+            "type": "physical",
+            "statement": "Narrow lanes limit where bins fit."
+          },
+          {
+            "type": "skills",
+            "statement": "Few people can plan collection rounds."
+          }
+        ]
+      },
+      "judgments": [
+        {
+          "record_id": "evalrec-s2-ams-happy",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-ams-revise",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-ams-stuck",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-ams-blocked",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-ams-redirected",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-city-happy",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-city-revise",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-city-stuck",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-city-blocked",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-city-redirected",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-north-happy",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-north-blocked",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-north-stuck",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-north-redirected",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-north-happy-old",
+          "grade": 1
+        }
+      ],
+      "relevant_record_ids": [
+        "evalrec-s2-ams-happy",
+        "evalrec-s2-ams-revise",
+        "evalrec-s2-ams-stuck",
+        "evalrec-s2-ams-blocked",
+        "evalrec-s2-ams-redirected",
+        "evalrec-s2-city-happy",
+        "evalrec-s2-city-revise",
+        "evalrec-s2-city-stuck",
+        "evalrec-s2-city-blocked",
+        "evalrec-s2-city-redirected",
+        "evalrec-s2-north-happy",
+        "evalrec-s2-north-blocked",
+        "evalrec-s2-north-stuck",
+        "evalrec-s2-north-redirected",
+        "evalrec-s2-north-happy-old"
+      ],
+      "expect_empty": false,
+      "translation_of": "q-nl-orig-2",
+      "translation": {
+        "method": "model_drafted",
+        "reviewed": false,
+        "note": "Written by the drafting model, natural register, not yet read by a native speaker."
+      }
+    }
+  ]
+}

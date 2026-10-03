@@ -1,0 +1,68 @@
+{
+  "kind": "archive-eval-fit-stale",
+  "synthetic": true,
+  "cases": [
+    {
+      "id": "fit-stale-city-to-north",
+      "source_record_id": "evalrec-s2-city-happy",
+      "target_jurisdiction": "fiktiva-north",
+      "expected_flags": [
+        {
+          "layer": "L2",
+          "source_corpus_version": "fiktiva-union@0.1.0+254d205f7f55",
+          "target_corpus_version": "fiktiva-north-union@0.1.0+702b57d16923"
+        },
+        {
+          "layer": "L4",
+          "source_corpus_version": "fiktiva-statutes@0.1.0+e858abcd9128",
+          "target_corpus_version": "fiktiva-north-statutes@0.2.0+335df1e6e07c"
+        },
+        {
+          "layer": "L6",
+          "source_corpus_version": "fiktiva-bylaws@0.1.0+6803ee8410e7",
+          "target_corpus_version": "fiktiva-north-bylaws@0.1.0+f4efc4e65a37"
+        }
+      ]
+    },
+    {
+      "id": "fit-stale-old-pin",
+      "source_record_id": "evalrec-s2-north-happy-old",
+      "target_jurisdiction": "fiktiva-north",
+      "expected_flags": [
+        {
+          "layer": "L4",
+          "source_corpus_version": "fiktiva-north-statutes@0.1.0+000000000001",
+          "target_corpus_version": "fiktiva-north-statutes@0.2.0+335df1e6e07c"
+        }
+      ]
+    },
+    {
+      "id": "fit-stale-ctl-same",
+      "source_record_id": "evalrec-s2-north-happy",
+      "target_jurisdiction": "fiktiva-north",
+      "expected_flags": []
+    },
+    {
+      "id": "fit-stale-north-to-city",
+      "source_record_id": "evalrec-s1-north-happy",
+      "target_jurisdiction": "fiktiva-city",
+      "expected_flags": [
+        {
+          "layer": "L2",
+          "source_corpus_version": "fiktiva-north-union@0.1.0+702b57d16923",
+          "target_corpus_version": "fiktiva-union@0.1.0+254d205f7f55"
+        },
+        {
+          "layer": "L4",
+          "source_corpus_version": "fiktiva-north-statutes@0.2.0+335df1e6e07c",
+          "target_corpus_version": "fiktiva-statutes@0.1.0+e858abcd9128"
+        },
+        {
+          "layer": "L6",
+          "source_corpus_version": "fiktiva-north-bylaws@0.1.0+f4efc4e65a37",
+          "target_corpus_version": "fiktiva-bylaws@0.1.0+6803ee8410e7"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,258 @@
+{
+  "id": "evalrec-s2-ams-stuck",
+  "problem_ref": "evalprob-s2-ams-stuck",
+  "terminal_state": "stuck",
+  "source": "simulation",
+  "snapshot": {
+    "condition": "Het centrum blijft vies terwijl er elk jaar schoonmaakgeld wordt uitgegeven; bakken lopen vroeg in de week over (simulatie, synthetisch bewijs).",
+    "affected": "Bewoners, winkels en bezoekers van het centrum, als groepen.",
+    "place": {
+      "jurisdiction": "Amsterdam",
+      "coarse_area": "Amsterdam, districts not named"
+    },
+    "observed_facts": [
+      "De verzonnen schoonheidstabel toont een index van 58 in het eerste en laatste kwartaal (synthetisch)."
+    ],
+    "final_acceptance_criteria": [
+      {
+        "statement": "Een nulmeting van de schoonheid is vastgelegd met de methode.",
+        "measure": "Meting getoetst aan de verzonnen schoonheidstabel."
+      },
+      {
+        "statement": "De proefzone toont een hogere schoonheidsindex dan de nulmeting.",
+        "measure": "Index in het proefseizoen naast de nulmeting."
+      }
+    ]
+  },
+  "context_profile": {
+    "problem_type": "public_space",
+    "category": "waste_collection",
+    "population_scale": "<1M",
+    "geography": {
+      "country": "NL",
+      "region": "Noord-Holland",
+      "settlement_class": "metro",
+      "climate_class": "C"
+    },
+    "resource_band": {
+      "people": "<20",
+      "in_kind": "yes"
+    },
+    "budget_band": {
+      "band": "<100k",
+      "currency_class": "high_income"
+    },
+    "institutions": [
+      "municipal_waste_dept"
+    ],
+    "legal_stack": [
+      {
+        "layer": "L2",
+        "corpus_version": "nl-eu-law-index@0.1.0+d9bdf4d078ea"
+      },
+      {
+        "layer": "L4",
+        "corpus_version": "nl-statutes@0.1.0+a81a14382ce9"
+      },
+      {
+        "layer": "L5",
+        "corpus_version": "nl-noord-holland@0.1.0+e299b986587e"
+      },
+      {
+        "layer": "L6",
+        "corpus_version": "nl-amsterdam-bylaws@0.1.0+9a2ae679b76b"
+      }
+    ],
+    "language": "nl",
+    "constraints": [
+      {
+        "type": "physical",
+        "statement": "Narrow lanes limit where bins fit."
+      },
+      {
+        "type": "skills",
+        "statement": "Few people can plan collection rounds."
+      }
+    ]
+  },
+  "executed_path": [
+    {
+      "name": "measure_baseline",
+      "goal": "Leg de schoonheidsindex vast voor er iets verandert en schrijf de methode op.",
+      "criteria": [
+        {
+          "statement": "Het resultaat van de stap is opgeschreven.",
+          "measure": "Een korte openbare notitie noemt wat is gevonden."
+        }
+      ],
+      "outcome": "resolved",
+      "duration_band": "<1m",
+      "cost_band": "none",
+      "depends_on": []
+    },
+    {
+      "name": "collection_design",
+      "goal": "Kies een wijziging in bakcapaciteit, ophaaltijden of bebording.",
+      "criteria": [
+        {
+          "statement": "Het resultaat van de stap is opgeschreven.",
+          "measure": "Een korte openbare notitie noemt wat is gevonden."
+        }
+      ],
+      "outcome": "resolved",
+      "duration_band": "<1m",
+      "cost_band": "none",
+      "depends_on": [
+        "measure_baseline"
+      ],
+      "chosen_option": "Plaats extra bakken en ophaalrondes uit de algemene middelen."
+    },
+    {
+      "name": "enforcement_and_comms",
+      "goal": "Plan duidelijke mededelingen over waar afval hoort, zonder een groep aan te wijzen.",
+      "criteria": [
+        {
+          "statement": "Het resultaat van de stap is opgeschreven.",
+          "measure": "Een korte openbare notitie noemt wat is gevonden."
+        }
+      ],
+      "outcome": "resolved",
+      "duration_band": "<1m",
+      "cost_band": "none",
+      "depends_on": [
+        "measure_baseline"
+      ]
+    },
+    {
+      "name": "pilot",
+      "goal": "Voer de wijziging en de mededelingen uit in een afgebakende zone voor een vaste periode.",
+      "criteria": [
+        {
+          "statement": "Het resultaat van de stap is opgeschreven.",
+          "measure": "Een korte openbare notitie noemt wat is gevonden."
+        }
+      ],
+      "outcome": "blocked",
+      "duration_band": "<1y",
+      "cost_band": "none",
+      "depends_on": [
+        "collection_design",
+        "enforcement_and_comms"
+      ],
+      "chosen_option": "Plaats extra bakken en ophaalrondes uit de algemene middelen."
+    },
+    {
+      "name": "measure_result",
+      "goal": "Meet de index opnieuw en vergelijk met de nulmeting.",
+      "criteria": [
+        {
+          "statement": "Het resultaat van de stap is opgeschreven.",
+          "measure": "Een korte openbare notitie noemt wat is gevonden."
+        }
+      ],
+      "outcome": "abandoned",
+      "duration_band": "<1w",
+      "cost_band": "none",
+      "depends_on": [
+        "pilot"
+      ]
+    }
+  ],
+  "options": [
+    {
+      "stage": "collection_design",
+      "summary": "Plaats extra bakken en ophaalrondes uit de algemene middelen.",
+      "legality": "lawful",
+      "chosen": true,
+      "reason": "Er is geen nieuwe heffing nodig en het past in de straten."
+    },
+    {
+      "stage": "collection_design",
+      "summary": "Vraag een bedrag per afvalzak om extra ophaalrondes te betalen.",
+      "legality": "unknown",
+      "chosen": false,
+      "reason": "Terzijde gelegd nadat de review beide opties vergeleek."
+    }
+  ],
+  "evidence_refs": [
+    {
+      "uri": "https://evidence.sim.test/archive-eval/s2-ams-stuck/1",
+      "tier": "statistics_body",
+      "stage": "measure_baseline"
+    },
+    {
+      "uri": "https://evidence.sim.test/archive-eval/s2-ams-stuck/2",
+      "tier": "other"
+    }
+  ],
+  "challenges": [
+    {
+      "stage": "pilot",
+      "tried": "De verantwoordelijke dienst om goedkeuring gevraagd voor de start van de proef.",
+      "why_failed_or_blocked": "De benodigde goedkeuring kwam niet binnen het proefseizoen.",
+      "kind": "institutional",
+      "resolution": "unresolved"
+    },
+    {
+      "stage": "measure_result",
+      "tried": "Deze stap voorbereid voor het moment dat de goedkeuring zou komen.",
+      "why_failed_or_blocked": "De eerdere stap werd nooit afgerond, dus deze kon niet starten.",
+      "kind": "institutional",
+      "resolution": "unresolved"
+    }
+  ],
+  "costs": {
+    "total_band": "<100k",
+    "currency_class": "high_income",
+    "labour_hours_band": "<100",
+    "in_kind": "yes",
+    "none_stated": false
+  },
+  "outcome": {
+    "criteria_results": [
+      {
+        "criterion_ref": 1,
+        "result": "not_met"
+      },
+      {
+        "criterion_ref": 2,
+        "result": "not_met"
+      }
+    ],
+    "summary": "De proef is nooit gestart omdat de goedkeuring niet kwam.",
+    "unresolved": true
+  },
+  "versions": {
+    "policy_version": "base@1.0.0",
+    "schema_version": "1.0.0",
+    "archive_schema_version": "1.0.0",
+    "legal_corpus_versions": [
+      {
+        "layer": "L2",
+        "corpus_version": "nl-eu-law-index@0.1.0+d9bdf4d078ea"
+      },
+      {
+        "layer": "L4",
+        "corpus_version": "nl-statutes@0.1.0+a81a14382ce9"
+      },
+      {
+        "layer": "L5",
+        "corpus_version": "nl-noord-holland@0.1.0+e299b986587e"
+      },
+      {
+        "layer": "L6",
+        "corpus_version": "nl-amsterdam-bylaws@0.1.0+9a2ae679b76b"
+      }
+    ]
+  },
+  "attribution": {
+    "credit_text": "Gebaseerd op een gesimuleerd record voor de archief-evaluatieset.",
+    "source_url": "https://evidence.sim.test/archive-eval/s2-ams-stuck",
+    "license": "CC-BY-4.0"
+  },
+  "quality": {
+    "completeness": 0.8,
+    "ratified": true,
+    "dp_archive_run_id": "run-eval-s2-ams-stuck"
+  }
+}

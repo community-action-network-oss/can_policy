@@ -1,0 +1,575 @@
+{
+  "kind": "archive-eval-queries",
+  "synthetic": true,
+  "queries": [
+    {
+      "id": "q-dist-type-1",
+      "group": "distractor",
+      "synthetic": true,
+      "language": "en",
+      "jurisdiction": "fiktiva-city",
+      "seed_condition": "none",
+      "draft_text": "Our neighbourhood association meetings keep exploding into arguments and some members say they feel unsafe speaking up when we meet after dark. We want a code of conduct for the meetings.",
+      "context_profile": {
+        "problem_type": "community_governance",
+        "category": "meeting_conduct",
+        "population_scale": "<100k",
+        "geography": {
+          "country": "unknown",
+          "region": "Fiktiva City",
+          "settlement_class": "city",
+          "climate_class": "B"
+        },
+        "resource_band": {
+          "people": "<20",
+          "in_kind": "yes"
+        },
+        "budget_band": {
+          "band": "<10k",
+          "currency_class": "upper_middle"
+        },
+        "institutions": [
+          "neighbourhood_association"
+        ],
+        "legal_stack": [
+          {
+            "layer": "L1",
+            "corpus_version": "fiktiva-rights@0.1.0+dbc8851045a7"
+          },
+          {
+            "layer": "L2",
+            "corpus_version": "fiktiva-union@0.1.0+254d205f7f55"
+          },
+          {
+            "layer": "L3",
+            "corpus_version": "fiktiva-constitution@0.1.0+aefd9bacd67b"
+          },
+          {
+            "layer": "L4",
+            "corpus_version": "fiktiva-statutes@0.1.0+e858abcd9128"
+          },
+          {
+            "layer": "L5",
+            "corpus_version": "fiktiva-region@0.1.0+996b73b37cf9"
+          },
+          {
+            "layer": "L6",
+            "corpus_version": "fiktiva-bylaws@0.1.0+6803ee8410e7"
+          }
+        ],
+        "language": "en",
+        "constraints": []
+      },
+      "judgments": [],
+      "relevant_record_ids": [],
+      "expect_empty": true,
+      "distractor": {
+        "kind": "same_words_different_type",
+        "note": "Shares unsafe, after dark, explosions with seed 1 but is about meeting conduct."
+      }
+    },
+    {
+      "id": "q-dist-type-2",
+      "group": "distractor",
+      "synthetic": true,
+      "language": "en",
+      "jurisdiction": "fiktiva-city",
+      "seed_condition": "none",
+      "draft_text": "City centre cleaning contracts are won by firms that also give money to local parties, and it feels dirty. We want the donation records published for the Fiktiva City council.",
+      "context_profile": {
+        "problem_type": "governance_transparency",
+        "category": "donation_records",
+        "population_scale": "<100k",
+        "geography": {
+          "country": "unknown",
+          "region": "Fiktiva City",
+          "settlement_class": "city",
+          "climate_class": "B"
+        },
+        "resource_band": {
+          "people": "<20",
+          "in_kind": "yes"
+        },
+        "budget_band": {
+          "band": "<10k",
+          "currency_class": "upper_middle"
+        },
+        "institutions": [
+          "city_council"
+        ],
+        "legal_stack": [
+          {
+            "layer": "L1",
+            "corpus_version": "fiktiva-rights@0.1.0+dbc8851045a7"
+          },
+          {
+            "layer": "L2",
+            "corpus_version": "fiktiva-union@0.1.0+254d205f7f55"
+          },
+          {
+            "layer": "L3",
+            "corpus_version": "fiktiva-constitution@0.1.0+aefd9bacd67b"
+          },
+          {
+            "layer": "L4",
+            "corpus_version": "fiktiva-statutes@0.1.0+e858abcd9128"
+          },
+          {
+            "layer": "L5",
+            "corpus_version": "fiktiva-region@0.1.0+996b73b37cf9"
+          },
+          {
+            "layer": "L6",
+            "corpus_version": "fiktiva-bylaws@0.1.0+6803ee8410e7"
+          }
+        ],
+        "language": "en",
+        "constraints": [
+          {
+            "type": "physical",
+            "statement": "Narrow lanes limit where bins fit."
+          },
+          {
+            "type": "skills",
+            "statement": "Few people can plan collection rounds."
+          }
+        ]
+      },
+      "judgments": [],
+      "relevant_record_ids": [],
+      "expect_empty": true,
+      "distractor": {
+        "kind": "same_words_different_type",
+        "note": "Shares city centre, cleaning, dirty with seed 2 but is about donation transparency."
+      }
+    },
+    {
+      "id": "q-dist-type-3",
+      "group": "distractor",
+      "synthetic": true,
+      "language": "en",
+      "jurisdiction": "fiktiva-north",
+      "seed_condition": "none",
+      "draft_text": "Loud bangs on New Year night scare pets and older people in our Fiktiva North street. We want a rule about fireworks hours.",
+      "context_profile": {
+        "problem_type": "noise_nuisance",
+        "category": "fireworks_hours",
+        "population_scale": "<10k",
+        "geography": {
+          "country": "unknown",
+          "region": "Fiktiva North",
+          "settlement_class": "town",
+          "climate_class": "D"
+        },
+        "resource_band": {
+          "people": "<5",
+          "in_kind": "yes"
+        },
+        "budget_band": {
+          "band": "<1k",
+          "currency_class": "upper_middle"
+        },
+        "institutions": [
+          "municipal_noise_dept"
+        ],
+        "legal_stack": [
+          {
+            "layer": "L1",
+            "corpus_version": "fiktiva-rights@0.1.0+dbc8851045a7"
+          },
+          {
+            "layer": "L2",
+            "corpus_version": "fiktiva-north-union@0.1.0+702b57d16923"
+          },
+          {
+            "layer": "L3",
+            "corpus_version": "fiktiva-constitution@0.1.0+aefd9bacd67b"
+          },
+          {
+            "layer": "L4",
+            "corpus_version": "fiktiva-north-statutes@0.2.0+335df1e6e07c"
+          },
+          {
+            "layer": "L6",
+            "corpus_version": "fiktiva-north-bylaws@0.1.0+f4efc4e65a37"
+          }
+        ],
+        "language": "en",
+        "constraints": [
+          {
+            "type": "physical",
+            "statement": "Narrow lanes limit where bins fit."
+          },
+          {
+            "type": "skills",
+            "statement": "Few people can plan collection rounds."
+          }
+        ]
+      },
+      "judgments": [],
+      "relevant_record_ids": [],
+      "expect_empty": true,
+      "distractor": {
+        "kind": "same_words_different_type",
+        "note": "Shares loud bangs with seed 1 but is a noise rule question."
+      }
+    },
+    {
+      "id": "q-dist-type-4",
+      "group": "distractor",
+      "synthetic": true,
+      "language": "en",
+      "jurisdiction": "fiktiva-city",
+      "seed_condition": "none",
+      "draft_text": "The bins in our school canteen kitchen are dirty and the food hygiene inspection flagged them. We want the kitchen cleaned and the bins replaced at our Fiktiva City school.",
+      "context_profile": {
+        "problem_type": "food_hygiene",
+        "category": "school_kitchen",
+        "population_scale": "<100k",
+        "geography": {
+          "country": "unknown",
+          "region": "Fiktiva City",
+          "settlement_class": "city",
+          "climate_class": "B"
+        },
+        "resource_band": {
+          "people": "<20",
+          "in_kind": "yes"
+        },
+        "budget_band": {
+          "band": "<10k",
+          "currency_class": "upper_middle"
+        },
+        "institutions": [
+          "school_board"
+        ],
+        "legal_stack": [
+          {
+            "layer": "L1",
+            "corpus_version": "fiktiva-rights@0.1.0+dbc8851045a7"
+          },
+          {
+            "layer": "L2",
+            "corpus_version": "fiktiva-union@0.1.0+254d205f7f55"
+          },
+          {
+            "layer": "L3",
+            "corpus_version": "fiktiva-constitution@0.1.0+aefd9bacd67b"
+          },
+          {
+            "layer": "L4",
+            "corpus_version": "fiktiva-statutes@0.1.0+e858abcd9128"
+          },
+          {
+            "layer": "L5",
+            "corpus_version": "fiktiva-region@0.1.0+996b73b37cf9"
+          },
+          {
+            "layer": "L6",
+            "corpus_version": "fiktiva-bylaws@0.1.0+6803ee8410e7"
+          }
+        ],
+        "language": "en",
+        "constraints": [
+          {
+            "type": "physical",
+            "statement": "Narrow lanes limit where bins fit."
+          },
+          {
+            "type": "skills",
+            "statement": "Few people can plan collection rounds."
+          }
+        ]
+      },
+      "judgments": [],
+      "relevant_record_ids": [],
+      "expect_empty": true,
+      "distractor": {
+        "kind": "same_words_different_type",
+        "note": "Shares dirty and bins with seed 2 but is a food hygiene matter."
+      }
+    },
+    {
+      "id": "q-dist-legal-1",
+      "group": "distractor",
+      "synthetic": true,
+      "language": "en",
+      "jurisdiction": "fiktiva-north",
+      "seed_condition": "seed-2",
+      "draft_text": "Our Fiktiva North town wants to fix overflowing bins by charging a fee for every household waste bag to pay for extra pickups.",
+      "context_profile": {
+        "problem_type": "public_space",
+        "category": "waste_collection",
+        "population_scale": "<10k",
+        "geography": {
+          "country": "unknown",
+          "region": "Fiktiva North",
+          "settlement_class": "town",
+          "climate_class": "D"
+        },
+        "resource_band": {
+          "people": "<5",
+          "in_kind": "yes"
+        },
+        "budget_band": {
+          "band": "<1k",
+          "currency_class": "upper_middle"
+        },
+        "institutions": [
+          "municipal_waste_dept"
+        ],
+        "legal_stack": [
+          {
+            "layer": "L1",
+            "corpus_version": "fiktiva-rights@0.1.0+dbc8851045a7"
+          },
+          {
+            "layer": "L2",
+            "corpus_version": "fiktiva-north-union@0.1.0+702b57d16923"
+          },
+          {
+            "layer": "L3",
+            "corpus_version": "fiktiva-constitution@0.1.0+aefd9bacd67b"
+          },
+          {
+            "layer": "L4",
+            "corpus_version": "fiktiva-north-statutes@0.2.0+335df1e6e07c"
+          },
+          {
+            "layer": "L6",
+            "corpus_version": "fiktiva-north-bylaws@0.1.0+f4efc4e65a37"
+          }
+        ],
+        "language": "en",
+        "constraints": [
+          {
+            "type": "physical",
+            "statement": "Narrow lanes limit where bins fit."
+          },
+          {
+            "type": "skills",
+            "statement": "Few people can plan collection rounds."
+          }
+        ]
+      },
+      "judgments": [
+        {
+          "record_id": "evalrec-s2-ams-happy",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-ams-revise",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-ams-stuck",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-ams-blocked",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-ams-redirected",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-city-happy",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-city-revise",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-city-stuck",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-city-blocked",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-city-redirected",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-north-happy",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-north-blocked",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-north-stuck",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-north-redirected",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-north-happy-old",
+          "grade": 2
+        }
+      ],
+      "relevant_record_ids": [
+        "evalrec-s2-ams-happy",
+        "evalrec-s2-ams-revise",
+        "evalrec-s2-ams-stuck",
+        "evalrec-s2-ams-blocked",
+        "evalrec-s2-ams-redirected",
+        "evalrec-s2-city-happy",
+        "evalrec-s2-city-revise",
+        "evalrec-s2-city-stuck",
+        "evalrec-s2-city-blocked",
+        "evalrec-s2-city-redirected",
+        "evalrec-s2-north-happy",
+        "evalrec-s2-north-blocked",
+        "evalrec-s2-north-stuck",
+        "evalrec-s2-north-redirected",
+        "evalrec-s2-north-happy-old"
+      ],
+      "expect_empty": false,
+      "distractor": {
+        "kind": "same_type_incompatible_legal_stack",
+        "note": "The Fiktiva City fee records look like a match, but L4 art-7 of Fiktiva North bans collection fees."
+      }
+    },
+    {
+      "id": "q-dist-legal-2",
+      "group": "distractor",
+      "synthetic": true,
+      "language": "en",
+      "jurisdiction": "fiktiva-north",
+      "seed_condition": "seed-1",
+      "draft_text": "In Fiktiva North we want to watch the night market crowd with lantern drones to reduce fights and loud blasts after dark.",
+      "context_profile": {
+        "problem_type": "public_safety",
+        "category": "explosives_violence",
+        "population_scale": "<10k",
+        "geography": {
+          "country": "unknown",
+          "region": "Fiktiva North",
+          "settlement_class": "town",
+          "climate_class": "D"
+        },
+        "resource_band": {
+          "people": "<5",
+          "in_kind": "yes"
+        },
+        "budget_band": {
+          "band": "<1k",
+          "currency_class": "upper_middle"
+        },
+        "institutions": [
+          "municipal_safety_dept",
+          "police_liaison_role"
+        ],
+        "legal_stack": [
+          {
+            "layer": "L1",
+            "corpus_version": "fiktiva-rights@0.1.0+dbc8851045a7"
+          },
+          {
+            "layer": "L2",
+            "corpus_version": "fiktiva-north-union@0.1.0+702b57d16923"
+          },
+          {
+            "layer": "L3",
+            "corpus_version": "fiktiva-constitution@0.1.0+aefd9bacd67b"
+          },
+          {
+            "layer": "L4",
+            "corpus_version": "fiktiva-north-statutes@0.2.0+335df1e6e07c"
+          },
+          {
+            "layer": "L6",
+            "corpus_version": "fiktiva-north-bylaws@0.1.0+f4efc4e65a37"
+          }
+        ],
+        "language": "en",
+        "constraints": [
+          {
+            "type": "legal",
+            "statement": "Prevention duties are split between several bodies."
+          },
+          {
+            "type": "time",
+            "statement": "The pilot must end within one season."
+          }
+        ]
+      },
+      "judgments": [
+        {
+          "record_id": "evalrec-s1-ams-happy",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-ams-revise",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-ams-stuck",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-ams-blocked",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-ams-redirected",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-city-happy",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-city-blocked",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-city-redirected",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-north-happy",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s1-north-stuck",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s1-north-revise",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s1-north-blocked",
+          "grade": 2
+        }
+      ],
+      "relevant_record_ids": [
+        "evalrec-s1-ams-happy",
+        "evalrec-s1-ams-revise",
+        "evalrec-s1-ams-stuck",
+        "evalrec-s1-ams-blocked",
+        "evalrec-s1-ams-redirected",
+        "evalrec-s1-city-happy",
+        "evalrec-s1-city-blocked",
+        "evalrec-s1-city-redirected",
+        "evalrec-s1-north-happy",
+        "evalrec-s1-north-stuck",
+        "evalrec-s1-north-revise",
+        "evalrec-s1-north-blocked"
+      ],
+      "expect_empty": false,
+      "distractor": {
+        "kind": "same_type_incompatible_legal_stack",
+        "note": "The option is barred at L2 art-4 in the north stack, so a path using it must show as unusable."
+      }
+    }
+  ]
+}

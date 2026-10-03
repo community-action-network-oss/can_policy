@@ -1,0 +1,157 @@
+{
+  "kind": "archive-eval-fit-legality",
+  "synthetic": true,
+  "cases": [
+    {
+      "id": "fit-l1-city",
+      "target_jurisdiction": "fiktiva-city",
+      "option_summary": "Ban all evening gatherings in the old square.",
+      "expected_result": "unlawful_at_L1",
+      "expected_citation": {
+        "layer": "L1",
+        "article_id": "L1/fiktiva/rights/art-3",
+        "corpus_version": "fiktiva-rights@0.1.0+dbc8851045a7"
+      },
+      "note": "L1 is reference mode in this pack: whether a reference layer makes an option unlawful is a design default, see docs/eval-archive.md."
+    },
+    {
+      "id": "fit-l1-north",
+      "target_jurisdiction": "fiktiva-north",
+      "option_summary": "Ban all evening gatherings in the market lanes.",
+      "expected_result": "unlawful_at_L1",
+      "expected_citation": {
+        "layer": "L1",
+        "article_id": "L1/fiktiva/rights/art-3",
+        "corpus_version": "fiktiva-rights@0.1.0+dbc8851045a7"
+      },
+      "note": "Same article and corpus version in both stacks."
+    },
+    {
+      "id": "fit-l2-city",
+      "target_jurisdiction": "fiktiva-city",
+      "option_summary": "Fly lantern drones over the canal market to count the crowd.",
+      "expected_result": "unlawful_at_L2",
+      "expected_citation": {
+        "layer": "L2",
+        "article_id": "L2/fiktiva/union/art-4",
+        "corpus_version": "fiktiva-union@0.1.0+254d205f7f55"
+      },
+      "note": "Control: identical text in the north stack."
+    },
+    {
+      "id": "fit-l2-north",
+      "target_jurisdiction": "fiktiva-north",
+      "option_summary": "Fly lantern drones over the night market to watch the crowd.",
+      "expected_result": "unlawful_at_L2",
+      "expected_citation": {
+        "layer": "L2",
+        "article_id": "L2/fiktiva/north-union/art-4",
+        "corpus_version": "fiktiva-north-union@0.1.0+702b57d16923"
+      },
+      "note": "Control: identical text to the city article, different corpus."
+    },
+    {
+      "id": "fit-l2-city-festival",
+      "target_jurisdiction": "fiktiva-city",
+      "option_summary": "Fly lantern drones over the canal market on a festival day.",
+      "expected_result": "unlawful_at_L2",
+      "expected_citation": {
+        "layer": "L2",
+        "article_id": "L2/fiktiva/union/art-4",
+        "corpus_version": "fiktiva-union@0.1.0+254d205f7f55"
+      },
+      "note": "Trap: L6 art-5 allows drones on festival days, but the higher layer L2 bars them. The expected layer is L2."
+    },
+    {
+      "id": "fit-l3-city",
+      "target_jurisdiction": "fiktiva-city",
+      "option_summary": "Pay for canal cleaning boats from the road budget.",
+      "expected_result": "unlawful_at_L3",
+      "expected_citation": {
+        "layer": "L3",
+        "article_id": "L3/fiktiva/constitution/art-12",
+        "corpus_version": "fiktiva-constitution@0.1.0+aefd9bacd67b"
+      },
+      "note": "Shared constitution in both stacks."
+    },
+    {
+      "id": "fit-l3-north",
+      "target_jurisdiction": "fiktiva-north",
+      "option_summary": "Pay for canal cleaning boats from the road budget.",
+      "expected_result": "unlawful_at_L3",
+      "expected_citation": {
+        "layer": "L3",
+        "article_id": "L3/fiktiva/constitution/art-12",
+        "corpus_version": "fiktiva-constitution@0.1.0+aefd9bacd67b"
+      },
+      "note": "Same article in both stacks."
+    },
+    {
+      "id": "fit-l4-north-fee",
+      "target_jurisdiction": "fiktiva-north",
+      "option_summary": "Charge a fee per waste bag to pay for extra pickups.",
+      "expected_result": "unlawful_at_L4",
+      "expected_citation": {
+        "layer": "L4",
+        "article_id": "L4/fiktiva/north-statutes/art-7",
+        "corpus_version": "fiktiva-north-statutes@0.2.0+335df1e6e07c"
+      },
+      "note": "Planted difference a: lawful in fiktiva-city, unlawful here."
+    },
+    {
+      "id": "fit-l4-city-closure",
+      "target_jurisdiction": "fiktiva-city",
+      "option_summary": "Close the through road for six weeks to run the cleaning pilot.",
+      "expected_result": "unlawful_at_L4",
+      "expected_citation": {
+        "layer": "L4",
+        "article_id": "L4/fiktiva/statutes/art-6",
+        "corpus_version": "fiktiva-statutes@0.1.0+e858abcd9128"
+      },
+      "note": "A closure of more than thirty days needs a ministerial order."
+    },
+    {
+      "id": "fit-l5-city-ferry",
+      "target_jurisdiction": "fiktiva-city",
+      "option_summary": "Change the ferry timetable ourselves to move waste by barge.",
+      "expected_result": "unlawful_at_L5",
+      "expected_citation": {
+        "layer": "L5",
+        "article_id": "L5/fiktiva/region/art-2",
+        "corpus_version": "fiktiva-region@0.1.0+996b73b37cf9"
+      },
+      "note": "Fiktiva North has no regional layer (L5 not_applicable), so this case is city only."
+    },
+    {
+      "id": "fit-l6-city-stall",
+      "target_jurisdiction": "fiktiva-city",
+      "option_summary": "Set up a street stall for reusable cups without a permit.",
+      "expected_result": "unlawful_at_L6",
+      "expected_citation": {
+        "layer": "L6",
+        "article_id": "L6/fiktiva/bylaws/art-3",
+        "corpus_version": "fiktiva-bylaws@0.1.0+6803ee8410e7"
+      },
+      "note": "Planted difference b: a permit is needed here."
+    },
+    {
+      "id": "fit-ctl-city-fee",
+      "target_jurisdiction": "fiktiva-city",
+      "option_summary": "Charge a fee per waste bag to pay for extra pickups.",
+      "expected_result": "lawful",
+      "note": "Control for planted difference a. No city article forbids the fee; lawfulness is silence at L1 to L6 (basis: silence). A reviewer may prefer unknown, see docs/eval-archive.md."
+    },
+    {
+      "id": "fit-ctl-north-stall",
+      "target_jurisdiction": "fiktiva-north",
+      "option_summary": "Set up a street stall for reusable cups and give notice before the first trading day.",
+      "expected_result": "lawful",
+      "expected_citation": {
+        "layer": "L6",
+        "article_id": "L6/fiktiva/north-bylaws/art-3",
+        "corpus_version": "fiktiva-north-bylaws@0.1.0+f4efc4e65a37"
+      },
+      "note": "Control for planted difference b: notice only, no permit."
+    }
+  ]
+}

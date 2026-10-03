@@ -1,0 +1,257 @@
+{
+  "id": "evalrec-s1-city-redirected",
+  "problem_ref": "evalprob-s1-city-redirected",
+  "terminal_state": "redirected",
+  "source": "simulation",
+  "snapshot": {
+    "condition": "Residents report recurring loud explosions and street fights after dark that make people feel unsafe (simulation, synthetic evidence).",
+    "affected": "Residents, small businesses and visitors in the area, as groups.",
+    "place": {
+      "jurisdiction": "Fiktiva City",
+      "coarse_area": "Fiktiva City, canal market quarter"
+    },
+    "observed_facts": [
+      "The invented incident table lists 39 blast reports over four quarters (synthetic)."
+    ],
+    "final_acceptance_criteria": [
+      {
+        "statement": "A public summary lists each incident category and its trend.",
+        "measure": "Summary checked against the invented incident table."
+      },
+      {
+        "statement": "The pilot area shows fewer reported blasts in the pilot season.",
+        "measure": "Count of reports in the pilot season against the baseline."
+      }
+    ]
+  },
+  "context_profile": {
+    "problem_type": "public_safety",
+    "category": "explosives_violence",
+    "population_scale": "<100k",
+    "geography": {
+      "country": "unknown",
+      "region": "Fiktiva City",
+      "settlement_class": "city",
+      "climate_class": "B"
+    },
+    "resource_band": {
+      "people": "<20",
+      "in_kind": "yes"
+    },
+    "budget_band": {
+      "band": "<10k",
+      "currency_class": "upper_middle"
+    },
+    "institutions": [
+      "municipal_safety_dept",
+      "police_liaison_role"
+    ],
+    "legal_stack": [
+      {
+        "layer": "L1",
+        "corpus_version": "fiktiva-rights@0.1.0+dbc8851045a7"
+      },
+      {
+        "layer": "L2",
+        "corpus_version": "fiktiva-union@0.1.0+254d205f7f55"
+      },
+      {
+        "layer": "L3",
+        "corpus_version": "fiktiva-constitution@0.1.0+aefd9bacd67b"
+      },
+      {
+        "layer": "L4",
+        "corpus_version": "fiktiva-statutes@0.1.0+e858abcd9128"
+      },
+      {
+        "layer": "L5",
+        "corpus_version": "fiktiva-region@0.1.0+996b73b37cf9"
+      },
+      {
+        "layer": "L6",
+        "corpus_version": "fiktiva-bylaws@0.1.0+6803ee8410e7"
+      }
+    ],
+    "language": "en",
+    "constraints": [
+      {
+        "type": "legal",
+        "statement": "Prevention duties are split between several bodies."
+      },
+      {
+        "type": "time",
+        "statement": "The pilot must end within one season."
+      }
+    ]
+  },
+  "executed_path": [
+    {
+      "name": "understand_incidents",
+      "goal": "Describe the incident categories and how they changed, with the uncertainty stated.",
+      "criteria": [
+        {
+          "statement": "The stage result is written down.",
+          "measure": "A short public note lists what was found."
+        }
+      ],
+      "outcome": "resolved",
+      "duration_band": "<1m",
+      "cost_band": "none",
+      "depends_on": []
+    },
+    {
+      "name": "map_competences",
+      "goal": "List which bodies hold which duties for prevention and response, as roles.",
+      "criteria": [
+        {
+          "statement": "The stage result is written down.",
+          "measure": "A short public note lists what was found."
+        }
+      ],
+      "outcome": "resolved",
+      "duration_band": "<1m",
+      "cost_band": "none",
+      "depends_on": []
+    },
+    {
+      "name": "design_prevention",
+      "goal": "Choose one prevention option that fits the findings and the duties.",
+      "criteria": [
+        {
+          "statement": "The stage result is written down.",
+          "measure": "A short public note lists what was found."
+        }
+      ],
+      "outcome": "skipped",
+      "duration_band": "unknown",
+      "cost_band": "none",
+      "depends_on": [
+        "understand_incidents",
+        "map_competences"
+      ],
+      "chosen_option": "Improve street lighting and add a staffed evening kiosk."
+    },
+    {
+      "name": "implement_pilot",
+      "goal": "Run the chosen option in a bounded area for a fixed period.",
+      "criteria": [
+        {
+          "statement": "The stage result is written down.",
+          "measure": "A short public note lists what was found."
+        }
+      ],
+      "outcome": "skipped",
+      "duration_band": "unknown",
+      "cost_band": "none",
+      "depends_on": [
+        "design_prevention"
+      ]
+    },
+    {
+      "name": "measure_outcome",
+      "goal": "Measure the result against the criteria and write it down.",
+      "criteria": [
+        {
+          "statement": "The stage result is written down.",
+          "measure": "A short public note lists what was found."
+        }
+      ],
+      "outcome": "skipped",
+      "duration_band": "unknown",
+      "cost_band": "none",
+      "depends_on": [
+        "implement_pilot"
+      ]
+    }
+  ],
+  "options": [
+    {
+      "stage": "design_prevention",
+      "summary": "Improve street lighting and add a staffed evening kiosk.",
+      "legality": "lawful",
+      "chosen": true,
+      "reason": "Both steps fit the duties found and the budget band."
+    },
+    {
+      "stage": "design_prevention",
+      "summary": "Close the underpass at night.",
+      "legality": "unknown",
+      "chosen": false,
+      "reason": "Set aside after the review compared both options."
+    }
+  ],
+  "evidence_refs": [
+    {
+      "uri": "https://evidence.sim.test/archive-eval/s1-city-redirected/1",
+      "tier": "statistics_body",
+      "stage": "understand_incidents"
+    },
+    {
+      "uri": "https://evidence.sim.test/archive-eval/s1-city-redirected/2",
+      "tier": "other"
+    }
+  ],
+  "challenges": [],
+  "costs": {
+    "total_band": "<10k",
+    "currency_class": "upper_middle",
+    "labour_hours_band": "<100",
+    "in_kind": "yes",
+    "none_stated": false
+  },
+  "outcome": {
+    "criteria_results": [
+      {
+        "criterion_ref": 1,
+        "result": "unknown"
+      },
+      {
+        "criterion_ref": 2,
+        "result": "unknown"
+      }
+    ],
+    "summary": "The matter belongs to another office, so the poster was sent there with the findings.",
+    "unresolved": false
+  },
+  "versions": {
+    "policy_version": "base@1.0.0",
+    "schema_version": "1.0.0",
+    "archive_schema_version": "1.0.0",
+    "legal_corpus_versions": [
+      {
+        "layer": "L1",
+        "corpus_version": "fiktiva-rights@0.1.0+dbc8851045a7"
+      },
+      {
+        "layer": "L2",
+        "corpus_version": "fiktiva-union@0.1.0+254d205f7f55"
+      },
+      {
+        "layer": "L3",
+        "corpus_version": "fiktiva-constitution@0.1.0+aefd9bacd67b"
+      },
+      {
+        "layer": "L4",
+        "corpus_version": "fiktiva-statutes@0.1.0+e858abcd9128"
+      },
+      {
+        "layer": "L5",
+        "corpus_version": "fiktiva-region@0.1.0+996b73b37cf9"
+      },
+      {
+        "layer": "L6",
+        "corpus_version": "fiktiva-bylaws@0.1.0+6803ee8410e7"
+      }
+    ]
+  },
+  "attribution": {
+    "credit_text": "Based on a simulated record made for the archive eval set.",
+    "source_url": "https://evidence.sim.test/archive-eval/s1-city-redirected",
+    "license": "CC-BY-4.0"
+  },
+  "quality": {
+    "completeness": 0.9,
+    "ratified": true,
+    "dp_archive_run_id": "run-eval-s1-city-redirected"
+  }
+}

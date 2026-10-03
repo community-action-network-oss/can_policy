@@ -1,0 +1,266 @@
+{
+  "id": "evalrec-s2-city-revise",
+  "problem_ref": "evalprob-s2-city-revise",
+  "terminal_state": "solved",
+  "source": "simulation",
+  "snapshot": {
+    "condition": "The city centre stays dirty although cleaning money is spent every year; bins overflow early in the week (simulation, synthetic evidence).",
+    "affected": "Residents, shops and visitors in the centre, as groups.",
+    "place": {
+      "jurisdiction": "Fiktiva City",
+      "coarse_area": "Fiktiva City, canal market quarter"
+    },
+    "observed_facts": [
+      "The invented cleanliness table shows an index of 58 in the first and last quarter (synthetic)."
+    ],
+    "final_acceptance_criteria": [
+      {
+        "statement": "A baseline cleanliness reading is recorded with its method.",
+        "measure": "Reading checked against the invented cleanliness table."
+      },
+      {
+        "statement": "The pilot zone shows a higher cleanliness index than the baseline.",
+        "measure": "Index in the pilot season against the baseline reading."
+      }
+    ]
+  },
+  "context_profile": {
+    "problem_type": "public_space",
+    "category": "waste_collection",
+    "population_scale": "<100k",
+    "geography": {
+      "country": "unknown",
+      "region": "Fiktiva City",
+      "settlement_class": "city",
+      "climate_class": "B"
+    },
+    "resource_band": {
+      "people": "<20",
+      "in_kind": "yes"
+    },
+    "budget_band": {
+      "band": "<10k",
+      "currency_class": "upper_middle"
+    },
+    "institutions": [
+      "municipal_waste_dept"
+    ],
+    "legal_stack": [
+      {
+        "layer": "L1",
+        "corpus_version": "fiktiva-rights@0.1.0+dbc8851045a7"
+      },
+      {
+        "layer": "L2",
+        "corpus_version": "fiktiva-union@0.1.0+254d205f7f55"
+      },
+      {
+        "layer": "L3",
+        "corpus_version": "fiktiva-constitution@0.1.0+aefd9bacd67b"
+      },
+      {
+        "layer": "L4",
+        "corpus_version": "fiktiva-statutes@0.1.0+e858abcd9128"
+      },
+      {
+        "layer": "L5",
+        "corpus_version": "fiktiva-region@0.1.0+996b73b37cf9"
+      },
+      {
+        "layer": "L6",
+        "corpus_version": "fiktiva-bylaws@0.1.0+6803ee8410e7"
+      }
+    ],
+    "language": "en",
+    "constraints": [
+      {
+        "type": "physical",
+        "statement": "Narrow lanes limit where bins fit."
+      },
+      {
+        "type": "skills",
+        "statement": "Few people can plan collection rounds."
+      }
+    ]
+  },
+  "executed_path": [
+    {
+      "name": "measure_baseline",
+      "goal": "Record the cleanliness index before any change and write the method down.",
+      "criteria": [
+        {
+          "statement": "The stage result is written down.",
+          "measure": "A short public note lists what was found."
+        }
+      ],
+      "outcome": "resolved",
+      "duration_band": "<1m",
+      "cost_band": "none",
+      "depends_on": []
+    },
+    {
+      "name": "collection_design",
+      "goal": "Choose one change to bin capacity, pickup timing or signage.",
+      "criteria": [
+        {
+          "statement": "The stage result is written down.",
+          "measure": "A short public note lists what was found."
+        }
+      ],
+      "outcome": "resolved",
+      "duration_band": "<1m",
+      "cost_band": "none",
+      "depends_on": [
+        "measure_baseline"
+      ],
+      "chosen_option": "Add bins and extra pickups paid from the general budget."
+    },
+    {
+      "name": "enforcement_and_comms",
+      "goal": "Plan plain notices about where waste goes, with no group singled out.",
+      "criteria": [
+        {
+          "statement": "The stage result is written down.",
+          "measure": "A short public note lists what was found."
+        }
+      ],
+      "outcome": "resolved",
+      "duration_band": "<1m",
+      "cost_band": "none",
+      "depends_on": [
+        "measure_baseline"
+      ]
+    },
+    {
+      "name": "pilot",
+      "goal": "Run the change and the notices in a bounded zone for a fixed period.",
+      "criteria": [
+        {
+          "statement": "The stage result is written down.",
+          "measure": "A short public note lists what was found."
+        }
+      ],
+      "outcome": "resolved",
+      "duration_band": "<1m",
+      "cost_band": "<10k",
+      "depends_on": [
+        "collection_design",
+        "enforcement_and_comms"
+      ]
+    },
+    {
+      "name": "measure_result",
+      "goal": "Measure the index again and compare it with the baseline.",
+      "criteria": [
+        {
+          "statement": "The stage result is written down.",
+          "measure": "A short public note lists what was found."
+        }
+      ],
+      "outcome": "resolved",
+      "duration_band": "<1m",
+      "cost_band": "none",
+      "depends_on": [
+        "pilot"
+      ]
+    }
+  ],
+  "options": [
+    {
+      "stage": "collection_design",
+      "summary": "Add bins and extra pickups paid from the general budget.",
+      "legality": "lawful",
+      "chosen": true,
+      "reason": "It needs no new charge and fits the lanes."
+    },
+    {
+      "stage": "collection_design",
+      "summary": "Charge a fee per waste bag to pay for extra pickups.",
+      "legality": "lawful",
+      "chosen": false,
+      "reason": "Set aside after the review compared both options."
+    }
+  ],
+  "evidence_refs": [
+    {
+      "uri": "https://evidence.sim.test/archive-eval/s2-city-revise/1",
+      "tier": "statistics_body",
+      "stage": "measure_baseline"
+    },
+    {
+      "uri": "https://evidence.sim.test/archive-eval/s2-city-revise/2",
+      "tier": "other"
+    }
+  ],
+  "challenges": [
+    {
+      "stage": "collection_design",
+      "tried": "First draft of the options leaned on one source only.",
+      "why_failed_or_blocked": "A volunteer review asked for a second source and a cost check.",
+      "kind": "evidence",
+      "resolution": "Added a second source and a cost band, then the stage was accepted."
+    }
+  ],
+  "costs": {
+    "total_band": "<10k",
+    "currency_class": "upper_middle",
+    "labour_hours_band": "<100",
+    "in_kind": "yes",
+    "none_stated": false
+  },
+  "outcome": {
+    "criteria_results": [
+      {
+        "criterion_ref": 1,
+        "result": "met"
+      },
+      {
+        "criterion_ref": 2,
+        "result": "partly"
+      }
+    ],
+    "summary": "The pilot met the first criterion and partly met the second after the review changes.",
+    "unresolved": false
+  },
+  "versions": {
+    "policy_version": "base@1.0.0",
+    "schema_version": "1.0.0",
+    "archive_schema_version": "1.0.0",
+    "legal_corpus_versions": [
+      {
+        "layer": "L1",
+        "corpus_version": "fiktiva-rights@0.1.0+dbc8851045a7"
+      },
+      {
+        "layer": "L2",
+        "corpus_version": "fiktiva-union@0.1.0+254d205f7f55"
+      },
+      {
+        "layer": "L3",
+        "corpus_version": "fiktiva-constitution@0.1.0+aefd9bacd67b"
+      },
+      {
+        "layer": "L4",
+        "corpus_version": "fiktiva-statutes@0.1.0+e858abcd9128"
+      },
+      {
+        "layer": "L5",
+        "corpus_version": "fiktiva-region@0.1.0+996b73b37cf9"
+      },
+      {
+        "layer": "L6",
+        "corpus_version": "fiktiva-bylaws@0.1.0+6803ee8410e7"
+      }
+    ]
+  },
+  "attribution": {
+    "credit_text": "Based on a simulated record made for the archive eval set.",
+    "source_url": "https://evidence.sim.test/archive-eval/s2-city-revise",
+    "license": "CC-BY-4.0"
+  },
+  "quality": {
+    "completeness": 0.9,
+    "ratified": true,
+    "dp_archive_run_id": "run-eval-s2-city-revise"
+  }
+}

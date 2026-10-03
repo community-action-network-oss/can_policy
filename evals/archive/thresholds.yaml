@@ -1,0 +1,40 @@
+# Archive eval thresholds (docs/design/ai/archive-reuse.md section 10). Defaults the founder may change.
+# Ranking and fusion numbers are NOT repeated here: they live in limits.yaml under archive.* and are read from there.
+# FAKE RECORDINGS NEVER COUNT. Nothing in this set can satisfy graduation or choose an embedding model
+# until real model runs exist (see simulation/thresholds.yaml fake_recordings_satisfy).
+kind: archive-eval-thresholds
+schema_version: 1
+provisional: true
+fake_recordings_satisfy: false
+min_sizes:
+  records: 24
+  queries: 30
+  layers_with_planted_illegality: 6
+limits_used:
+  - archive.rank_weights
+  - archive.min_candidate_score
+  - archive.rrf_k
+  - archive.top_k_fusion
+  - archive.top_n_shown
+  - archive.cross_language_recall_floor
+recall_at_k:
+  k_from_limit: archive.top_n_shown
+  min: 0.8
+  why: Recall is measured at the number of suggestions a poster sees (top_n_shown), so a relevant record outside that list counts as missed. 0.8 is the design default.
+ndcg_at_k:
+  k: 10
+  min: 0.7
+  why: Graded relevance (2 same seed and place, 1 same seed elsewhere) should be ordered well over a longer list than the poster sees. 0.7 is the design default.
+cross_language_recall_gap:
+  max: 0.15
+  floor_from_limit: archive.cross_language_recall_floor
+  why: A query in Dutch, Swahili or Hindi may lose at most 0.15 recall against English, and no language may fall under the cross-language recall floor in limits.yaml.
+explanation_accuracy:
+  min: 0.95
+  why: Every stated difference is shown to a person next to a decision. A false one misleads, so only rare misses are tolerated.
+fit_planted_illegality_recall:
+  min: 1.0
+  why: Suggesting an illegal path is the harm to avoid. Every planted illegal-at-L1 to L6 step must be flagged.
+fit_over_budget_detection:
+  min: 1.0
+  why: A path the poster cannot pay for must always show as exceeds, with the gap.

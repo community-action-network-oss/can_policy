@@ -1,0 +1,250 @@
+{
+  "id": "evalrec-s2-north-redirected",
+  "problem_ref": "evalprob-s2-north-redirected",
+  "terminal_state": "redirected",
+  "source": "simulation",
+  "snapshot": {
+    "condition": "The city centre stays dirty although cleaning money is spent every year; bins overflow early in the week (simulation, synthetic evidence).",
+    "affected": "Residents, shops and visitors in the centre, as groups.",
+    "place": {
+      "jurisdiction": "Fiktiva North",
+      "coarse_area": "Fiktiva North, market lanes"
+    },
+    "observed_facts": [
+      "The invented cleanliness table shows an index of 58 in the first and last quarter (synthetic)."
+    ],
+    "final_acceptance_criteria": [
+      {
+        "statement": "A baseline cleanliness reading is recorded with its method.",
+        "measure": "Reading checked against the invented cleanliness table."
+      },
+      {
+        "statement": "The pilot zone shows a higher cleanliness index than the baseline.",
+        "measure": "Index in the pilot season against the baseline reading."
+      }
+    ]
+  },
+  "context_profile": {
+    "problem_type": "public_space",
+    "category": "waste_collection",
+    "population_scale": "<10k",
+    "geography": {
+      "country": "unknown",
+      "region": "Fiktiva North",
+      "settlement_class": "town",
+      "climate_class": "D"
+    },
+    "resource_band": {
+      "people": "<5",
+      "in_kind": "yes"
+    },
+    "budget_band": {
+      "band": "<1k",
+      "currency_class": "upper_middle"
+    },
+    "institutions": [
+      "municipal_waste_dept"
+    ],
+    "legal_stack": [
+      {
+        "layer": "L1",
+        "corpus_version": "fiktiva-rights@0.1.0+dbc8851045a7"
+      },
+      {
+        "layer": "L2",
+        "corpus_version": "fiktiva-north-union@0.1.0+702b57d16923"
+      },
+      {
+        "layer": "L3",
+        "corpus_version": "fiktiva-constitution@0.1.0+aefd9bacd67b"
+      },
+      {
+        "layer": "L4",
+        "corpus_version": "fiktiva-north-statutes@0.2.0+335df1e6e07c"
+      },
+      {
+        "layer": "L6",
+        "corpus_version": "fiktiva-north-bylaws@0.1.0+f4efc4e65a37"
+      }
+    ],
+    "language": "en",
+    "constraints": [
+      {
+        "type": "physical",
+        "statement": "Narrow lanes limit where bins fit."
+      },
+      {
+        "type": "skills",
+        "statement": "Few people can plan collection rounds."
+      }
+    ]
+  },
+  "executed_path": [
+    {
+      "name": "measure_baseline",
+      "goal": "Record the cleanliness index before any change and write the method down.",
+      "criteria": [
+        {
+          "statement": "The stage result is written down.",
+          "measure": "A short public note lists what was found."
+        }
+      ],
+      "outcome": "resolved",
+      "duration_band": "<1m",
+      "cost_band": "none",
+      "depends_on": []
+    },
+    {
+      "name": "collection_design",
+      "goal": "Choose one change to bin capacity, pickup timing or signage.",
+      "criteria": [
+        {
+          "statement": "The stage result is written down.",
+          "measure": "A short public note lists what was found."
+        }
+      ],
+      "outcome": "resolved",
+      "duration_band": "<1m",
+      "cost_band": "none",
+      "depends_on": [
+        "measure_baseline"
+      ],
+      "chosen_option": "Add bins and extra pickups paid from the general budget."
+    },
+    {
+      "name": "enforcement_and_comms",
+      "goal": "Plan plain notices about where waste goes, with no group singled out.",
+      "criteria": [
+        {
+          "statement": "The stage result is written down.",
+          "measure": "A short public note lists what was found."
+        }
+      ],
+      "outcome": "skipped",
+      "duration_band": "unknown",
+      "cost_band": "none",
+      "depends_on": [
+        "measure_baseline"
+      ]
+    },
+    {
+      "name": "pilot",
+      "goal": "Run the change and the notices in a bounded zone for a fixed period.",
+      "criteria": [
+        {
+          "statement": "The stage result is written down.",
+          "measure": "A short public note lists what was found."
+        }
+      ],
+      "outcome": "skipped",
+      "duration_band": "unknown",
+      "cost_band": "none",
+      "depends_on": [
+        "collection_design",
+        "enforcement_and_comms"
+      ]
+    },
+    {
+      "name": "measure_result",
+      "goal": "Measure the index again and compare it with the baseline.",
+      "criteria": [
+        {
+          "statement": "The stage result is written down.",
+          "measure": "A short public note lists what was found."
+        }
+      ],
+      "outcome": "skipped",
+      "duration_band": "unknown",
+      "cost_band": "none",
+      "depends_on": [
+        "pilot"
+      ]
+    }
+  ],
+  "options": [
+    {
+      "stage": "collection_design",
+      "summary": "Add bins and extra pickups paid from the general budget.",
+      "legality": "lawful",
+      "chosen": true,
+      "reason": "It needs no new charge and fits the lanes."
+    },
+    {
+      "stage": "collection_design",
+      "summary": "Charge a fee per waste bag to pay for extra pickups.",
+      "legality": "unlawful_at_L4",
+      "chosen": false,
+      "reason": "Set aside after the review compared both options."
+    }
+  ],
+  "evidence_refs": [
+    {
+      "uri": "https://evidence.sim.test/archive-eval/s2-north-redirected/1",
+      "tier": "statistics_body",
+      "stage": "measure_baseline"
+    },
+    {
+      "uri": "https://evidence.sim.test/archive-eval/s2-north-redirected/2",
+      "tier": "other"
+    }
+  ],
+  "challenges": [],
+  "costs": {
+    "total_band": "<1k",
+    "currency_class": "upper_middle",
+    "labour_hours_band": "<100",
+    "in_kind": "yes",
+    "none_stated": false
+  },
+  "outcome": {
+    "criteria_results": [
+      {
+        "criterion_ref": 1,
+        "result": "unknown"
+      },
+      {
+        "criterion_ref": 2,
+        "result": "unknown"
+      }
+    ],
+    "summary": "The matter belongs to another office, so the poster was sent there with the findings.",
+    "unresolved": false
+  },
+  "versions": {
+    "policy_version": "base@1.0.0",
+    "schema_version": "1.0.0",
+    "archive_schema_version": "1.0.0",
+    "legal_corpus_versions": [
+      {
+        "layer": "L1",
+        "corpus_version": "fiktiva-rights@0.1.0+dbc8851045a7"
+      },
+      {
+        "layer": "L2",
+        "corpus_version": "fiktiva-north-union@0.1.0+702b57d16923"
+      },
+      {
+        "layer": "L3",
+        "corpus_version": "fiktiva-constitution@0.1.0+aefd9bacd67b"
+      },
+      {
+        "layer": "L4",
+        "corpus_version": "fiktiva-north-statutes@0.2.0+335df1e6e07c"
+      },
+      {
+        "layer": "L6",
+        "corpus_version": "fiktiva-north-bylaws@0.1.0+f4efc4e65a37"
+      }
+    ]
+  },
+  "attribution": {
+    "credit_text": "Based on a simulated record made for the archive eval set.",
+    "source_url": "https://evidence.sim.test/archive-eval/s2-north-redirected",
+    "license": "CC-BY-4.0"
+  },
+  "quality": {
+    "completeness": 0.9,
+    "ratified": true,
+    "dp_archive_run_id": "run-eval-s2-north-redirected"
+  }
+}

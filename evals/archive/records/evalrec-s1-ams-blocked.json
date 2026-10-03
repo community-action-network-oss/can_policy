@@ -1,0 +1,263 @@
+{
+  "id": "evalrec-s1-ams-blocked",
+  "problem_ref": "evalprob-s1-ams-blocked",
+  "terminal_state": "closed",
+  "source": "simulation",
+  "snapshot": {
+    "condition": "Bewoners melden terugkerende harde explosies en ruzies op straat na donker waardoor mensen zich onveilig voelen (simulatie, synthetisch bewijs).",
+    "affected": "Bewoners, kleine ondernemers en bezoekers van het gebied, als groepen.",
+    "place": {
+      "jurisdiction": "Amsterdam",
+      "coarse_area": "Amsterdam, districts not named"
+    },
+    "observed_facts": [
+      "De verzonnen incidententabel noemt 39 meldingen van knallen in vier kwartalen (synthetisch)."
+    ],
+    "final_acceptance_criteria": [
+      {
+        "statement": "Een openbare samenvatting noemt elke incidentcategorie en de trend.",
+        "measure": "Samenvatting getoetst aan de verzonnen incidententabel."
+      },
+      {
+        "statement": "Het proefgebied toont minder gemelde knallen in het proefseizoen.",
+        "measure": "Aantal meldingen in het proefseizoen naast de nulmeting."
+      }
+    ]
+  },
+  "context_profile": {
+    "problem_type": "public_safety",
+    "category": "explosives_violence",
+    "population_scale": "<1M",
+    "geography": {
+      "country": "NL",
+      "region": "Noord-Holland",
+      "settlement_class": "metro",
+      "climate_class": "C"
+    },
+    "resource_band": {
+      "people": "<20",
+      "in_kind": "yes"
+    },
+    "budget_band": {
+      "band": "<100k",
+      "currency_class": "high_income"
+    },
+    "institutions": [
+      "municipal_safety_dept",
+      "police_liaison_role"
+    ],
+    "legal_stack": [
+      {
+        "layer": "L2",
+        "corpus_version": "nl-eu-law-index@0.1.0+d9bdf4d078ea"
+      },
+      {
+        "layer": "L4",
+        "corpus_version": "nl-statutes@0.1.0+a81a14382ce9"
+      },
+      {
+        "layer": "L5",
+        "corpus_version": "nl-noord-holland@0.1.0+e299b986587e"
+      },
+      {
+        "layer": "L6",
+        "corpus_version": "nl-amsterdam-bylaws@0.1.0+9a2ae679b76b"
+      }
+    ],
+    "language": "nl",
+    "constraints": [
+      {
+        "type": "legal",
+        "statement": "Prevention duties are split between several bodies."
+      },
+      {
+        "type": "time",
+        "statement": "The pilot must end within one season."
+      }
+    ]
+  },
+  "executed_path": [
+    {
+      "name": "understand_incidents",
+      "goal": "Beschrijf de incidentcategorieen en hun verloop, met de onzekerheid erbij.",
+      "criteria": [
+        {
+          "statement": "Het resultaat van de stap is opgeschreven.",
+          "measure": "Een korte openbare notitie noemt wat is gevonden."
+        }
+      ],
+      "outcome": "resolved",
+      "duration_band": "<1m",
+      "cost_band": "none",
+      "depends_on": []
+    },
+    {
+      "name": "map_competences",
+      "goal": "Noem welke instanties welke taken hebben bij preventie en reactie, als rollen.",
+      "criteria": [
+        {
+          "statement": "Het resultaat van de stap is opgeschreven.",
+          "measure": "Een korte openbare notitie noemt wat is gevonden."
+        }
+      ],
+      "outcome": "resolved",
+      "duration_band": "<1m",
+      "cost_band": "none",
+      "depends_on": []
+    },
+    {
+      "name": "design_prevention",
+      "goal": "Kies een preventieve maatregel die past bij de bevindingen en de taken.",
+      "criteria": [
+        {
+          "statement": "Het resultaat van de stap is opgeschreven.",
+          "measure": "Een korte openbare notitie noemt wat is gevonden."
+        }
+      ],
+      "outcome": "blocked",
+      "duration_band": "<1y",
+      "cost_band": "none",
+      "depends_on": [
+        "understand_incidents",
+        "map_competences"
+      ],
+      "chosen_option": "Verbeter de straatverlichting en zet een bemand avondkiosk neer."
+    },
+    {
+      "name": "implement_pilot",
+      "goal": "Voer de gekozen maatregel uit in een afgebakend gebied voor een vaste periode.",
+      "criteria": [
+        {
+          "statement": "Het resultaat van de stap is opgeschreven.",
+          "measure": "Een korte openbare notitie noemt wat is gevonden."
+        }
+      ],
+      "outcome": "abandoned",
+      "duration_band": "<1w",
+      "cost_band": "none",
+      "depends_on": [
+        "design_prevention"
+      ]
+    },
+    {
+      "name": "measure_outcome",
+      "goal": "Meet het resultaat aan de criteria en leg het vast.",
+      "criteria": [
+        {
+          "statement": "Het resultaat van de stap is opgeschreven.",
+          "measure": "Een korte openbare notitie noemt wat is gevonden."
+        }
+      ],
+      "outcome": "abandoned",
+      "duration_band": "<1w",
+      "cost_band": "none",
+      "depends_on": [
+        "implement_pilot"
+      ]
+    }
+  ],
+  "options": [
+    {
+      "stage": "design_prevention",
+      "summary": "Verbeter de straatverlichting en zet een bemand avondkiosk neer.",
+      "legality": "lawful",
+      "chosen": true,
+      "reason": "Beide stappen passen bij de gevonden taken en de budgetklasse."
+    },
+    {
+      "stage": "design_prevention",
+      "summary": "Sluit de onderdoorgang 's nachts af.",
+      "legality": "unknown",
+      "chosen": false,
+      "reason": "Terzijde gelegd nadat de review beide opties vergeleek."
+    }
+  ],
+  "evidence_refs": [
+    {
+      "uri": "https://evidence.sim.test/archive-eval/s1-ams-blocked/1",
+      "tier": "statistics_body",
+      "stage": "understand_incidents"
+    },
+    {
+      "uri": "https://evidence.sim.test/archive-eval/s1-ams-blocked/2",
+      "tier": "other"
+    }
+  ],
+  "challenges": [
+    {
+      "stage": "design_prevention",
+      "tried": "De optie gekozen en de bijbehorende goedkeuring gevraagd.",
+      "why_failed_or_blocked": "De gekozen optie is verboden door de wet op de getoonde laag.",
+      "kind": "institutional",
+      "resolution": "Een rechtmatig alternatief werd voorgesteld maar de indiener sloot het probleem."
+    },
+    {
+      "stage": "implement_pilot",
+      "tried": "Deze stap voorbereid voor het moment dat de goedkeuring zou komen.",
+      "why_failed_or_blocked": "De eerdere stap werd nooit afgerond, dus deze kon niet starten.",
+      "kind": "institutional",
+      "resolution": "unresolved"
+    },
+    {
+      "stage": "measure_outcome",
+      "tried": "Deze stap voorbereid voor het moment dat de goedkeuring zou komen.",
+      "why_failed_or_blocked": "De eerdere stap werd nooit afgerond, dus deze kon niet starten.",
+      "kind": "institutional",
+      "resolution": "unresolved"
+    }
+  ],
+  "costs": {
+    "total_band": "<100k",
+    "currency_class": "high_income",
+    "labour_hours_band": "<100",
+    "in_kind": "yes",
+    "none_stated": false
+  },
+  "outcome": {
+    "criteria_results": [
+      {
+        "criterion_ref": 1,
+        "result": "not_met"
+      },
+      {
+        "criterion_ref": 2,
+        "result": "not_met"
+      }
+    ],
+    "summary": "Het probleem is gesloten omdat de gekozen optie hier niet rechtmatig kan.",
+    "unresolved": true
+  },
+  "versions": {
+    "policy_version": "base@1.0.0",
+    "schema_version": "1.0.0",
+    "archive_schema_version": "1.0.0",
+    "legal_corpus_versions": [
+      {
+        "layer": "L2",
+        "corpus_version": "nl-eu-law-index@0.1.0+d9bdf4d078ea"
+      },
+      {
+        "layer": "L4",
+        "corpus_version": "nl-statutes@0.1.0+a81a14382ce9"
+      },
+      {
+        "layer": "L5",
+        "corpus_version": "nl-noord-holland@0.1.0+e299b986587e"
+      },
+      {
+        "layer": "L6",
+        "corpus_version": "nl-amsterdam-bylaws@0.1.0+9a2ae679b76b"
+      }
+    ]
+  },
+  "attribution": {
+    "credit_text": "Gebaseerd op een gesimuleerd record voor de archief-evaluatieset.",
+    "source_url": "https://evidence.sim.test/archive-eval/s1-ams-blocked",
+    "license": "CC-BY-4.0"
+  },
+  "quality": {
+    "completeness": 0.9,
+    "ratified": true,
+    "dp_archive_run_id": "run-eval-s1-ams-blocked"
+  }
+}

@@ -51,7 +51,7 @@ You can contribute:
 - **Look-alike records** that should not be found, to test near misses.
 - **Planted legality faults**: a step in a path that is illegal at one named layer, so we can test that it is flagged. State the layer and the article.
 
-These belong under `evals/archive` in this repo. That folder is added by unit 13-u18. Until it exists, use the "Add a labeled example" form and say "archive eval"; a maintainer will place your record.
+These belong under `evals/archive` in this repo (see `docs/eval-archive.md` for the layout and how to add a record or query). The set is synthetic only: no real people or real incidents. If you do not use git, use the "Add a labeled example" form and say "archive eval"; a maintainer will place your item.
 
 A good record:
 - is entirely invented, with an invented place (Fiktiva or a made-up town), invented organisations and invented names that cannot be mistaken for real people;

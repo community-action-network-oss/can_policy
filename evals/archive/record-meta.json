@@ -1,0 +1,229 @@
+{
+  "kind": "archive-eval-record-meta",
+  "synthetic": true,
+  "note": "Seed, jurisdiction and variant of each eval record. stale_pin marks a corpus version that is older than the current pack pin on purpose (its hash part is not a real pack hash).",
+  "records": [
+    {
+      "id": "evalrec-s1-ams-happy",
+      "seed": "seed-1",
+      "jurisdiction": "nl-amsterdam",
+      "variant": "happy",
+      "language": "en",
+      "synthetic": true
+    },
+    {
+      "id": "evalrec-s1-ams-revise",
+      "seed": "seed-1",
+      "jurisdiction": "nl-amsterdam",
+      "variant": "revise",
+      "language": "nl",
+      "synthetic": true
+    },
+    {
+      "id": "evalrec-s1-ams-stuck",
+      "seed": "seed-1",
+      "jurisdiction": "nl-amsterdam",
+      "variant": "stuck",
+      "language": "en",
+      "synthetic": true
+    },
+    {
+      "id": "evalrec-s1-ams-blocked",
+      "seed": "seed-1",
+      "jurisdiction": "nl-amsterdam",
+      "variant": "blocked",
+      "language": "nl",
+      "synthetic": true
+    },
+    {
+      "id": "evalrec-s1-ams-redirected",
+      "seed": "seed-1",
+      "jurisdiction": "nl-amsterdam",
+      "variant": "redirected",
+      "language": "en",
+      "synthetic": true
+    },
+    {
+      "id": "evalrec-s1-city-happy",
+      "seed": "seed-1",
+      "jurisdiction": "fiktiva-city",
+      "variant": "happy",
+      "language": "en",
+      "synthetic": true
+    },
+    {
+      "id": "evalrec-s1-city-blocked",
+      "seed": "seed-1",
+      "jurisdiction": "fiktiva-city",
+      "variant": "blocked",
+      "language": "en",
+      "synthetic": true
+    },
+    {
+      "id": "evalrec-s1-city-redirected",
+      "seed": "seed-1",
+      "jurisdiction": "fiktiva-city",
+      "variant": "redirected",
+      "language": "en",
+      "synthetic": true
+    },
+    {
+      "id": "evalrec-s1-north-happy",
+      "seed": "seed-1",
+      "jurisdiction": "fiktiva-north",
+      "variant": "happy",
+      "language": "en",
+      "synthetic": true
+    },
+    {
+      "id": "evalrec-s1-north-stuck",
+      "seed": "seed-1",
+      "jurisdiction": "fiktiva-north",
+      "variant": "stuck",
+      "language": "en",
+      "synthetic": true
+    },
+    {
+      "id": "evalrec-s1-north-revise",
+      "seed": "seed-1",
+      "jurisdiction": "fiktiva-north",
+      "variant": "revise",
+      "language": "en",
+      "synthetic": true
+    },
+    {
+      "id": "evalrec-s1-north-blocked",
+      "seed": "seed-1",
+      "jurisdiction": "fiktiva-north",
+      "variant": "blocked",
+      "language": "en",
+      "synthetic": true
+    },
+    {
+      "id": "evalrec-s2-ams-happy",
+      "seed": "seed-2",
+      "jurisdiction": "nl-amsterdam",
+      "variant": "happy",
+      "language": "nl",
+      "synthetic": true
+    },
+    {
+      "id": "evalrec-s2-ams-revise",
+      "seed": "seed-2",
+      "jurisdiction": "nl-amsterdam",
+      "variant": "revise",
+      "language": "en",
+      "synthetic": true
+    },
+    {
+      "id": "evalrec-s2-ams-stuck",
+      "seed": "seed-2",
+      "jurisdiction": "nl-amsterdam",
+      "variant": "stuck",
+      "language": "nl",
+      "synthetic": true
+    },
+    {
+      "id": "evalrec-s2-ams-blocked",
+      "seed": "seed-2",
+      "jurisdiction": "nl-amsterdam",
+      "variant": "blocked",
+      "language": "en",
+      "synthetic": true
+    },
+    {
+      "id": "evalrec-s2-ams-redirected",
+      "seed": "seed-2",
+      "jurisdiction": "nl-amsterdam",
+      "variant": "redirected",
+      "language": "nl",
+      "synthetic": true
+    },
+    {
+      "id": "evalrec-s2-city-happy",
+      "seed": "seed-2",
+      "jurisdiction": "fiktiva-city",
+      "variant": "happy",
+      "language": "en",
+      "fee_option": true,
+      "synthetic": true
+    },
+    {
+      "id": "evalrec-s2-city-revise",
+      "seed": "seed-2",
+      "jurisdiction": "fiktiva-city",
+      "variant": "revise",
+      "language": "en",
+      "synthetic": true
+    },
+    {
+      "id": "evalrec-s2-city-stuck",
+      "seed": "seed-2",
+      "jurisdiction": "fiktiva-city",
+      "variant": "stuck",
+      "language": "en",
+      "synthetic": true
+    },
+    {
+      "id": "evalrec-s2-city-blocked",
+      "seed": "seed-2",
+      "jurisdiction": "fiktiva-city",
+      "variant": "blocked",
+      "language": "en",
+      "synthetic": true
+    },
+    {
+      "id": "evalrec-s2-city-redirected",
+      "seed": "seed-2",
+      "jurisdiction": "fiktiva-city",
+      "variant": "redirected",
+      "language": "en",
+      "synthetic": true
+    },
+    {
+      "id": "evalrec-s2-north-happy",
+      "seed": "seed-2",
+      "jurisdiction": "fiktiva-north",
+      "variant": "happy",
+      "language": "en",
+      "synthetic": true
+    },
+    {
+      "id": "evalrec-s2-north-blocked",
+      "seed": "seed-2",
+      "jurisdiction": "fiktiva-north",
+      "variant": "blocked",
+      "language": "en",
+      "fee_option": true,
+      "synthetic": true
+    },
+    {
+      "id": "evalrec-s2-north-stuck",
+      "seed": "seed-2",
+      "jurisdiction": "fiktiva-north",
+      "variant": "stuck",
+      "language": "en",
+      "synthetic": true
+    },
+    {
+      "id": "evalrec-s2-north-redirected",
+      "seed": "seed-2",
+      "jurisdiction": "fiktiva-north",
+      "variant": "redirected",
+      "language": "en",
+      "synthetic": true
+    },
+    {
+      "id": "evalrec-s2-north-happy-old",
+      "seed": "seed-2",
+      "jurisdiction": "fiktiva-north",
+      "variant": "happy",
+      "language": "en",
+      "stale_pin": {
+        "layer": "L4",
+        "corpus_version": "fiktiva-north-statutes@0.1.0+000000000001"
+      },
+      "synthetic": true
+    }
+  ]
+}

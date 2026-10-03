@@ -1,0 +1,1102 @@
+{
+  "kind": "archive-eval-queries",
+  "synthetic": true,
+  "queries": [
+    {
+      "id": "q-para-1",
+      "group": "paraphrase",
+      "synthetic": true,
+      "language": "en",
+      "jurisdiction": "nl-amsterdam",
+      "seed_condition": "seed-1",
+      "draft_text": "Residents of an Amsterdam district are afraid to go out in the evening. There have been repeated blasts and violent scenes. We would like the situation described properly and one prevention measure tried out.",
+      "context_profile": {
+        "problem_type": "public_safety",
+        "category": "explosives_violence",
+        "population_scale": "<1M",
+        "geography": {
+          "country": "NL",
+          "region": "Noord-Holland",
+          "settlement_class": "metro",
+          "climate_class": "C"
+        },
+        "resource_band": {
+          "people": "<20",
+          "in_kind": "yes"
+        },
+        "budget_band": {
+          "band": "<100k",
+          "currency_class": "high_income"
+        },
+        "institutions": [
+          "municipal_safety_dept",
+          "police_liaison_role"
+        ],
+        "legal_stack": [
+          {
+            "layer": "L2",
+            "corpus_version": "nl-eu-law-index@0.1.0+d9bdf4d078ea"
+          },
+          {
+            "layer": "L4",
+            "corpus_version": "nl-statutes@0.1.0+a81a14382ce9"
+          },
+          {
+            "layer": "L5",
+            "corpus_version": "nl-noord-holland@0.1.0+e299b986587e"
+          },
+          {
+            "layer": "L6",
+            "corpus_version": "nl-amsterdam-bylaws@0.1.0+9a2ae679b76b"
+          }
+        ],
+        "language": "en",
+        "constraints": [
+          {
+            "type": "legal",
+            "statement": "Prevention duties are split between several bodies."
+          },
+          {
+            "type": "time",
+            "statement": "The pilot must end within one season."
+          }
+        ]
+      },
+      "judgments": [
+        {
+          "record_id": "evalrec-s1-ams-happy",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s1-ams-revise",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s1-ams-stuck",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s1-ams-blocked",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s1-ams-redirected",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s1-city-happy",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-city-blocked",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-city-redirected",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-north-happy",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-north-stuck",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-north-revise",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-north-blocked",
+          "grade": 1
+        }
+      ],
+      "relevant_record_ids": [
+        "evalrec-s1-ams-happy",
+        "evalrec-s1-ams-revise",
+        "evalrec-s1-ams-stuck",
+        "evalrec-s1-ams-blocked",
+        "evalrec-s1-ams-redirected",
+        "evalrec-s1-city-happy",
+        "evalrec-s1-city-blocked",
+        "evalrec-s1-city-redirected",
+        "evalrec-s1-north-happy",
+        "evalrec-s1-north-stuck",
+        "evalrec-s1-north-revise",
+        "evalrec-s1-north-blocked"
+      ],
+      "expect_empty": false,
+      "paraphrase_of": "q-core-c1"
+    },
+    {
+      "id": "q-para-2",
+      "group": "paraphrase",
+      "synthetic": true,
+      "language": "en",
+      "jurisdiction": "nl-amsterdam",
+      "seed_condition": "seed-1",
+      "draft_text": "Explosions and street violence keep happening in Amsterdam and people feel less safe at night. Can the cause be mapped, the responsible bodies listed, and a small pilot run?",
+      "context_profile": {
+        "problem_type": "public_safety",
+        "category": "explosives_violence",
+        "population_scale": "<1M",
+        "geography": {
+          "country": "NL",
+          "region": "Noord-Holland",
+          "settlement_class": "metro",
+          "climate_class": "C"
+        },
+        "resource_band": {
+          "people": "<20",
+          "in_kind": "yes"
+        },
+        "budget_band": {
+          "band": "<100k",
+          "currency_class": "high_income"
+        },
+        "institutions": [
+          "municipal_safety_dept",
+          "police_liaison_role"
+        ],
+        "legal_stack": [
+          {
+            "layer": "L2",
+            "corpus_version": "nl-eu-law-index@0.1.0+d9bdf4d078ea"
+          },
+          {
+            "layer": "L4",
+            "corpus_version": "nl-statutes@0.1.0+a81a14382ce9"
+          },
+          {
+            "layer": "L5",
+            "corpus_version": "nl-noord-holland@0.1.0+e299b986587e"
+          },
+          {
+            "layer": "L6",
+            "corpus_version": "nl-amsterdam-bylaws@0.1.0+9a2ae679b76b"
+          }
+        ],
+        "language": "en",
+        "constraints": [
+          {
+            "type": "legal",
+            "statement": "Prevention duties are split between several bodies."
+          },
+          {
+            "type": "time",
+            "statement": "The pilot must end within one season."
+          }
+        ]
+      },
+      "judgments": [
+        {
+          "record_id": "evalrec-s1-ams-happy",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s1-ams-revise",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s1-ams-stuck",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s1-ams-blocked",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s1-ams-redirected",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s1-city-happy",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-city-blocked",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-city-redirected",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-north-happy",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-north-stuck",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-north-revise",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-north-blocked",
+          "grade": 1
+        }
+      ],
+      "relevant_record_ids": [
+        "evalrec-s1-ams-happy",
+        "evalrec-s1-ams-revise",
+        "evalrec-s1-ams-stuck",
+        "evalrec-s1-ams-blocked",
+        "evalrec-s1-ams-redirected",
+        "evalrec-s1-city-happy",
+        "evalrec-s1-city-blocked",
+        "evalrec-s1-city-redirected",
+        "evalrec-s1-north-happy",
+        "evalrec-s1-north-stuck",
+        "evalrec-s1-north-revise",
+        "evalrec-s1-north-blocked"
+      ],
+      "expect_empty": false,
+      "paraphrase_of": "q-core-c1"
+    },
+    {
+      "id": "q-para-3",
+      "group": "paraphrase",
+      "synthetic": true,
+      "language": "en",
+      "jurisdiction": "nl-amsterdam",
+      "seed_condition": "seed-2",
+      "draft_text": "Despite high cleaning spending, the centre of Amsterdam does not get cleaner. Litter bins fill up too soon and pickups seem badly timed. We propose measuring the current state, then changing bin capacity or pickup times.",
+      "context_profile": {
+        "problem_type": "public_space",
+        "category": "waste_collection",
+        "population_scale": "<1M",
+        "geography": {
+          "country": "NL",
+          "region": "Noord-Holland",
+          "settlement_class": "metro",
+          "climate_class": "C"
+        },
+        "resource_band": {
+          "people": "<20",
+          "in_kind": "yes"
+        },
+        "budget_band": {
+          "band": "<100k",
+          "currency_class": "high_income"
+        },
+        "institutions": [
+          "municipal_waste_dept"
+        ],
+        "legal_stack": [
+          {
+            "layer": "L2",
+            "corpus_version": "nl-eu-law-index@0.1.0+d9bdf4d078ea"
+          },
+          {
+            "layer": "L4",
+            "corpus_version": "nl-statutes@0.1.0+a81a14382ce9"
+          },
+          {
+            "layer": "L5",
+            "corpus_version": "nl-noord-holland@0.1.0+e299b986587e"
+          },
+          {
+            "layer": "L6",
+            "corpus_version": "nl-amsterdam-bylaws@0.1.0+9a2ae679b76b"
+          }
+        ],
+        "language": "en",
+        "constraints": [
+          {
+            "type": "physical",
+            "statement": "Narrow lanes limit where bins fit."
+          },
+          {
+            "type": "skills",
+            "statement": "Few people can plan collection rounds."
+          }
+        ]
+      },
+      "judgments": [
+        {
+          "record_id": "evalrec-s2-ams-happy",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-ams-revise",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-ams-stuck",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-ams-blocked",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-ams-redirected",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-city-happy",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-city-revise",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-city-stuck",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-city-blocked",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-city-redirected",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-north-happy",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-north-blocked",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-north-stuck",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-north-redirected",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-north-happy-old",
+          "grade": 1
+        }
+      ],
+      "relevant_record_ids": [
+        "evalrec-s2-ams-happy",
+        "evalrec-s2-ams-revise",
+        "evalrec-s2-ams-stuck",
+        "evalrec-s2-ams-blocked",
+        "evalrec-s2-ams-redirected",
+        "evalrec-s2-city-happy",
+        "evalrec-s2-city-revise",
+        "evalrec-s2-city-stuck",
+        "evalrec-s2-city-blocked",
+        "evalrec-s2-city-redirected",
+        "evalrec-s2-north-happy",
+        "evalrec-s2-north-blocked",
+        "evalrec-s2-north-stuck",
+        "evalrec-s2-north-redirected",
+        "evalrec-s2-north-happy-old"
+      ],
+      "expect_empty": false,
+      "paraphrase_of": "q-core-c2"
+    },
+    {
+      "id": "q-para-4",
+      "group": "paraphrase",
+      "synthetic": true,
+      "language": "en",
+      "jurisdiction": "nl-amsterdam",
+      "seed_condition": "seed-2",
+      "draft_text": "Waste lies around the Amsterdam centre although the city pays a lot for cleaning. We want a baseline cleanliness reading and a pilot with more bins or other collection timing.",
+      "context_profile": {
+        "problem_type": "public_space",
+        "category": "waste_collection",
+        "population_scale": "<1M",
+        "geography": {
+          "country": "NL",
+          "region": "Noord-Holland",
+          "settlement_class": "metro",
+          "climate_class": "C"
+        },
+        "resource_band": {
+          "people": "<20",
+          "in_kind": "yes"
+        },
+        "budget_band": {
+          "band": "<100k",
+          "currency_class": "high_income"
+        },
+        "institutions": [
+          "municipal_waste_dept"
+        ],
+        "legal_stack": [
+          {
+            "layer": "L2",
+            "corpus_version": "nl-eu-law-index@0.1.0+d9bdf4d078ea"
+          },
+          {
+            "layer": "L4",
+            "corpus_version": "nl-statutes@0.1.0+a81a14382ce9"
+          },
+          {
+            "layer": "L5",
+            "corpus_version": "nl-noord-holland@0.1.0+e299b986587e"
+          },
+          {
+            "layer": "L6",
+            "corpus_version": "nl-amsterdam-bylaws@0.1.0+9a2ae679b76b"
+          }
+        ],
+        "language": "en",
+        "constraints": [
+          {
+            "type": "physical",
+            "statement": "Narrow lanes limit where bins fit."
+          },
+          {
+            "type": "skills",
+            "statement": "Few people can plan collection rounds."
+          }
+        ]
+      },
+      "judgments": [
+        {
+          "record_id": "evalrec-s2-ams-happy",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-ams-revise",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-ams-stuck",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-ams-blocked",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-ams-redirected",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-city-happy",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-city-revise",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-city-stuck",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-city-blocked",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-city-redirected",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-north-happy",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-north-blocked",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-north-stuck",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-north-redirected",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-north-happy-old",
+          "grade": 1
+        }
+      ],
+      "relevant_record_ids": [
+        "evalrec-s2-ams-happy",
+        "evalrec-s2-ams-revise",
+        "evalrec-s2-ams-stuck",
+        "evalrec-s2-ams-blocked",
+        "evalrec-s2-ams-redirected",
+        "evalrec-s2-city-happy",
+        "evalrec-s2-city-revise",
+        "evalrec-s2-city-stuck",
+        "evalrec-s2-city-blocked",
+        "evalrec-s2-city-redirected",
+        "evalrec-s2-north-happy",
+        "evalrec-s2-north-blocked",
+        "evalrec-s2-north-stuck",
+        "evalrec-s2-north-redirected",
+        "evalrec-s2-north-happy-old"
+      ],
+      "expect_empty": false,
+      "paraphrase_of": "q-core-c2"
+    },
+    {
+      "id": "q-para-5",
+      "group": "paraphrase",
+      "synthetic": true,
+      "language": "en",
+      "jurisdiction": "fiktiva-north",
+      "seed_condition": "seed-2",
+      "draft_text": "Litter and full bins are a problem in our small Fiktiva North town. Our budget is tiny and we have a handful of helpers; we want to pilot extra collection rounds and bins.",
+      "context_profile": {
+        "problem_type": "public_space",
+        "category": "waste_collection",
+        "population_scale": "<10k",
+        "geography": {
+          "country": "unknown",
+          "region": "Fiktiva North",
+          "settlement_class": "town",
+          "climate_class": "D"
+        },
+        "resource_band": {
+          "people": "<5",
+          "in_kind": "yes"
+        },
+        "budget_band": {
+          "band": "<1k",
+          "currency_class": "upper_middle"
+        },
+        "institutions": [
+          "municipal_waste_dept"
+        ],
+        "legal_stack": [
+          {
+            "layer": "L1",
+            "corpus_version": "fiktiva-rights@0.1.0+dbc8851045a7"
+          },
+          {
+            "layer": "L2",
+            "corpus_version": "fiktiva-north-union@0.1.0+702b57d16923"
+          },
+          {
+            "layer": "L3",
+            "corpus_version": "fiktiva-constitution@0.1.0+aefd9bacd67b"
+          },
+          {
+            "layer": "L4",
+            "corpus_version": "fiktiva-north-statutes@0.2.0+335df1e6e07c"
+          },
+          {
+            "layer": "L6",
+            "corpus_version": "fiktiva-north-bylaws@0.1.0+f4efc4e65a37"
+          }
+        ],
+        "language": "en",
+        "constraints": [
+          {
+            "type": "physical",
+            "statement": "Narrow lanes limit where bins fit."
+          },
+          {
+            "type": "skills",
+            "statement": "Few people can plan collection rounds."
+          }
+        ]
+      },
+      "judgments": [
+        {
+          "record_id": "evalrec-s2-ams-happy",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-ams-revise",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-ams-stuck",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-ams-blocked",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-ams-redirected",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-city-happy",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-city-revise",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-city-stuck",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-city-blocked",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-city-redirected",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-north-happy",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-north-blocked",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-north-stuck",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-north-redirected",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-north-happy-old",
+          "grade": 2
+        }
+      ],
+      "relevant_record_ids": [
+        "evalrec-s2-ams-happy",
+        "evalrec-s2-ams-revise",
+        "evalrec-s2-ams-stuck",
+        "evalrec-s2-ams-blocked",
+        "evalrec-s2-ams-redirected",
+        "evalrec-s2-city-happy",
+        "evalrec-s2-city-revise",
+        "evalrec-s2-city-stuck",
+        "evalrec-s2-city-blocked",
+        "evalrec-s2-city-redirected",
+        "evalrec-s2-north-happy",
+        "evalrec-s2-north-blocked",
+        "evalrec-s2-north-stuck",
+        "evalrec-s2-north-redirected",
+        "evalrec-s2-north-happy-old"
+      ],
+      "expect_empty": false,
+      "paraphrase_of": "q-core-c3"
+    },
+    {
+      "id": "q-para-6",
+      "group": "paraphrase",
+      "synthetic": true,
+      "language": "en",
+      "jurisdiction": "fiktiva-city",
+      "seed_condition": "seed-2",
+      "draft_text": "On Mondays the bins in the Fiktiva City canal market are full and waste spills out. We would test additional collection and put up a plain notice about where waste goes.",
+      "context_profile": {
+        "problem_type": "public_space",
+        "category": "waste_collection",
+        "population_scale": "<100k",
+        "geography": {
+          "country": "unknown",
+          "region": "Fiktiva City",
+          "settlement_class": "city",
+          "climate_class": "B"
+        },
+        "resource_band": {
+          "people": "<20",
+          "in_kind": "yes"
+        },
+        "budget_band": {
+          "band": "<10k",
+          "currency_class": "upper_middle"
+        },
+        "institutions": [
+          "municipal_waste_dept"
+        ],
+        "legal_stack": [
+          {
+            "layer": "L1",
+            "corpus_version": "fiktiva-rights@0.1.0+dbc8851045a7"
+          },
+          {
+            "layer": "L2",
+            "corpus_version": "fiktiva-union@0.1.0+254d205f7f55"
+          },
+          {
+            "layer": "L3",
+            "corpus_version": "fiktiva-constitution@0.1.0+aefd9bacd67b"
+          },
+          {
+            "layer": "L4",
+            "corpus_version": "fiktiva-statutes@0.1.0+e858abcd9128"
+          },
+          {
+            "layer": "L5",
+            "corpus_version": "fiktiva-region@0.1.0+996b73b37cf9"
+          },
+          {
+            "layer": "L6",
+            "corpus_version": "fiktiva-bylaws@0.1.0+6803ee8410e7"
+          }
+        ],
+        "language": "en",
+        "constraints": [
+          {
+            "type": "physical",
+            "statement": "Narrow lanes limit where bins fit."
+          },
+          {
+            "type": "skills",
+            "statement": "Few people can plan collection rounds."
+          }
+        ]
+      },
+      "judgments": [
+        {
+          "record_id": "evalrec-s2-ams-happy",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-ams-revise",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-ams-stuck",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-ams-blocked",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-ams-redirected",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-city-happy",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-city-revise",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-city-stuck",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-city-blocked",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-city-redirected",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s2-north-happy",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-north-blocked",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-north-stuck",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-north-redirected",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s2-north-happy-old",
+          "grade": 1
+        }
+      ],
+      "relevant_record_ids": [
+        "evalrec-s2-ams-happy",
+        "evalrec-s2-ams-revise",
+        "evalrec-s2-ams-stuck",
+        "evalrec-s2-ams-blocked",
+        "evalrec-s2-ams-redirected",
+        "evalrec-s2-city-happy",
+        "evalrec-s2-city-revise",
+        "evalrec-s2-city-stuck",
+        "evalrec-s2-city-blocked",
+        "evalrec-s2-city-redirected",
+        "evalrec-s2-north-happy",
+        "evalrec-s2-north-blocked",
+        "evalrec-s2-north-stuck",
+        "evalrec-s2-north-redirected",
+        "evalrec-s2-north-happy-old"
+      ],
+      "expect_empty": false,
+      "paraphrase_of": "q-core-c4"
+    },
+    {
+      "id": "q-para-7",
+      "group": "paraphrase",
+      "synthetic": true,
+      "language": "en",
+      "jurisdiction": "fiktiva-city",
+      "seed_condition": "seed-1",
+      "draft_text": "Around the old square in Fiktiva City, fights and loud bangs after dark make people stay away. We want to learn which office is responsible and try one small preventive measure.",
+      "context_profile": {
+        "problem_type": "public_safety",
+        "category": "explosives_violence",
+        "population_scale": "<100k",
+        "geography": {
+          "country": "unknown",
+          "region": "Fiktiva City",
+          "settlement_class": "city",
+          "climate_class": "B"
+        },
+        "resource_band": {
+          "people": "<20",
+          "in_kind": "yes"
+        },
+        "budget_band": {
+          "band": "<10k",
+          "currency_class": "upper_middle"
+        },
+        "institutions": [
+          "municipal_safety_dept",
+          "police_liaison_role"
+        ],
+        "legal_stack": [
+          {
+            "layer": "L1",
+            "corpus_version": "fiktiva-rights@0.1.0+dbc8851045a7"
+          },
+          {
+            "layer": "L2",
+            "corpus_version": "fiktiva-union@0.1.0+254d205f7f55"
+          },
+          {
+            "layer": "L3",
+            "corpus_version": "fiktiva-constitution@0.1.0+aefd9bacd67b"
+          },
+          {
+            "layer": "L4",
+            "corpus_version": "fiktiva-statutes@0.1.0+e858abcd9128"
+          },
+          {
+            "layer": "L5",
+            "corpus_version": "fiktiva-region@0.1.0+996b73b37cf9"
+          },
+          {
+            "layer": "L6",
+            "corpus_version": "fiktiva-bylaws@0.1.0+6803ee8410e7"
+          }
+        ],
+        "language": "en",
+        "constraints": [
+          {
+            "type": "legal",
+            "statement": "Prevention duties are split between several bodies."
+          },
+          {
+            "type": "time",
+            "statement": "The pilot must end within one season."
+          }
+        ]
+      },
+      "judgments": [
+        {
+          "record_id": "evalrec-s1-ams-happy",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-ams-revise",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-ams-stuck",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-ams-blocked",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-ams-redirected",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-city-happy",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s1-city-blocked",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s1-city-redirected",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s1-north-happy",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-north-stuck",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-north-revise",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-north-blocked",
+          "grade": 1
+        }
+      ],
+      "relevant_record_ids": [
+        "evalrec-s1-ams-happy",
+        "evalrec-s1-ams-revise",
+        "evalrec-s1-ams-stuck",
+        "evalrec-s1-ams-blocked",
+        "evalrec-s1-ams-redirected",
+        "evalrec-s1-city-happy",
+        "evalrec-s1-city-blocked",
+        "evalrec-s1-city-redirected",
+        "evalrec-s1-north-happy",
+        "evalrec-s1-north-stuck",
+        "evalrec-s1-north-revise",
+        "evalrec-s1-north-blocked"
+      ],
+      "expect_empty": false,
+      "paraphrase_of": "q-core-c5"
+    },
+    {
+      "id": "q-para-8",
+      "group": "paraphrase",
+      "synthetic": true,
+      "language": "en",
+      "jurisdiction": "fiktiva-north",
+      "seed_condition": "seed-1",
+      "draft_text": "People in Fiktiva North streets hear loud bangs and see fights once it is dark. We need a cheap pilot and a clear list of who holds which duty.",
+      "context_profile": {
+        "problem_type": "public_safety",
+        "category": "explosives_violence",
+        "population_scale": "<10k",
+        "geography": {
+          "country": "unknown",
+          "region": "Fiktiva North",
+          "settlement_class": "town",
+          "climate_class": "D"
+        },
+        "resource_band": {
+          "people": "<5",
+          "in_kind": "yes"
+        },
+        "budget_band": {
+          "band": "<1k",
+          "currency_class": "upper_middle"
+        },
+        "institutions": [
+          "municipal_safety_dept",
+          "police_liaison_role"
+        ],
+        "legal_stack": [
+          {
+            "layer": "L1",
+            "corpus_version": "fiktiva-rights@0.1.0+dbc8851045a7"
+          },
+          {
+            "layer": "L2",
+            "corpus_version": "fiktiva-north-union@0.1.0+702b57d16923"
+          },
+          {
+            "layer": "L3",
+            "corpus_version": "fiktiva-constitution@0.1.0+aefd9bacd67b"
+          },
+          {
+            "layer": "L4",
+            "corpus_version": "fiktiva-north-statutes@0.2.0+335df1e6e07c"
+          },
+          {
+            "layer": "L6",
+            "corpus_version": "fiktiva-north-bylaws@0.1.0+f4efc4e65a37"
+          }
+        ],
+        "language": "en",
+        "constraints": [
+          {
+            "type": "legal",
+            "statement": "Prevention duties are split between several bodies."
+          },
+          {
+            "type": "time",
+            "statement": "The pilot must end within one season."
+          }
+        ]
+      },
+      "judgments": [
+        {
+          "record_id": "evalrec-s1-ams-happy",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-ams-revise",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-ams-stuck",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-ams-blocked",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-ams-redirected",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-city-happy",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-city-blocked",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-city-redirected",
+          "grade": 1
+        },
+        {
+          "record_id": "evalrec-s1-north-happy",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s1-north-stuck",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s1-north-revise",
+          "grade": 2
+        },
+        {
+          "record_id": "evalrec-s1-north-blocked",
+          "grade": 2
+        }
+      ],
+      "relevant_record_ids": [
+        "evalrec-s1-ams-happy",
+        "evalrec-s1-ams-revise",
+        "evalrec-s1-ams-stuck",
+        "evalrec-s1-ams-blocked",
+        "evalrec-s1-ams-redirected",
+        "evalrec-s1-city-happy",
+        "evalrec-s1-city-blocked",
+        "evalrec-s1-city-redirected",
+        "evalrec-s1-north-happy",
+        "evalrec-s1-north-stuck",
+        "evalrec-s1-north-revise",
+        "evalrec-s1-north-blocked"
+      ],
+      "expect_empty": false,
+      "paraphrase_of": "q-core-c6"
+    }
+  ]
+}

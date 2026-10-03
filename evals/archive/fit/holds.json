@@ -1,0 +1,41 @@
+{
+  "kind": "archive-eval-fit-holds",
+  "synthetic": true,
+  "cases": [
+    {
+      "id": "fit-hold-ams-missing",
+      "target_jurisdiction": "nl-amsterdam",
+      "unresolved_stack": false,
+      "expected_hold": true,
+      "missing_layers": [
+        "L1",
+        "L3"
+      ],
+      "note": "The Amsterdam skeleton is unreviewed and L1 and L3 have no vendored corpus. Suggesting a path would risk an unlawful step, so the fit check holds."
+    },
+    {
+      "id": "fit-hold-unresolved",
+      "target_jurisdiction": "unresolved",
+      "unresolved_stack": true,
+      "expected_hold": true,
+      "missing_layers": [],
+      "note": "No legal stack could be resolved for the draft."
+    },
+    {
+      "id": "fit-nohold-north-l5",
+      "target_jurisdiction": "fiktiva-north",
+      "unresolved_stack": false,
+      "expected_hold": false,
+      "missing_layers": [],
+      "note": "Guard against over-holding: L5 is marked not_applicable, which is a stated answer and not a missing corpus."
+    },
+    {
+      "id": "fit-nohold-city",
+      "target_jurisdiction": "fiktiva-city",
+      "unresolved_stack": false,
+      "expected_hold": false,
+      "missing_layers": [],
+      "note": "Complete stack."
+    }
+  ]
+}
