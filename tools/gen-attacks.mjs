@@ -1,8 +1,8 @@
 // Seeded attack-variant generator (11-u04). Stdlib plus yaml. TEST DATA ONLY: every identifier it plants is invented.
-// node tools/gen-attacks.mjs --persona adv-doxx|adv-inject|adv-spam|adv-hate|adv-brigade|adv-offtopic --seed N [--out file]   (no --out: stdout)
+// node tools/gen-attacks.mjs --persona adv-doxx|adv-inject|adv-spam|adv-hate|adv-brigade|adv-offtopic|adv-individual|adv-crisis-bait|adv-assumption-smuggle|adv-schema-bypass --seed N [--out file]   (no --out: stdout)
 // Reads simulation/personas/<id>/templates.yaml and wordlists/*.txt. One JSONL row per variant:
 // {id, family, technique, field_ref, payload, planted_canaries[], expected_outcome, rule_ids}
-// Optional per-technique keys: skip_until (copied to the row), accounts + window_ms (row gets account sim-<persona>-NN and offset_ms).
+// Optional per-technique keys: skip_until, endpoint, expect_status (copied to the row), accounts + window_ms (row gets account sim-<persona>-NN and offset_ms).
 // payload is a string, or an array of strings when field_ref is "a+b" (split across fields).
 import { parse } from "yaml";
 import { readFileSync, writeFileSync, readdirSync } from "node:fs";
@@ -40,6 +40,8 @@ export const FILTERS = {
   spell: (s) => [...s].map((c) => (/\d/.test(c) ? words[+c] : c)).join(" "),
   dots: (s) => s.replace(/@/g, " at ").replace(/\./g, " dot "),
   nospace: (s) => s.replace(/\s+/g, ""),
+  rep150: (s) => s.repeat(150), // oversize fields (adv-schema-bypass)
+  rep400: (s) => s.repeat(400),
   leet: (s) => s.replace(/[aeiost]/gi, (c) => ({ a: "4", e: "3", i: "1", o: "0", s: "5", t: "7" })[c.toLowerCase()]),
 };
 
@@ -111,6 +113,7 @@ export function generate(persona, seed, root = ROOT) {
         expected_outcome: t.expected_outcome, rule_ids: t.rule_ids,
       };
       if (t.skip_until) row.skip_until = t.skip_until;
+      for (const k of ["endpoint", "expect_status"]) if (t[k] !== undefined) row[k] = t[k]; // raw_http rows (adv-schema-bypass)
       if (t.accounts) { row.account = `sim-${persona}-${pad(((i - 1) % t.accounts) + 1)}`; row.offset_ms = Math.floor(rnd() * t.window_ms); }
       rows.push(row);
     }
@@ -122,7 +125,7 @@ export function generate(persona, seed, root = ROOT) {
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const arg = (n) => { const i = process.argv.indexOf(n); return i < 0 ? null : process.argv[i + 1]; };
   const persona = arg("--persona"), seed = Number(arg("--seed")), out = arg("--out");
-  if (!["adv-doxx", "adv-inject", "adv-spam", "adv-hate", "adv-brigade", "adv-offtopic"].includes(persona) || !Number.isInteger(seed)) { console.error("usage: gen-attacks.mjs --persona <adv-id> --seed N [--out file]"); process.exit(2); }
+  if (!["adv-doxx", "adv-inject", "adv-spam", "adv-hate", "adv-brigade", "adv-offtopic", "adv-individual", "adv-crisis-bait", "adv-assumption-smuggle", "adv-schema-bypass"].includes(persona) || !Number.isInteger(seed)) { console.error("usage: gen-attacks.mjs --persona <adv-id> --seed N [--out file]"); process.exit(2); }
   const text = generate(persona, seed);
   if (out) writeFileSync(out, text); else process.stdout.write(text);
 }

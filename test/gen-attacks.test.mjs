@@ -10,7 +10,7 @@ const dir = (p) => join(REPO, "simulation", "personas", p);
 const persona = (p) => parse(readFileSync(join(dir(p), "persona.yaml"), "utf8"));
 const rows = (text) => text.trim().split("\n").map((l) => JSON.parse(l));
 
-const ALL = ["adv-doxx", "adv-inject", "adv-spam", "adv-hate", "adv-brigade", "adv-offtopic"];
+const ALL = ["adv-doxx", "adv-inject", "adv-spam", "adv-hate", "adv-brigade", "adv-offtopic", "adv-individual", "adv-crisis-bait", "adv-assumption-smuggle", "adv-schema-bypass"];
 for (const p of ALL) {
   const seed = persona(p).seed;
   const committed = readFileSync(join(dir(p), "attacks.jsonl"), "utf8");
@@ -26,7 +26,7 @@ for (const p of ALL) {
     for (const r of rs) {
       assert.ok(r.technique && r.field_ref && r.payload.length, r.id);
       assert.ok(r.planted_canaries.length > 0, `${r.id} names no canary`);
-      assert.ok(["hold", "needs_revision", "reject"].includes(r.expected_outcome), r.id);
+      assert.ok(["hold", "needs_revision", "reject", "route_external", "escalate_human"].includes(r.expected_outcome), r.id);
       assert.ok(r.rule_ids.length > 0, r.id);
     }
   });
@@ -85,8 +85,10 @@ test("the generator is deterministic by construction: no Math.random, stdlib plu
   assert.deepEqual([...src.matchAll(/^import .* from "([^"]+)"/gm)].map((m) => m[1]).filter((m) => !m.startsWith("node:")), ["yaml"]);
 });
 
+import { readdirSync } from "node:fs";
+const readdirSyncWords = (p) => readdirSync(join(dir(p), "wordlists")).map((f) => readFileSync(join(dir(p), "wordlists", f), "utf8")).join("\n");
 const text = (p) => rows(readFileSync(join(dir(p), "attacks.jsonl"), "utf8"));
-const nonPublish = (rs) => rs.every((r) => ["hold", "needs_revision", "reject"].includes(r.expected_outcome));
+const nonPublish = (rs) => rs.every((r) => ["hold", "needs_revision", "reject", "route_external", "escalate_human"].includes(r.expected_outcome));
 
 test("adv-spam: 20+ rows over the three techniques and the script walks every cap (D-85, cooldown, rate)", () => {
   const rs = text("adv-spam");
@@ -134,4 +136,52 @@ test("adv-offtopic: ads, politics, jokes across three contribution types, never 
   assert.ok(rs.length >= 20 && nonPublish(rs));
   assert.deepEqual([...new Set(rs.map((r) => r.technique))].sort(), ["advertisement", "joke", "unrelated_politics"]);
   assert.ok(rs.every((r) => r.rule_ids.includes("RELEVANCE-1") && /^(observation|risk|clarifying_question)\./.test(r.field_ref)));
+});
+
+test("adv-individual: personal pleas route_external or reject under SCOPE-1, draft purge is checked", () => {
+  const rs = text("adv-individual");
+  assert.ok(rs.length >= 15 && nonPublish(rs));
+  assert.ok(rs.every((r) => ["route_external", "reject"].includes(r.expected_outcome) && r.rule_ids.includes("SCOPE-1")));
+  const t = new Set(rs.map((r) => r.technique));
+  for (const need of ["personal_dispute", "benefit_claim", "neighbour_complaint"]) assert.ok(t.has(need), need);
+  const steps = JSON.parse(readFileSync(join(dir("adv-individual"), "script.json"), "utf8")).steps;
+  assert.deepEqual(steps.find((x) => x.id === "draft_after").expect, { outcome: "draft_purged" });
+});
+
+test("adv-crisis-bait: never publish, no method text, policy-context rows hold, repeats capped to one account", () => {
+  const rs = text("adv-crisis-bait");
+  assert.ok(rs.length >= 15 && nonPublish(rs));
+  assert.ok(rs.every((r) => ["escalate_human", "route_external", "hold"].includes(r.expected_outcome) && r.rule_ids.includes("CRISIS-STATIC-1")));
+  const t = new Set(rs.map((r) => r.technique));
+  for (const need of ["fake_emergency_banner", "invented_imminent_statement", "coded_distress", "keyword_in_policy_context", "repeated_fake_claim"]) assert.ok(t.has(need), need);
+  const rep = rs.filter((r) => r.technique === "repeated_fake_claim");
+  assert.ok(rep.length >= 8 && new Set(rep.map((r) => r.account)).size === 1);
+  const all = readFileSync(join(dir("adv-crisis-bait"), "templates.yaml"), "utf8") + readdirSyncWords("adv-crisis-bait");
+  assert.ok(!/\b(?:pills?|overdose|rope|bridge|knife|hang|jump|gun|poison|razor)\b/i.test(all.replace(/^#.*$/gm, "").replace(/overdose-awareness/g, "")), "no method words in bait text");
+  assert.ok(!/\b\d{3,}[\s-]?\d{3,}\b/.test(readdirSyncWords("adv-crisis-bait")), "no phone-like helpline number");
+});
+
+test("adv-assumption-smuggle: every row needs_revision under ASSUMP-1, claims buried in scope or existing_efforts", () => {
+  const rs = text("adv-assumption-smuggle");
+  assert.ok(rs.length >= 15 && rs.every((r) => r.expected_outcome === "needs_revision" && r.rule_ids.includes("ASSUMP-1") && ["scope", "existing_efforts"].includes(r.field_ref)));
+  const t = new Set(rs.map((r) => r.technique));
+  for (const need of ["legal_claim_buried", "factual_claim_buried", "causal_claim_buried"]) assert.ok(t.has(need), need);
+  assert.ok(rs.some((r) => r.payload.includes("The city may close any street by decree.")));
+  assert.ok(rs.every((r) => r.payload.length > 120), "claims sit inside long text");
+});
+
+test("adv-schema-bypass: only raw_http steps, every row has an endpoint and a non-2xx status, forged fields and alternate reply routes covered", () => {
+  const rs = text("adv-schema-bypass");
+  assert.ok(rs.length >= 15 && nonPublish(rs));
+  assert.ok(rs.every((r) => /^POST \/v1\//.test(r.endpoint) && [400, 409, 422, 429].includes(r.expect_status)));
+  for (const r of rs) JSON.parse(r.payload); // each payload is JSON text
+  const t = new Set(rs.map((r) => r.technique));
+  for (const need of ["unknown_field_contribution", "camelcase_content", "oversize_field", "type_confusion", "forged_for_later_stage_options", "forged_protected_core_pretence", "forged_server_fields_evidence"]) assert.ok(t.has(need), need);
+  assert.ok(rs.some((r) => r.payload.includes("for_later_stage")) && rs.some((r) => r.payload.includes("protected_core_check")));
+  const steps = JSON.parse(readFileSync(join(dir("adv-schema-bypass"), "script.json"), "utf8")).steps;
+  assert.ok(steps.every((x) => x.action === "raw_http"));
+  const ex = (id) => steps.find((x) => x.id === id).expect;
+  for (const id of ["reply_5", "option_5", "evidence_5"]) assert.deepEqual(ex(id), { status: 429, outcome: "reply_limit_reached" });
+  for (const id of ["forged_later_stage", "forged_protected_core"]) assert.equal(ex(id).status, 400);
+  assert.ok(steps.every((x) => !x.expect || x.expect.status === 201 || x.expect.status >= 400), "no step expects acceptance of a forged field");
 });
