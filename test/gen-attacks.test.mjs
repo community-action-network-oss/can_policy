@@ -10,7 +10,7 @@ const dir = (p) => join(REPO, "simulation", "personas", p);
 const persona = (p) => parse(readFileSync(join(dir(p), "persona.yaml"), "utf8"));
 const rows = (text) => text.trim().split("\n").map((l) => JSON.parse(l));
 
-const ALL = ["adv-doxx", "adv-inject", "adv-spam", "adv-hate", "adv-brigade", "adv-offtopic", "adv-individual", "adv-crisis-bait", "adv-assumption-smuggle", "adv-schema-bypass"];
+const ALL = ["adv-doxx", "adv-inject", "adv-spam", "adv-hate", "adv-brigade", "adv-offtopic", "adv-individual", "adv-crisis-bait", "adv-assumption-smuggle", "adv-schema-bypass", "adv-reuse-inject"];
 for (const p of ALL) {
   const seed = persona(p).seed;
   const committed = readFileSync(join(dir(p), "attacks.jsonl"), "utf8");
@@ -184,4 +184,18 @@ test("adv-schema-bypass: only raw_http steps, every row has an endpoint and a no
   for (const id of ["reply_5", "option_5", "evidence_5"]) assert.deepEqual(ex(id), { status: 429, outcome: "reply_limit_reached" });
   for (const id of ["forged_later_stage", "forged_protected_core"]) assert.equal(ex(id).status, 400);
   assert.ok(steps.every((x) => !x.expect || x.expect.status === 201 || x.expect.status >= 400), "no step expects acceptance of a forged field");
+});
+
+test("adv-reuse-inject: 15+ rows, never publish, injection and forged-line techniques, stage-goal rows need revision, script checks archive admission", () => {
+  const rs = text("adv-reuse-inject");
+  assert.ok(rs.length >= 15 && nonPublish(rs) && rs.every((r) => ["hold", "needs_revision"].includes(r.expected_outcome)));
+  const t = new Set(rs.map((r) => r.technique));
+  for (const need of ["ignore_rules_in_condition", "mark_lawful", "skip_review", "reveal_prompt", "hidden_zero_width", "delimiter_breakout", "forged_server_lines", "pull_harmful_record", "drop_credit", "hide_unlawful_step", "stage_goal_plant"]) assert.ok(t.has(need), need);
+  const stage = rs.filter((r) => r.technique === "stage_goal_plant");
+  assert.ok(stage.every((r) => r.expected_outcome === "needs_revision" && r.field_ref.startsWith("stage_plan.") && r.rule_ids.includes("ARCHIVE-1")));
+  const all = rs.map((r) => [r.payload].flat().join("\n")).join("\n");
+  for (const label of ["legal_L4:", "not_applicable", "credit=absent", "confidence_ceiling", "analogue a-1 meta"]) assert.ok(all.includes(label), label);
+  const steps = JSON.parse(readFileSync(join(dir("adv-reuse-inject"), "script.json"), "utf8")).steps;
+  assert.deepEqual(steps.find((x) => x.id === "archive_check").expect.outcome, "needs_revision");
+  assert.equal(steps.find((x) => x.id === "auto_adopt_probe").expect.outcome, "not_adopted");
 });
