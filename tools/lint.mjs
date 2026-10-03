@@ -12,6 +12,7 @@ import { lintRatifications } from "./lint-ratifications.mjs";
 import { lintLegal } from "./lint-legal.mjs";
 import { lintLegalRatification } from "./lint-legal-ratification.mjs";
 import { lintSimulation } from "./lint-simulation.mjs";
+import { lintCandidates } from "./lint-candidates.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const SCHEMAS = join(HERE, "..", "schemas");
@@ -223,6 +224,7 @@ export function lint(root, notes = []) {
   errors.push(...lintLegal(root));
   errors.push(...lintLegalRatification(root, notes));
   errors.push(...lintSimulation(root));
+  errors.push(...lintCandidates(root));
   return errors;
 }
 

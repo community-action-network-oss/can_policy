@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "candidate.schema.json",
+  "title": "simulation/candidates/<run_id>/<id>.json: a labeled example candidate (never a ratified example)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "dp", "input", "expected_outcome", "rule_ids", "jurisdiction", "language", "provenance", "run_id", "persona_id", "seed_id", "miss_kind", "observed_outcome", "status", "recording_kind", "satisfies_graduation"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^cand-[a-z0-9]+(-[a-z0-9]+)*$" },
+    "dp": { "type": "string", "pattern": "^(DP|ASSIST)-[A-Z0-9]+(-[A-Z0-9]+)*$" },
+    "input": { "type": "string", "minLength": 1, "maxLength": 4000 },
+    "expected_outcome": { "type": "string", "pattern": "^[a-z_]+$" },
+    "rule_ids": { "type": "array", "items": { "type": "string", "pattern": "^[A-Z0-9]+(-[A-Z0-9]+)*$" }, "uniqueItems": true },
+    "field_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["field"],
+      "properties": {
+        "field": { "type": "string", "minLength": 1 },
+        "span": { "type": "array", "items": { "type": "integer", "minimum": 0 }, "minItems": 2, "maxItems": 2 }
+      }
+    },
+    "jurisdiction": { "type": "string", "pattern": "^(fiktiva|nl)-[a-z0-9-]+$" },
+    "language": { "type": "string", "pattern": "^[a-z]{2}(-[A-Z]{2})?$" },
+    "provenance": { "const": "simulation" },
+    "run_id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]*$" },
+    "persona_id": { "type": "string", "pattern": "^[a-z]+(-[a-z0-9]+)+$" },
+    "seed_id": { "type": "string", "pattern": "^seed-[0-9]+(-[a-z0-9]+)+$" },
+    "attack_ref": {
+      "description": "Planted attack data is referenced by row id, never copied.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["persona_id", "row_id"],
+      "properties": {
+        "persona_id": { "type": "string", "pattern": "^adv-[a-z0-9-]+$" },
+        "row_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9_-]*$" }
+      }
+    },
+    "miss_kind": { "enum": ["false_publish", "false_reject", "injection_success", "leak", "poor_hint", "fail_open"] },
+    "observed_outcome": { "type": "string", "minLength": 1, "maxLength": 40 },
+    "status": { "enum": ["candidate", "confirmed", "rejected"] },
+    "confirmed_by_label_task": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]*$" },
+    "recording_kind": { "enum": ["fake", "live"] },
+    "satisfies_graduation": { "type": "boolean" }
+  },
+  "allOf": [
+    {
+      "if": { "type": "object", "properties": { "status": { "const": "confirmed" } }, "required": ["status"] },
+      "then": { "type": "object", "properties": { "confirmed_by_label_task": { "type": "string" } }, "required": ["confirmed_by_label_task"] },
+      "else": { "type": "object", "properties": { "confirmed_by_label_task": false } }
+    },
+    {
+      "if": { "type": "object", "properties": { "recording_kind": { "const": "fake" } }, "required": ["recording_kind"] },
+      "then": { "type": "object", "properties": { "satisfies_graduation": { "const": false } } }
+    }
+  ]
+}
