@@ -10,7 +10,8 @@ const dir = (p) => join(REPO, "simulation", "personas", p);
 const persona = (p) => parse(readFileSync(join(dir(p), "persona.yaml"), "utf8"));
 const rows = (text) => text.trim().split("\n").map((l) => JSON.parse(l));
 
-for (const p of ["adv-doxx", "adv-inject"]) {
+const ALL = ["adv-doxx", "adv-inject", "adv-spam", "adv-hate", "adv-brigade", "adv-offtopic"];
+for (const p of ALL) {
   const seed = persona(p).seed;
   const committed = readFileSync(join(dir(p), "attacks.jsonl"), "utf8");
   const rs = rows(committed);
@@ -59,7 +60,7 @@ test("adv-inject: at least 100 rows over at least 10 techniques, incl. forged se
 });
 
 test("planted data stays in the reserved or fictional ranges", () => {
-  const text = ["adv-doxx", "adv-inject"].map((p) => readFileSync(join(dir(p), "attacks.jsonl"), "utf8")).join("\n");
+  const text = ALL.map((p) => readFileSync(join(dir(p), "attacks.jsonl"), "utf8")).join("\n");
   for (const m of text.match(/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+/g) ?? []) assert.match(m, /@(evidence\.sim\.test|example\.test)$/);
   for (const m of text.match(/https?:\/\/[^/\s"\\]+/g) ?? []) assert.match(m, /evidence\.sim\.test$/);
   assert.ok(!/[—–]/.test(text), "no em or en dash");
@@ -67,10 +68,10 @@ test("planted data stays in the reserved or fictional ranges", () => {
 });
 
 test("scripts hold placeholders only and adv-inject tries the 5th reply (D-85)", () => {
-  for (const p of ["adv-doxx", "adv-inject"]) {
+  for (const p of ALL) {
     const s = readFileSync(join(dir(p), "script.json"), "utf8");
     assert.ok(s.includes("{{var.payload}}"));
-    assert.ok(!s.includes("CANARY-") && !s.includes("evidence.sim.test/attack"));
+    assert.ok(!s.includes("CANARY-") && !s.includes("[SLUR_") && !s.includes("evidence.sim.test/attack"));
   }
   const steps = JSON.parse(readFileSync(join(dir("adv-inject"), "script.json"), "utf8")).steps;
   const r5 = steps.find((x) => x.id === "reply_5");
@@ -82,4 +83,55 @@ test("the generator is deterministic by construction: no Math.random, stdlib plu
   const src = readFileSync(join(REPO, "tools", "gen-attacks.mjs"), "utf8");
   assert.ok(!src.includes("Math.random"));
   assert.deepEqual([...src.matchAll(/^import .* from "([^"]+)"/gm)].map((m) => m[1]).filter((m) => !m.startsWith("node:")), ["yaml"]);
+});
+
+const text = (p) => rows(readFileSync(join(dir(p), "attacks.jsonl"), "utf8"));
+const nonPublish = (rs) => rs.every((r) => ["hold", "needs_revision", "reject"].includes(r.expected_outcome));
+
+test("adv-spam: 20+ rows over the three techniques and the script walks every cap (D-85, cooldown, rate)", () => {
+  const rs = text("adv-spam");
+  assert.ok(rs.length >= 40 && nonPublish(rs));
+  assert.deepEqual([...new Set(rs.map((r) => r.technique))].sort(), ["link_stuffing", "near_dup_contribution", "near_duplicate_problem"]);
+  assert.equal(rs.filter((r) => r.technique === "near_dup_contribution").length, 30);
+  const steps = JSON.parse(readFileSync(join(dir("adv-spam"), "script.json"), "utf8")).steps;
+  const ex = (id) => steps.find((x) => x.id === id).expect;
+  assert.deepEqual(ex("cap_review_4"), { status: 429 });
+  assert.deepEqual(ex("reply_1b"), { status: 429, outcome: "cooldown_active" });
+  assert.deepEqual(ex("reply_5"), { status: 429, outcome: "reply_limit_reached" });
+  assert.deepEqual(ex("rate_probe"), { status: 429, outcome: "rate_limited" });
+  assert.equal(steps.filter((x) => /^cap_problem_\d$/.test(x.id)).length, 4);
+  assert.ok(!/burst_threshold/.test(readFileSync(join(dir("adv-spam"), "script.json"), "utf8")), "no hidden limit key in the script");
+});
+
+test("adv-hate: placeholder tokens only, threat row routes to crisis, nothing publishes", () => {
+  const rs = text("adv-hate");
+  assert.ok(rs.length >= 20 && nonPublish(rs));
+  for (const f of ["slur", "group"]) for (const l of readFileSync(join(dir("adv-hate"), "wordlists", `${f}.txt`), "utf8").trim().split("\n")) assert.match(l, /^\[(SLUR|GROUP)_[A-Z]\]$/, "wordlists hold placeholder tokens only");
+  const t = new Set(rs.map((r) => r.technique));
+  for (const need of ["dehumanising_framing", "exclusion_call", "leet_variant", "spaced_variant", "lookalike_variant", "zero_width_variant", "misspelled_coded", "threat"]) assert.ok(t.has(need), need);
+  assert.ok(rs.filter((r) => r.technique === "threat").every((r) => r.rule_ids.includes("CRISIS-STATIC-1")));
+  assert.match(readFileSync(join(dir("adv-hate"), "persona.yaml"), "utf8"), /SAFE CORPUS NOTE/);
+  // After removing placeholder tokens and their coded forms, the only words left come from the templates, which are plain English frames.
+  const tpl = readFileSync(join(dir("adv-hate"), "templates.yaml"), "utf8");
+  assert.ok(!/\b(?:[a-z]*[bcdfghjklmnpqrstvwxz]{6,}[a-z]*)\b/i.test(tpl.replace(/\{[^}]*\}/g, "").replace(/^#.*$/gm, "")), "no suspicious consonant run in templates");
+});
+
+test("adv-brigade: 12 accounts each inside the D-85 cap, bursts in one window, label flood flagged", () => {
+  const rs = text("adv-brigade");
+  assert.ok(nonPublish(rs));
+  const accounts = new Set(rs.map((r) => r.account));
+  assert.equal(accounts.size, 12);
+  assert.ok(rs.every((r) => /^sim-adv-brigade-(0[1-9]|1[0-2])$/.test(r.account) && r.offset_ms >= 0 && r.offset_ms < 3000));
+  const replies = {};
+  for (const r of rs.filter((x) => x.technique !== "label_flood")) replies[r.account] = (replies[r.account] ?? 0) + 1;
+  for (const [a, n] of Object.entries(replies)) assert.ok(n <= 4, `${a} sends ${n} replies, over the D-85 cap`);
+  const flood = rs.filter((r) => r.technique === "label_flood");
+  assert.ok(flood.length >= 20 && flood.every((r) => r.skip_until === "label_task"));
+});
+
+test("adv-offtopic: ads, politics, jokes across three contribution types, never publish", () => {
+  const rs = text("adv-offtopic");
+  assert.ok(rs.length >= 20 && nonPublish(rs));
+  assert.deepEqual([...new Set(rs.map((r) => r.technique))].sort(), ["advertisement", "joke", "unrelated_politics"]);
+  assert.ok(rs.every((r) => r.rule_ids.includes("RELEVANCE-1") && /^(observation|risk|clarifying_question)\./.test(r.field_ref)));
 });

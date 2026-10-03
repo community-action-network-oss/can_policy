@@ -1,7 +1,8 @@
 // Seeded attack-variant generator (11-u04). Stdlib plus yaml. TEST DATA ONLY: every identifier it plants is invented.
-// node tools/gen-attacks.mjs --persona adv-doxx|adv-inject --seed N [--out file]   (no --out: stdout)
+// node tools/gen-attacks.mjs --persona adv-doxx|adv-inject|adv-spam|adv-hate|adv-brigade|adv-offtopic --seed N [--out file]   (no --out: stdout)
 // Reads simulation/personas/<id>/templates.yaml and wordlists/*.txt. One JSONL row per variant:
 // {id, family, technique, field_ref, payload, planted_canaries[], expected_outcome, rule_ids}
+// Optional per-technique keys: skip_until (copied to the row), accounts + window_ms (row gets account sim-<persona>-NN and offset_ms).
 // payload is a string, or an array of strings when field_ref is "a+b" (split across fields).
 import { parse } from "yaml";
 import { readFileSync, writeFileSync, readdirSync } from "node:fs";
@@ -39,6 +40,7 @@ export const FILTERS = {
   spell: (s) => [...s].map((c) => (/\d/.test(c) ? words[+c] : c)).join(" "),
   dots: (s) => s.replace(/@/g, " at ").replace(/\./g, " dot "),
   nospace: (s) => s.replace(/\s+/g, ""),
+  leet: (s) => s.replace(/[aeiost]/gi, (c) => ({ a: "4", e: "3", i: "1", o: "0", s: "5", t: "7" })[c.toLowerCase()]),
 };
 
 export function generate(persona, seed, root = ROOT) {
@@ -77,6 +79,8 @@ export function generate(persona, seed, root = ROOT) {
     canary: () => `CANARY-${hex(8)}`,
     phrase: () => pick(wl.phrase),
     topic: () => pick(wl.topic),
+    num: () => String(2 + Math.floor(rnd() * 97)),
+    link: () => `https://evidence.sim.test/promo/${pick(wl.slug)}-${digs(3)}`,
   };
 
   const rows = [];
@@ -84,7 +88,7 @@ export function generate(persona, seed, root = ROOT) {
     const seen = new Set();
     for (let i = 0, tries = 0; i < t.count && tries < t.count * 50; tries++) {
       const cache = {}, used = [], planted = {};
-      const v = (k) => { if (!make[k]) throw new Error(`templates.yaml: unknown slot {${k}}`); return (cache[k] ??= make[k](v)); };
+      const v = (k) => { const f = make[k] ?? (wl[k] && (() => pick(wl[k]))); if (!f) throw new Error(`templates.yaml: unknown slot {${k}}`); return (cache[k] ??= f(v)); /* no factory: falls back to wordlists/<slot>.txt */ };
       const render = (s) => s.replace(/\{([a-z0-9_]+)((?:\|[a-z0-9]+)*)\}/g, (_, slot, fs) => {
         const plain = v(slot);
         if (!used.includes(slot)) used.push(slot);
@@ -101,11 +105,14 @@ export function generate(persona, seed, root = ROOT) {
       i++;
       const canaries = [];
       for (const s of used) { const p = cache[s]; if (!canaries.includes(p)) canaries.push(p); if (planted[s] && !canaries.includes(planted[s])) canaries.push(planted[s]); }
-      rows.push({
+      const row = {
         id: `${persona}-${t.id}-${String(i).padStart(2, "0")}`, family: persona, technique: t.id,
         field_ref: Array.isArray(ref) ? ref.join("+") : ref, payload, planted_canaries: canaries,
         expected_outcome: t.expected_outcome, rule_ids: t.rule_ids,
-      });
+      };
+      if (t.skip_until) row.skip_until = t.skip_until;
+      if (t.accounts) { row.account = `sim-${persona}-${pad(((i - 1) % t.accounts) + 1)}`; row.offset_ms = Math.floor(rnd() * t.window_ms); }
+      rows.push(row);
     }
   }
   // Non-ASCII (zero-width, look-alike letters) is written as \uXXXX so a reviewer can see it.
@@ -115,7 +122,7 @@ export function generate(persona, seed, root = ROOT) {
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const arg = (n) => { const i = process.argv.indexOf(n); return i < 0 ? null : process.argv[i + 1]; };
   const persona = arg("--persona"), seed = Number(arg("--seed")), out = arg("--out");
-  if (!["adv-doxx", "adv-inject"].includes(persona) || !Number.isInteger(seed)) { console.error("usage: gen-attacks.mjs --persona adv-doxx|adv-inject --seed N [--out file]"); process.exit(2); }
+  if (!["adv-doxx", "adv-inject", "adv-spam", "adv-hate", "adv-brigade", "adv-offtopic"].includes(persona) || !Number.isInteger(seed)) { console.error("usage: gen-attacks.mjs --persona <adv-id> --seed N [--out file]"); process.exit(2); }
   const text = generate(persona, seed);
   if (out) writeFileSync(out, text); else process.stdout.write(text);
 }
