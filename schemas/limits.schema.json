@@ -14,13 +14,14 @@
       "properties": {
         "problems_per_account_per_period": { "$ref": "#/$defs/window" },
         "contributions_per_account_per_day": {
-          "type": "object", "additionalProperties": false, "required": ["total", "per_problem", "note"],
+          "type": "object", "additionalProperties": false, "required": ["total", "note"],
           "properties": { "total": { "$ref": "#/$defs/count" }, "per_problem": { "$ref": "#/$defs/count" }, "provisional": { "type": "boolean" }, "public": { "type": "boolean" }, "note": { "type": "string", "minLength": 1 } }
         },
         "proposals_per_account_per_problem": { "$ref": "#/$defs/intLeaf" },
         "open_drafts_per_account": { "$ref": "#/$defs/intLeaf" },
         "appeals_per_account_per_period": { "$ref": "#/$defs/window" },
-        "policy_proposals_per_account_per_period": { "$ref": "#/$defs/window" }
+        "policy_proposals_per_account_per_period": { "$ref": "#/$defs/window" },
+        "replies_per_account_per_problem_per_day": { "$ref": "#/$defs/window" }
       }
     },
     "fields": {

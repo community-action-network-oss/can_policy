@@ -9,8 +9,7 @@ caps:
     note: Problems one account may submit per period.
   contributions_per_account_per_day:
     total: 20
-    per_problem: 8
-    note: All contribution types except the exempt ones under cooldowns.
+    note: All contribution types except the exempt ones under cooldowns. Per-problem volume is governed by replies_per_account_per_problem_per_day (D-85).
   proposals_per_account_per_problem:
     value: 2
     note: Proposals one account may make on one problem.
@@ -26,6 +25,12 @@ caps:
     days: 7
     provisional: true
     note: Policy proposals one account may send per period. Read by can_server policy-proposals.
+  replies_per_account_per_problem_per_day:
+    count: 4
+    days: 1
+    provisional: true
+    public: true
+    note: D-85. Replies one account may make on one problem in a rolling 24 hours, so every reply counts. Read by can_server contributions.
 # Entries are added by the content schema units. Char bounds equal the schema x-guidance.
 # List sizes (sources 1 to 10, facts 1 to 10, criteria 1 to 6, assumptions 1 to 8) live in
 # content-schemas/problem/schema.json as minItems and maxItems: this file allows one list key per type.

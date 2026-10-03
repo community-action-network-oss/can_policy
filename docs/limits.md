@@ -7,10 +7,11 @@ Caps, field bounds and cooldowns are pack values. Code reads them and never hold
 | Key | Default | Meaning | Open question |
 |---|---|---|---|
 | `caps.problems_per_account_per_period` | 3 per 7 days | Problems one account may submit | OQ-limits |
-| `caps.contributions_per_account_per_day` | 20 total, 8 per problem | All contribution types except exempt ones | OQ-limits |
+| `caps.contributions_per_account_per_day` | 20 total | All contribution types except exempt ones, across all problems. Per-problem volume is the D-85 reply cap below | OQ-limits |
 | `caps.proposals_per_account_per_problem` | 2 | Proposals on one problem | OQ-limits |
 | `caps.open_drafts_per_account` | 5 | Unsubmitted drafts | OQ-limits |
 | `caps.appeals_per_account_per_period` | 3 per 7 days | Appeals | OQ-limits |
+| `caps.replies_per_account_per_problem_per_day` | 4 per 1 day, provisional | Replies one person may make on one problem in a rolling 24 hours, so every reply counts (D-85). Any submitted contribution counts, drafts and edits do not. Public. The community can change it by policy proposal | OQ-reply-limit |
 | `fields.<type>.<field>.min_chars`, `max_chars` | none yet | Meaningful length bounds, equal to the schema `x-guidance` bounds | OQ-limits |
 | `fields.<type>.list.min`, `max` | none yet | List sizes | OQ-limits |
 | `cooldowns.between_contributions_same_problem` | 120 seconds, provisional | Reflection delay | OQ-cooldown-lengths |

@@ -28,7 +28,9 @@ test("the repo limits.yaml is valid and holds the OQ-limits defaults", () => {
   assert.deepEqual(lint(REPO).filter((e) => e.startsWith("limits.yaml")), []); // pack-wide health is lint.test.mjs
   const L = parse(readFileSync(join(REPO, "limits.yaml"), "utf8"));
   assert.deepEqual([L.caps.problems_per_account_per_period.count, L.caps.problems_per_account_per_period.days], [3, 7]);
-  assert.deepEqual([L.caps.contributions_per_account_per_day.total, L.caps.contributions_per_account_per_day.per_problem], [20, 8]);
+  assert.equal(L.caps.contributions_per_account_per_day.total, 20);
+  assert.equal(L.caps.contributions_per_account_per_day.per_problem, undefined); // D-85 cap governs per-problem volume
+  assert.deepEqual([L.caps.replies_per_account_per_problem_per_day.count, L.caps.replies_per_account_per_problem_per_day.days], [4, 1]);
   assert.equal(L.caps.proposals_per_account_per_problem.value, 2);
   assert.equal(L.caps.open_drafts_per_account.value, 5);
   assert.deepEqual([L.caps.appeals_per_account_per_period.count, L.caps.appeals_per_account_per_period.days], [3, 7]);
