@@ -1075,11 +1075,6 @@
       "bytes": 902
     },
     {
-      "path": "content-schemas/stage_choice/examples/invalid-missing-legal-gate-record.json",
-      "sha256": "33a8c1559f8bfc0c25ed73536591977ff6b4d60ca6879c1559c08e5cd6e70a75",
-      "bytes": 662
-    },
-    {
       "path": "content-schemas/stage_choice/examples/invalid-no-options-and-no-steps.json",
       "sha256": "077b5760adecd0c35e9af48a6e84913b32d9bc76afdd6e68833b17077833d872",
       "bytes": 652
@@ -1088,6 +1083,11 @@
       "path": "content-schemas/stage_choice/examples/invalid-step-without-done-criterion.json",
       "sha256": "5245acd64ba58699b69e3e990d24283f15391e563c30ce7232e473b81aa4eab6",
       "bytes": 836
+    },
+    {
+      "path": "content-schemas/stage_choice/examples/valid-no-legal-gate-record.json",
+      "sha256": "33a8c1559f8bfc0c25ed73536591977ff6b4d60ca6879c1559c08e5cd6e70a75",
+      "bytes": 662
     },
     {
       "path": "content-schemas/stage_choice/examples/valid-options-chosen.json",
@@ -1101,11 +1101,21 @@
     },
     {
       "path": "content-schemas/stage_choice/messages.en.json",
-      "sha256": "ddc5ce9c9840c6ac857113fa68627cfc10082f06856c50c9df658eccbf4a48bc",
-      "bytes": 3281
+      "sha256": "4c148da3fe282f9255aeec66171aa3a62252ad8bc7582438bcd394f1dc6ac905",
+      "bytes": 3309
+    },
+    {
+      "path": "content-schemas/stage_choice/migrations/1.0.0-to-2.0.0.json",
+      "sha256": "1f42c740e59cc6d10e49abc10b18e92fdaf0d4f05f9a2a62ccb4e3a4656053e8",
+      "bytes": 401
     },
     {
       "path": "content-schemas/stage_choice/schema.json",
+      "sha256": "1af5e148683e4863c3738576936ffaa34f2e46c87d7c4f05714e5866d06e320e",
+      "bytes": 12619
+    },
+    {
+      "path": "content-schemas/stage_choice/versions/1.0.0.schema.json",
       "sha256": "86fdeaa673bbc24df751f379195a8c0e3aab3791751cc8bef5062f41f391cd1c",
       "bytes": 12550
     },
@@ -2500,5 +2510,5 @@
       "bytes": 4797
     }
   ],
-  "pack_hash": "81efa40e6a9c466e557971bc6cce9ae808476bed1a60e95f5942478cf0ab90c8"
+  "pack_hash": "f2b0963dbfd3ea186ccfd25c00bd5c0fc08bd5ad1fc3a90144636ec9ebc65115"
 }

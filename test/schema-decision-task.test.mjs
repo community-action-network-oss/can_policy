@@ -36,7 +36,7 @@ const mk = (schema) => {
 };
 const walk = (n, fn) => { if (Array.isArray(n)) n.forEach((x) => walk(x, fn)); else if (n && typeof n === "object") { fn(n); Object.values(n).forEach((x) => walk(x, fn)); } };
 // structure only: drop x-* and annotation keys so inline copies are compared on validation shape
-const shape = (n) => Array.isArray(n) ? n.map(shape) : n && typeof n === "object" ? Object.fromEntries(Object.entries(n).filter(([k]) => !k.startsWith("x-")).map(([k, v]) => [k, shape(v)])) : n;
+const shape = (n) => Array.isArray(n) ? n.map(shape) : n && typeof n === "object" ? Object.fromEntries(Object.entries(n).filter(([k]) => !k.startsWith("x-") && k !== "readOnly").map(([k, v]) => [k, shape(v)])) : n;
 
 for (const [t, spec] of Object.entries(TYPES)) {
   const schema = rd(`${t}/schema.json`), messages = rd(`${t}/messages.en.json`), validate = mk(schema);

@@ -18,9 +18,9 @@ const TYPES = {
     expect: { "missing-how-it-meets": "", "stage-ref-not-slug": "/stage_ref", "criterion-ref-out-of-range": "/how_it_meets_stage_criteria/0/criterion_ref", "no-lawful-alternative": "/lawful_alternatives", "cost-band-unknown-value": "/cost_estimate/band" },
   },
   stage_choice: {
-    required: ["stage_ref", "decision_method", "decider_role", "authority", "rationale", "legal_gate_record"],
+    required: ["stage_ref", "decision_method", "decider_role", "authority", "rationale"],
     dps: ["DP-DECISION-RECORD", "DP-LEGALITY"],
-    expect: { "decider-is-named-person": "/decider_role", "no-options-and-no-steps": "", "missing-legal-gate-record": "", "decision-method-not-allowed": "/decision_method", "step-without-done-criterion": "/steps/0" },
+    expect: { "decider-is-named-person": "/decider_role", "no-options-and-no-steps": "", "decision-method-not-allowed": "/decision_method", "step-without-done-criterion": "/steps/0" },
   },
   stage_evidence: {
     required: ["stage_ref", "criterion_ref", "evidence_refs", "observation_date", "outcome_statement", "what_the_evidence_does_not_show"],
@@ -59,7 +59,7 @@ for (const [t, spec] of Object.entries(TYPES)) {
   test(`${t}: required list, DPs, limits and messages`, (c) => {
     assert.deepEqual(schema.required, spec.required);
     assert.equal(schema.additionalProperties, false);
-    assert.equal(schema.pack, "base@1.0.0"); assert.equal(schema.version, "1.0.0");
+    assert.equal(schema.pack, "base@1.0.0"); assert.equal(schema.version, t === "stage_choice" ? "2.0.0" : "1.0.0");
     for (const d of spec.dps) assert.ok(schema["x-checks"].dps.includes(d), d);
     // limits keys equal top-level x-guidance and one list key exists
     const L = LIMITS.fields[t]; assert.ok(L?.list);
@@ -94,6 +94,8 @@ test("stage_choice: chosen options or steps, decider is a role string only", () 
   assert.equal(p.decider_role["x-checks"].roles_only, true);
   assert.equal(p.steps.items.properties.owner_role["x-checks"].roles_only, true);
   assert.equal(s.anyOf.length, 2);
+  assert.equal(p.legal_gate_record.readOnly, true);
+  assert.equal(p.legal_gate_record["x-checks"].server_set, true);
   assert.deepEqual(p.legal_gate_record.required, ["constraint_checked", "source_ref", "layer", "result"]);
   assert.deepEqual(p.steps.items.required, ["step", "owner_role", "done_criterion"]);
 });
@@ -102,4 +104,11 @@ test("stage_evidence: url widget forbids uploads of people", () => {
   const u = rd("stage_evidence/schema.json").properties.evidence_refs.items.properties.url;
   assert.equal(u["x-ui"].widget, "evidence_url");
   assert.equal(u["x-checks"].no_uploads_of_people, true);
+});
+
+test("stage_choice: a body without legal_gate_record validates (server-set field)", () => {
+  const ex = rd("stage_choice/examples/valid-no-legal-gate-record.json");
+  assert.equal("legal_gate_record" in ex, false);
+  const v = mk(rd("stage_choice/schema.json"));
+  assert.ok(v(ex), JSON.stringify(v.errors));
 });
